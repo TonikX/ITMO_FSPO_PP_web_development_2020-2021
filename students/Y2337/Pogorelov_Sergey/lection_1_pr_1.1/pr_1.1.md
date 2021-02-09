@@ -5,4 +5,4 @@ React | Spring
 Angular | Django
 Vuejs | ASP.NET Core
 jQuery | Laravel
- | Flask
+Emberjs | Flask
