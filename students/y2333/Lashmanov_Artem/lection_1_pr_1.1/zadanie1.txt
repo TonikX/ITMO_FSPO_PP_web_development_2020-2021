@@ -1,0 +1,4 @@
+frontend - веб-верстка 
+backend - программно-аппаратная часть сервиса 
+frontend фреймворки: Semantic UI, Skeleton, Material Design 
+backend фреймворки: Laravel, Flask, Express.js, Django
