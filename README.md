@@ -36,7 +36,7 @@
 - Формат имени Django-приложения: “project_first_app”.
 
 2. Необходимо выполнить все задания с пометкой **практическая работа** из [практической работы №1](https://docs.google.com/document/d/1zHvKAh_CDcSnpFPgtNQq7JulRoBTiY4OdMlRth-Rjuc/edit?usp=sharing).<br>
-Полученную программу загрузить в папку этого репозитория **sutdents/группа/practical_works/фамилия_имя/simple_django_web_project**. Инструкция о загрузке работы ниже. Не забывайте о файле gitignore.
+Полученную программу загрузить в папку этого репозитория **sutdents/группа/фамилия_имя/practical_works/simple_django_web_project**. Инструкция о загрузке работы ниже. Не забывайте о файле gitignore.
 
 Для удобства навигации по практическим работам необходимо открыть меню оглавления (см. скриншоты ниже)<br><br>
 ![Image alt](https://github.com/TonikX/ITMO_ICT_WebDevelopment_2020-2021/raw/master/static/images/folders_1.png "Открытие оглавления")<br><br>
