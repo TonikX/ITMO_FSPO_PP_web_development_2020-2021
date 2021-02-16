@@ -36,6 +36,12 @@
 2. [Адресация в сетях](https://support.microsoft.com/ru-ru/help/164015/understanding-tcp-ip-addressing-and-subnetting-basics) **(+)**
 3. [TCP vs UDP](https://habr.com/ru/company/oleg-bunin/blog/461829/) **(+++)**
 
+## Практическая работа №1.2
+
+Цель работы: дать краткое представление о работе Django **WEB** фреймворка.<br>
+Необходимо выполнить все задания с пометкой **практическая работа** из [практической работы №1](https://docs.google.com/document/d/1zHvKAh_CDcSnpFPgtNQq7JulRoBTiY4OdMlRth-Rjuc/edit?usp=sharing).<br>
+Полученную программу загрузить в папку этого репозитория **sutdents/группа/practical_works/фамилия_имя/simple_django_web_project**. Инструкция о загрузке работы ниже. Не забывайте о файле gitignore.
+
 ## Сдача работ
 
 Для сдачи работы в связи с переходом на дистанционную форму обучения введены дополднительные правила игры.
