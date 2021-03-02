@@ -36,6 +36,8 @@
 - Формат имени Django-проекта: “django_project_фамилия”.
 - Формат имени Django-приложения: “project_first_app”.
 
+П.С. Если Вы работаете на компьютерах ФСПО и у Вас появляется ошибка импорта модуля sqlite3, решение [тут](https://stackoverflow.com/questions/54876404/unable-to-import-sqlite3-using-anaconda-python) в первом ответе.
+
 2. Необходимо выполнить все задания с пометкой **практическая работа** из [практической работы №1](https://docs.google.com/document/d/1zHvKAh_CDcSnpFPgtNQq7JulRoBTiY4OdMlRth-Rjuc/edit?usp=sharing).<br>
 Полученную программу загрузить в папку этого репозитория **sutdents/группа/фамилия_имя/practical_works/simple_django_web_project**. Инструкция о загрузке работы ниже. Не забывайте о файле gitignore.
 
