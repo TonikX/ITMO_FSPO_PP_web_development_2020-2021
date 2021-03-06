@@ -1,0 +1,10 @@
+#!/bin/sh
+'''exec' /home/nerower/Documents/Projects/rpm/up/ITMO_FSPO_PP_web_development_2020-2021/students/Y2337/Pogorelov_Sergey/practical_works/simple_django_web_project/django-env/bin/python "$0" "$@"
+' '''
+# -*- coding: utf-8 -*-
+import re
+import sys
+from django.core.management import execute_from_command_line
+if __name__ == '__main__':
+    sys.argv[0] = re.sub(r'(-script\.pyw|\.exe)?$', '', sys.argv[0])
+    sys.exit(execute_from_command_line())
