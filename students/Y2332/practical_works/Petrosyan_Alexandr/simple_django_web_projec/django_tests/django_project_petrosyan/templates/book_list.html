@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publisher detail</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+  </head>
+  <body>
+    <div class="section">
+      <h1><span>Books</span></h1>
+      <p><a href="/book/create/">Add new one</a></p>
+      <br/>
+      <hr/>
+      <ul>
+        {% for book in object_list %}
+          <li><strong>Name:</strong> {{ book.name }} <br/>
+            <strong>Description:</strong> {{ book.desc }} <br/>
+            <strong>Publisher:</strong>
+            <a href="/publisher/{{ book.publisher.id }}">{{ book.publisher }}</a><br/>
+            <br/>
+            <br/>
+            <p class="action">
+              Actions: <a class="action" href="/book/{{ book.id }}/update/">Edit</a> |
+                       <a class="action" href="/book/{{ book.id }}/delete/">Delete</a> |
+                       <a class="action" href="/book/{{ book.id }}/">Detail</a> <br/>
+            </p>
+          </li>
+          <hr/>
+          {% empty %}
+            <li>No books yet.</li>
+        {% endfor %}
+      </ul>
+    </div>
+  </body>
+</html>

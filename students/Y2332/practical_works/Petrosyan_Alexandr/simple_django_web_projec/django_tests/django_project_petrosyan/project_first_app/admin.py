@@ -1,11 +1,15 @@
 from django.contrib import admin
 
-# Register your models here.
-
 from .models import Car
 from .models import CarOwner
 from .models import Ownership
+from .models import ExampleModel
+from .models import Publisher
+from .models import Book
 
 admin.site.register(Car)
 admin.site.register(CarOwner)
 admin.site.register(Ownership)
+admin.site.register(ExampleModel)
+admin.site.register(Publisher)
+admin.site.register(Book)

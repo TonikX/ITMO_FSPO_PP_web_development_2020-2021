@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Car owner details</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+  </head>
+  <body>
+    <div class="section">
+      <h1><span>Car owner detail</span></h1>
+      <p>
+        <strong>Name:</strong> {{owner.first_name}} <br>
+        <strong>Surname:</strong> {{owner.last_name}} <br>
+        <strong>Birthday date::</strong> {{owner.birth_date}} <br>
+      </p>
+    </div>
+  </body>
+</html>
