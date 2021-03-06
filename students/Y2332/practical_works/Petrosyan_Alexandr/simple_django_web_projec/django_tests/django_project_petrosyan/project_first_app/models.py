@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Cars -------------------------------------------------------------------------
 
 class Car(models.Model):
@@ -8,11 +9,13 @@ class Car(models.Model):
     model = models.CharField(max_length=20)
     color = models.CharField(max_length=30)
 
+
 class CarOwner(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     birth_date = models.DateTimeField(null=True)
     cars = models.ManyToManyField(Car, through='Ownership')
+
 
 class Ownership(models.Model):
     owner = models.ForeignKey(CarOwner, on_delete=models.CASCADE)
@@ -20,30 +23,37 @@ class Ownership(models.Model):
     start_date = models.DateTimeField
     end_date = models.DateTimeField(null=True)
 
+
 class DriverLicense(models.Model):
     driver = models.ForeignKey(CarOwner, on_delete=models.CASCADE)
     number = models.CharField(max_length=10)
     type = models.CharField(max_length=10)
     date = models.DateTimeField
 
+
 # Examples ---------------------------------------------------------------------
 
 class ExampleModel(models.Model):
-    title = models.CharField(max_length = 200)
+    title = models.CharField(max_length=200)
     description = models.TextField()
+
     def __str__(self):
         return self.title
+
 
 class Publisher(models.Model):
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     birthdate = models.DateField()
+
     def __str__(self):
-        return "{} {}".format(self.first_name, self.last_name)
+        return f"{self.first_name} {self.last_name}"
+
 
 class Book(models.Model):
     name = models.CharField(max_length=100)
     desc = models.CharField(max_length=200)
     publisher = models.ForeignKey(Publisher, on_delete=models.CASCADE)
+
     def __str__(self):
-        return "{}, {}".format(self.name, self.publisher)
+        return f"{self.name}, {self.publisher}"
