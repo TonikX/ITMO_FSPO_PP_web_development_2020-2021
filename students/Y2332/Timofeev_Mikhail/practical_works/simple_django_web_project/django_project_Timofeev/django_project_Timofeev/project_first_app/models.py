@@ -27,3 +27,29 @@ class DriverLicense(models.Model):
     number = models.CharField(max_length=10)
     type = models.CharField(max_length=10)
     date = models.DateTimeField
+
+
+class ExampleModel(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+
+    def __str__(self):
+        return self.title
+
+
+class Publisher(models.Model):
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=30)
+    birthdate = models.DateField()
+
+    def __str__(self):
+        return "{} {}".format(self.first_name, self.last_name)
+
+
+class Book(models.Model):
+    name = models.CharField(max_length=100)
+    desc = models.CharField(max_length=200)
+    publisher = models.ForeignKey(Publisher, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return "{}, {}".format(self.name, self.publisher)
