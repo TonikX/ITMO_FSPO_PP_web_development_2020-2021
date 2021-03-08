@@ -1,6 +1,6 @@
 body {
     font-family: monospace;
-  background-color: #252525;
+  background-color: #151515;
   padding: 10px;
   margin: 0;
 }
@@ -35,29 +35,13 @@ li {
 hr {
   border: 0;
   height: 2px;
-  max-width: 800px;
   background: #808080;
 }
 
-input[type=submit] {
-    display: inline-block;
-    margin: 20px auto 20px auto;
-    padding: 10px;
-    width: 100px;
-    outline: none;
-    border: none;
-    border-radius: 7px;
-    text-align: center;
-    font-size: 25px;
-    font-family: inherit;
-    box-shadow: 0 9px #999;
-    transition-duration: 0.3s;
-}
-
 a {
-  color: inherit;
-  font-size: 18px;
-  transition-duration: 0.3s;
+    color: inherit;
+    /*font-size: 18px;*/
+    transition-duration: 0.3s;
 }
 
 a:hover {
@@ -65,15 +49,40 @@ a:hover {
 }
 
 a.action {
-  font-size: 15px;
+    font-size: 15px;
+    margin-right: 10px;
+}
+
+a.head_title {
+    text-decoration: none;
 }
 
 strong {
   /* font-size: 110%; */
-  text-shadow: 0 0 3px white;
+  text-shadow: 0 0 2px white;
+}
+
+img {
+    display: block;
+    width: 200px;
+    height: 200px;
+    margin: auto;
 }
 
 h1 {
+  font-size: 40px;
+  color: #ffffff;
+  text-align: center;
+  text-shadow: 3px 2px 3px black;
+  padding: 10px 0 10px 0;
+  margin: 0 0 10px 0;
+}
+
+h1 strong {
+    text-shadow: 0 0 10px white;
+}
+
+h2 {
   font-size: 25px;
   color: #ffffff;
   text-align: center;
@@ -82,11 +91,26 @@ h1 {
   margin: 0 0 10px 0;
 }
 
-h1 span {
+h2 span {
   border-top-style: dashed;
   border-bottom-style: dashed;
   border-width: 3px;
   padding: 8px;
+}
+
+input[type=submit]{
+    display: inline-block;
+    margin: 20px auto 20px auto;
+    padding: 10px;
+    height: 40px;
+    outline: none;
+    border: none;
+    border-radius: 7px;
+    text-align: center;
+    font-size: 20px;
+    font-family: inherit;
+    box-shadow: 0 9px #999;
+    transition-duration: 0.3s;
 }
 
 input[type=submit]:hover {
@@ -102,26 +126,48 @@ input[type=submit]:active {
 }
 
 input[type=text] {
-    display: inline-block;
+    display: block;
     margin: 20px auto 20px auto;
     padding: 10px;
-    width: 180px;
-    height: 35px;
+    width: 300px;
+    height: 20px;
     outline: none;
     border: none;
     border-radius: 7px;
     text-align: center;
-    font-size: 25px;
+    font-size: 18px;
     font-family: inherit;
-    /* box-shadow: 0 9px #999; */
-    transition-duration: 0.3s;
+}
+
+textarea {
+    display: block;
+    margin: 20px auto 20px auto;
+    padding: 10px;
+    width: 500px;
+    height: 150px;
+    resize: vertical;
+    outline: none;
+    border: none;
+    border-radius: 7px;
+    font-size: 18px;
+    font-family: inherit;
+    transition-duration: 0.1s;
 }
 
 .section {
-  background-color: #303030;
-  padding: 10px;
-  border-radius: 8px;
-  width: 800px;
-  margin: 15px auto;
-  box-shadow: 0 0 10px 4px #000000;
+    background-color: #303030;
+    padding: 10px;
+    border-radius: 8px;
+    max-width: 800px;
+    margin: 15px auto;
+    box-shadow: 0 0 10px 4px #000000;
+}
+
+.header {
+    background-image: url("DarkForest.jpg");
+    background-size: cover;
+    width: inherit;
+    max-width: inherit;
+    border-radius: 8px;
+    margin: 0;
 }

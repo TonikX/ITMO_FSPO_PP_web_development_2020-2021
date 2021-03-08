@@ -1,21 +1,14 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Car detail</title>
-    {% load static %}
-    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
-  </head>
-  <body>
-    <div class="section">
-      <h1><span>Car detail</span></h1>
-      <p>
+{% extends "base.html" %}
+{% block title %}Car detail{% endblock %}
+{% block block_title %}Car detail{% endblock %}
+{% block content %}
+    <br/>
+    <p>
         <strong>Car number:</strong> {{ object.number }} <br/>
         <strong>Brand:</strong> {{ object.brand }} <br/>
         <strong>Model:</strong> {{ object.model }} <br/>
         <strong>Color:</strong> {{ object.color }} <br/>
-      </p>
-    </div>
-  </body>
-</html>
+    </p>
+    <br/>
+    <p><a href="/car/list/">Back</a></p>
+{% endblock %}
