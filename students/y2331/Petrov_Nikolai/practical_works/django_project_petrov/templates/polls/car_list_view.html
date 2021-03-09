@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Машины</title>
+</head>
+<body>
+<div class="main">
+    <ul>
+        {% for car in object_list %}
+            <li>{{ car }}</li>
+        {% empty %}
+            <li>No objects yet.</li>
+        {% endfor %}
+    </ul>
+</div>
+</body>
+</html>
