@@ -6,9 +6,7 @@ __pycache__/
 # C extensions
 *.so
 
-# PyCharm # 
-/students/y2333/Dusheba_Olga/Pr 1.2/.idea/
-/students/y2333/Dusheba_Olga/Pr 1.2/up/.idea/
+
 
 # Distribution / packaging
 .Python
