@@ -5,8 +5,8 @@
     <title>Title</title>
 </head>
 <body>
-    {% for CarOwner in owner %}
-Имя: {{CarOwner.first_name}}, Фамилия: {{CarOwner.last_name}} <br>
+    {% for Car in object_list %}
+Марка: {{Car.mark}}, Модель: {{Car.model}}, Номер: {{Car.number}} <br>
     {% endfor %}
 </body>
 </html>
