@@ -1,7 +1,7 @@
 # ITMO_FSPO_PP_web_development_2020-2021
 Репозиторий для реализации дистанционного обучения по дисциплине "УП.11.01"
 
-[Учебный журнал]() по дисциплине. Тут доступна информация о сроках сдачи работ, о текущей успеваемости студентов и описаны все материалы необходимые для реализации курса.
+[Учебный журнал](https://docs.google.com/spreadsheets/d/1w43P8IImUzLnYtFtFlwGiW9L2ksz6EDoyAX_GRD8utM/edit#gid=0) по дисциплине. Тут доступна информация о сроках сдачи работ, о текущей успеваемости студентов и описаны все материалы необходимые для реализации курса.
 
 ## Инструкции
 Дополнительные материалы делятся на 3 категории:
@@ -54,11 +54,16 @@
 2. [Адресация в сетях](https://support.microsoft.com/ru-ru/help/164015/understanding-tcp-ip-addressing-and-subnetting-basics) **(+)**
 3. [TCP vs UDP](https://habr.com/ru/company/oleg-bunin/blog/461829/) **(+++)**
 
-
 ### Практическая работа №1.3
 
 Цель работы: дать подробное представление о реализации CRUD(Create, read, update and delete) интерфейсов средствами Django **WEB** фреймворка.<br>
 Необходимо выполнить все задлания с пометкой **практическая работа** из [практической работы №2](https://docs.google.com/document/d/1koLV9iGXJfL2yh88InKo4AVXxWqMIJOqmzT4XFYlWuU/edit?usp=sharing).<br>
+Полученную программу залить в папку этого репозитория **sutdents/группа/practical_works/фамилия_имя/simple_django_web_project**. Инструкция о загрузке работы ниже. Не забывайте о файле gitignore.
+
+## Практическая работа №1.4
+
+Необходимо выполнить все задлания с пометкой **практическая работа** из [практической работы №3](https://docs.google.com/document/d/1kQ36RlRtxqpjtUtfr-WCWkuJ1SYvSG4220Ops2X0viw/edit?usp=sharing
+). <br>
 Полученную программу залить в папку этого репозитория **sutdents/группа/practical_works/фамилия_имя/simple_django_web_project**. Инструкция о загрузке работы ниже. Не забывайте о файле gitignore.
 
 ## Сдача работ
