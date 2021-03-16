@@ -60,11 +60,17 @@
 Необходимо выполнить все задлания с пометкой **практическая работа** из [практической работы №2](https://docs.google.com/document/d/1koLV9iGXJfL2yh88InKo4AVXxWqMIJOqmzT4XFYlWuU/edit?usp=sharing).<br>
 Полученную программу залить в папку этого репозитория **sutdents/группа/practical_works/фамилия_имя/simple_django_web_project**. Инструкция о загрузке работы ниже. Не забывайте о файле gitignore.
 
-## Практическая работа №1.4
+### Практическая работа №1.4
 
 Необходимо выполнить все задлания с пометкой **практическая работа** из [практической работы №3](https://docs.google.com/document/d/1kQ36RlRtxqpjtUtfr-WCWkuJ1SYvSG4220Ops2X0viw/edit?usp=sharing
 ). <br>
 Полученную программу залить в папку этого репозитория **sutdents/группа/practical_works/фамилия_имя/simple_django_web_project**. Инструкция о загрузке работы ниже. Не забывайте о файле gitignore.
+
+### Полезные материалы
+
+[Фундаментально](https://www.youtube.com/playlist?list=PLlWXhlUMyooaDkd39pknA1-Olj54HtpjX) - плейлист уроков по джанго для тех кто хочет **фундаментально** изучить, как работает джанго веб фремйворк и заниматься этим в будущем.
+
+[Базово](https://www.youtube.com/playlist?list=PLF-NY6ldwAWqP4S95brtPHZ5fTCxilgei) - плейлист, который позволит **быстро** понять, как и что работает и **сделать лабу**.
 
 ## Сдача работ
 
