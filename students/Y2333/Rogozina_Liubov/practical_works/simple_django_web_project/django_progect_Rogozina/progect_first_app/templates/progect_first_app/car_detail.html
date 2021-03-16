@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Автомобиль</title>
+</head>
+<body>
+    <h1>{{ object }}</h1>
+    <p><strong>Марка </strong>{{ object.brand }}</p>
+    <p><strong>Цвет </strong>{{ object.color }}</p>
+    <div><a href="/car_list/">Get back</a></div>
+    <a href="{% url 'up_car' object.pk %}">   Update</a>
+    <a href="{% url 'del_car' object.pk %}">   Delete</a>
+</body>
+</html>

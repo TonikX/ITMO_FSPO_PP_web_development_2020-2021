@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Удаление объекта</title>
+</head>
+<form method="post"> {% csrf_token %}
+    <p>Удалить {{ object }}?</p>
+    <input type="submit" value="Confirm">
+</form>
+</html>

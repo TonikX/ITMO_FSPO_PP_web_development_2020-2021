@@ -1,7 +1,7 @@
 # ITMO_FSPO_PP_web_development_2020-2021
 Репозиторий для реализации дистанционного обучения по дисциплине "УП.11.01"
 
-[Учебный журнал]() по дисциплине. Тут доступна информация о сроках сдачи работ, о текущей успеваемости студентов и описаны все материалы необходимые для реализации курса.
+[Учебный журнал](https://docs.google.com/spreadsheets/d/1w43P8IImUzLnYtFtFlwGiW9L2ksz6EDoyAX_GRD8utM/edit#gid=0) по дисциплине. Тут доступна информация о сроках сдачи работ, о текущей успеваемости студентов и описаны все материалы необходимые для реализации курса.
 
 ## Инструкции
 Дополнительные материалы делятся на 3 категории:
@@ -21,11 +21,29 @@
 4. [Чем отличаются фронтенд- и бэкенд-разработка](https://techrocks.ru/2020/07/01/front-end-vs-back-end-development/) **(+)**
 5. [Что такое MVC: базовые концепции и пример приложения](https://skillbox.ru/media/code/chto_takoe_mvc_bazovye_kontseptsii_i_primer_prilozheniya/) **(++)**
 
-#### Практическая часть
+### Практическая часть 1.1
 
 Погуглить и описать **своими словами**, что такое frontend и backend. Привести примеры frontend и backend фреймворков. Описать отличия.
 
 Отчет о практической части содержит текстовый файл с вашим текстом работы и отправляется пул реквестом в этот репозиторий в папку lection_1_pr_1.1 **(Пример  students/Y2331/Petrov_Vasya/lection_1_pr_1.1 )**. Шаблон названия пул реквеста "ИТМО ФСПО Номер_группы Практическая работа ФИО". Пример: "ИТМО ФСПО К3340 Практическая работа №1 Филимонов Филипп". 
+
+### Практическая работа 1.2
+**Дедлайн: 9.03.21 10:00**
+
+Цель работы: дать краткое представление о работе Django **WEB** фреймворка.<br>
+1. Необходимо установить Django Web framework. [Инструкция по установке](https://drive.google.com/file/d/1fsNaCm2MCxVletRLdGzVrd6-lPePn2Xh/view). Если у Вас нет PyCharm Professional, пропустите пункт 8. 
+Формат именований блоков проекта:
+- Формат имени Django-проекта: “django_project_фамилия”.
+- Формат имени Django-приложения: “project_first_app”.
+
+П.С. Если Вы работаете на компьютерах ФСПО и у Вас появляется ошибка импорта модуля sqlite3, решение [тут](https://stackoverflow.com/questions/54876404/unable-to-import-sqlite3-using-anaconda-python) в первом ответе.
+
+2. Необходимо выполнить все задания с пометкой **практическая работа** из [практической работы №1](https://docs.google.com/document/d/1zHvKAh_CDcSnpFPgtNQq7JulRoBTiY4OdMlRth-Rjuc/edit?usp=sharing).<br>
+Полученную программу загрузить в папку этого репозитория **sutdents/группа/фамилия_имя/practical_works/simple_django_web_project**. Инструкция о загрузке работы ниже. Не забывайте о файле gitignore.
+
+Для удобства навигации по практическим работам необходимо открыть меню оглавления (см. скриншоты ниже)<br><br>
+![Image alt](https://github.com/TonikX/ITMO_ICT_WebDevelopment_2020-2021/raw/master/static/images/folders_1.png "Открытие оглавления")<br><br>
+![Image alt](https://github.com/TonikX/ITMO_ICT_WebDevelopment_2020-2021/raw/master/static/images/folders_2.png)<br>
 
 ### Лекция 1.2 - Компоненты клиент-серверного взаимодействия.
 Презентация лекции [тут](https://drive.google.com/file/d/1Jp_7c5GcK8TeLii2yEDuSmjLyXIlGQs1/view?usp=sharing).
@@ -35,6 +53,18 @@
 1. [Сетевая модель OSI](https://ru.wikipedia.org/wiki/%D0%A1%D0%B5%D1%82%D0%B5%D0%B2%D0%B0%D1%8F_%D0%BC%D0%BE%D0%B4%D0%B5%D0%BB%D1%8C_OSI) **(+)**
 2. [Адресация в сетях](https://support.microsoft.com/ru-ru/help/164015/understanding-tcp-ip-addressing-and-subnetting-basics) **(+)**
 3. [TCP vs UDP](https://habr.com/ru/company/oleg-bunin/blog/461829/) **(+++)**
+
+### Практическая работа №1.3
+
+Цель работы: дать подробное представление о реализации CRUD(Create, read, update and delete) интерфейсов средствами Django **WEB** фреймворка.<br>
+Необходимо выполнить все задлания с пометкой **практическая работа** из [практической работы №2](https://docs.google.com/document/d/1koLV9iGXJfL2yh88InKo4AVXxWqMIJOqmzT4XFYlWuU/edit?usp=sharing).<br>
+Полученную программу залить в папку этого репозитория **sutdents/группа/practical_works/фамилия_имя/simple_django_web_project**. Инструкция о загрузке работы ниже. Не забывайте о файле gitignore.
+
+## Практическая работа №1.4
+
+Необходимо выполнить все задлания с пометкой **практическая работа** из [практической работы №3](https://docs.google.com/document/d/1kQ36RlRtxqpjtUtfr-WCWkuJ1SYvSG4220Ops2X0viw/edit?usp=sharing
+). <br>
+Полученную программу залить в папку этого репозитория **sutdents/группа/practical_works/фамилия_имя/simple_django_web_project**. Инструкция о загрузке работы ниже. Не забывайте о файле gitignore.
 
 ## Сдача работ
 
