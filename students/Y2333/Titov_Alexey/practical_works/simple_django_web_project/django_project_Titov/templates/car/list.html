@@ -1,0 +1,11 @@
+<h1>Cars</h1>
+<ul>
+    <!-- пройтись по всем элементам -->
+    {% for o in object_list %}
+        <!-- отобразить -->
+        <li>{{ o.gos_number }} {{ o.color }} {{ o.mark }} {{ o.model }}</li>
+        <hr />
+    {% empty %}
+        <b>No cars yet.</b>
+    {% endfor %}
+</ul>

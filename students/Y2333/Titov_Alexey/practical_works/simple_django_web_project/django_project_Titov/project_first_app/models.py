@@ -14,6 +14,7 @@ class Owner(models.Model):
     surname = models.CharField(max_length=30)
     name = models.CharField(max_length=30)
     birth_date = models.DateTimeField(blank=True, null=True)
+    cars = models.ManyToManyField(Car, through='CarOwning')
 
 
 class CarOwning(models.Model):

@@ -1,0 +1,11 @@
+<h1>Car owners</h1>
+<ul>
+    <!-- пройтись по всем элементам -->
+    {% for o in owners %}
+        <!-- отобразить -->
+        <li>{{ o.surname }} {{ o.name }}</li>
+        <hr />
+    {% empty %}
+        <b>No owners yet.</b>
+    {% endfor %}
+</ul>
