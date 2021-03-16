@@ -1,0 +1,18 @@
+<!-- car_detail.html -->
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Car detail</title>
+{% endblock %}
+
+{% block main_content %}
+    <h1>{{object.state_number}}</h1>
+    <p>
+        <b>Mark: </b>{{object.mark}}<br>
+        <b>Model: </b>{{object.model}}<br>
+        <b>Color: </b>{{object.color}}<br>
+
+        <!-- <a href="/car/list/">Get back</a> -->
+    </p>
+
+{% endblock %}

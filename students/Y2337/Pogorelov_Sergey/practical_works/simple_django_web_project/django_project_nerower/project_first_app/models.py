@@ -17,10 +17,11 @@ class Car(models.Model):
     mark = models.CharField(max_length=20)#, choices= MARK.choices)
     model = models.CharField(max_length=20)
     color = models.CharField(max_length=30, blank=True)
+    owner = models.ManyToManyField(Owner, through='Ownership')
 
 class Ownership(models.Model):
     owner = models.ForeignKey(Owner, on_delete=models.CASCADE)
     car = models.ForeignKey(Car, on_delete=models.CASCADE)
     start_date = models.DateTimeField()
-    end_date = models.DateTimeField(null=True)
+    end_date = models.DateTimeField(null=True, blank=True)
 

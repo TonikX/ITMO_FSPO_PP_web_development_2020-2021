@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block title %}
+    {% endblock title%}
+
     <title>First Django app</title>
+
 </head>
 <body>
     <p><b>Hi, {{request.user}}</b></p>
@@ -12,7 +16,7 @@
     
     {% block main_content %}
 
-    {% endblock %}
+    {% endblock main_content%}
 
 </body>
 </html>
