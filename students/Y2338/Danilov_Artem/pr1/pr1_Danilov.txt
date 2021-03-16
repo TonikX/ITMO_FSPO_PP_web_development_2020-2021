@@ -1,0 +1,10 @@
+Frontend – то что видит клиент, пользовательский интерфейс, пользовательская сторона
+React.js
+Angular
+Vue.js
+Backend – внутренняя сторона сайта, отвевающая за работу сайта.
+Express.js
+Django
+Laravel
+Flask
+
