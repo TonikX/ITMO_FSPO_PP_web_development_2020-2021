@@ -10,15 +10,15 @@
     <ul>
         {% for car in object_list %}
         <li>
-            <strong>State number:</strong> {{ car.state_number }} <br>
-            Actions: <a href="/car/{{ car.id }}/update/">Edit</a> | <a href="/car/{{ car.id }}/delete/">Delete</a> | <a href="/car/{{ car.id }}/">Detail</a>
+            <b>State number:</b> {{ car.state_number }} <br>
+            See more: <a href="/car/{{ car.id }}/">Detail</a>
             <p>
-                <strong>Mark:</strong> {{ car.mark }} <br>
-                <strong>Model:</strong> {{ car.model }} <br>
-                <strong>Color:</strong> {{ car.color }} <br>
+                <b>Mark:</b> {{ car.mark }} <br>
+                <b>Model:</b> {{ car.model }} <br>
+                <b>Color:</b> {{ car.color }} <br>
             </p>
 
-            <!-- <p><strong>Owner:</strong> <a href="/owner/{{ owner.id }}">{{ car.owner }}</a></p> -->
+            <p><b>Owner:</b> <a href="/owner/{{ car.owner.id }}">{{ car.owner }}</a></p>
         </li>
         <hr>
 

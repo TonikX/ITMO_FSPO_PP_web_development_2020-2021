@@ -11,8 +11,11 @@
         <b>Mark: </b>{{object.mark}}<br>
         <b>Model: </b>{{object.model}}<br>
         <b>Color: </b>{{object.color}}<br>
-
-        <!-- <a href="/car/list/">Get back</a> -->
+        <b>Owner: </b><a href="/owner/{{ owner.id }}">{{ car.owner }}</a>
+    </p><hr>
+    <p>
+        Actions: <a href="/car/{{ car.id }}/update/">Edit</a> | <a href="/car/{{ car.id }}/delete/">Delete</a>
+        <br><a href="/car/list/">Full cars list</a>
     </p>
 
 {% endblock %}
