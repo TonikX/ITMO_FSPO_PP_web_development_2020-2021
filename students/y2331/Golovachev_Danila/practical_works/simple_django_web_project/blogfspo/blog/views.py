@@ -5,11 +5,15 @@ from django.shortcuts import \
 from .models import *  # импортирует таблицу Poll из модели данных models, где polls - название приложения (и папки)
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
+from django.views.generic.edit import UpdateView
+from django.views.generic.edit import DeleteView
+from django.views.generic.edit import CreateView
+from .forms import *
 
 
 def detail(request):
     try:  # метод try-except - обработчик исключений
-        p = CarOwner.objects.filter(pk__in=[1, 2, 3])
+        p = CarOwner.objects.filter(pk__in=[1, 2, 3, 4, 5, 6])
         print(p)
     except CarOwner.DoesNotExist:
         raise Http404(
@@ -27,3 +31,38 @@ class list_car(ListView):
 class detail_car(DetailView):
     model = Car
     template_name = 'blogfspo/detail_car_o.html'
+
+
+def create_view(request):
+    # dictionary for initial data with
+    # field names as keys
+    context = {}
+
+    # add the dictionary during initialization
+    form = CreateForm(
+        request.POST or None)  # создание экземпляра формы, передача в него данных из формы (из полей в браузере)
+    if form.is_valid():  # проверка формы на корректность (валидация)
+        form.save()
+    context['form'] = form
+
+    return render(request, "blogfspo/create_view.html", context)
+
+
+class CarUpdateView(UpdateView):
+    model = Car
+    fields = ['mark', 'model', 'color', 'number']
+    template_name = 'blogfspo/car_form.html'
+    success_url = '/Cars/'
+
+
+class CarDeleteView(DeleteView):
+    model = Car
+    template_name = 'blogfspo/delete_car.html'
+    success_url = '/Cars/'
+
+
+class CarCreateView(CreateView):
+    model = Car
+    fields = ['mark', 'model', 'color', 'number']
+    template_name = 'blogfspo/car_create.html'
+    success_url = '/Cars/'
