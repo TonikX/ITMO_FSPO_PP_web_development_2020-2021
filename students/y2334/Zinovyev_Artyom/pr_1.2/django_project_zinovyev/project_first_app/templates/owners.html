@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Owners</title>
+</head>
+<body>
+    <div class="main">
+        {% for owner in object_list %}
+        <ul>
+            <li>{{ owner.name }}</li>
+            <li>{{ owner.last_name }}</li>
+            <li>{{ owner.birthday_date }}</li>
+        </ul>
+        {% empty %}
+        <ul>
+            <li>No owners</li>
+        </ul>
+        {% endfor %}
+    </div>
+</body>
+</html>
