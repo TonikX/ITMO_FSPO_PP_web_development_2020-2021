@@ -5,7 +5,8 @@
     <title>Title</title>
 </head>
 <body>
-Имя: {{owner.name}}, Фамилия: {{owner.last_name}} <br>
-Государственный номер: {{car.gov_number}}, Марка машины: {{Car.brand}} <br>
+    {% for Owner in owner %}
+Имя: {{Owner.name}}, Фамилия: {{Owner.last_name}} <br>
+    {% endfor %}
 </body>
 </html>
