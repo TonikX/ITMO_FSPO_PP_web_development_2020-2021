@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Owners list</title>
+</head>
+<body>
+{%for owner in owners%}
+    Name: {{owner.first_name}}<br/>
+    Lastname: {{owner.last_name}}<br/>
+    date of the birth: {{owner.birthdate}}<br/>
+<hr/>
+{% endfor %}
+<span><a href="/carowner/add/">Add new owner</a></span>
+</body>
+</html>
