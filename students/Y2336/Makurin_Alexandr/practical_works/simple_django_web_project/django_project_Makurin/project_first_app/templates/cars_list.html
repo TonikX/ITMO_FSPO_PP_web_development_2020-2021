@@ -1,0 +1,29 @@
+<style>
+table {
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+td {
+    border: 1px solid black;
+}
+</style>
+<table>
+    <tr>
+        <td>id</td>
+        <td>Registration number</td>
+        <td>Brand</td>
+        <td>Model</td>
+        <td>Color</td>
+    </tr>
+    {% for object in object_list %}
+    <tr>
+        <td><a href="./cars/{{ object.id }}">{{ object.id }}</a></td>
+        <td>{{ object.GosNum }}</td>
+        <td>{{ object.Brand }}</td>
+        <td>{{ object.Model }}</td>
+        <td>{{ object.Color }}</td>
+    </tr>
+    {% empty %}
+    {% endfor %}
+</table>
+<br><a href="cars/create">Create new car</a>

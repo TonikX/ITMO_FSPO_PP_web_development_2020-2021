@@ -7,6 +7,9 @@ class CarOwner(models.Model):
     Name = models.CharField(max_length=30)
     BirthDate = models.DateTimeField()
 
+    def __str__(self):
+        return f"{self.Name} {self.Surname}"
+
 
 class DriversLicense(models.Model):
     OwnerId = models.ForeignKey(CarOwner, on_delete=models.CASCADE)
@@ -20,6 +23,9 @@ class Car(models.Model):
     Brand = models.CharField(max_length=20)
     Model = models.CharField(max_length=20)
     Color = models.CharField(max_length=30, null=True)
+
+    def __str__(self):
+        return f"{self.Brand} {self.Model}"
 
 
 class Owning(models.Model):

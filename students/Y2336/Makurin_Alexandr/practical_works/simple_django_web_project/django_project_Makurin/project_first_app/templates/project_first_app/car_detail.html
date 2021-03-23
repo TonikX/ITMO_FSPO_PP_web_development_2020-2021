@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car detail</title>
+</head>
+<body>
+    <h1>{{ object }}</h1>
+    <p><strong>Registration number: </strong> {{ object.GosNum }}</p>
+    <p><strong>Color: </strong> {{ object.Color }}</p>
+    <a href="/cars/{{ object.id }}/update">Edit</a> | 
+    <a href="/cars/{{ object.id }}/delete">Delete</a> | 
+    <a href="/cars">Get back</a>
+</body>
+</html>
