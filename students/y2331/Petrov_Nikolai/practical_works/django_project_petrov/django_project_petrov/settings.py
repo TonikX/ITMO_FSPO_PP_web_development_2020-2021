@@ -55,7 +55,7 @@ ROOT_URLCONF = 'django_project_petrov.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR / 'templates']
+        'DIRS': [BASE_DIR / 'project_first_app/../templates']
         ,
         'APP_DIRS': True,
         'OPTIONS': {
