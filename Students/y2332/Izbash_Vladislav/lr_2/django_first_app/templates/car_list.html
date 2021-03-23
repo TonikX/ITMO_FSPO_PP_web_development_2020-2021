@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Список автомобилей</title>
+</head>
+<body>
+    <h3>Список автомобилей: </h3>
+    <ol>
+        {% for object in object_list %}
+        <li>{{ object.number }} ({{ object.brand }} {{ object.model }})</li>
+        {% endfor %}
+    </ol>
+</body>
+</html>

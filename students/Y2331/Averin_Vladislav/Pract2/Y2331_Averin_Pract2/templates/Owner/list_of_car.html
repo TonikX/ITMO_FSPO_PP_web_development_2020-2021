@@ -1,0 +1,13 @@
+<ul>
+    <!-- Iterate over object_list -->
+    {% for object in object_list %}
+    <!-- Display Objects -->
+    <li>Object ID: {{ object.id }}</li>
+    <a href="/car/{{object.id}}">Get</a>
+
+    <hr/>
+    <!-- If objet_list is empty  -->
+    {% empty %}
+    <li>No objects yet.</li>
+    {% endfor %}
+</ul>
