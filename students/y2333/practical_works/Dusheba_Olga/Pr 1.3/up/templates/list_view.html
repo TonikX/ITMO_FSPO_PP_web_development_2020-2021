@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cars</title>
+</head>
+<body>
+<h1>Cars:</h1>
+<div class="main">
+    {% for data in dataset %}
+
+    Гос. номер: {{ data.gos_number }}<br/>
+    Марка: {{ data.mark }}<br/>
+    Модель: {{ data.model }}<br/>
+    Цвет: {{ data.color }}<br/>
+    <hr/>
+    {% endfor %}
+
+</div>
+</body>
+</html>
