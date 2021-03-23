@@ -3,9 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Owner {{owner.id}}</title>
+    <title>Form of Car</title>
 </head>
 <body>
-    Name: {{owner.Name}}, Surname: {{owner.Surname}} <br>
+    <form method="post">{% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Save">
+    </form>
 </body>
 </html>
