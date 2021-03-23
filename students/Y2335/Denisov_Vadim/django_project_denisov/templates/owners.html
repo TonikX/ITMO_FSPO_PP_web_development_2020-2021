@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Owners</title>
+</head>
+<body>
+    <div class="main">
+    <h1>Список владельцев</h1><a href="/create_owner/">Добавить владельца</a><br/>
+    {% for Owner in owner_list %}.
+
+    <br>ID: {{Owner.id}} <a href="/owner/{{ Owner.owner_id }}/">Детали</a><br/>
+    Фамилия: {{Owner.last_name}}<br/>
+    Имя: {{Owner.name}}<br/>
+    Дата рождения: {{Owner.birthdate}}<br/>
+
+    <hr/>
+
+    {% endfor %}
+
+</body>
+</html>
