@@ -1,0 +1,22 @@
+<div class="main">
+  
+    {% for data in dataset %}
+  
+    <strong> Никнейм: </strong> 
+        {{data.username}}<br>
+    <strong> Email: </strong> 
+        {{data.email}}<br>
+    <strong> Фамилия: </strong> 
+        {{data.Surname}}<br>
+    <strong> Имя: </strong>  
+        {{data.Name}}<br>
+    <strong> Номер пасспорта: </strong>  
+        {{data.passport_number}}<br>
+    <strong> Адрес: </strong>  
+        {{data.home_adress}}<br>
+    <strong> Гражданство: </strong>  
+        {{data.citizenship}}<br>
+        <br>
+    {% endfor %}
+  
+</div>
