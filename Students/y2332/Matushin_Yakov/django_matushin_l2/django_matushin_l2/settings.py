@@ -50,7 +50,7 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'django_project_matushin.urls'
+ROOT_URLCONF = 'django_matushin_l2.urls'
 
 TEMPLATES = [
     {
@@ -69,7 +69,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'django_project_matushin_v2.wsgi.application'
+WSGI_APPLICATION = 'django_matushin_l2.wsgi.application'
 
 
 # Database

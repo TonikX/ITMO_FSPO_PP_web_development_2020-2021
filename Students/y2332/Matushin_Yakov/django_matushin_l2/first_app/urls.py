@@ -11,7 +11,7 @@ urlpatterns = [
     path('auto/<int:pk>/', AutoRetrieveView.as_view()),
     path('owner/create/', create_view),
     path('auto/<int:pk>/update/', AutoUpdateView.as_view()),
-    path('auto/create/', AutoCreateView.as_view(success_url="/auto/list/")),  # success_url
+    path('auto/create/', AutoCreateView.as_view(success_url="./auto/list/")),  # success_url
     path('auto/<int:pk>/delete/', AutoDeleteView.as_view()),
 ]
 

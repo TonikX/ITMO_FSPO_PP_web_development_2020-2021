@@ -3,9 +3,9 @@
   <component name="FacetManager">
     <facet type="django" name="Django">
       <configuration>
-        <option name="rootFolder" value="$MODULE_DIR$/../django_project_matushin" />
-        <option name="settingsModule" value="django_project_matushin/settings.py" />
-        <option name="manageScript" value="$MODULE_DIR$/../django_project_matushin/manage.py" />
+        <option name="rootFolder" value="$MODULE_DIR$" />
+        <option name="settingsModule" value="django_matushin_l2/settings.py" />
+        <option name="manageScript" value="$MODULE_DIR$/manage.py" />
         <option name="environment" value="&lt;map/&gt;" />
         <option name="doNotUseTestRunner" value="false" />
         <option name="trackFilePattern" value="migrations" />
@@ -23,7 +23,7 @@
     <option name="TEMPLATE_CONFIGURATION" value="Django" />
     <option name="TEMPLATE_FOLDERS">
       <list>
-        <option value="$MODULE_DIR$/../django_project_matushin\templates" />
+        <option value="$MODULE_DIR$/../django_matushin_l2\templates" />
       </list>
     </option>
   </component>
