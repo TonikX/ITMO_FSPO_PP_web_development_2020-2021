@@ -40,7 +40,7 @@ def create_owner(request):
 
 class CarListView(ListView):
     model = Car
-    template_name = 'car_list_view.html'
+    # template_name = 'car_list_view.html'
     
 
 class CarOwnershipListView(ListView):
