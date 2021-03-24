@@ -14,6 +14,9 @@ class CreateForm(forms.ModelForm):
             "first_name",
             "last_name",
             "date_birth",
+            "number_pass",
+            "address",
+            "national",
         ]
 
 

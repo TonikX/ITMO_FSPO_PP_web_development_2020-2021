@@ -54,6 +54,7 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'blogfspo.urls'
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
+AUTH_USER_MODEL = 'blog.CarOwner'
 
 TEMPLATES = [
     {

@@ -6,7 +6,7 @@
 </head>
 <body>
     {% for CarOwner in owner %}
-Имя: {{CarOwner.first_name}}, Фамилия: {{CarOwner.last_name}} <br>
+Имя: {{CarOwner.first_name}}, Фамилия: {{CarOwner.last_name}}, Дата: {{CarOwner.date_birth}}, Номер паспорта: {{CarOwner.number_pass}}, национальность: {{CarOwner.national}}, адрес: {{CarOwner.address}} <br>
     {% endfor %}
 </body>
 </html>
