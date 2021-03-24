@@ -14,5 +14,8 @@ class OwnerForm(forms.ModelForm):
         fields = [
             "first_name",
             "last_name",
+            "passport_number",
             "birth_date",
+            "adress",
+            "nationality",
         ]
