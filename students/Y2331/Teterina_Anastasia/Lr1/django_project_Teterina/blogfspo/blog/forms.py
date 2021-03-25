@@ -15,6 +15,9 @@ class ExampleForm(forms.ModelForm):
             "last_name",
             "name",
             "date_birth",
+            "passport",
+            "address",
+            "national",
         ]
 class Car_form(forms.ModelForm):
     # create meta class
