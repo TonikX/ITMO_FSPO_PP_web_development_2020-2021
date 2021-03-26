@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 
@@ -13,11 +13,14 @@ class Car(models.Model):
         return self.gos_number, self.brand, self.model, self.colour
 
 
-class Car_owner(models.Model):
-    surname = models.CharField(max_length=30)
-    name = models.CharField(max_length=30)
-    date_of_birth = models.DateField()
-    connection = models.ManyToManyField(Car, through="Ownership")
+class Car_owner(AbstractUser):
+    surname = models.CharField(max_length=30, blank=True, null=True)
+    name = models.CharField(max_length=30, blank=True, null=True)
+    date_of_birth = models.DateField(blank=True, null=True)
+    connection = models.ManyToManyField(Car, through="Ownership", blank=True, null=True)
+    passport_number = models.CharField(max_length=20, blank=True, null=True)
+    home_address = models.CharField(max_length=50, blank=True, null=True)
+    nationality = models.CharField(max_length=15, blank=True, null=True)
 
 
 class Ownership(models.Model):
