@@ -35,7 +35,8 @@ def add_owner(request):
 
     # add the dictionary during initialization
     form = OwnerForm(
-        request.POST or None)  # создание экземпляра формы, передача в него данных из формы (из полей в браузере)
+        request.POST or None
+    )  # создание экземпляра формы, передача в него данных из формы (из полей в браузере)
     if form.is_valid():  # проверка формы на корректность (валидация)
         form.save()
     context['form'] = form

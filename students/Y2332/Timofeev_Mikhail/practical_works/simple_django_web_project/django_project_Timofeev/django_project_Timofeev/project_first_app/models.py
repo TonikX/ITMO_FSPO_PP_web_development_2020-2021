@@ -1,4 +1,6 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
+from django.conf import settings
 
 
 class Car(models.Model):
@@ -8,22 +10,28 @@ class Car(models.Model):
     color = models.CharField(max_length=30)
 
 
-class CarOwner(models.Model):
+class CarOwner(AbstractUser):
+    username = models.CharField(max_length=30, unique=True)
+    password = models.CharField(max_length=30)
+    REQUIRED_FIELDS = []
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     birth_date = models.DateTimeField(null=True)
+    passport_number = models.DecimalField(max_digits=6, decimal_places=0, default=100000)
+    home_address = models.TextField(default='address')
+    nationality = models.TextField(default='nationality')
     cars = models.ManyToManyField(Car, through='Ownership')
 
 
 class Ownership(models.Model):
-    owner = models.ForeignKey(CarOwner, on_delete=models.CASCADE)
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     car = models.ForeignKey(Car, on_delete=models.CASCADE)
     start_date = models.DateTimeField
     end_date = models.DateTimeField(null=True)
 
 
 class DriverLicense(models.Model):
-    driver = models.ForeignKey(CarOwner, on_delete=models.CASCADE)
+    driver = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     number = models.CharField(max_length=10)
     type = models.CharField(max_length=10)
     date = models.DateTimeField
