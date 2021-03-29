@@ -1,0 +1,15 @@
+<div class="main">
+    <a href="/owners/create">Create</a>
+    {% for owner in owners %}
+        <h2>{{ owner.name }} {{ owner.surname }}</h2>
+        <ul>
+            {% for car in owner.cars.all %}
+                <li>
+                    <a href="/cars/{{ car.id }}">{{ car.brand }}: {{ car.model }}</a>
+                </li>
+            {% empty %}
+                <span>No cars yet.</span>
+            {% endfor %}
+        </ul>
+    {% endfor %}
+</div>
