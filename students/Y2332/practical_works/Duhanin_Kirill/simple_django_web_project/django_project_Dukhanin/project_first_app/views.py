@@ -68,6 +68,8 @@ class CarCreateView(CreateView):
         'color'
     ]
 
+    success_url = '/car/list'
+
 
 class CarDeleteView(DeleteView):
     model = Car
