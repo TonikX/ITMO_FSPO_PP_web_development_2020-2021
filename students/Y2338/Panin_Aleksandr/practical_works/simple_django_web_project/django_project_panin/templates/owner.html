@@ -1,3 +1,10 @@
-<body>
-Имя: {{owner.name}}, Фамилия: {{owner.surname}} <br>
-</body>
+{% extends "base.html" %}
+
+{% block title %}Владелец{% endblock %}
+
+{% block content %}
+<h1>{{owner.name}}</h1>
+<p><strong>Фамилия:</strong> {{owner.surname}}</p>
+<p><strong>День рождения:</strong> {{owner.birthday}}</p>
+<a href="/owner">К списку владельцев</a>
+{% endblock %}
