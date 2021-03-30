@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of owners</title>
+</head>
+<body>
+    {% for data in dataset %}
+    <a href="{{ data.id }}">{{ data.username }} {{ data.surname }}</a>
+    <hr/>
+    {% endfor %}
+
+
+</body>
+</html>
