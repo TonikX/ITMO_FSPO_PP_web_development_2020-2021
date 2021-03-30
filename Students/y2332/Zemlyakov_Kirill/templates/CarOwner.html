@@ -4,7 +4,7 @@
 <body>
   <span><h1>Car Owners</h1>
 {%for CarOwner in dataset %}
-      <li>{{CarOwner.id}} | {{CarOwner}} <a href="/CarOwner/Delete/{{CarOwner.id}}">Delete <a href="/CarOwner/Update/{{CarOwner.id}}">Update<a/> <p/><br/></li>
+      <li>{{CarOwner.last_name}} <a href="/CarOwner/Delete/{{CarOwner.id}}">Delete <a href="/CarOwner/Update/{{CarOwner.id}}">Update<a/> <p/><br/></li>
 {% endfor %}
-      <a href="/CarOwner/Create/">Create<a/>
+      <a href="/CarOwner/Create/">Create</a>
 </body>
