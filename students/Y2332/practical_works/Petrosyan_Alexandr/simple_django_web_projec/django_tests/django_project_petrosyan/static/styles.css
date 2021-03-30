@@ -125,7 +125,7 @@ input[type=submit]:active {
   transform: translateY(4px);
 }
 
-input[type=text] {
+input[type=text], input[type="email" i] {
     display: block;
     margin: 20px auto 20px auto;
     padding: 10px;
