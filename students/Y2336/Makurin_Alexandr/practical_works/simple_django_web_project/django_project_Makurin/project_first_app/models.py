@@ -1,7 +1,5 @@
 from django.db import models
 
-
-# Create your models here.
 class CarOwner(models.Model):
     Surname = models.CharField(max_length=30)
     Name = models.CharField(max_length=30)

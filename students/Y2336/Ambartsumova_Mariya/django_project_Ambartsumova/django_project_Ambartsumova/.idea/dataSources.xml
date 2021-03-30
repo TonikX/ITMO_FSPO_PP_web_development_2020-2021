@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
+    <data-source source="LOCAL" name="db" uuid="c237a07b-6d44-42a7-9917-ba27745143c5">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:C:\Users\79990\ITMO_FSPO_PP_web_development_2020-2021\students\Y2336\Ambartsumova_Mariya\django_project_Ambartsumova\django_project_Ambartsumova\db.sqlite3</jdbc-url>
+    </data-source>
+  </component>
+</project>
