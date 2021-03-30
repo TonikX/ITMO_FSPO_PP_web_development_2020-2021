@@ -1,4 +1,14 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
+
+
+class User(AbstractUser):
+    passport = models.CharField(max_length=10)
+    address = models.CharField(max_length=200)
+    nationality = models.CharField(max_length=100)
+
+    def __str__(self):
+        return self.username
 
 
 class Car(models.Model):
@@ -16,6 +26,7 @@ class CarOwner(models.Model):
     last_name = models.CharField(max_length=30)
     birth_date = models.DateTimeField(null=True)
     cars = models.ManyToManyField(Car, through='Ownership')
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
         return f'{self.first_name} {self.last_name}'
