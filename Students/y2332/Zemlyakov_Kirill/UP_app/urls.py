@@ -2,7 +2,7 @@ from django.urls import path
 from . import views #подключение файла контроллеров,описанного в пункте 3
 from .views import *
 urlpatterns = [
-    path('CarOwner/<int:owner_id>/', views.cov),
+    path('CarOwner/<int:pk>/', detailCarOwner.as_view()),
     path('current_time/',views.eview),
     path('CarOwner/list/',views.carowner_list),
     path('Car/<int:pk>/',CarDetail.as_view()),

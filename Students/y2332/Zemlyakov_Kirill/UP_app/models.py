@@ -5,6 +5,7 @@ from django.contrib.auth.models import AbstractUser
 # database "participation in exhibition"
 # table Car Owner
 class CarOwner(AbstractUser):
+    username=models.CharField(max_length=40,default="NULL",unique=True)
     first_name = models.CharField(max_length=30,default="NULL")
     last_name = models.CharField(max_length=30,default="NULL")
     birth_date = models.DateField(default="2000-01-01")
@@ -13,7 +14,7 @@ class CarOwner(AbstractUser):
     address = models.CharField(max_length=500,default="NULL")
 
     def __str__(self):
-        return "{} {} {} {} {} {}".format(self.last_name,self.first_name,self.birth_date,self.passport,self.nationality,self.address)
+        return "{} {} {} {} {} {} {}".format(self.username,self.last_name,self.first_name,self.birth_date,self.passport,self.nationality,self.address)
 
 # table Car
 class Car(models.Model):
