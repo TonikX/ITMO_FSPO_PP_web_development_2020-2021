@@ -1,0 +1,26 @@
+<!-- book_list.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Owner list</title>
+</head>
+
+<body>
+  <span><h1>Car Owners</h1><a href="/book/create/">Add new one</a></span>
+  <ul>
+	{% for owner in object_list %}
+	<li><strong>Name:</strong> {{ owner.first_name }} {{ owner.last_name }}, actions: <a href="/book/{{ book.id }}/update/">Edit</a> | <a href="/book/{{ book.id }}/delete/">Delete</a> | <a href="/book/{{ book.id }}/">Detail</a>
+  	<p><strong>Birthday:</strong> {{ owner.birthday}}</p>
+  	<p><strong>License:</strong> <a href="//{{ owner.cars.id }}">{{ owner.cars }}</a></p>
+	</li>
+	{% empty %}
+	<li>No owners yet.</li>
+	{% endfor %}
+  </ul>
+</body>
+
+</html>
+
