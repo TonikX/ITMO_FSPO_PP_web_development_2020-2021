@@ -2,10 +2,16 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{{ owner.mark }} {{ owner.model }}</title>
+    <title>{{ object.mark }} {{ object.model }}</title>
 </head>
 <body>
-    <h1>{{ owner.color }} {{ owner.mark }} {{ owner.model }}</h1>
+    <h1>{{ object.color }} {{ object.mark }} {{ object.model }}</h1>
+    <ul>
+        <li>Госномер: <b>{{ object.gos_number }}</b></li>
+    </ul>
 
+    <a href="/car/{{ object.id }}/edit">Edit...</a>
+    <a href="/car/{{ object.id }}/delete">Delete...</a>
+    <a href="/car/all">Get back</a>
 </body>
 </html>

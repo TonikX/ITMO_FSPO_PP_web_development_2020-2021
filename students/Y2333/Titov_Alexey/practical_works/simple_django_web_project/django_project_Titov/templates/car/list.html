@@ -1,9 +1,10 @@
 <h1>Cars</h1>
+<a href="create">Create new car...</a>
 <ul>
     <!-- пройтись по всем элементам -->
     {% for o in object_list %}
         <!-- отобразить -->
-        <li>{{ o.gos_number }} {{ o.color }} {{ o.mark }} {{ o.model }}</li>
+        <li>{{ o.gos_number }} {{ o.color }} {{ o.mark }} {{ o.model }}</li> <a href="/car/{{ o.id }}">More...</a> <a href="/car/{{ o.id }}/edit">Edit...</a> <a href="/car/{{ o.id }}/delete">Delete...</a>
         <hr />
     {% empty %}
         <b>No cars yet.</b>

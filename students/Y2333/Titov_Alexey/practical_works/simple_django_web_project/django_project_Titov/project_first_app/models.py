@@ -9,6 +9,8 @@ class Car(models.Model):
     model = models.CharField(max_length=20)
     color = models.CharField(max_length=30, blank=True, null=True)
 
+    def __str__(self):
+        return "{} {} {} {}".format(self.gos_number, self.color, self.mark, self.model)
 
 class Owner(models.Model):
     surname = models.CharField(max_length=30)
