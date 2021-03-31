@@ -1,0 +1,22 @@
+<!-- car_list.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Car List</title>
+</head>
+
+<body>
+  <span><h1>Cars</h1>
+  <ul>
+	{% for Car in object_list %}
+	<li>{{Car.id}} | {{Car.license_plate_number}} {{Car.car_brand}} <a href="/Car/{{Car.id}}">Detail<a/> <a href="/Car/Update/{{Car.id}}">Update<a/> <a href="/Car/Delete/{{Car.id}}">Delete<a/><br/><p/></li>
+	{% empty %}
+	<li>No cars yet.</li>
+	{% endfor %}
+
+  </ul>
+	  <a href="/Car/Create">Create<a/>
+</body>
+
+</html>

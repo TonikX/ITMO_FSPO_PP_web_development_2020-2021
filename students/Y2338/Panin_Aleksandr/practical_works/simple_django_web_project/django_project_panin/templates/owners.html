@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Владелецы{% endblock %}
+
+{% block content %}
+{% for data in dataset %}
+    {{ data.id_car_owner }}
+    {{ data.name }}
+    <a href="/owner/{{ data.id_car_owner }}">Подробнее</a>
+    <hr/>
+{% endfor %}
+{% endblock %}
