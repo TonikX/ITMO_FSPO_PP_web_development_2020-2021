@@ -1,0 +1,25 @@
+<!-- book_list.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car list</title>
+</head>
+
+<body>
+  <ul>
+	{% for car in object_list %}
+	<li><strong>Gov number:</strong> {{ car.gov_number }}
+  	<p><strong>Brand:</strong> {{ car.brand }}</p>
+  	<p><strong>Model:</strong> {{ car.model }}</a></p>
+    <p><strong>Color:</strong> {{ car.color }}</a></p>
+	</li>
+	{% empty %}
+	<li>No cars.</li>
+	{% endfor %}
+  </ul>
+</body>
+
+</html>
