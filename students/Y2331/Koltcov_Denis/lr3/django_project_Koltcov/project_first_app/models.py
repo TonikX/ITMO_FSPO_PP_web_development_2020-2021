@@ -1,19 +1,25 @@
 from django.db import models
+from django import forms
 
-
-class CarOwner(models.Model):
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=30)
-    birth_date = models.DateField()
-
-    def __str__(self):
-        return "{} {}".format(self.first_name, self.last_name)
 
 class Car(models.Model):
     number = models.CharField(max_length=15)
     brand = models.CharField(max_length=20)
     model = models.CharField(max_length=20)
     color = models.CharField(max_length=30)
+
+    def __str__(self):
+        return f"{self.number}"
+
+
+class CarOwner(models.Model):
+    first_name = models.CharField(max_length=30)
+    last_name = models.CharField(max_length=30)
+    birth_date = models.DateField()
+    cars = models.ManyToManyField(Car, through='Ownership')
+
+    def __str__(self):
+        return f"{self.first_name} {self.last_name}"
 
 
 class License(models.Model):
@@ -34,3 +40,8 @@ class Ownership(models.Model):
     finish_date = models.DateField()
     ownerId = models.ForeignKey(CarOwner, on_delete=models.CASCADE)
     carId = models.ForeignKey(Car, on_delete=models.CASCADE)
+
+
+
+
+
