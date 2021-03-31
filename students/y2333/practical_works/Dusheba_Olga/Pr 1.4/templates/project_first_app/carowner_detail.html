@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Owner</title>
+</head>
+<body>
+<h1>{{ object }}</h1>
+<p><strong>Фамилия: </strong>{{ object.last_name }}</p>
+<p><strong>Имя: </strong>{{ object.first_name }}</p>
+<p>Адрес: {{object.home_address}} </p>
+<p>Дата рождения: {{object.birth_date}}</p>
+<p>Национальность: {{object.nationality}}</p>
+<div><a href="/owner_list_view/">Get back</a></div>
+<a href="{% url 'update_owner' object.pk %}">   Edit</a>
+<a href="{% url 'delete_owner' object.pk %}">   Delete</a>
+</body>
+</html>
