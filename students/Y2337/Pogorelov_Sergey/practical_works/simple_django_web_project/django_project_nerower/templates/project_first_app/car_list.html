@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Cars list</title>
+{% endblock %}
+
+{% block main_content %}
+<span><h1>Cars</h1><a href="/car/create/">Add new one</a></span>
+    <hr>
+    <ul>
+        {% for car in object_list %}
+        <li>
+            <b>State number:</b> {{ car.state_number }} <br>
+            See more: <a href="/car/{{ car.id }}/">Detail</a>
+            <p>
+                <b>Mark:</b> {{ car.mark }} <br>
+                <b>Model:</b> {{ car.model }} <br>
+                <b>Color:</b> {{ car.color }} <br>
+            </p>
+
+            <p><b>Owner:</b> <a href="/owner/{{ car.owner.id }}">{{ car.owner }}</a></p>
+        </li>
+        <hr>
+
+        {% empty %}
+            <li>No books yet.</li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block main_content %}
+    <p>
+        <b>
+            Firstname: {{owner.first_name}}<br> 
+            Lastname: {{owner.last_name}}<br>
+        </b>
+        Birthday: {{owner.birthday}}<br>
+        Nationality: {{owner.nationality}}<br>
+        Passport: <b>{{owner.passport_number}}</b><br>
+        Adress: <b>{{owner.address}}</b>
+
+    </p>
+    <br>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Delete publisher</title>
+{% endblock %}
+
+{% block main_content %}
+<form method="post">
+    {% csrf_token %}
+
+    <p>Are you sure you want to delete car "{{ object.state_number }}"?</p>
+    <input type="submit" value="Delete">
+</form>
+<br>
+<a href="/car/list/">Full cars list</a>
+{% endblock %}
