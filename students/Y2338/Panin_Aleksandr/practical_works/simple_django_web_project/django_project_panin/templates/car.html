@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block title %}Автомобиль{% endblock %}
+
+{% block content %}
+<h1>{{ object.state_number }}</h1>
+<p><strong>Марка:</strong> {{ object.brand }}</p>
+<p><strong>Модель:</strong> {{ object.model }}</p>
+<p><strong>Цвет:</strong> {{ object.color }}</p>
+<a href="/car">К списку автомобилей</a>
+{% endblock %}

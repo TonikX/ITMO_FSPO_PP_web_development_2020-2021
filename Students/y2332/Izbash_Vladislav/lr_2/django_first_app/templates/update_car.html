@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Изменить автомобиль</title>
+</head>
+<form method="post"> {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Save">
+</form>
+</html>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Владельцы автомобилей</title>
+</head>
+<body>
+<h1>Владельцы автомобилей</h1>
+<div class="main">
+    {% for data in dataset %}.
+    <a href="/car_owner/{{ data.id }}/"> {{data.surname}}</a><br/>
+    {{data.name}}<br/>
+    {{data.date_birth}}<br/>
+    <hr/>
+    {% endfor %}
+</div>
+<a href="/create_owner"> <button>Add</button></a>
+</body>
+</html>

@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Список автовладельцев</title>
+</head>
+<body>
+    <h3>Список автовладельцев: </h3>
+    <ol>
+        {% for owner in owners %}
+        <li>{{ owner.first_name }} {{ owner.last_name }}</li>
+        {% endfor %}
+    </ol>
+</body>
+</html>

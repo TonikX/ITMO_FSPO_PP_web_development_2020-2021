@@ -3,8 +3,11 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+
 # C extensions
 *.so
+
+
 
 # Distribution / packaging
 .Python
@@ -57,8 +60,8 @@ coverage.xml
 
 # Django stuff:
 *.log
+settings.py
 local_settings.py
-db.sqlite3
 db.sqlite3-journal
 
 # Flask stuff:
@@ -127,3 +130,6 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# Ignore Mac DS_Store files
+.DS_Store
