@@ -3,7 +3,7 @@
 {% block title %}Владелецы{% endblock %}
 
 {% block content %}
-{% for data in dataset %}.
+{% for data in dataset %}
     {{ data.id_car_owner }}
     {{ data.name }}
     <a href="/owner/{{ data.id_car_owner }}">Подробнее</a>
