@@ -8,9 +8,13 @@
 <h1>Владельцы автомобилей</h1>
 <div class="main">
     {% for data in dataset %}.
-    <a href="/car_owner/{{ data.id }}/"> {{data.surname}}</a><br/>
-    {{data.name}}<br/>
+    <a href="/car_owner/{{ data.id }}/"> {{data.first_name}}</a><br/>
+    {{data.last_name}}<br/>
     {{data.date_birth}}<br/>
+    {{data.username}}<br/>
+    {{data.nacional}}<br/>
+    {{data.passport}}<br/>
+    {{data.home_address}}<br/>
     <hr/>
     {% endfor %}
 </div>

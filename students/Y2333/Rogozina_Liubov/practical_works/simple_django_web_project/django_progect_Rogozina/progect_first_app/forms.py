@@ -9,9 +9,12 @@ class Owner_form(forms.ModelForm):
     class Meta:
         model = Car_owner
         fields = [
-            "surname",
-            "name",
+            "last_name",
+            "first_name",
             "date_birth",
+            "passport",
+            "home_address",
+            "nacional"
         ]
 
 
