@@ -1,0 +1,17 @@
+<!-- publisher_detail.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Owner detail</title>
+</head>
+
+<body>
+<h2>{{ object.first_name }} {{ object.last_name }}</h2>
+<p><strong>Birthday date:</strong> {{ object.birth_day }}</p>
+<input value= "Назад" type="button" onclick="location.href='http://127.0.0.1:8000/owner/list/'" />
+</body>
+</html>

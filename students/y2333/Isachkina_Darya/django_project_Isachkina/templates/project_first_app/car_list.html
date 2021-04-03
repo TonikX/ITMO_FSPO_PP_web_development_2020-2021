@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cars</title>
+</head>
+<body>
+<span><h1>Cars</h1>
+  <ul>
+      <h3><a href="/car/create/">Добавить машину</a></h3>
+	{% for car in object_list %}
+        <li><h3>Автомобиль: {{ car.mark }} {{ car.model }}<br/>
+            <input value= "Детали" type="button" onclick="location.href='http://127.0.0.1:8000/car/{{ car.id }}/'" />
+            <input value= "Редактировать" type="button" onclick="location.href='http://127.0.0.1:8000/car/{{ car.id }}/update/'" />
+            <input value= "Удалить" type="button" onclick="location.href='http://127.0.0.1:8000/car/{{ car.id }}/delete/'" /></h3>
+        Гос.номер: {{ car.gos_number }}<br/>
+        Цвет: {{ car.color }}<br/>
+        </li>
+    {% empty %}
+        <li>No cars yet.</li>
+    {% endfor %}
+  </ul>
+</body>
+</html>

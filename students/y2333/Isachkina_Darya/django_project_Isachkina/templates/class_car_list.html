@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>cvd_car_list</title>
+</head>
+<body>
+<ul>
+    <!-- Iterate over object_list -->
+    {% for object in object_list %}
+        <!-- Display Objects -->
+        Автомобиль:
+        {{ object.mark }} {{ object.model }}<br/>
+        Гос.номер: {{ object.gos_number }}<br/>
+        Цвет: {{ object.color }}<br/>
+        {{ object.ownership }}
+        <hr/>
+        <!-- If objet_list is empty  -->
+    {% empty %}
+        <li>No cars yet.</li>
+    {% endfor %}
+</ul>
+</body>
+</html>

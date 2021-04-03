@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car detail</title>
+</head>
+<body>
+    <li><strong>ID:</strong> {{ car.id }}
+    <p><strong>Гос. номер:</strong> {{ car.gos_number }}</p>
+    <p><strong>Марка:</strong> {{ car.mark }}</p>
+    <p><strong>Модель:</strong> {{ car.model }}</p>
+    <p><strong>Цвет:</strong> {{ car.color }}</p>
+    <input value= "Назад" type="button" onclick="location.href='http://127.0.0.1:8000/car/list/'" />
+</body>
+</html>

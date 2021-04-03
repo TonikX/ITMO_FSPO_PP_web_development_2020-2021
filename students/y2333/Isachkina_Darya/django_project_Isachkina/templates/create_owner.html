@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Create owner</title>
+</head>
+<body>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type='button' value='Добавить' onclick="this.form.submit();this.form.reset()"> | <input value= "Назад" type="button" onclick="location.href='http://127.0.0.1:8000/owner/list/'" />
+</form>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Owner</title>
+</head>
+<body>
+<div class="main">
+    <h3><a href="/owner/create/">Добавить владельца</a> </h3>
+
+    {% for data in dataset %}
+        <li>
+            <a href="/owner/{{ data.id }}/">{{ data.first_name }} {{ data.last_name }}</a> </br>
+        <!-- Дата рождения: {{ data.birth_day }}<br/> -->
+        <hr/>
+        </li>
+    {% endfor %}
+
+</div>
+</body>
+</html>
