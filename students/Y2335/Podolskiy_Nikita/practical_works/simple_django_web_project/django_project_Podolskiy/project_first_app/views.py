@@ -23,7 +23,7 @@ def add_owner_view(request):
 
 class update_owner_view(UpdateView):
   model = Owner
-  fields = ['first_name', 'last_name', 'birthdate']
+  fields = ['first_name', 'last_name', 'birthdate', 'pass_num', 'address', 'nationality']
   success_url = '/main/owner_list/'
   template_name = 'update_owner.html'
 
