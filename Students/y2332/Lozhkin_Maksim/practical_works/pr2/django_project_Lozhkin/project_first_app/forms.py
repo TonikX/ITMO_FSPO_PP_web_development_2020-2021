@@ -1,11 +1,11 @@
 from django import forms
-from .models import CarOwner
+from .models import User
 
 
-class OwnerForm(forms.ModelForm):
+class UserForm(forms.ModelForm):
     class Meta:
-        model = CarOwner
+        model = User
 
         fields = [
-            "first_name", "last_name", "birth_date"
+            "first_name", "last_name", "birth_date", "passport", "address", "nationality", "username", "password"
         ]

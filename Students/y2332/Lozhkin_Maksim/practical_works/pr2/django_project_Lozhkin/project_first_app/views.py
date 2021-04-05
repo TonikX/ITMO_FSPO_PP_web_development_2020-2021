@@ -1,22 +1,22 @@
 from django.http import Http404
 from django.shortcuts import render
-from .models import CarOwner, Car
+from .models import User, Car
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import UpdateView, CreateView, DeleteView
-from .forms import OwnerForm
+from .forms import UserForm
 
 
 def detail(request, owner_id):
     try:
-        owner = CarOwner.objects.get(pk=owner_id)
-    except CarOwner.DoesNotExist:
-        raise Http404("Poll does not exist")
+        owner = User.objects.get(pk=owner_id)
+    except User.DoesNotExist:
+        raise Http404("Owner does not exist")
     return render(request, 'owner.html', {'owner': owner})
 
 
 def owners_list(request):
-    context = {"dataset": CarOwner.objects.all()}
+    context = {"dataset": User.objects.all()}
     return render(request, "owners_list.html", context)
 
 
@@ -39,7 +39,7 @@ class UpdateCar(UpdateView):
 
 def create_owner(request):
     context = {}
-    form = OwnerForm(request.POST or None)
+    form = UserForm(request.POST or None)
     if form.is_valid():
         form.save()
     context['form'] = form
