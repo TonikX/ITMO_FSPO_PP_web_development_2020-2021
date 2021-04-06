@@ -29,9 +29,7 @@ def create_owner(request):
 
 
 def list_owners(request):
-    context = {}
-    context['dataset'] = Owner.objects.all()
-
+    context = {'dataset': Owner.objects.all()}
     return render(request, 'owner/owner_list_view.html', context)
 
 

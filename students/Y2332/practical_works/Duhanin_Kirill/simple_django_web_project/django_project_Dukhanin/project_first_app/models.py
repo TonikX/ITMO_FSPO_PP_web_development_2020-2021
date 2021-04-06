@@ -10,12 +10,6 @@ class Owner(AbstractUser):
     passport_number = CharField(max_length=10)
     address = TextField()
     nationality = TextField()
-    password = TextField()
-    username = TextField(unique=True)
-    is_superuser = BooleanField(default=False)
-    # last_name = CharField(max_length=50)
-
-    # email = TextField()
 
 
 class DriverLicense(Model):
