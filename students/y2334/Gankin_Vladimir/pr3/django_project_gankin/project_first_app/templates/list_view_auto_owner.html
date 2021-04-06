@@ -1,0 +1,12 @@
+<div class="main">
+
+    {% for data in dataset %}
+
+    <strong> Фамилия: </strong> {{ data.last_name }}<br/>
+    <strong> Имя: </strong> {{ data.name }}<br/>
+    <strong> Дата рождения: </strong> {{ data.birthday_date }}<br/>
+    <hr/>
+
+    {% endfor %}
+
+</div>
