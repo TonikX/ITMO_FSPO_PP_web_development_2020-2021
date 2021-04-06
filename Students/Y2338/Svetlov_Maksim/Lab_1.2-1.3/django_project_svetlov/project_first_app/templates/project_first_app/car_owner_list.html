@@ -2,28 +2,32 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Car owners</title>
+    <title>Автовладелец</title>
 </head>
 <body>
 <div style="background-color: #E6E6FA">
-    <span><h1>Car owners</h1><a href="/car_owner/create">Add new one</a></span>
+    <span><h1>Автовладелец</h1></span>
+      <a href="/car_owner/create">Добавить владельца</a>
+      |   <a href="/owner/list">Пользователь</a>
+      |   <a href="/car/list">Авто</a>
+      |   <a href="/license/list">Лицензия</a>
     <ul style="font-size: 24px">
     <!-- Iterate over object_list -->
     {% for object in object_list %}
     <!-- Display Objects -->
     <li>{{ object.owner_id }}
-        <p>{{ object.car_id }}</p>
-        <p>{{ object.start_date}}</p>
-        <p>{{ object.end_date}}</p>
-        Actions:
-            <a href="/car_owner/{{ object.id }}">Detail</a>
-            |   <a href="/car_owner/{{ object.id }}/update">Edit</a>
-            |   <a href="/car_owner/{{ object.id }}/delete">Delete</a>
+        <p>Авто: {{ object.car_id }}</p>
+        <p>Начало: {{ object.start_date}}</p>
+        <p>Конец: {{ object.end_date}}</p>
+        Действия:
+            <a href="/car_owner/{{ object.id }}">Детали</a>
+            |   <a href="/car_owner/{{ object.id }}/update">Изменить</a>
+            |   <a href="/car_owner/{{ object.id }}/delete">Удалить</a>
     </li>
     <hr/>
     <!-- If objet_list is empty  -->
     {% empty %}
-    <li>No objects yet.</li>
+    <li>Нет владельцев.</li>
     {% endfor %}
 </ul>
 </div>

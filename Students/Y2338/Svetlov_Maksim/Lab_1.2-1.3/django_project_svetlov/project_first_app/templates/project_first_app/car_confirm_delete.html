@@ -10,12 +10,12 @@
 
 <body>
   <form method="post">{% csrf_token %}
-    <p>Are you sure you want to delete car "{{ object }}"?</p>
+    <p>Вы действительно хотите удалить это авто? "{{ object }}"?</p>
     <h1>{{ object.brand }}</h1>
-    <p><strong>License plate:</strong> {{ object.license_plate }}</p>
-    <p><strong>Car brand:</strong> {{ object.brand }}</p>
-    <p><strong>Car model:</strong> {{ object.model }}</p>
-    <p><strong>Car color:</strong> {{ object.color }}</p>
+    <p><strong>Номер:</strong> {{ object.license_plate }}</p>
+    <p><strong>Брэнд:</strong> {{ object.brand }}</p>
+    <p><strong>Модель:</strong> {{ object.model }}</p>
+    <p><strong>Цвет:</strong> {{ object.color }}</p>
     <input type="submit" value="Delete">
   </form>
   <br>

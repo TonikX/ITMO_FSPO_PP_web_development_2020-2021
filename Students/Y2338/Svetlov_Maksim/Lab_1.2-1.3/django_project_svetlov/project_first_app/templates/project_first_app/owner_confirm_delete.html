@@ -10,11 +10,14 @@
 
 <body>
   <form method="post">{% csrf_token %}
-    <p>Are you sure you want to delete owner "{{ owner }}"?</p>
+    <p>Вы действительно хотите удалить пользователя? "{{ owner }}"?</p>
     <h1>{{ object }}</h1>
-    <p><strong>Last name:</strong> {{ object.last_name }}</p>
-    <p><strong>First name:</strong> {{ object.first_name }}</p>
-    <p><strong>Birth date:</strong> {{ object.birth_date }}</p>
+    <p><strong>Имя:</strong>  {{ object.last_name }}</p>
+    <p><strong>Фамилия:</strong>  {{ object.first_name }}</p>
+    <p><strong>Дата рождения:</strong>  {{ object.birth_date }}</p>
+    <p><strong>Национальность:</strong>  {{ object.nationality }}</p>
+    <p><strong>Паспорт:</strong>  {{ object.passport_number }}</p>
+    <p><strong>Адресс:</strong>  {{ object.address }}</p>
     <input type="submit" value="Delete">
   </form>
   <br>

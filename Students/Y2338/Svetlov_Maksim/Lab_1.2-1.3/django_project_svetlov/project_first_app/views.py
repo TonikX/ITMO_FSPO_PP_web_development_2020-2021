@@ -54,9 +54,15 @@ class OwnerListView(ListView):
 class OwnerCreateView(CreateView):
     model = Owner
     fields = [
+        'username',
+        'password',
         'last_name',
         'first_name',
         'birth_date',
+        'nationality',
+        'passport_number',
+        'address',
+
     ]
     success_url = '/owner/list'
 
@@ -64,9 +70,14 @@ class OwnerCreateView(CreateView):
 class OwnerUpdateView(UpdateView):
     model = Owner
     fields = [
+        'username',
+        'password',
         'last_name',
         'first_name',
         'birth_date',
+        'nationality',
+        'passport_number',
+        'address',
     ]
     template_name = 'project_first_app/owner_form.html'
     success_url = '/owner/list'
@@ -159,5 +170,3 @@ class CarOwnerDeleteView(DeleteView):
 class CarOwnerDetailView(DetailView):
     model = CarOwner
     template_name = "project_first_app/car_owner_detail.html"
-
-

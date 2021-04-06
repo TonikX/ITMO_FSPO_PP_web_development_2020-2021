@@ -2,28 +2,33 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Auto</title>
+    <title>Авто</title>
 </head>
 <body>
 <div style="background-color: #E6E6FA">
-    <span><h1>Auto</h1><a href="/car/create">Add new one</a></span>
+    <span><h1>Авто</h1></span>
+      <a href="/car/create">Добавить авто</a>
+      |   <a href="/owner/list">Пользователь</a>
+      |   <a href="/car_owner/list">Лицензия</a>
+      |   <a href="/license/list">Лицензия</a>
+
     <ul style="font-size: 24px">
     <!-- Iterate over object_list -->
     {% for object in object_list %}
     <!-- Display Objects -->
-    <li>{{ object.brand }}
-        <p>{{ object.model}}</p>
-        <p>{{ object.color}}</p>
-        <p>{{ object.license_plate }}</p>
-        Actions:
-            <a href="/car/{{ object.id }}">Detail</a>
-            |   <a href="/car/{{ object.id }}/update">Edit</a>
-            |   <a href="/car/{{ object.id }}/delete">Delete</a>
+    <li>Брэнд: {{ object.brand }}
+        <p>Модель: {{ object.model}}</p>
+        <p>Цвет: {{ object.color}}</p>
+        <p>Номер: {{ object.license_plate }}</p>
+        Действия:
+            <a href="/car/{{ object.id }}">Детали</a>
+            |   <a href="/car/{{ object.id }}/update">Изменить</a>
+            |   <a href="/car/{{ object.id }}/delete">Удалить</a>
     </li>
     <hr/>
     <!-- If objet_list is empty  -->
     {% empty %}
-    <li>No objects yet.</li>
+    <li>Нет автомобилей</li>
     {% endfor %}
 </ul>
 </div>

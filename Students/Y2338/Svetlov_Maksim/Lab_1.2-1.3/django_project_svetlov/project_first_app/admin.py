@@ -1,8 +1,5 @@
 from django.contrib import admin
-from .models import Owner
-from .models import DriversLicense
-from .models import Car
-from .models import CarOwner
+from .models import *
 
 
 
