@@ -4,7 +4,7 @@ from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import UpdateView, CreateView, DeleteView
 
-from .models import CarOwner, Car, User
+from .models import CarOwner, Car
 from .forms import CarOwnerForm
 
 
@@ -72,9 +72,3 @@ class DeleteCar(DeleteView):
     template_name = 'generic_delete.html'
     success_url = '/car/all'
 
-
-class AddUser(CreateView):
-    model = User
-    template_name = 'generic_form.html'
-    fields = ['username', 'password', 'nationality']
-    success_url = '/owner/all'

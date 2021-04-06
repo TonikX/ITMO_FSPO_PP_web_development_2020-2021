@@ -2,15 +2,6 @@ from django.db import models
 from django.contrib.auth.models import AbstractUser
 
 
-class User(AbstractUser):
-    passport = models.CharField(max_length=10)
-    address = models.CharField(max_length=200)
-    nationality = models.CharField(max_length=100)
-
-    def __str__(self):
-        return self.username
-
-
 class Car(models.Model):
     number = models.CharField(max_length=15)
     brand = models.CharField(max_length=20)
@@ -19,18 +10,18 @@ class Car(models.Model):
 
     def __str__(self):
         return self.number
-    
 
-class CarOwner(models.Model):
-    first_name = models.CharField(max_length=30)
-    last_name = models.CharField(max_length=30)
+
+class CarOwner(AbstractUser):
+    passport = models.CharField(max_length=10)
+    address = models.CharField(max_length=200)
+    nationality = models.CharField(max_length=100)
     birth_date = models.DateTimeField(null=True)
     cars = models.ManyToManyField(Car, through='Ownership')
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-
+    
     def __str__(self):
-        return f'{self.first_name} {self.last_name}'
-
+        return f'{self.first_name} {self.last_name} ({self.username})'
+    
 
 class Ownership(models.Model):
     owner = models.ForeignKey(CarOwner, on_delete=models.CASCADE)
@@ -41,7 +32,6 @@ class Ownership(models.Model):
     def __str__(self):
         return f'{self.owner} - {self.car}'
     
-
 
 class DriverLicense(models.Model):
     driver = models.ForeignKey(CarOwner, on_delete=models.CASCADE)

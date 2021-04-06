@@ -120,4 +120,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-AUTH_USER_MODEL = 'django_first_app.User'
+AUTH_USER_MODEL = 'django_first_app.CarOwner'
