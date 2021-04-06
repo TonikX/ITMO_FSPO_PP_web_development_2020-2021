@@ -1,0 +1,13 @@
+<div class="main">
+
+    {% for data in dataset %}
+    <!-- Display Objects -->
+    {{ data.name }}
+    {{ data.last_name }}<br/>
+    <hr/>
+    <!-- If objet_list is empty  -->
+    {% empty %}
+    <li>No objects yet.</li>
+
+    {% endfor %}
+</div>
