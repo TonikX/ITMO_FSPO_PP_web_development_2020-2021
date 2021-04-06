@@ -25,8 +25,12 @@ class OwnerForm(forms.ModelForm):
 
         # specify fields to be used
         fields = [
+            "username",
+            "password",
             "first_name",
             "last_name",
             "birth_date",
-            "cars"
+            "passport_number",
+            "home_address",
+            "nationality"
         ]

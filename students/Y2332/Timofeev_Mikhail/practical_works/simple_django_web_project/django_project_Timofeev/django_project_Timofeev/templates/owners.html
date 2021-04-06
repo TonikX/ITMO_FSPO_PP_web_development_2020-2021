@@ -7,7 +7,11 @@
 <body>
     {% for owner in owners %}.
 
-        Имя: {{owner.first_name}}, Фамилия: {{owner.last_name}} <br>
+    <p>Имя: {{owner.first_name}}, Фамилия: {{owner.last_name}} </p>
+    <p>Адрес: {{owner.home_address}} </p>
+    <p>Дата рождения: {{owner.birth_date}}</p>
+    <p>Национальность: {{owner.nationality}}</p>
+    <bp>
 
     {% endfor %}
 </body>
