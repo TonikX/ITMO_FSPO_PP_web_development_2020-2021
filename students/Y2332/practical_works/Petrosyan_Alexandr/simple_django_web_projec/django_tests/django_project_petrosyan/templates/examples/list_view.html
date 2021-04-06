@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Example list</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+  </head>
+  <body>
+    <div class="section">
+      <h1><span>Example list</span></h1> <br/> <hr/> <br/>
+      {% for data in dataset %}
+          <p>
+            {{ data.title }} - {{ data.description }}
+          </p>
+      {% endfor %}
+    </div>
+  </body>
+</html>

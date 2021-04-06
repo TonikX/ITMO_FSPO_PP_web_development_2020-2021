@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publisher detail</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+  </head>
+  <body>
+    <div class="section">
+      <h1><span>Publisher detail</span></h1> <br/> <hr/> <br/>
+      <p>
+        <strong>Name:</strong> {{ object }} <br/>
+        <strong>Birthday date:</strong> {{ object.birthdate }} <br/>
+      </p>
+    </div>
+  </body>
+</html>

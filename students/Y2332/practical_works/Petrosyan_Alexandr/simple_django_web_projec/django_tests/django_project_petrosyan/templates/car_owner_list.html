@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Owners{% endblock %}
+{% block block_title %}Car owner list{% endblock %}
+{% block content %}
+    <form action="/owner/create" method="get">
+        <p><input type="submit" value="Add new"/></p>
+    </form>
+    <hr/>
+    {% for data in dataset %}
+        <p>
+          <a href="/owner/{{ data.id }}">{{ data.first_name }} {{ data.last_name }}</a>
+        </p>
+        {% empty %}
+        <p>No owners yet.</p>
+    {% endfor %}
+{% endblock %}

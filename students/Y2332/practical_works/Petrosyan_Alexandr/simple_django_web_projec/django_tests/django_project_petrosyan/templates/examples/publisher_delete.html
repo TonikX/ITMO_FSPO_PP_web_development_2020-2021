@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete publisher</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+</head>
+    <body>
+        <div class="section">
+            <h1><span>Delete publisher</span></h1> <br/> <hr/> <br/>
+              <form method="post">
+                {% csrf_token %}
+                <p>Are you sure want to delete publisher "{{ object }}"?</p>
+                <p><input type="submit" value="Confirm"></p>
+              </form>
+        </div>
+    </body>
+</html>

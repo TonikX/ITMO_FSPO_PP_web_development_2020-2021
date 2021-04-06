@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Welcome{% endblock %}
+{% block block_title %}Home{% endblock %}
+{% block content %}
+    <br/>
+    {% load static %}
+    <img src="{% static 'welcome.png'%}" alt="Welcome" width="300px" height="300px">
+    <br/>
+    <p>
+        Welcome to Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+        Etiam eleifend molestie lacus eget rutrum.
+        Suspendisse at est eget nulla euismod ultricies eget eu tortor.
+        Ut cursus malesuada aliquet. Fusce nunc tortor, volutpat nec lacus vel,
+        ultricies porttitor quam. Etiam diam.
+    </p>
+{% endblock %}
