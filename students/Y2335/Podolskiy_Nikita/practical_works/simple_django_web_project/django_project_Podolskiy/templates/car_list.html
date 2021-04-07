@@ -1,0 +1,14 @@
+<ul>
+    {% for object in object_list %}
+    <li>{{ object.state_num }}</li>
+    <li>{{ object.brand }}</li>
+    <li>{{ object.model }}</li>
+    <li>{{ object.color }}</li>
+
+    <hr/>
+    {% empty %}
+    <li>No objects yet.</li>
+    {% endfor %}
+    <a href="./add_car/">Добавить машину</a><br/>
+    <a href="http://127.0.0.1:8000/main/">Назад</a>
+</ul>
