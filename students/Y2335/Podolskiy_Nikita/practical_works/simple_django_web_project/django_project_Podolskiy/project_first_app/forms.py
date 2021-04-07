@@ -10,7 +10,9 @@ class add_owner_form(forms.ModelForm):
         model = Owner
 
         fields = [
-            "id",
+            "username",
+            "email",
+            "password",
             "first_name",
             "last_name",
             "birthdate",
@@ -20,13 +22,13 @@ class add_owner_form(forms.ModelForm):
         ]
 
 
-class CustomUserCreationForm(UserCreationForm):
-    class Meta(UserCreationForm):
-        model = User
-        fields = ('id', 'password')
+# class CustomUserCreationForm(UserCreationForm):
+#     class Meta(UserCreationForm):
+#         model = User
+#         fields = ('id', 'password')
 
 
-class CustomUserChangeForm(UserChangeForm):
-    class Meta:
-        model = User
-        fields = ('id', 'password')
+# class CustomUserChangeForm(UserChangeForm):
+#     class Meta:
+#         model = User
+#         fields = ('id', 'password')
