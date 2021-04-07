@@ -1,25 +1,50 @@
 from django.http import Http404
-from project_first_app.models import Owner, Car
+from project_first_app.models import User, Car
 from django.shortcuts import render
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
-from .forms import Owner_form
+from .forms import User_form
 from django.views.generic.edit import UpdateView
 from django.views.generic.edit import CreateView
 from django.views.generic.edit import DeleteView
 
 
 # Create your views here.
-def detail(request, owner_id):
+def detail(request, user_id):
     try:
-        p = Owner.objects.get(pk=owner_id)
-    except Owner.DoesNotExist:
+        p = User.objects.get(pk=user_id)
+    except User.DoesNotExist:
         raise Http404("Owner does not exist")
     return render(request, 'Owner.html', {'Owner': p})
 
 
+def add_owner(request):
+    context = {}
+    #   registered = False
+    if request.method == 'POST':
+        user_form = User_form(data=request.POST)
+
+        if user_form.is_valid():
+            user = user_form.save()
+            user.set_password(user.password)
+            user.is_staff = True
+            user.save()
+
+    #           registered = True
+    else:
+        user_form = User_form()
+    context['form'] = User_form
+    return render(request, "add_owner.html", context)
+
+
+class update_user(UpdateView):
+    model = User
+    fields = ['first_name', 'last_name', 'birthdate', 'pass_num', 'address', 'nationality']
+    success_url = '/main/owner_list/'
+    template_name = 'update_owner.html'
+
 def owners(request):
-    context = {"owner_list": Owner.objects.all()}
+    context = {"owner_list": User.objects.all()}
     return render(request, "owners.html", context)
 
 

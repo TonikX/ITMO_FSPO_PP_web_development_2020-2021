@@ -3,16 +3,19 @@ from .models import *
 
 
 # creating a form
-class Owner_form(forms.ModelForm):
+class User_form(forms.ModelForm):
     # create meta class
     class Meta:
-        # specify model to be used
-        model = Owner
+        model = User
 
-        # specify fields to be used
         fields = [
-            "id",
-            "last_name",
+            "username",
+            "email",
+            "password",
             "first_name",
+            "last_name",
             "birthdate",
+            "pass_num",
+            "address",
+            "nationality",
         ]

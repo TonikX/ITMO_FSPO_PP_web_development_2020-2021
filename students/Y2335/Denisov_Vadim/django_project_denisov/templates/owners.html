@@ -9,10 +9,10 @@
     <h1>Список владельцев</h1><a href="/create_owner/">Добавить владельца</a><br/>
     {% for Owner in owner_list %}.
 
-    <br>ID: {{Owner.id}} <a href="/owner/{{ Owner.owner_id }}/">Детали</a><br/>
-    Фамилия: {{Owner.last_name}}<br/>
-    Имя: {{Owner.name}}<br/>
-    Дата рождения: {{Owner.birthdate}}<br/>
+    <br>ID: {{User.id}} <a href="/owner/{{ User.user_id }}/">Детали</a><br/>
+    Фамилия: {{User.last_name}}<br/>
+    Имя: {{User.name}}<br/>
+    Дата рождения: {{User.birthdate}}<br/>
 
     <hr/>
 
