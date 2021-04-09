@@ -1,0 +1,13 @@
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+  max-width: 1170px;
+  margin: 0 auto;
+}
+
+p {
+  margin: 0;
+font-size: 30px;
+}
