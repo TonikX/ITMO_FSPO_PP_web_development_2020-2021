@@ -8,7 +8,7 @@ urlpatterns = [
     path('cars/<int:pk>/', views.CarDetails.as_view()),
     path('cars/<int:pk>/update', views.CarUpdateView.as_view()),
     path('cars/<int:pk>/delete', views.CarDeleteView.as_view()),
-    path('owners', views.OwnersList.as_view()),
-    path('owners/<int:pk>/', views.OwnerDetails.as_view()),
-    path('owners/create', views.OwnerCreateView.as_view()),
+    path('users', views.UsersList.as_view()),
+    path('users/<int:pk>/', views.UserDetails.as_view()),
+    path('users/create', views.UserCreateView.as_view()),
 ]

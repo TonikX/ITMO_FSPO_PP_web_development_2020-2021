@@ -1,7 +1,7 @@
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from project_first_app.models import CarOwner, Car
+from project_first_app.models import User, Car
 
 
 class CarDetails(DetailView):
@@ -42,16 +42,21 @@ class CarsList(ListView):
         return queryset
 
 
-class OwnerDetails(DetailView):
-    model = CarOwner
+class UserDetails(DetailView):
+    model = User
 
 
-class OwnersList(ListView):
-    model = CarOwner
-    template_name = "owners_list.html"
+class UsersList(ListView):
+    model = User
+    template_name = "users_list.html"
 
 
-class OwnerCreateView(CreateView):
-    model = CarOwner
-    fields = ['Name', 'Surname', 'BirthDate']
-    success_url = '/owners'
+class UserCreateView(CreateView):
+    model = User
+    fields = ['PassportNumber',
+              'Name',
+              'Surname',
+              'BirthDate',
+              'Address',
+              'Nationality']
+    success_url = '/users'
