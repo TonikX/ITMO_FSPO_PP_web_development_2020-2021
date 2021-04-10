@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractUser
+from django.contrib.auth import get_user_model
 
 # # Create your models here.
 # class CarOwner(models.Model):
@@ -13,7 +14,7 @@ from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
 class User(AbstractUser):
-    PassportNumber = models.BigIntegerField(unique=True)
+    PassportNumber = models.BigIntegerField(unique=True, null=True)
     Surname = models.CharField(max_length=30)
     Name = models.CharField(max_length=30)
     BirthDate = models.DateTimeField()
@@ -25,7 +26,7 @@ class User(AbstractUser):
 
 
 class DriversLicense(models.Model):
-    OwnerId = models.ForeignKey(User, on_delete=models.CASCADE)
+    OwnerId = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     LicenseNumber = models.CharField(max_length=10)
     Type = models.CharField(max_length=10)
     DateOfIssue = models.DateTimeField()
@@ -42,7 +43,7 @@ class Car(models.Model):
 
 
 class Owning(models.Model):
-    OwnerId = models.ForeignKey(User, on_delete=models.CASCADE)
+    OwnerId = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     CarId = models.ForeignKey(Car, on_delete=models.CASCADE)
     StartDate = models.DateTimeField()
     EndDate = models.DateTimeField()
