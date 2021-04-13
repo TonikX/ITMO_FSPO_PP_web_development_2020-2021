@@ -1,6 +1,8 @@
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.contrib.auth.forms import UserCreationForm
+from django import forms
 from project_first_app.models import User, Car
 
 
@@ -51,12 +53,24 @@ class UsersList(ListView):
     template_name = "users_list.html"
 
 
+class UserCreateForm(UserCreationForm):
+    email = forms.CharField()
+
+    class Meta:
+        model = User
+        fields = ['PassportNumber',
+                  'Name',
+                  'Surname',
+                  'BirthDate',
+                  'Address',
+                  'Nationality',
+                  'username',
+                  'email',
+                  'password1',
+                  'password2']
+
+
 class UserCreateView(CreateView):
     model = User
-    fields = ['PassportNumber',
-              'Name',
-              'Surname',
-              'BirthDate',
-              'Address',
-              'Nationality']
+    form_class = UserCreateForm
     success_url = '/users'
