@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Лицензия</title>
+</head>
+<body>
+<div style="background-color: #E6E6FA">
+    <span><h1>Лицензия водителя</h1></span>
+      <a href="/license/create">Добавить лицензию</a>
+      |   <a href="/owner/list">Пользователь</a>
+      |   <a href="/car/list">Авто</a>
+      |   <a href="/car_owner/list">Автовладелец</a>
+    <ul style="font-size: 24px">
+    <!-- Iterate over object_list -->
+    {% for object in object_list %}
+    <!-- Display Objects -->
+    <li>{{ object.owner_id }}.
+        <p>Номер лицензии: {{ object.license_number }}</p>
+        <p>Тип: {{ object.type}}</p>
+        <p>Дата выдачи: {{ object.date_issue}}</p>
+        Детали:
+            <a href="/license/{{ object.id }}">Детали</a>
+            |   <a href="/license/{{ object.id }}/update">Изменить</a>
+            |   <a href="/license/{{ object.id }}/delete">Удалить</a>
+    </li>
+    <hr/>
+    <!-- If objet_list is empty  -->
+    {% empty %}
+    <li>Нет лицензий</li>
+    {% endfor %}
+</ul>
+</div>
+</body>
+</html>

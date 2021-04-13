@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Пользователи</title>
+</head>
+<body>
+<div style="background-color: #E6E6FA">
+    <span><h1>Пользователи</h1></span>
+      <div class="header">
+      <a href="/owner/create">Добавить пользователя</a>
+      |   <a href="/car/list">Авто</a>
+      |   <a href="/car_owner/list">Владелец</a>
+      |   <a href="/license/list">Лицензия</a>
+      </div>
+    <ul style="font-size: 24px">
+    <!-- Iterate over object_list -->
+    {% for object in object_list %}
+    <!-- Display Objects -->
+    <li><p>Логин: {{ object.username }}</p>
+        <p>Дата рождения: {{ object.birth_date }}</p>
+        <p>Национальность: {{ object.nationality }}</p>
+        <p>Паспорт: {{ object.passport_number }}</p>
+        <p>Адресс: {{ object.address }}</p>
+        Действия:
+                <a href="/owner/{{ object.id }}">Детали</a>
+            |   <a href="/owner/{{ object.id }}/update">Изменить</a>
+            |   <a href="/owner/{{ object.id }}/delete">Удалить</a>
+    </li>
+    <hr/>
+    <!-- If objet_list is empty  -->
+    {% empty %}
+    <li>No objects yet.</li>
+    {% endfor %}
+</ul>
+</div>
+</body>
+</html>
