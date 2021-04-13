@@ -10,8 +10,11 @@
 </head>
 
 <body>
-  <h1>{{ object }}</h1>
+  <h1><strong>ID:</strong>{{ object }}</h1>
   <p><strong>State number:</strong> {{ object.state_number }}</p>
-  <a href="/car/list/">Get back</a>
+  <p><strong>Brand:</strong> {{ object.brand }}</p>
+  <p><strong>Model:</strong> {{ object.model }}</p>
+  <p><strong>Color:</strong> {{ object.color }}</p>
+  <a href="/cars/">Get back</a>
 </body>
 </html>
