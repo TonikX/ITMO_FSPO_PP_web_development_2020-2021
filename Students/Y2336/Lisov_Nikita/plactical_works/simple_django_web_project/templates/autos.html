@@ -28,26 +28,28 @@
 
 </style>
 <body>
-    <p style="text-align: center;">Owners</p>
+    <p style="text-align: center;">Autos</p>
     <table class="table">
         <thead>
         <tr>
-            <th>Name</th>
-            <th>Surname</th>
-            <th>birthdate</th>
+            <th>gos_num</th>
+            <th>Brand</th>
+            <th>Model</th>
+            <th>Color</th>
         </tr>
         </thead>
 
         <tbody>
-        {% for owner in owners %}
+        {% for auto in object_list %}
         <tr>
-            <td>{{ owner.first_name }}</td>
-            <td>{{ owner.last_name }}</td>
-            <td>{{ owner.birth_date }}</td>
+            <td>{{ auto.gos_num }}</td>
+            <td>{{ auto.brand }}</td>
+            <td>{{ auto.model }}</td>
+            <td>{{ auto.color }}</td>
         </tr>
         {% endfor %}
         </tbody>
     </table>
-    
+
 </body>
 </html>
