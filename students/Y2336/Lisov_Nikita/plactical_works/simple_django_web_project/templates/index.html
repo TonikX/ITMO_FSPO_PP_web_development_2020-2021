@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+.table{
+  width: 100%;
+  border: black 1px solid;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.table th{
+  text-align: center;
+}
+
+.table td{
+  border: black 1px solid;
+  padding: 5px;
+  text-align: center;
+}
+
+.table tfoot td{
+  text-align: right;
+}
+
+</style>
+<body>
+    <p style="text-align: center;">Owners</p>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>birthdate</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for owner in owners %}
+        <tr>
+            <td>{{ owner.first_name }}</td>
+            <td>{{ owner.last_name }}</td>
+            <td>{{ owner.birth_date }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    
+</body>
+</html>

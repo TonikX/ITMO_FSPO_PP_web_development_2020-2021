@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book list</title>
+</head>
+
+<body>
+  <span><h1>Books</h1><a href="/book/create/">Add new one</a></span>
+  <ul>
+	{% for book in object_list %}
+	<li><strong>Name:</strong> {{ book.name }}, actions: <a href="/book/{{ book.id }}/update/">Edit</a> | <a href="/book/{{ book.id }}/delete/">Delete</a> | <a href="/book/{{ book.id }}/">Detail</a>
+  	<p><strong>Description:</strong> {{ book.desc }}</p>
+  	<p><strong>Publisher:</strong> <a href="/publisher/{{ book.publisher.id }}">{{ book.publisher }}</a></p>
+	</li>
+	{% empty %}
+	<li>No books yet.</li>
+	{% endfor %}
+  </ul>
+</body>
+
+</html>
