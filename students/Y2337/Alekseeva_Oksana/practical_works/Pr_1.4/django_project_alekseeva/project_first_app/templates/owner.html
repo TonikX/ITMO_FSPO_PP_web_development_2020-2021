@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Owner</title>
+</head>
+
+<body>
+    {% for i in owner %}
+    Имя: {{i.name}} <br>
+    Фамилия: {{i.surname }} <br>
+    Дата рождения: {{i.date_of_birth}} <br>
+    {% endfor %}
+</body>
+
+</html>
