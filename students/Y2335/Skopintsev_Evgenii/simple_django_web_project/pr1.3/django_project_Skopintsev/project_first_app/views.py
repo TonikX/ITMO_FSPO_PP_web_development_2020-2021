@@ -4,7 +4,7 @@ from project_first_app.models import CarOwner, Car
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
 from .forms import OwnerForm
-from django.views.generic.edit import UpdateView, CreateView
+from django.views.generic.edit import *
 
 
 def detail(request, car_owner_id):
@@ -44,13 +44,18 @@ def create_owner(request):
 
 class CarUpdate(UpdateView):
     model = Car
-    fields = ['state_number', 'brand', 'model', 'color']
+    fields = ['brand', 'model', 'color']
     template_name = 'car_form.html'
     success_url = '/cars/'
 
 
 class CarCreate(CreateView):
-    # specify the model for create view
     model = Car
     template_name = 'car_create_form.html'
     fields = ['state_number', 'brand', 'model', 'color']
+
+
+class CarDelete(DeleteView):
+    model = Car
+    template_name = 'car_delete.html'
+    success_url = '/cars/'
