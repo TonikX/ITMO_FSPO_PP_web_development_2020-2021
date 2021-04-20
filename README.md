@@ -94,9 +94,7 @@
     - Обзщее описание проекта.
     - Описание таблиц модели данных + модель данных в любой нотации.
     - Список интерфейсов с описанием входных и выходных данных.
-    Реализовать ТЗ в Read the Docs или MkDocs.<br>
-    Полезные материалы:
-    - Инструкции по работе с mkdocs - пункт 3 [из практической работы №3.2](https://docs.google.com/document/d/1rIfREFvCB4pp8uF990Tz3PLXRJ5u_w-Y3vLxfXWKoxg/edit?usp=sharing)
+Реализовать ТЗ в Read the Docs или MkDocs (Инструкции по работе с mkdocs - пункт 3 [из практической работы №3.2](https://docs.google.com/document/d/1rIfREFvCB4pp8uF990Tz3PLXRJ5u_w-Y3vLxfXWKoxg/edit?usp=sharing)).
 5) Реализовать интерфейсы (описание будет дополненно).
     Минимальное функциональное наполнение интерфейсов:
     - Использовать UI библиотеку (настройка форм c bootstrap - https://django.fun/tutorials/django-i-formy-bootstrap-4/)
