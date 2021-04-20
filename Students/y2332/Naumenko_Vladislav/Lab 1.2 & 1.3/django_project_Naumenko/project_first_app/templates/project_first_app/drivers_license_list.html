@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Drivers license</title>
+</head>
+    <li> Actions:
+        <a href="/">Get back</a>
+    </li>
+<body>
+<div style="background-color: #f4fcff">
+    <span><h1>Drivers license</h1><a href="/license/create">Add new one</a></span>
+    <ul style="font-size: 22px">
+    <!-- Iterate over object_list -->
+    {% for object in object_list %}
+    <!-- Display Objects -->
+    <li>{{ object.id }} Drivers license. Actions:
+        <a href="/license/{{ object.id }}/update">Edit</a>
+        |   <a href="/license/{{ object.id }}/delete">Delete</a>
+        |   <a href="/license/{{ object.id }}">Detail</a>
+        <p>{{ object.owner_id }}</p>
+        <p>{{ object.license_number }}</p>
+        <p>{{ object.type}}</p>
+        <p>{{ object.date_issue}}</p>
+    </li>
+    <hr/>
+    <!-- If objet_list is empty  -->
+    {% empty %}
+    <li>No objects yet.</li>
+    {% endfor %}
+</ul>
+</div>
+</body>
+</html>

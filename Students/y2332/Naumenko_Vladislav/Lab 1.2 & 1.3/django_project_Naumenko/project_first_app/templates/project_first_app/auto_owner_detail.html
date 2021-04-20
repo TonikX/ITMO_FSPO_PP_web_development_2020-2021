@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Auto owner detail</title>
+</head>
+
+<body>
+  <h1>{{ object }}</h1>
+  <p><strong>Owner id:</strong> {{ object.owner_id }}</p>
+  <p><strong>Auto id:</strong> {{ object.auto_id }}</p>
+  <p><strong>Start date:</strong> {{ object.start_date }}</p>
+  <p><strong>End date:</strong> {{ object.end_date }}</p>
+  <a href="/auto_owner/list">Get back</a>
+</body>
+</html>

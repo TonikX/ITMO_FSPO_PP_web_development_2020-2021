@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Owner detail</title>
+</head>
+
+<body>
+  <h1>{{ object.id }} Owner</h1>
+  <p><strong>Last name:</strong> {{ object.last_name }}</p>
+  <p><strong>First name:</strong> {{ object.first_name }}</p>
+  <p><strong>Birth date:</strong> {{ object.birth_date }}</p>
+  <p><strong>Nationality:</strong> {{ object.nationality }}</p>
+  <p><strong>Passport number:</strong> {{ object.passport_number }}</p>
+  <p><strong>Address:</strong> {{ object.address }}</p>
+  <a href="/owner/list">Get back</a>
+</body>
+
+</html>
