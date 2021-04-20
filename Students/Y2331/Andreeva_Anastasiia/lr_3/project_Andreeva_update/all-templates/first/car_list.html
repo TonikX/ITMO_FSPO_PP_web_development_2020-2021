@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cars</title>
+</head>
+<body>
+    <h1>Список машин:</h1>
+    <a href="/car/">Добавить машину</a><br/>
+<ul>
+    <!-- Iterate over object_list -->
+    {% for Car in object_list %}
+    <!-- Display Objects -->
+    <li>ID: {{Car.car_id}}  <a href="/car/{{ Car.car_id }}/">Детали</a> | <a href="/car/{{ Car.car_id }}/update/">Обновить</a> | <a href="/car/{{ Car.car_id }}/delete/">Удалить</a></li>
+    <li>Гос. номер: {{Car.gov_number}}</li>
+    <li>Марка: {{Car.brand}}</li>
+    <li>Модель: {{Car.model}}</li>
+    <li>Цвет: {{Car.colour}}</li>
+    <li>Владельцы: <a href="/cars/{{ Car.owners.owner_id }}">{{ Car.owners }}</a></li>
+    <hr/>
+    <!-- If objet_list is empty  -->
+    {% empty %}
+    <li>No objects yet.</li>
+    {% endfor %}
+</ul>
+</body>
+</html>

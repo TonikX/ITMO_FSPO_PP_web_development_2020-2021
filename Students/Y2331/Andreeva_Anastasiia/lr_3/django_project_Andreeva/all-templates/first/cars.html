@@ -1,0 +1,28 @@
+<!-- book_list.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cars</title>
+</head>
+
+<body>
+  <span><h1>object</h1>
+  <ul>
+	{% for Car in object_list %}
+      <li><strong>ID:</strong> {{ object.car_id }}  <a href="/car/{{ Car.car_id }}/">Детали</a> | <a href="/car/{{ Car.car_id }}/update/">Обновить</a></li>
+          <p><strong>Гос. номер:</strong> {{ object.gov_number }}</p>
+          <p><strong>Марка:</strong> {{ object.brand }}</p>
+          <p><strong>Модель:</strong> {{ object.model }}</p>
+          <p><strong>Цвет:</strong> {{ object.colour }}</p>
+      </li>
+
+	{% empty %}
+	<li>No books yet.</li>
+	{% endfor %}
+  </ul>
+</body>
+
+</html>
