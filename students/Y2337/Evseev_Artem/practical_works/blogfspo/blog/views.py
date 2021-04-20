@@ -15,7 +15,12 @@ def create_owner(request):
     form = OwnerCreateForm(
         request.POST or None)
     if form.is_valid():
-        form.save()
+        user = form.save()
+        
+        user.set_password(user.password)
+
+        user.save()
+
         return redirect('/owner/all/')
         
     context['form'] = form
