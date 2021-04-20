@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cars</title>
+</head>
+<body>
+    <a href="/Car/create">Add car</a><br/>
+    <ul>
+        {% for car in object_list %}
+        <li>
+            {{ car }}
+            <a href="/Car/{{ car.id }}/">Details</a>
+            <a href="/Car/{{ car.id }}/update/">Update</a>
+            <a href="/Car/{{ car.id }}/delete/">Delete</a>
+        </li>
+        <hr/>
+        {% empty %}
+        <li>No cars yet.</li>
+        {% endfor %}
+    </ul>
+    <a href="/CarOwners/">Go to CarOwners</a>
+</body>
+</html>
