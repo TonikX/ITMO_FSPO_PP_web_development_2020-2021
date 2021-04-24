@@ -1,0 +1,11 @@
+<div class = "main">
+	{% for object in object_list %}
+	Number: {{ object.gov_number }}<br/>
+	Brand : {{ object.brand }}<br/>
+	Model : {{ object.model }}<br/>
+	Color : {{ object.color }}<br/>
+	<hr/>
+	{% empty %}
+	No cars yet<br>
+	{% endfor %}
+</div>
