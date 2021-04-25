@@ -7,6 +7,11 @@ class OwnerForm(forms.ModelForm):
         model = Owner
 
         fields = [
-            'surname',
-            'name'
+            'username',
+            'password',
+            'first_name',
+            'last_name',
+            'home_address',
+            'passport',
+            'nationality'
         ]
