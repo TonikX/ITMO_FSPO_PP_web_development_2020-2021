@@ -1,0 +1,25 @@
+<!-- book_list.html -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book list</title>
+</head>
+
+<body>
+  <span><h1>Cars</h1><a href="/car/create/">Add new one</a></span>
+  <ul>
+	{% for car in object_list %}
+	<li><strong>Number:</strong> {{ car.State_number }}, actions: <a href="/car/{{ car.id }}/update/">Edit</a> | <a href="/car/{{ car.id }}/delete/">Delete</a> | <a href="/car/{{ car.id }}/">Detail</a>
+  	<p><strong>Brand:</strong> {{ car.Brand}}</p>
+ 	<p><strong>Owner:</strong> <a href="/owner/{{ car.owner.id }}">{{ car.owner }}</a></p>
+	</li>
+	{% empty %}
+	<li>No cars yet.</li>
+	{% endfor %}
+  </ul>
+</body>
+
+</html>
