@@ -2,7 +2,7 @@ from django.contrib import auth
 from django.contrib.auth import forms as auth_forms
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User, Group
-from rest_framework import viewsets, status, mixins, generics
+from rest_framework import mixins, generics
 
 from . import models, serializers
 
@@ -31,8 +31,18 @@ class UsersList(mixins.ListModelMixin,
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)
 
-    # def post(self, request, *args, **kwargs):
-    #     return self.create(request, *args, **kwargs)
+
+class ActiveSubstancesList(mixins.ListModelMixin,
+                           mixins.CreateModelMixin,
+                           generics.GenericAPIView):
+    queryset = models.ActiveSubstance.objects.all()
+    serializer_class = serializers.ActiveSubstanceSerializer
+
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
 
 
 class ManufacturersList(mixins.ListModelMixin,
@@ -47,31 +57,34 @@ class ManufacturersList(mixins.ListModelMixin,
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
 
-# class ManufacturerView(APIView):
-#     """
-#     Retrieve, update or delete a snippet instance.
-#     """
-#
-#     def get_object(self, pk):
-#         try:
-#             return models.Manufacturer.objects.get(pk=pk)
-#         except models.Manufacturer.DoesNotExist:
-#             raise Http404
-#
-#     def get(self, request, pk):
-#         snippet = self.get_object(pk)
-#         serializer = serializers.ManufacturerSerializer(snippet)
-#         return Response(serializer.data)
-#
-#     def put(self, request, pk):
-#         snippet = self.get_object(pk)
-#         serializer = serializers.ManufacturerSerializer(snippet, data=request.data)
-#         if serializer.is_valid():
-#             serializer.save()
-#             return Response(serializer.data)
-#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-#
-#     def delete(self, request, pk):
-#         snippet = self.get_object(pk)
-#         snippet.delete()
-#         return Response(status=status.HTTP_204_NO_CONTENT)
+
+class ItemsList(mixins.ListModelMixin,
+                mixins.CreateModelMixin,
+                generics.GenericAPIView):
+    queryset = models.Item.objects.all()
+    serializer_class = serializers.ItemSerializer
+
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)
+
+
+class UnitsList(mixins.ListModelMixin,
+                mixins.CreateModelMixin,
+                generics.GenericAPIView):
+    serializer_class = serializers.UnitSerializer
+
+    # queryset = models.Unit.objects.all()
+
+    def get_queryset(self):
+        user = self.request.user
+        print(user)
+        return models.Unit.objects.filter(user=user)
+
+    def get(self, request, *args, **kwargs):
+        return self.list(request, *args, **kwargs)
+
+    def post(self, request, *args, **kwargs):
+        return self.create(request, *args, **kwargs)

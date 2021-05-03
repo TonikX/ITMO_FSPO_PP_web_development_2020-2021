@@ -7,6 +7,9 @@ from django.utils.translation import gettext_lazy as _
 class ActiveSubstance(models.Model):
     name = models.CharField(max_length=250)
 
+    def __str__(self):
+        return self.name
+
 
 class Manufacturer(models.Model):
     class Country(models.TextChoices):
@@ -20,9 +23,8 @@ class Manufacturer(models.Model):
         default=Country.RUSSIA,
     )
 
-
-class Conditions(models.Model):
-    conditions = models.JSONField()
+    def __str__(self):
+        return self.name
 
 
 class Item(models.Model):
@@ -42,9 +44,24 @@ class Item(models.Model):
     name = models.CharField(max_length=200)
     active_substance = models.ForeignKey(ActiveSubstance, on_delete=models.DO_NOTHING)
     packaging = models.IntegerField(choices=PackageType.choices)
-    conditions = models.ManyToManyField(Conditions)
     manufacturer = models.ForeignKey(Manufacturer, on_delete=models.DO_NOTHING)
-    owner = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+
+    def get_packaging(self):
+        return {
+            1: "Автоинжектор",
+            2: "Ампула",
+            3: "Банка",
+            4: "Бумага",
+            5: "Бутыль",
+            6: "Ингалятор",
+            7: "Пакет",
+            8: "Упаковка контурная ячейковая",
+            9: "Флакон",
+            10: "Флакон - капельница",
+            11: "Шприц"}[self.packaging]
 
 
 class Unit(models.Model):
@@ -52,3 +69,7 @@ class Unit(models.Model):
     amount = models.IntegerField(default=1)
     product_date = models.DateField(null=True)
     open_date = models.DateField(null=True, default=now)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.item.name

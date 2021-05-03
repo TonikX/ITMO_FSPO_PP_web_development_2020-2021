@@ -15,11 +15,15 @@ Including another URLconf
 """
 # from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.static import static
 from medicine_storage import views
 
 urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/signup/', views.signup, name='signup'),
-    path('api/users/', views.UsersList.as_view(), name='users'),
-    path('api/manufactures/', views.ManufacturersList.as_view(), name='manufactures'),
-]
+    path('api/users', views.UsersList.as_view(), name='users'),
+    path('api/active-substances', views.ActiveSubstancesList.as_view(), name='active-substances'),
+    path('api/manufactures', views.ManufacturersList.as_view(), name='manufactures'),
+    path('api/items', views.ItemsList.as_view(), name='items'),
+    path('api/units', views.UnitsList.as_view(), name='units'),
+] + static('/', document_root='./dist/')
