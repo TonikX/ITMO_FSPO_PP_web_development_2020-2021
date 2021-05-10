@@ -7,18 +7,6 @@ import hashlib
 from generator import generate_views, generate_to_str
 
 
-# @generate_views(root_path='/test')
-# class TestModel(Model):
-#     id = IntegerField(primary_key=True, auto_created=True)
-#     name = CharField(max_length=40, default='default')
-#
-# @generate_views(root_path='/mishka')
-# @generate_to_str.from_pattern('Mishka с именем @name и id @id. Родился @birth_date')
-# class Mishka(Model):
-#     id = IntegerField(primary_key=True, auto_created=True)
-#     name = CharField(max_length=40, default='mishak_name')
-#     birth_date = DateField()
-
 class CardModel(Model):
     id = CharField(primary_key=True, max_length=256)
     description = TextField()
