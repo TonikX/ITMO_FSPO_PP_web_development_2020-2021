@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}Удалить worker{% endblock %}
+{% block block_title %}Удалить worker{% endblock %}
+{% block content %}
+    <br/>
+    <form method="post">
+        {% csrf_token %}
+        <p>Вы точно ходите удалить worker "{{ object }}"?</p>
+        <button type="submit" class="btn btn-success">Да</button>
+        <a href="/worker/list"><button type="button" class="btn" href="@back">Нет</button><a>
+    </form>
+{% endblock %}

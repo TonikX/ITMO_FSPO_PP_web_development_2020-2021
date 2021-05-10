@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}Department details{% endblock %}
+{% block block_title %}Department details{% endblock %}
+{% block content %}
+    <br/>
+    <p>
+        {{ object }}
+    </p>
+    <br/>
+    <p><a href="/department/list">Back</a></p>
+{% endblock %}

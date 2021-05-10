@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block title %} Create worker {% endblock %}
+{% block block_title %} Create worker {% endblock %}
+{% block content %}
+    <br/>
+    <form method="post" novalidate>
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-success" href="/worker/list">Save worker</button>
+    </form>
+{% endblock %}

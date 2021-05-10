@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+{% load crispy_forms_tags %}
+{% block title %}Delete mishka{% endblock %}
+{% block block_title %}Delete mishka{% endblock %}
+{% block content %}
+    <br/>
+    <form method="post">
+        {% csrf_token %}
+        <p>Are you sure want to delete mishka "{{ object }}"?</p>
+        <button type="submit" class="btn btn-success">Yes</button>
+        <button type="reset" class="btn" href="@back">No</button>
+    </form>
+{% endblock %}
