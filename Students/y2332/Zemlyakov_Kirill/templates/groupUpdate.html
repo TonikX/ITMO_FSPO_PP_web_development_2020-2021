@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{%extends 'home.html'%}
+<head>
+	<meta charset="UTF-8"/>
+	{%load static%}
+	{%block title%}
+		<title>Group Update</title>
+	{%endblock%}
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+	{%block body%}
+	<div class="center">
+		<div class="container-fluid m-2">
+			<form method="POST">
+				{%csrf_token%}
+				<div class="card p-3 text-center ml-auto mr-auto" style="width:300px;">
+					<div class="text">Program</div>
+					{{form.program}}
+					<div class="text">Max Students Quantity</div>
+					{{form.maxquanstud}}
+				<input class="btn mt-2" type="submit" value="Confirm">
+				</div>
+			</form>			
+		</div>
+	</div>
+	{%endblock%}
+	{%block tbhead%}
+	GROUP
+	{%endblock%}

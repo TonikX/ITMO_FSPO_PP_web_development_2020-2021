@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{%extends 'home.html'%}
+<head>
+	<meta charset="UTF-8"/>
+	{%load static%}
+	{%block title%}
+		<title>Members of group</title>
+	{%endblock%}
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+{%block body%}
+<div class="container-fluid">
+		{%for o in object%}
+			<div class="container-sm text-center ml-auto mr-auto mt-3">
+				<h6 class="card-subtitle">User: <strong>{{o.jobless.username}}</strong> <br>Full Name: <strong>{{o.jobless.lfm}}</strong></h6>
+			</div>
+		{%endfor%}
+</div>
+{%endblock%}
+	{%block tbhead%}
+	MEMBERS
+	{%endblock%}

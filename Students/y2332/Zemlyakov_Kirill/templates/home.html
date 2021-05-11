@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    {%block title%}
+    <title>Home</title>
+    {%endblock%}
+  </head>
+  <body>
+  	<nav class="navbar sticky-top navbar-expand-lg navbar-white bg-dark">
+      <div class="collapse navbar-collapse">
+      <ul class="navbar-nav">
+        {%if user.is_authenticated%}
+          {%if user.is_superuser%}
+              <li class="nav-item">
+                <a href="/Organization/List" class="nav-link lc-red">Organizations</a>
+              </li>
+
+              <li class="nav-item">
+                <a href="/Group/List" class="nav-link ">Groups</a>
+              </li>
+
+              <li class="nav-item">
+                <a href="/Program/List" class="nav-link">Programs</a>
+              </li>
+
+              <li class="nav-item">
+                <a href="/Stipend/List" class="nav-link">Stipends</a>
+              </li>
+
+              <li class="nav-item">
+                <a href="/Passage/List" class="nav-link">Passages</a>
+              </li>
+
+              <li class="nav-item">
+                <a href="/Jobless/List" class="nav-link">Joblesses</a>
+              </li>
+          {%elif user.is_staff%}    
+          <li class="nav-item">
+            <a href="/Passage/List" class="nav-link">Passages</a>
+          </li>
+          <li class="nav-item">
+            <a href="/Stipend/List" class="nav-link">Stipends</a>
+          </li>
+          {%endif%}
+          <li class="nav-item">
+            <a href="/AvailGroups/List/" class="nav-link">Availible Groups</a>
+          </li>
+        {%endif%}
+      </ul>
+      <ul class="navbar-nav ml-auto mr-auto">
+        <li class="nav-item text-muted font-weight-bold font-italic">
+          {%block tbhead%}
+          {%endblock%}
+        </li>
+      </ul>
+      <ul class="navbar-nav ml-auto ">
+        <li class="nav-item">
+          {%block createbtn%}
+          {%endblock%}
+        </li>
+        {%if user.is_authenticated%}
+        <li class="nav-item">
+          <a href="/MyGroups/List" class="nav-link">My Groups</a>
+        </li>
+        <li class="nav-item">
+          <a href="/Jobless/Detail" class="nav-link text-info">
+            {%filter upper%}
+            {{user.username}}
+            {%endfilter%}
+          </a>
+        </li>
+        <li class="nav-item">
+          <a href="/logout/" class="nav-link text-danger">Log Out</a>
+        </li>
+        {%else%}
+        <li class="nav-item">
+          <a href="/SignUp/" class="nav-link">Sign Up</a>
+        </li>
+
+        <li class="nav-item">
+            <a href="/login/" class="nav-link">
+              Log In
+            </a>
+        </li>
+        
+        {%endif%}
+      </ul>
+    </div>
+	</nav>
+  {%block body%}
+  {%endblock%}
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{%extends 'home.html'%}
+<head>
+	<meta charset="UTF-8"/>
+	{%load static%}
+	{%block title%}
+		<title>Programs</title>
+	{%endblock%}
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+	{%block body%}
+	{%for o in object_list%}
+	<div class="card d-inline-block m-2" style="width:300px;">
+		<div class="card-body">
+		<h4 class="card-title">Program: {{o.id}}</h4>
+		<h6 class="card-subtitle mb-2 text-muted">Name: <strong>{{o.name}}</strong></h6>
+		<div class="text-secondary">Cost</div>
+		<div class="text-primary">{{ o.cost }}</div>
+		<div class="text-secondary">Start Date</div>
+		<div class="text-primary">{{ o.startdate}}</div>
+		<div class="text-secondary">Finish Date</div>
+		<div class="text-primary">{{ o.finishdate}}</div>
+		<div class="text-secondary">Type</div>
+		<div class="text-primary">{{ o.type}}</div>
+		<div class="text-secondary mt-2">Description</div>
+		<div class="text-primary">{{ o.description}}</div>
+		<a href="/Program/Update/{{o.id}}" class="card-link text-info">Update</a>
+		<a href="/Program/Delete/{{o.id}}" class="card-link text-danger">Delete</a>
+		</div>
+	</div>
+	{%endfor%}
+	{%endblock%}
+	{%block createbtn%}
+	<a href="/Program/Create" class="nav-link text-warning">Create</a>
+	{%endblock%}
+	{%block tbhead%}
+	PROGRAM
+	{%endblock%}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{%extends 'home.html'%}
+<head>
+	<meta charset="UTF-8"/>
+	{%load static%}
+	{%block title%}
+		<title>{{user.username}} groups</title>
+	{%endblock%}
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+	{%block body%}
+	{%for g in groups%}
+    <div class="card d-inline-block m-2" style="width:300px;">
+        <div class="card-body">
+          <h4 class="card-title">Group: {{g.id}}</h4>
+          <h6 class="card-subtitle mb-2 text-muted">Program: <strong>{{g.program}}</strong></h6>
+          <div class="text-secondary">Max Students Quantity</div>
+          <div class="text-primary">{{ g.maxquanstud }}</div>
+          <div class="text-secondary">Students Quantity</div>
+          <div class="text-primary">{{ g.studquan}}</div>
+          <a href="/LeaveGroup/{{g.id}}" class="card-link text-danger">Leave</a>
+        </div>
+      </div>
+	{%endfor%}
+	{%endblock%}
+    {%block tbhead%}
+    {%filter upper%}
+    {{user.username}}
+    {%endfilter%}GROUPS
+    {%endblock%}

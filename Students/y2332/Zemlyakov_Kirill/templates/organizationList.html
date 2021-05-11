@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{%extends 'home.html'%}
+<head>
+	<meta charset="UTF-8"/>
+	{%load static%}
+	{%block title%}
+		<title>Organizations</title>
+	{%endblock%}
+</head>
+	{%block body%}
+    {%for o in object_list%}
+	<div class="card d-inline-block m-2" style="width:300px;">
+		<div class="card-body">
+		  <h4 class="card-title">Organization: {{o.id}}</h4>
+		  <h6 class="card-subtitle mb-2 text-muted">Name: <strong>{{o.name}}</strong></h6>
+		  <div class="text-secondary">Type</div>
+		  <div class="text-primary">{{ o.type }}</div>
+		  <div class="text-secondary">Address</div>
+		  <div class="text-primary">{{ o.address}}</div>
+		  <a href="/Organization/Update/{{o.id}}" class="card-link text-info">Update</a>
+		  <a href="/Organization/Delete/{{o.id}}" class="card-link text-danger">Delete</a>
+		</div>
+	  </div>
+    {%endfor%}
+	{%endblock%}
+	{%block createbtn%}
+		<a href="/Organization/Create" class="nav-link text-warning">Create</a>
+	{%endblock%}
+	{%block tbhead%}
+	ORGANIZATION 
+	{%endblock%}

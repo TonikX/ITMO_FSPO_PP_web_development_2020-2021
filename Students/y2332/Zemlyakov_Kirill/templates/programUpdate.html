@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+{%extends 'home.html'%}
+<head>
+	<meta charset="UTF-8"/>
+	{%load static%}
+	{%block title%}
+		<title>Program Update</title>
+	{%endblock%}
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+	{%block body%}
+	<div class="center">
+		<div class="container-fluid m-2">
+			<form method="POST">
+				{%csrf_token%}
+				<div class="card p-3 text-center ml-auto mr-auto" style="width:300px;">
+					<div class="text">Name</div>
+					{{form.name}}
+					<div class="text">Cost</div>
+					{{form.cost}}
+					<div class="text">Start Date</div>
+					{{form.startdate}}
+					<div class="text">Finish Date</div>
+					{{form.finishdate}}
+					<div class="text">Type</div>
+					{{form.type}}
+					<div class="text mt-5">Description</div>
+					{{form.description}}
+				
+				<input class="btn mt-2" type="submit" value="Confirm">
+				</div>
+			</form>			
+		</div>
+	</div>
+	{%endblock%}
+	{%block tbhead%}
+	PROGRAM
+	{%endblock%}

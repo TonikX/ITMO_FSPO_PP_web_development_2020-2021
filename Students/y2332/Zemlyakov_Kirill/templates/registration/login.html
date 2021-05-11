@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+	{%extends 'home.html'%}
+	<head>
+		<meta charset="UTF-8"/>
+		{%block title%}
+		<title>Logging in</title>
+		{%endblock%}
+		{%load static%}
+	</head>
+	{%block body%}
+	<div class="container-fluid m-2">
+		<form method="POST">
+			{%csrf_token%}
+			<div class="card p-3 text-center ml-auto mr-auto" style="width:300px;">
+				<div class="text">Username</div>
+				{{form.username}}
+				<div class="text">Password</div>
+				{{form.password}}
+			<input class="btn mt-2" type="submit" value="Submit">
+			</div>
+		</form>			
+	</div>
+	{%endblock%}
+	{%block tbhead%}
+	LOGGING IN
+	{%endblock%}
+	
+</html>
+		

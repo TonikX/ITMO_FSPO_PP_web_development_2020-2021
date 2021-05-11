@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+{%extends 'home.html'%}
+<head>
+	<meta charset="UTF-8"/>
+	{%load static%}
+	{%block title%}
+		<title>Availible Groups</title>
+	{%endblock%}
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+	{%block body%}
+	{%for o in programs%}
+			{%for g in groups%}
+				{%ifequal g.program.id o.id %}
+					<div class="container-fluid m-2 d-flex">
+							<div class="card mr-auto" style="width:49%;">
+								<div class="card-body">
+									<h4 class="card-title">Group</h4>
+									<div class="text-secondary">Max Students Quantity</div>
+									<div class="text-primary">{{ g.maxquanstud }}</div>
+									<div class="text-secondary">Students Quantity</div>
+									<div class="text-primary">{{ g.studquan}}</div>
+									<a href="/JoinGroup/{{g.id}}" class="card-link mt-2 text-info">Join</a>
+									<a href="/ViewMember/{{g.id}}" class="card-link mt-2 text-warning">Members</a>
+								</div>
+							</div>
+							<div class="card ml-auto" style="width:49%;">
+									<div class="card-body">
+										<h4 class="card-title">Program related to group</h4>
+										<h6 class="card-subtitle mb-2 text-muted">{{o.name}}</h6>
+										<div class="text-secondary">Cost</div>
+										<div class="text-primary">{{ o.cost }}</div>
+										<div class="text-secondary">Start Date</div>
+										<div class="text-primary">{{ o.startdate}}</div>
+										<div class="text-secondary">Finish Date</div>
+										<div class="text-primary">{{ o.finishdate}}</div>
+										<div class="text-secondary">Type</div>
+										<div class="text-primary">{{ o.type}}</div>
+									</div>
+							</div>
+					</div>
+					{%endifequal%}
+			{%endfor%}
+    {%endfor%}
+	{%endblock%}
+	{%block tbhead%}
+	AVAILIBLE GROUPS
+	{%endblock%}

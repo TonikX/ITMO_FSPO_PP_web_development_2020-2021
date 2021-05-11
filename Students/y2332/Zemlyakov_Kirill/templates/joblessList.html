@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+{%extends 'home.html'%}
+<head>
+	<meta charset="UTF-8"/>
+	{%load static%}
+	{%block title%}
+	    <title>Joblesses</title>
+	{%endblock%}
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+	{%block body%}
+    {%for o in object_list%}
+	<div class="card d-flex m-2" style="width:300px;">
+		<div class="card-body">
+        <h4 class="card-title">Jobless: {{o.id}}</h4>
+		<h6 class="card-subtitle mb-2 text-muted">Username: {{o.username}}</h6>
+		<div class="text-secondary">email</div>
+		<div class="text-primary">{{ o.email}}</div>
+		<div class="text-secondary">Phone Number</div>
+		<div class="text-primary">{{ o.tel}}</div>
+		<div class="text-secondary">Full Name</div>
+		<div class="text-primary">{{ o.lfm}}</div>
+		<div class="text-secondary">Address</div>
+		<div class="text-primary">{{ o.address}}</div>
+		<div class="text-secondary">Passport</div>
+		<div class="text-primary">{{ o.passport}}</div>
+		<div class="text-secondary">Work Experience</div>
+		<div class="text-primary">{{ o.workexp}}</div>
+		</div>
+	</div>
+    {%endfor%}
+	{%endblock%}
+	{%block tbhead%}
+	JOBLESS
+	{%endblock%}

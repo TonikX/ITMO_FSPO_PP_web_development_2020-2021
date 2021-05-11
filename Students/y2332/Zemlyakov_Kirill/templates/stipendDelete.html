@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+{%extends 'home.html'%}
+<head>
+	<meta charset="UTF-8"/>
+	{%load static%}
+	{%block title%}
+		<title>Stipend Delete</title>
+	{%endblock%}
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+	{%block body%}
+	<div class="container-fluid text-center">
+		<form method="POST">
+			{%csrf_token%}
+			<div class="text">Are you sure?</div>
+			<input class="btn" type="submit" value="Confirm">
+		</form>
+	</div>
+	{%endblock%}
+	{%block tbhead%}
+	STIPEND
+	{%endblock%}

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+{%extends 'home.html'%}
+<head>
+	<meta charset="UTF-8"/>
+	{%load static%}
+	{%block title%}
+		<title>Groups</title>
+	{%endblock%}
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+{%block body%}
+{%for o in object_list%}
+<div class="card d-inline-block m-2" style="width:300px;">
+	<div class="card-body">
+	  <h4 class="card-title">Group: {{o.id}}</h4>
+	  <h6 class="card-subtitle mb-2 text-muted">Program: <strong>{{o.program}}</strong></h6>
+	  <div class="text-secondary">Max Students Quantity</div>
+	  <div class="text-primary">{{ o.maxquanstud }}</div>
+	  <div class="text-secondary">Students Quantity</div>
+	  <div class="text-primary">{{ o.studquan}}</div>
+	  <a href="/Group/Update/{{o.id}}" class="card-link text-info">Update</a>
+	  <a href="/Group/Delete/{{o.id}}" class="card-link text-danger">Delete</a>
+	</div>
+  </div>
+{%endfor%}
+{%endblock%}
+{%block createbtn%}
+	<a href="/Group/Create" class="nav-link text-warning">Create</a>
+{%endblock%}
+{%block tbhead%}
+GROUP
+{%endblock%}

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{%extends 'home.html'%}
+<head>
+	<meta charset="UTF-8"/>
+	{%load static%}
+	{%block title%}
+		<title>Stipends</title>
+	{%endblock%}
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+	{%block body%}
+	{%for o in object_list%}
+	<div class="card d-inline-block m-2" style="width:300px;">
+		<div class="card-body">
+		<h4 class="card-title">Stipend: 1</h4>
+		<h6 class="card-subtitle mb-2 text-muted">Jobless: <strong>{{o.jobless}}</strong></h6>
+		<div class="text-secondary">Cost</div>
+		<div class="text-primary">{{ o.value}}</div>
+		<div class="text-secondary">Start of Provision</div>
+		<div class="text-primary">{{ o.startprov }}</div>
+		<div class="text-secondary">End of Provision</div>
+		<div class="text-primary">{{ o.finprov}}</div>
+		<a href="/Stipend/Update/{{o.id}}" class="card-link text-info">Update</a>
+		<a href="/Stipend/Delete/{{o.id}}" class="card-link text-danger">Delete</a>
+		</div>
+	</div>
+	{%endfor%}
+	{%endblock%}
+	{%block createbtn%}
+		<a href="/Stipend/Create" class="nav-link text-warning">Create</a>
+	{%endblock%}
+	{%block tbhead%}
+	STIPEND
+	{%endblock%}

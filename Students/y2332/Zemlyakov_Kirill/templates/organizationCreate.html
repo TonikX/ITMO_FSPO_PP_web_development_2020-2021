@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+{%extends 'home.html'%}
+<head>
+	<meta charset="UTF-8"/>
+	{%load static%}
+	{%block title%}
+		<title>Organization Create</title>
+	{%endblock%}
+</head>
+	{%block body%}
+		<div class="container-fluid m-2">
+			<form method="POST">
+				{%csrf_token%}
+				<div class="card p-3 text-center ml-auto mr-auto" style="width:300px;">
+					<div class="text">Name</div>
+					{{form.name}}
+					<div class="text">Type</div>
+					{{form.type}}
+					<div class="text">Address</div>
+					{{form.address}}
+				<input class="btn mt-2" type="submit" value="Confirm">
+				</div>
+			</form>			
+		</div>
+	</div>
+	{%endblock%}
+	{%block tbhead%}
+	ORGANIZATION
+	{%endblock%}

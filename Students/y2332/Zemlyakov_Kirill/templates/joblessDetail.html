@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+{%extends 'home.html'%}
+<head>
+	<meta charset="UTF-8"/>
+	{%load static%}
+	{%block title%}
+	    <title>{{object.username}}</title>
+	{%endblock%}
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+	{%block body%}
+	<div class="container-fluid m-2 text-right">
+		<div class="card d-inline-block m-2 text-left" style="width:500px;">
+			<div class="card-body">
+			<h4 class="card-title">Jobless {{user.status}}</h4>
+			<h6 class="card-subtitle mb-2 text-muted">Username: {{object.username}}</h6>
+			<div class="text-secondary">email</div>
+			<div class="text-primary">{{ object.email}}</div>
+			<div class="text-secondary">Phone Number</div>
+			<div class="text-primary">{{ object.tel}}</div>
+			<div class="text-secondary">Full Name</div>
+			<div class="text-primary">{{ object.lfm}}</div>
+			<div class="text-secondary">Address</div>
+			<div class="text-primary">{{ object.address}}</div>
+			<div class="text-secondary">Passport</div>
+			<div class="text-primary">{{ object.passport}}</div>
+			<div class="text-secondary">Work Experience</div>
+			<div class="text-primary">{{ object.workexp}}</div>
+			<a class="card-link text-warning mt-2" href="/Jobless/Update/{{object.id}}">Update</a>
+			<a class="card-link text-danger mt-2" href="/DeleteUser">Delete Account</a>
+			</div>
+		</div>
+	</div>
+	{%endblock%}
+	{%block tbhead%}
+	JOBLESS
+	{%endblock%}

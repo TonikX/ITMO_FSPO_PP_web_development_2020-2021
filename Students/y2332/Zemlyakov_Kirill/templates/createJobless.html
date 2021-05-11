@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{%extends 'home.html'%}
+<head>
+	<meta charset="UTF-8"/>
+	{%load static%}
+	{%block title%}
+	    <title>Registration</title>
+	{%endblock%}
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
+</head>
+	{%block body%}
+	<div class="container-fluid m-2">
+		<form method="POST">
+			{%csrf_token%}
+			<div class="card p-3 text-center ml-auto mr-auto" style="width:300px;">
+				<div class="text">Username</div>
+					{{form.username}}
+				<div class="text">Password</div>
+					{{form.password}}
+                <div class="text">Full Name</div>
+					{{form.lfm}}
+				<div class="text">Email</div>
+					{{form.email}}
+				<div class="text">Phone Number</div>
+					{{form.tel}}
+                <div class="text">Passport</div>
+					{{form.passport}}
+				<div class="text">Address</div>
+					{{form.address}}
+                <div class="text">Work Experience</div>
+					{{form.workexp}}
+			<input class="btn mt-2" type="submit" value="Submit">
+			</div>
+		</form>
+		{%if form.errors%}
+			<div class="text">Try Again</div>
+		{%endif%}			
+	</div>
+	{%endblock%}
+	{%block tbhead%}
+	RIGISTRATION
+	{%endblock%}
