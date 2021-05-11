@@ -1,0 +1,17 @@
+<h2><a href="/owners/create/">Create new user</a></h2>
+
+<div class="main">
+
+    {% for data in dataset %}
+    <!-- Display Objects -->
+    {{ data.username }}
+    {{ data.first_name }}
+    {{ data.last_name }}<br/>
+    <a href="/owners/{{ data.pk }}/">Detail</a>
+    <hr/>
+    <!-- If objet_list is empty  -->
+    {% empty %}
+    <li>No objects yet.</li>
+
+    {% endfor %}
+</div>
