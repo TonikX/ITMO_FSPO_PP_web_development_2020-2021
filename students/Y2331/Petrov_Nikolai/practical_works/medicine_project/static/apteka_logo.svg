@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Создано Microsoft Visio, экспорт SVG apteka_logo.svg Страница-1 -->
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:ev="http://www.w3.org/2001/xml-events"
+		width="4.12633in" height="0.994669in" viewBox="0 0 297.095 71.6162" xml:space="preserve" color-interpolation-filters="sRGB"
+		class="st5">
+	<style type="text/css">
+	<![CDATA[
+		.st1 {fill:#00b0f0;stroke:#00b0f0;stroke-linecap:round;stroke-linejoin:round;stroke-width:1}
+		.st2 {fill:#ff0000;stroke:#ff0000;stroke-linecap:round;stroke-linejoin:round;stroke-width:1}
+		.st3 {fill:none;stroke:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:0.75}
+		.st4 {fill:#ffffff;font-family:Verdana;font-size:4.00001em}
+		.st5 {fill:none;fill-rule:evenodd;font-size:12px;overflow:visible;stroke-linecap:square;stroke-miterlimit:3}
+	]]>
+	</style>
+
+	<g>
+		<title>Страница-1</title>
+		<g id="shape73-1" transform="translate(0.5,-1.08363)">
+			<title>Лист.73</title>
+			<path d="M24.02 8.48 L12.63 8.48 A6.31353 6.31353 -180 0 0 6.31 14.79 L6.31 58.99 A6.31353 6.31353 -180 0 0 12.63 65.3
+						 L20.18 65.3 L9.24 71.62 L6.31 71.62 A6.31353 6.31353 0 0 1 0 65.3 L0 8.48 A6.31353 6.31353 0 0 1 6.31 2.17
+						 L34.95 2.17 L24.02 8.48 Z" class="st1"/>
+		</g>
+		<g id="shape74-3" transform="translate(34.9978,-1.08363)">
+			<title>Лист.74</title>
+			<path d="M25.71 2.17 L28.64 2.17 A6.31353 6.31353 0 0 1 34.95 8.48 L34.95 65.3 A6.31353 6.31353 0 0 1 28.64 71.62 L0
+						 71.62 L10.94 65.3 L22.32 65.3 A6.31353 6.31353 -180 0 0 28.64 58.99 L28.64 14.79 A6.31353 6.31353 -180 0
+						 0 22.32 8.48 L14.77 8.48 L25.71 2.17 Z" class="st1"/>
+		</g>
+		<g id="shape75-5" transform="translate(31.4363,-13.7107)">
+			<title>Лист.75</title>
+			<rect x="0" y="27.4214" width="7.57624" height="44.1947" rx="3.78812" ry="3.78812" class="st2"/>
+		</g>
+		<g id="shape76-7" transform="translate(-14.2944,39.5962) rotate(-90)">
+			<title>Лист.76</title>
+			<rect x="0" y="27.4214" width="7.57624" height="44.1947" rx="3.78812" ry="3.78812" class="st2"/>
+		</g>
+		<g id="shape77-9" transform="translate(84.1221,-0.375)">
+			<title>Лист.77</title>
+			<desc>АПТЕКА</desc>
+			<rect x="0" y="0.749998" width="212.598" height="70.8662" class="st3"/>
+			<text x="8.86" y="50.58" class="st4">АПТЕКА</text>		</g>
+	</g>
+</svg>

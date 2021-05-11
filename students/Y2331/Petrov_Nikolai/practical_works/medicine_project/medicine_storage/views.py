@@ -1,8 +1,10 @@
+import rest_framework.request
 from django.contrib import auth
 from django.contrib.auth import forms as auth_forms
 from django.shortcuts import render, redirect
-from django.contrib.auth.models import User, Group
-from rest_framework import mixins, generics
+from django.contrib.auth.models import User
+from rest_framework import mixins, generics, permissions, status
+from rest_framework.response import Response
 
 from . import models, serializers
 
@@ -28,6 +30,8 @@ class UsersList(mixins.ListModelMixin,
     queryset = User.objects.all()
     serializer_class = serializers.UserSerializer
 
+    permission_classes = [permissions.IsAuthenticated]
+
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)
 
@@ -37,6 +41,8 @@ class ActiveSubstancesList(mixins.ListModelMixin,
                            generics.GenericAPIView):
     queryset = models.ActiveSubstance.objects.all()
     serializer_class = serializers.ActiveSubstanceSerializer
+
+    permission_classes = [permissions.IsAuthenticated]
 
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)
@@ -51,6 +57,8 @@ class ManufacturersList(mixins.ListModelMixin,
     queryset = models.Manufacturer.objects.all()
     serializer_class = serializers.ManufacturerSerializer
 
+    permission_classes = [permissions.IsAuthenticated]
+
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)
 
@@ -64,6 +72,8 @@ class ItemsList(mixins.ListModelMixin,
     queryset = models.Item.objects.all()
     serializer_class = serializers.ItemSerializer
 
+    permission_classes = [permissions.IsAuthenticated]
+
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)
 
@@ -73,14 +83,14 @@ class ItemsList(mixins.ListModelMixin,
 
 class UnitsList(mixins.ListModelMixin,
                 mixins.CreateModelMixin,
+                mixins.DestroyModelMixin,
                 generics.GenericAPIView):
     serializer_class = serializers.UnitSerializer
 
-    # queryset = models.Unit.objects.all()
+    permission_classes = [permissions.IsAuthenticated]
 
     def get_queryset(self):
         user = self.request.user
-        print(user)
         return models.Unit.objects.filter(user=user)
 
     def get(self, request, *args, **kwargs):
@@ -88,3 +98,11 @@ class UnitsList(mixins.ListModelMixin,
 
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
+
+    def delete(self, request, *args, **kwargs):
+        pk = request.query_params['pk']
+        try:
+            models.Unit.objects.get(id=pk).delete()
+            return Response(status=status.HTTP_200_OK)
+        except:
+            return Response(status=status.HTTP_500_INTERNAL_SERVER_ERROR)

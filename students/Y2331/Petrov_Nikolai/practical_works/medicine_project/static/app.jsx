@@ -8,13 +8,19 @@ class App extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            'loading': true
+            'loading': true,
+            'data': {
+                'units': [],
+                'items:': [],
+                'manufactures': [],
+                'active_substances': []
+            }
         }
         this.url = "http://127.0.0.1:8000/"
     }
 
-    async componentDidMount() {
-        let resp;
+    async reload_data() {
+        let resp
 
         resp = await fetch(this.url + 'api/manufactures?format=json')
         let manufactures = await resp.json()
@@ -31,24 +37,21 @@ class App extends React.Component {
         this.setState({
             'loading': false,
             'data': {
-                'items': items.map((item) =>
-                    [item['name'], item['packaging'], item['active_substance'], item['manufacturer']]),
-                'active_substances': active_substances.map((item) =>
-                    [item['name']]
-                ),
-                'manufactures': manufactures.map((item) =>
-                    [item['name'], item['country']]
-                ),
-                'units': units.map((item) =>
-                    [item['item'], item['amount'], item['product_date']]
-                )
+                'units': units,
+                'items': items,
+                'manufactures': manufactures,
+                'active_substances': active_substances
             }
         })
     }
 
+    async componentDidMount() {
+        await this.reload_data()
+    }
+
     render() {
         if (this.state.loading) return <span>Loading...</span>
-        return <InteractiveTable items={this.state.data}/>
+        return <InteractiveTable data={this.state.data}/>
     }
 }
 
@@ -89,6 +92,26 @@ class InteractiveTable extends React.Component {
                 </a>
             </li>)
         })
+
+        let body
+        switch (this.state.selected) {
+            case 'units':
+                body = this.props.data['units'].map((item) =>
+                    [item['item'], item['amount'], item['product_date']])
+                break
+            case 'items':
+                body = this.props.data['items'].map((item) =>
+                    [item['name'], item['packaging'], item['active_substance'], item['manufacturer']])
+                break
+            case 'active_substances':
+                body = this.props.data['active_substances'].map((item) =>
+                    [item['name']])
+                break
+            case 'manufactures':
+                body = this.props.data['manufactures'].map((item) =>
+                    [item['name'], item['country']])
+                break
+        }
         return (
             <>
                 <div className="tabs is-boxed mb-1">
@@ -98,7 +121,7 @@ class InteractiveTable extends React.Component {
                 </div>
                 <Table
                     headers={this.headers[this.state.selected]}
-                    body={this.props.items[this.state.selected]}
+                    body={body}
                 />
                 <button className="button is-info is-light">Добавить</button>
             </>
