@@ -24,6 +24,7 @@ def generate_card(model: Type[Model]):
     CardModel.create(model_hash, model.__doc__, model.__name__.lower(), model.__name__).save()
     return model
 
+
 @generate_views(root_path='/building')
 @generate_to_str.from_pattern('Здание @name по адресу @address ')
 @generate_card
@@ -32,7 +33,6 @@ class Building(Model):
     Building model...
     @:param 34234
     """
-    id = IntegerField(primary_key=True, auto_created=True)
     name = CharField(max_length=40)
     land = IntegerField()
     address = TextField(null=False)
@@ -44,7 +44,6 @@ class Building(Model):
 @generate_to_str.from_pattern('@type @name (@phone)')
 @generate_card
 class Department(Model):
-    id = IntegerField(primary_key=True, auto_created=True)
     name = CharField(max_length=40)
     boss = CharField(max_length=40)
     phone = CharField(max_length=10)
@@ -69,7 +68,6 @@ class Worker(Model):
                               ' управляет подразделением с номером @department_id')
 @generate_card
 class Management(Model):
-    id = IntegerField(primary_key=True, auto_created=True)
     start_date = DateField()
     end_date = DateField(null=True)
 
@@ -81,7 +79,6 @@ class Management(Model):
 @generate_to_str.from_pattern('Аудитория @code @target')
 @generate_card
 class Hall(Model):
-    id = IntegerField(primary_key=True, auto_created=True)
     code = IntegerField()
     square = IntegerField(null=True)
     window = IntegerField(null=True)
@@ -96,7 +93,6 @@ class Hall(Model):
                               'несет ответственность за аудиторию с номером @hall_id ')
 @generate_card
 class Responsibility(Model):
-    id = IntegerField(primary_key=True, auto_created=True)
     start_date = DateField()
     end_date = DateField(null=True)
 
@@ -128,7 +124,6 @@ class Unit(Model):
 @generate_to_str.from_pattern('Аудитория с номером @hall_id содержит единицу имущества с номером @unit_id')
 @generate_card
 class Consist(Model):
-    id = IntegerField(primary_key=True, auto_created=True)
     start_date = DateField()
     end_date = DateField(null=False)
 
@@ -141,7 +136,6 @@ class Consist(Model):
                               'единицы имущества с номером @unit_id c @cost_before на @cost_after руб')
 @generate_card
 class Revaluation(Model):
-    id = IntegerField(primary_key=True, auto_created=True)
     unit = ForeignKey(Unit.model, on_delete=CASCADE)
     date = DateField()
     cost_after = IntegerField()

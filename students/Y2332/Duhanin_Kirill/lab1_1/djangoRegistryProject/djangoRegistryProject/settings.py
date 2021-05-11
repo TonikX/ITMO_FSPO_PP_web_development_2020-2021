@@ -40,7 +40,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'registry.apps.RegistryConfig',
     'drf_yasg',
-    'rest_framework_swagger'
+    # 'rest_framework_swagger'
     # 'search.apps.SearchConfig',
     # 'django.contrib.postgres',
 ]

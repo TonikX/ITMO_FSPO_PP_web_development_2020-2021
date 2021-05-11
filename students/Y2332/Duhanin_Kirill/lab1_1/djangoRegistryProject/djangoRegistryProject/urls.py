@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.conf.urls import url
 from django.contrib import admin
+from django.shortcuts import redirect
 from django.urls import path, include
 from django.views.generic import ListView
 
@@ -45,6 +46,7 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('home', CardView.as_view()),
     path('doc/swagger', schema_view.as_view()),
+    path('', lambda req: redirect('/home')),
     # url(r'^$', get_swagger_view(title='Pastebin API'))
     # path('doc/swagger', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 ]
@@ -53,7 +55,7 @@ for model in [Building, Department, Worker, Management, Hall, Responsibility, Pr
     name, root = model.__name__, model.__name__.lower()
     urlpatterns += [
         path(f'{root}/list', model.generate_list_view(title=f'{name} list', paginate_by=2)),
-        path(f'{root}/<int:pk>', model.generate_detail_view(title=f'{name} details')),
+        path(f'{root}/<int:pk>', model.generate_detail_view(title=f'{name} details', login_required=True, user_groups=['group1'], foreign='building')),
         path(f'{root}/create', model.generate_create_view()),
         path(f'{root}/<int:pk>/delete', model.generate_delete_view()),
         path(f'{root}/search', model.generate_search_view(), name=f'search_results'),

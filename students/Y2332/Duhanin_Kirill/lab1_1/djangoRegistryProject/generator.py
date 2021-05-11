@@ -2,6 +2,7 @@ import encodings.utf_8
 import re
 from functools import reduce
 from typing import Type, overload
+import os
 
 from django.contrib.auth import decorators
 from django.db.models import Model, Field, CharField, TextField
@@ -17,6 +18,7 @@ def replace_by(s: str, replaces: dict):
         s = s.replace(old, str(new))
     return s
 
+
 def _get_template(path, mapped_fields={}, **replaces):
     template = open(path, 'r', encoding='utf-8').read()
     template = replace_by(template, mapped_fields)
@@ -24,8 +26,10 @@ def _get_template(path, mapped_fields={}, **replaces):
         template = template.replace(f'@{old}', str(new))
     return template
 
+
 def _get_class(name, *bases, **fields):
     return type(name, bases, fields)
+
 
 class ViewGenerator:
     def __init__(self, model: Type[Model], fields=None, root_path='/'):
@@ -74,7 +78,8 @@ class ViewGenerator:
                 name=sentencecase(self.model.__name__).lower(), **kwargs
             )
 
-            template_name = f'{model_name}_delete_view.html'
+            template_name = f'{model_name}/{model_name}_delete_view.html'
+            os.makedirs(os.path.dirname('/templates/' + template_name), exist_ok=True)
             open(f'templates/{template_name}', 'wb').write(template.encode('utf-8'))
 
             self.delete_view = _get_class(
@@ -103,7 +108,8 @@ class ViewGenerator:
                 name=sentencecase(self.model.__name__).lower(), **kwargs
             )
 
-            template_name = f'{model_name}_create_view.html'
+            template_name = f'{model_name}/{model_name}_create_view.html'
+            os.makedirs(os.path.dirname('templates/' + template_name), exist_ok=True)
             open(f'templates/{template_name}', 'w').write(template)
 
             self.create_view = _get_class(
@@ -132,7 +138,9 @@ class ViewGenerator:
                 ]), **kwargs
             )
 
-            template_name = f'{model_name}_list_view.html'
+            template_name = f'{model_name}/{model_name}_list_view.html'
+            pth = os.path.dirname('templates/' + template_name)
+            os.makedirs(pth, exist_ok=True)
             open(f'templates/{template_name}', 'w').write(template)
 
             self.list_view = _get_class(
@@ -157,7 +165,8 @@ class ViewGenerator:
                 name=sentencecase(self.model.__name__).lower(), **kwargs,
             )
 
-            template_name = f'{model_name}_detail_view.html'
+            template_name = f'{model_name}/{model_name}_detail_view.html'
+            os.makedirs(os.path.dirname('templates/' + template_name), exist_ok=True)
             open(f'templates/{template_name}', 'w').write(template)
 
             self.detail_view = _get_class(
@@ -185,7 +194,8 @@ class ViewGenerator:
                 ]), **kwargs
             )
 
-            template_name_ = f'{model_name}_search_view.html'
+            template_name_ = f'{model_name}/{model_name}_search_view.html'
+            os.makedirs(os.path.dirname('templates/' + template_name_), exist_ok=True)
             open(f'templates/{template_name_}', 'w').write(template)
 
             class GeneratedSearchResultView(ListView):
@@ -208,8 +218,10 @@ class ViewGenerator:
 
         return self.search_view.as_view()
 
+
 def generate_views(model: Type[Model]) -> ViewGenerator:
     return ViewGenerator(model)
+
 
 def generate_views(root_path=None, fields=None):
     def wrapper(model: Type[Model]) -> ViewGenerator:
@@ -217,6 +229,7 @@ def generate_views(root_path=None, fields=None):
             return ViewGenerator(model, fields=fields)
         return ViewGenerator(model, fields=fields, root_path=root_path)
     return wrapper
+
 
 class generate_to_str:
     def __init__(self, fields=None, pattern=None):

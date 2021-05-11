@@ -5,7 +5,18 @@
 {% block content %}
     <br/>
     <p>
-        {{ object }}
+        <ul>
+            <li>
+                {{ object }}
+                <ul>
+                    <li>
+                        {{ object.@foreign }}
+                        <a href="/building/{{ object.@foreign.id }}"><span class="badge badge-pill badge-primary">Detail</span></a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
     </p>
     <br/>
     <p><a href="@root_path/list">Back</a></p>
