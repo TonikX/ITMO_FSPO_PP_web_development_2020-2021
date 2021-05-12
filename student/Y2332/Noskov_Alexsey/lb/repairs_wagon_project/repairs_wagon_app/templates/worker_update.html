@@ -1,0 +1,11 @@
+{% include 'menu.html' %}
+{% include 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+<ol>
+  <h1 class="mt-2">Изменить данные о рабочем</h1>
+  {% crispy form %}
+</ol>
+{% endblock %}

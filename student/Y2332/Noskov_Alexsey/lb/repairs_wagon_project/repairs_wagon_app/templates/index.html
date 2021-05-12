@@ -1,0 +1,17 @@
+{% extends 'home/base.html' %}
+{% block page %}
+    <h1>Публикации</h1>
+    {% if article_lists %}
+        {% for article in object_list %}
+            <article>
+                <a href="{{ article.get_absolute_url }}">
+                    <h2>{{ article.article_title }}</h2>
+                </a>
+                {{ article.desctription|safe }}
+                <p><a class="btn btn-default btn-sm" href="{{ article.get_absolute_url }}">Читать далее</a></p>
+            </article>
+        {% endfor %}
+    {% endif %}
+{% load bootstrap3 %}
+{% bootstrap_pagination page_obj %}
+{% endblock %}
