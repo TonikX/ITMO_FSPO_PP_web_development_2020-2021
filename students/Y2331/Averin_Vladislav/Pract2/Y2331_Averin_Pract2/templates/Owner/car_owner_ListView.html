@@ -1,0 +1,17 @@
+<ul>
+    <!-- Iterate over object_list -->
+    {% for object in object_list %}
+    <!-- Display Objects -->
+    <body>
+        <li>Имя: {{ object.first_name }}</li>
+        <li>Имя: {{ object.last_name }}</li>
+        <li>Дата_рождения: {{ object.date_birth }}</li>
+        <a href="/CarOwner/{{object.id}}">Get</a>
+    </body>
+
+    <hr/>
+    <!-- If objet_list is empty  -->
+    {% empty %}
+    <li>No objects yet.</li>
+    {% endfor %}
+</ul>

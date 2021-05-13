@@ -1,0 +1,30 @@
+{% load static %}
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>{% block title %}{% endblock %}</title>
+        <link rel="stylesheet" type="text/css" href="{% static 'base.css' %}">
+    </head>
+    <body>
+    <ul>
+        <li><a href="/">Главная</a></li>
+        <li><a href="/owner">Владельцы</a>
+            <ul>
+                <li><a href="/owner/create">Добавить</a></li>
+                <li><a href="/owner">Посмотреть</a></li>
+            </ul>
+        </li>
+        <li><a href="/car">Автомобили</a>
+            <ul>
+                <li><a href="/car/create">Добавить</a></li>
+                <li><a href="/car">Посмотреть</a></li>
+            </ul>
+        </li>
+        <li><a href="/admin">Админ</a></li>
+    </ul>
+    <div>
+        {% block content %}{% endblock %}
+    </div>
+    </body>
+</html>
