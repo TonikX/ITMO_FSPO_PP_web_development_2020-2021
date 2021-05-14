@@ -1,25 +1,23 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
-{% block title %}{{ title }}{% endblock %}
-{% block block_title %}{{ title }}{% endblock %}
+{% block title %}Search results{% endblock %}
+{% block block_title %}Search results{% endblock %}
 {% block content %}
-
-{#    <nav class="navbar navbar-light bg-light">#}
-    <a href="{{ root_path }}/create"><button type="button" class="btn btn-success">Create</button></a>
-{#      <form class="form-inline">#}
-{#        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">#}
-{#        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>#}
-{#      </form>#}
-{#    </nav>#}
+    <a href="/management/create"><button type="button" class="btn btn-success">Create</button></a>
     <hr/>
     <ul>
       {% for object in object_list %}
             {{ object }}
         <div class="btn-group btn-group-sm me-2 float-right" role="group" aria-label="First group">
-            <a class="btn btn-outline-primary" href="{{ root_path }}/{{ object.id }}">Details</a>
-            <a class="btn btn-outline-primary" href="{{ root_path }}/{{ object.id }}/update">Edit</a>
-            <a class="btn btn-outline-primary" href="{{ root_path }}/{{ object.id }}/delete">Delete</a>
+            <a class="btn btn-outline-primary" href="/management/{{ object.id }}">Details</a>
+            <a class="btn btn-outline-primary" href="/management/{{ object.id }}/update">Edit</a>
+            <a class="btn btn-outline-primary" href="/management/{{ object.id }}/delete">Delete</a>
         </div>
+{#        <p class="action">#}
+{#            <a class="action" href="/management/{{ object.id }}">Details</a>#}
+{#            <a class="action" href="/management/{{ object.id }}/update">Edit</a>#}
+{#            <a class="action" href="/management/{{ object.id }}/delete">Delete</a>#}
+{#        </p>#}
         <hr/>
         {% empty %}
         No objects yet.

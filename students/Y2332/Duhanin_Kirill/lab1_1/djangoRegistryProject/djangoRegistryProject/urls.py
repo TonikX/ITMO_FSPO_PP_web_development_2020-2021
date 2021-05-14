@@ -28,35 +28,20 @@ from registry.models import *
 from registry.views import CardView
 
 
-schema_view = get_schema_view(
-   openapi.Info(
-      title="API",
-      default_version='v2',
-      description="Description",
-      terms_of_service="https://www.google.com/policies/terms/",
-      contact=openapi.Contact(email="hardbeat34@gmail.com"),
-      license=openapi.License(name="BSD License"),
-   ),
-   public=True,
-   permission_classes=(permissions.AllowAny,),
-)
-
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/', include('django.contrib.auth.urls')),
     path('home', CardView.as_view()),
-    path('doc/swagger', schema_view.as_view()),
     path('', lambda req: redirect('/home')),
-    # url(r'^$', get_swagger_view(title='Pastebin API'))
-    # path('doc/swagger', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
 ]
 
 for model in [Building, Department, Worker, Management, Hall, Responsibility, Property, Unit, Consist, Revaluation]:
     name, root = model.__name__, model.__name__.lower()
     urlpatterns += [
         path(f'{root}/list', model.generate_list_view(title=f'{name} list', paginate_by=2)),
-        path(f'{root}/<int:pk>', model.generate_detail_view(title=f'{name} details', login_required=True, user_groups=['group1'], foreign='building')),
+        path(f'{root}/<int:pk>', model.generate_detail_view()),
         path(f'{root}/create', model.generate_create_view()),
         path(f'{root}/<int:pk>/delete', model.generate_delete_view()),
         path(f'{root}/search', model.generate_search_view(), name=f'search_results'),
+        path(f'{root}/<int:pk>/update', model.generate_update_view())
     ]

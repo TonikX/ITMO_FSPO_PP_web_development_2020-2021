@@ -1,10 +1,6 @@
 from typing import Type
-
-from django.contrib.auth.decorators import user_passes_test
 from django.db.models import *
-import hashlib
-
-from generator import generate_views, generate_to_str
+from generator import generate_views, generate_to_str, one_to_one
 
 
 class CardModel(Model):
@@ -19,8 +15,7 @@ class CardModel(Model):
 
 
 def generate_card(model: Type[Model]):
-    fields = ' '.join(map(lambda t: t[0] + str(type(t[1])), model.__dict__))
-    model_hash = hashlib.sha256((model.__name__ ).encode()).hexdigest()
+    model_hash = model.__name__
     CardModel.create(model_hash, model.__doc__, model.__name__.lower(), model.__name__).save()
     return model
 
@@ -41,13 +36,11 @@ class Building(Model):
 
 
 @generate_views(root_path='/department')
-@generate_to_str.from_pattern('@type @name (@phone)')
+@generate_to_str.from_pattern('@name (@phone)')
 @generate_card
 class Department(Model):
     name = CharField(max_length=40)
-    boss = CharField(max_length=40)
     phone = CharField(max_length=10)
-    office_dean = CharField(max_length=30)
     building = ForeignKey(Building.model, on_delete=CASCADE)
     start_date = DateField()
     type = CharField(max_length=20) # todo add choises
@@ -64,9 +57,10 @@ class Worker(Model):
 
 
 @generate_views(root_path='/management')
-@generate_to_str.from_pattern('Работник с номером @worker_service_number'
-                              ' управляет подразделением с номером @department_id')
+@generate_to_str.from_pattern('Работник "@worker"'
+                              ' управляет подразделением "@department" ')
 @generate_card
+@one_to_one(Worker, Department)
 class Management(Model):
     start_date = DateField()
     end_date = DateField(null=True)
@@ -89,9 +83,10 @@ class Hall(Model):
 
 
 @generate_views(root_path='/responsibility')
-@generate_to_str.from_pattern('Работник с номером @worker_service_number '
-                              'несет ответственность за аудиторию с номером @hall_id ')
+@generate_to_str.from_pattern('Работник с номером '
+                              'несет ответственность за аудиторию с номером ')
 @generate_card
+@one_to_one(Worker, Hall)
 class Responsibility(Model):
     start_date = DateField()
     end_date = DateField(null=True)
@@ -112,17 +107,17 @@ class Property(Model):
 @generate_to_str.from_pattern('Единица имущества @name с номером @id')
 @generate_card
 class Unit(Model):
-    id = IntegerField(primary_key=True, auto_created=True)
     name = CharField(max_length=30)
     date_start = DateField()
     cost = IntegerField()
     period = IntegerField()
-    standard_code = ForeignKey(Property.model, on_delete=CASCADE)
+    property = ForeignKey(Property.model, on_delete=CASCADE)
 
 
 @generate_views(root_path='/consist')
-@generate_to_str.from_pattern('Аудитория с номером @hall_id содержит единицу имущества с номером @unit_id')
+@generate_to_str.from_pattern('Аудитория с номером содержит единицу имущества с номером @unit_id')
 @generate_card
+@one_to_one(Hall, Unit)
 class Consist(Model):
     start_date = DateField()
     end_date = DateField(null=False)
@@ -133,7 +128,7 @@ class Consist(Model):
 
 @generate_views(root_path='/revaluation')
 @generate_to_str.from_pattern('Переоценка от @date изменила стоимость '
-                              'единицы имущества с номером @unit_id c @cost_before на @cost_after руб')
+                              'единицы имущества с номером c @cost_before на @cost_after руб')
 @generate_card
 class Revaluation(Model):
     unit = ForeignKey(Unit.model, on_delete=CASCADE)

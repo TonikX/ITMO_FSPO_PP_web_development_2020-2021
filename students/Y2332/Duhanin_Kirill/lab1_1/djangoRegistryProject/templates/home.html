@@ -1,10 +1,8 @@
 {% extends "base.html" %}
 {% load crispy_forms_tags %}
-{% block title %}Heme{% endblock %}
+{% block title %}Home{% endblock %}
 {% block block_title %}Home{% endblock %}
 {% block content %}
-    <hr/>
-{#    <ul>#}
     <div class="card-columns">
       {% for object in object_list %}
         <div class="card" style="width: 18rem; margin-left: 3rem">
@@ -15,6 +13,7 @@
                 <div class="btn-group btn-group-sm me-2 float-left" role="group" aria-label="First group" style="margin-bottom: 10px">
                     <a href="/{{ object.root }}/list" class="card-link btn btn-outline-primary">View all</a>
                     <a href="/{{ object.root }}/create" class="card-link btn btn-outline-primary">Create</a>
+                    <a href="/{{ object.root }}/search" class="card-link btn btn-outline-primary">Search</a>
                 </div>
             </div>
         </div>
@@ -22,5 +21,4 @@
         No objects yet.
       {% endfor %}
     </div>
-{#    </ul>#}
 {% endblock %}
