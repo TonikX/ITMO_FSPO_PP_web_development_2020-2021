@@ -1,19 +1,16 @@
-import encodings.utf_8
 import re
 from collections import namedtuple
 from dataclasses import dataclass
 from functools import reduce
-from typing import Type, overload
-import os
+from typing import Type
 
 from django.contrib.auth import decorators
-from django.db.models import Model, Field, CharField, TextField
+from django.db.models import Model
 from django.db.models.fields.related_descriptors import ForeignKeyDeferredAttribute, ForwardManyToOneDescriptor
 from django.db.models.query_utils import DeferredAttribute, Q
-from django.forms import ModelForm
 from django.views import View
 from django.views.generic import ListView, CreateView, DeleteView, DetailView, UpdateView
-from stringcase import snakecase, sentencecase
+from stringcase import snakecase
 
 
 def replace_by(s: str, replaces: dict):
