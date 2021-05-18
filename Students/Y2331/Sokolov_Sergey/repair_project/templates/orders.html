@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    {% load bootstrap3 %}
+    <title>Список заказов</title>
+</head>
+<body>
+
+{% include "parts/navbar.html" %}
+
+{% block page %}
+    {% if orders_set %}
+        <table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+            <tr>
+                <td>Идентификатор заказа</td>
+                <td>Техника</td>
+                <td>Ответственный</td>
+                <td>Услуга</td>
+                <td>Виновность</td>
+                <td>Готовность</td>
+                <td>Заметка</td>
+                {% if request.user.is_authenticated %}
+                <td>Редактирование</td>
+                {% endif %}
+            </tr>
+
+                {% for order in orders_set %}
+                    <tr>
+                    <td>{{ order.id }}</td>
+                    <td>{{ order.technique }}</td>
+                    <td>{{ order.master }}</td>
+                    <td>{{ order.price_list }}</td>
+                    <td>{{ order.status_guilt }}</td>
+                    <td>{{ order.status_execution }}</td>
+                    <td>{{ order.note }}</td>
+                    {% if request.user.is_authenticated %}
+                    <td>
+                        <a href="{{ order.id }}/update">Изменить</a>,
+                        <a href="{{ order.id }}/delete">Удалить</a>
+                    </td>
+                    {% endif %}
+                    </tr>
+                {% endfor %}
+
+            <tr>
+                <td colspan="10"><a href="create">Добавить</a></td>
+            </tr>
+        </table>
+        {% bootstrap_pagination orders_set url=last_questioin %}
+    {% else %}
+        <p>Ничего не найдено</p>
+    {% endif%}
+{% endblock %}
+</body>
+</html>

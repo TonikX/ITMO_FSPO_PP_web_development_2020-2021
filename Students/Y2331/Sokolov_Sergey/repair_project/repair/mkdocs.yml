@@ -1,0 +1,19 @@
+theme: material
+
+site_name: Описание сервиса "Спектр"
+nav:
+  - Главная страница: index.md
+  - Cущности:
+      - Customer: entities/customer.md
+      - Technique: entities/technique.md
+      - ModelTechnique: entities/model.md
+      - Master: entities/master.md
+      - Order: entities/order.md
+      - PriceList: entities/pricelist.md
+  - Страницы:
+    - customers/: models/customer.md
+    - models/: models/model.md
+    - technique/: models/technique.md
+    - masters/: models/master.md
+    - orders/: models/order.md
+    - price_list/: models/pricelist.md

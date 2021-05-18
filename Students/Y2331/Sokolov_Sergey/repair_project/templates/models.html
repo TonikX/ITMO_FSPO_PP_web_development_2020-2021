@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    {% load bootstrap3 %}
+    <title>Список моделей техники</title>
+</head>
+<body>
+{% include "parts/navbar.html" %}
+{% block page %}
+<table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+        <tr>
+            <td>Идентификатор модели техники</td>
+            <td>Бренд модели техники</td>
+            <td>Тип техники</td>
+            <td>Производитель техники</td>
+            {% if request.user.is_authenticated %}
+            <td>Редактирование</td>
+            {% endif %}
+        </tr>
+
+        {% for model in models_set %}
+            <tr>
+            <td>{{ model.id }}</td>
+            <td>{{ model.brand_technique }}</td>
+            <td>{{ model.type_technique }}</td>
+            <td>{{ model.manufacturer_technique }}</td>
+
+            {% if request.user.is_authenticated %}
+            <td>
+                <a href="{{ model.id }}/delete">Удалить</a>,
+                <a href="{{ model.id }}/update">Изменить</a>
+            </td>
+            </tr>
+            {% endif %}
+        {% endfor %}
+
+    <tr>
+        <td colspan="10"><a href="create">Добавить</a></td>
+    </tr>
+    </table>
+{% bootstrap_pagination models_set %}
+{% endblock %}
+</body>
+</html>

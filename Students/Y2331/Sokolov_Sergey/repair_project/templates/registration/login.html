@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <meta charset="UTF-8">
+    <title>Login page</title>
+</head>
+<body>
+    <section class="section">
+        <div class="box is-half">
+            <h1 class="title is-1">Авторизация</h1>
+
+            {% if next %}
+              {% if user.is_authenticated %}
+                <p>Ваш аккаунт не имеет достаточно прав доступа, чтобы видеть эту страницу.</p>
+              {% else %}
+                <p>Для этого, пожалуйста, авторизируйтесь.</p>
+              {% endif %}
+            {% endif %}
+
+            <form method="POST" action="{% url 'login' %}"> {% csrf_token%}
+                <input class="input mb-3" name="username" placeholder="Логин">
+                <input class="input mb-3" name="password" type="password" placeholder="Пароль">
+                <input type="submit" class="button" value="Авторизоваться" />
+                <input type="hidden" name="next" value="{{ next }}" />
+            </form>
+        </div>
+    </section>
+</body>
+</html>

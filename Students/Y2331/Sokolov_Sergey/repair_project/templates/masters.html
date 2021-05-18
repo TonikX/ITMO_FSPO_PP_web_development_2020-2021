@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Список заказов</title>
+    {% load bootstrap3 %}
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+</head>
+<body>
+
+{% include "parts/navbar.html" %}
+{% block page %}
+<table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+    <tr>
+        <td>Персональный номер мастера</td>
+        <td>Имя мастера</td>
+        <td>Номер страховки мастера</td>
+        <td>Номер телефона</td>
+        <td>Номер паспорта</td>
+        <td>Квалификация мастера</td>
+        <td>Опыт работы</td>
+        <td>Сумма штрафов</td>
+        {% if request.user.is_authenticated %}
+        <td>Редактирование</td>
+        {% endif %}
+    </tr>
+    {% for master in masters_set %}
+        <tr>
+            <td>{{ master.id }}</td>
+            <td>{{ master.master_full_name }}</td>
+            <td>{{ master.insurance_number }}</td>
+            <td>{{ master.master_phone }}</td>
+            <td>{{ master.master_passport }}</td>
+            <td>{{ master.master_qualification }}</td>
+            <td>{{ master.work_experience }}</td>
+            <td>{{ master.sum_amount_fine }}</td>
+            {% if request.user.is_authenticated %}
+            <td>
+                <a href="{{ master.id }}/delete">Удалить</a>,
+                <a href="{{ master.id }}/update">Изменить</a>
+            </td>
+            </tr>
+            {% endif %}
+    {% endfor %}
+
+    <tr>
+        <td colspan="10"><a href="create">Добавить</a></td>
+    </tr>
+</table>
+{% bootstrap_pagination masters_set %}
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    {% load bootstrap3 %}
+    <title>Список клиентов</title>
+</head>
+<body>
+{% include "parts/navbar.html" %}
+{% block page %}
+<table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+        <tr>
+            <td>Идентификатор клиента</td>
+            <td>ФИО клиента</td>
+            <td>Телефонный номер клиента</td>
+            <td>Тип клиента</td>
+            <td>ФИО начальника</td>
+            <td>ИНН клиента</td>
+            <td>Адрес клиента</td>
+            <td>Район клиента</td>
+            <td>Номер банковского аккаунта клиента</td>
+            <td>Связанные заказы</td>
+            {% if request.user.is_authenticated %}
+            <td>Редактирование</td>
+            {% endif %}
+        </tr>
+
+        {% for customer in customer_set %}
+            <tr>
+            <td>{{ customer.id }}</td>
+            <td>{{ customer.representative_full_name }}</td>
+            <td>{{ customer.customer_telephone }}</td>
+            <td>{{ customer.customer_type }}</td>
+            <td>{{ customer.supervisor_full_name }}</td>
+            <td>{{ customer.customer_inn }}</td>
+            <td>{{ customer.customer_address }}</td>
+            <td>{{ customer.customer_distinct }}</td>
+            <td>{{ customer.customer_account_number }}</td>
+            <td><a href="{{ customer.id }}/orders">Заказы</a></td>
+            {% if request.user.is_authenticated %}
+            <td>
+                <a href="{{ customer.id }}/delete">Удалить</a>,
+                <a href="{{ customer.id }}/update">Изменить</a>
+            </td>
+            {% endif %}
+            </tr>
+        {% endfor %}
+    <tr>
+        <td colspan="10"><a href="create">Добавить</a></td>
+    </tr>
+    </table>
+{% bootstrap_pagination customer_set %}
+{% endblock %}
+</body>
+</html>

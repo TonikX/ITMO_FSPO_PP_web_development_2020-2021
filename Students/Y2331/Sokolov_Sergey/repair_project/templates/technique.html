@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    {% load bootstrap3 %}
+    <title>Список техники</title>
+</head>
+<body>
+{% include "parts/navbar.html" %}
+{% block page %}
+<table class="table is-bordered is-striped is-narrow is-hoverable is-fullwidth">
+       <tr>
+            <td>Идентификатор техники</td>
+            <td>Модель техники</td>
+            <td>Владелец техники</td>
+            <td>Дата создания</td>
+            <td>Дата окончания гарантии</td>
+           {% if request.user.is_authenticated %}
+            <td>Редактирование</td>
+           {% endif %}
+        </tr>
+
+        {% for technique in technique_set %}
+            <tr>
+            <td>{{ technique.id }}</td>
+            <td>{{ technique.model_technique }}</td>
+            <td>{{ technique.customer }}</td>
+            <td>{{ technique.date_create }}</td>
+            <td>{{ technique.date_end_guarantee }}</td>
+            {% if request.user.is_authenticated %}
+            <td>
+                <a href="{{ technique.id }}/delete">Удалить</a>,
+                <a href="{{ technique.id }}/update">Изменить</a>
+            </td>
+            </tr>
+            {% endif %}
+        {% endfor %}
+
+    <tr>
+        <td colspan="10"><a href="create">Добавить</a></td>
+    </tr>
+</table>
+{% bootstrap_pagination technique_set  %}
+{% endblock %}
+</body>
+</html>

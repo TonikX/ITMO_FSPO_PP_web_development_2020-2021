@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+    <title>Заказы</title>
+</head>
+<body>
+{% include 'parts/navbar.html' %}
+    <section class="section">
+        <div class="box">
+            <h1 class="title is-1"> Клиент </h1>
+            <ul>
+                <li>{{ customer.representative_full_name }}</li>
+                <li>{{ customer.customer_telephone }}</li>
+                <li>{{ customer.customer_type }}</li>
+                <li>{{ customer.supervisor_full_name }}</li>
+                <li>{{ customer.customer_inn }}</li>
+                <li>{{ customer.customer_address }}</li>
+                <li>{{ customer.customer_distinct }}</li>
+                <li>{{ customer.customer_account_number }}</li>
+            </ul>
+
+            <h1 class="title is-1"> Заказы </h1>
+            {% for order in order_set %}
+                <hr>
+                <ul>
+                    <li class="title is-2"><h2>Заказ - {{ order.id }}</h2></li>
+                    <li>{{ order.technique }}</li>
+                    <li>{{ order.master }}</li>
+                    <li>{{ order.price_list }}</li>
+                    <li>{{ order.status_guilt }}</li>
+                    <li>{{ order.status_execution }}</li>
+                    <li>{{ order.note }}</li>
+                </ul>
+            {% endfor %}
+        </div>
+    </section>
+</body>
+</html>
