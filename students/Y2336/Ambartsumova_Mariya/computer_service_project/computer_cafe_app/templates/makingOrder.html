@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Бронирование</title>
+</head>
+<body>
+{% extends 'base.html' %}{% block content %}
+    <div class="form-control-sm">
+        <form action="" method="post">{% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" value="Забронировать">
+        </form>
+    </div>
+{% endblock content %}
+</body>
+</html>

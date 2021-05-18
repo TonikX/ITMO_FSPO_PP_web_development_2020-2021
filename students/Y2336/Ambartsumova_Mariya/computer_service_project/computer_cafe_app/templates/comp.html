@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Компьютеры</title>
+</head>
+<body>
+{% extends 'base.html' %}
+<div class="clearfix">
+    {% block content %}
+        {% for Computer in object_list %}
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ Computer.title }}</h5>
+                    <p class="card-text">
+                        Регистрационный номер: {{ Computer.registration_number }}<br/>
+                        Год выпуска: {{ Computer.year_of_purchase }}<br/>
+                        Стоимость часа онлайн: {{ Computer.hour_online }} р.<br/>
+                        Стоимость часа за играми: {{ Computer.hour_game }} р.<br/>
+                        Кафе: {{ Computer.cafe }}<br/></p>
+                </div>
+            </div>
+
+        {% endfor %}
+        <div class="pagination">
+        <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; Первая</a>
+            <a href="?page={{ page_obj.previous_page_number }}">Назад</a>
+        {% endif %}
+
+            <span class="current">
+            Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}.
+        </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">Далее</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">Последняя &raquo;</a>
+            {% endif %}
+    </span>
+        </div>
+        <a class="link-info m-lg-1" href="{% url 'home' %}">Вернуться</a>
+    {% endblock content %}
+</div>
+</body>
+</html>

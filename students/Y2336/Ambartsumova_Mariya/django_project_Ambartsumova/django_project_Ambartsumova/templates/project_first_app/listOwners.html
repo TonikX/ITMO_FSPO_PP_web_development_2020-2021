@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of Owners</title>
+</head>
+<body>
+<div class="main">
+    <span><h1>Car owners</h1></span>
+    <a href="createOwner/">Add new one</a>
+    <br>
+    <br>
+    <hr/>
+
+    {% for data in dataset %}
+
+    First name: {{data.first_name}}<br>
+    Second name: {{data.second_name}}<br>
+    Birth date: {{data.birth_date}}<br>
+        <br>
+        Actions:
+        <a href="{{ data.id }}/update/">Edit</a> |
+        <a href="{{ data.id }}/delete/">Delete</a> |
+        <a href="{{ data.id }}/">Detail</a>
+    <hr/>
+
+    {% endfor %}
+</div>
+
+</body>
+</html>

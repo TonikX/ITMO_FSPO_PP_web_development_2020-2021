@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Удаление записи</title>
+</head>
+<body>
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="card-title">Удаление записи о брони</h1>
+    <form action="" method="post" class="form-control-sm">{% csrf_token %}
+      <p>Уверены, что хотите отменить бронь?</p>
+      <input type="submit" value="Подтвердить" />
+    </form>
+{% endblock content %}
+</body>
+</html>

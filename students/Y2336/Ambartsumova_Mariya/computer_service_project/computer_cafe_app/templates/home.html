@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>КомпьютерСервис</title>
+</head>
+<body>
+{% extends 'base.html' %}
+<div class="clearfix">
+    {% block content %}
+        {% for Cafe in object_list %}
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ Cafe.title }}</h5>
+                    <p class="card-text">
+                        Адрес: {{ Cafe.address }}<br/>
+                        Фамилия директора: {{ Cafe.director_surname }}<br/>
+                        Количество компьютеров: {{ Cafe.computer_number }}<br/></p>
+                </div>
+            </div>
+
+        {% endfor %}
+        <a class="link-info m-lg-4" href="{% url 'computers' %}">Посмотреть компьютеры</a>
+    {% endblock content %}
+</div>
+</body>
+</html>

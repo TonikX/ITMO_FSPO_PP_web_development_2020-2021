@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Заказы</title>
+</head>
+<body>
+{% extends 'base.html' %}
+<div class="clearfix">
+    {% block content %}
+        {% for Order in object_list %}
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">{{ Order.id }}</h5>
+                    <p class="card-text">
+                        Кафе: {{ Order.cafe }}<br/>
+                        Компьютер: {{ Order.computer }}<br/>
+                        Время пользования<br/>
+                        - онлайн: {{ Order.online_use }}<br/>
+                        - за играми: {{ Order.game_use }}<br/>
+                        Комментарий: {{ Order.comment }}<br/>
+                        Время начала брони: {{ Order.time_start }}<br/>
+                        Время окончания брони: {{ Order.time_end }}<br/>
+                        Дата бронировния: {{ Order.order_date }}<br/>
+                    <p><a href="{% url 'order_edit' Order.pk %}">+ Изменить бронь</a></p>
+                    <p><a href="{% url 'order_delete' Order.pk %}">+ Удалить бронь</a></p>
+                </div>
+            </div>
+        {% endfor %}
+        <div class="pagination">
+        <span class="step-links">
+        {% if page_obj.has_previous %}
+            <a href="?page=1">&laquo; Первая</a>
+            <a href="?page={{ page_obj.previous_page_number }}">Назад</a>
+        {% endif %}
+
+            <span class="current">
+            Страница {{ page_obj.number }} из {{ page_obj.paginator.num_pages }}.
+        </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">Далее</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">Последняя &raquo;</a>
+            {% endif %}
+    </span>
+        </div>
+        <a class="link-info" href="{% url 'home' %}">На главную</a>
+    {% endblock content %}
+</body>
+</html>
