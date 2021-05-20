@@ -9,7 +9,7 @@
 	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}">
 </head>
 	{%block body%}
-	{%for g in groups%}
+	{%for g in object_list%}
     <div class="card d-inline-block m-2" style="width:300px;">
         <div class="card-body">
           <h4 class="card-title">Group: {{g.id}}</h4>
@@ -22,6 +22,7 @@
         </div>
       </div>
 	{%endfor%}
+    {%include 'pagination.html'%}
 	{%endblock%}
     {%block tbhead%}
     {%filter upper%}

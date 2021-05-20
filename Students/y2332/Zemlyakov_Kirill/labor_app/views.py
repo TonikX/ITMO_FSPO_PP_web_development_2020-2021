@@ -1,5 +1,6 @@
 import datetime
 
+from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
 from django.db.models import F
 from django.http import HttpResponseRedirect, HttpResponse
 from django.shortcuts import render
@@ -16,7 +17,18 @@ def my_groups_list(request):
         jobless = Jobless.objects.get(username=user.username)
         passages = Passage.objects.filter(jobless=jobless, statofadopt=True).values_list('group', flat=True)
         groups = EducationalGroup.objects.filter(id__in=passages)
-        return render(request, 'myGroups.html', context={'groups': groups})
+        paginator = Paginator(groups, 8)
+        page = request.GET.get('page')
+        if (page):
+            page = int(page)
+        try:
+            groups = paginator.page(page)
+        except PageNotAnInteger:
+            page = int(1)
+            groups = paginator.page(1)
+        except EmptyPage:
+            groups = paginator.page(paginator.num_pages)
+        return render(request, 'myGroups.html', context={'object_list': groups,'page':page})
     else:
         return HttpResponse("<h1>You are not authenticated</h1>")
 
@@ -35,7 +47,7 @@ def leave_group(request, pk):
 def delete_user(request):
     user = request.user
     jobless = Jobless.objects.get(username=user.username)
-    jobless.is_active=False
+    jobless.is_active = False
     jobless.save()
     return HttpResponseRedirect('/LogOut/')
 
@@ -74,11 +86,20 @@ def avial_groups(request):
         g.studquan = Passage.objects.filter(group=g).count()
         g.save()
     jobless = Jobless.objects.get(username=request.user.username)
-    programs = EducationalProgram.objects.filter(startdate__lt=datetime.datetime.now(),
-                                                 finishdate__gt=datetime.datetime.now())
-    groups = EducationalGroup.objects.filter(program__in=programs, studquan__lt=F('maxquanstud')).exclude(
-        id__in=Passage.objects.filter(jobless=jobless).values_list('group_id', flat=True))
-    return render(request, 'AvailGroupsList.html', context={'programs': programs, 'groups': groups})
+    programs = EducationalProgram.objects.filter(startdate__lt=datetime.datetime.now(),finishdate__gt=datetime.datetime.now())
+    groups = EducationalGroup.objects.filter(program__in=programs, studquan__lt=F('maxquanstud')).exclude(id__in=Passage.objects.filter(jobless=jobless).values_list('group_id', flat=True)).order_by('id')
+    paginator = Paginator(groups, 2);
+    page = request.GET.get('page')
+    if (page):
+        page = int(page)
+    try:
+        groups = paginator.page(page)
+    except PageNotAnInteger:
+        page = int(1)
+        groups = paginator.page(1)
+    except EmptyPage:
+        groups = paginator.page(paginator.num_pages)
+    return render(request, 'AvailGroupsList.html', context={'programs': programs, 'groups': groups,'page':page})
 
 
 def view_member(request, g_id):
@@ -114,8 +135,19 @@ class OrganizationList(ListView):
         user = request.user
         if user.is_authenticated:
             if user.is_superuser:
-                return render(self.request, 'organizationList.html',
-                              context={'object_list': EducationalOrganization.objects.all()})
+                object_list = EducationalOrganization.objects.all().order_by('id')
+                paginator = Paginator(object_list, 8)
+                page = request.GET.get('page')
+                if(page):
+                    page=int(page)
+                try:
+                    object_list = paginator.page(page)
+                except PageNotAnInteger:
+                    page=int(1)
+                    object_list = paginator.page(1)
+                except EmptyPage:
+                    object_list = paginator.page(paginator.num_pages)
+                return render(self.request, 'organizationList.html', context={'object_list': object_list,'page':page})
             else:
                 return HttpResponse("<h1>You are not admin</h1>")
         else:
@@ -223,8 +255,19 @@ class JoblessList(ListView):
         user = request.user
         if user.is_authenticated:
             if user.is_superuser:
-                return render(self.request, 'joblessList.html',
-                              context={'object_list': Jobless.objects.exclude(username=user.username)})
+                object_list = Jobless.objects.exclude(username=user.username).order_by('id')
+                paginator = Paginator(object_list, 4)
+                page = request.GET.get('page')
+                if (page):
+                    page = int(page)
+                try:
+                    object_list = paginator.page(page)
+                except PageNotAnInteger:
+                    page = int(1)
+                    object_list = paginator.page(1)
+                except EmptyPage:
+                    object_list = paginator.page(paginator.num_pages)
+                return render(self.request, 'joblessList.html', context={'object_list': object_list, 'page': page})
             else:
                 return HttpResponse("<h1>You are not admin</h1>")
         else:
@@ -255,7 +298,19 @@ class StipendList(ListView):
         user = request.user
         if user.is_authenticated:
             if user.is_superuser or user.is_staff:
-                return render(self.request, 'stipendList.html', context={'object_list': Stipend.objects.all()})
+                object_list=Stipend.objects.all().order_by('id')
+                paginator = Paginator(object_list, 8)
+                page = request.GET.get('page')
+                if (page):
+                    page = int(page)
+                try:
+                    object_list = paginator.page(page)
+                except PageNotAnInteger:
+                    page = int(1)
+                    object_list = paginator.page(1)
+                except EmptyPage:
+                    object_list = paginator.page(paginator.num_pages)
+                return render(self.request, 'stipendList.html', context={'object_list': object_list, 'page': page})
             else:
                 return HttpResponse("<h1>You are not admin</h1>")
         else:
@@ -322,8 +377,19 @@ class ProgramList(ListView):
         user = request.user
         if user.is_authenticated:
             if user.is_superuser:
-                return render(self.request, 'programList.html',
-                              context={'object_list': EducationalProgram.objects.all()})
+                object_list=EducationalProgram.objects.all().order_by('id')
+                paginator = Paginator(object_list, 4)
+                page = request.GET.get('page')
+                if (page):
+                    page = int(page)
+                try:
+                    object_list = paginator.page(page)
+                except PageNotAnInteger:
+                    page = int(1)
+                    object_list = paginator.page(1)
+                except EmptyPage:
+                    object_list = paginator.page(paginator.num_pages)
+                return render(self.request, 'programList.html', context={'object_list': object_list, 'page': page})
             else:
                 return HttpResponse("<h1>You are not admin</h1>")
         else:
@@ -394,7 +460,19 @@ class GroupList(ListView):
                 for g in groups:
                     g.studquan = Passage.objects.filter(group=g).count()
                     g.save()
-                return render(self.request, 'groupList.html', context={'object_list': EducationalGroup.objects.all()})
+                object_list=EducationalGroup.objects.all().order_by('id')
+                paginator = Paginator(object_list, 8)
+                page = request.GET.get('page')
+                if (page):
+                    page = int(page)
+                try:
+                    object_list = paginator.page(page)
+                except PageNotAnInteger:
+                    page = int(1)
+                    object_list = paginator.page(1)
+                except EmptyPage:
+                    object_list = paginator.page(paginator.num_pages)
+                return render(self.request, 'groupList.html', context={'object_list': object_list, 'page': page})
             else:
                 return HttpResponse("<h1>You are not admin</h1>")
         else:
@@ -409,7 +487,19 @@ class PassageList(ListView):
         user = request.user
         if user.is_authenticated:
             if user.is_superuser or user.is_staff:
-                return render(self.request, 'passageList.html', context={'object_list': Passage.objects.all()})
+                object_list = Passage.objects.all().order_by('id')
+                paginator = Paginator(object_list, 8)
+                page = request.GET.get('page')
+                if (page):
+                    page = int(page)
+                try:
+                    object_list = paginator.page(page)
+                except PageNotAnInteger:
+                    page = int(1)
+                    object_list = paginator.page(1)
+                except EmptyPage:
+                    object_list = paginator.page(paginator.num_pages)
+                return render(self.request, 'passageList.html', context={'object_list': object_list, 'page': page})
             else:
                 return HttpResponse("<h1>You are not admin</h1>")
         else:

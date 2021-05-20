@@ -1,0 +1,13 @@
+<nav class="navbar fixed-bottom">
+    <span class="navbar nav-item ml-auto mr-auto">
+    {%if page > 1 %}
+        <a class="nav-link text-dark" href="?page={{ page|add:-1 }}">&#10094</a>
+    {%endif%}
+    <span class="current">
+        {{ page }} / {{ object_list.paginator.num_pages }}
+    </span>
+    {% if page < object_list.paginator.num_pages %}
+        <a class="nav-link text-dark" href="?page={{ page|add:1 }}">&#10095</a>
+    {% endif %}
+  </span>
+</nav>
