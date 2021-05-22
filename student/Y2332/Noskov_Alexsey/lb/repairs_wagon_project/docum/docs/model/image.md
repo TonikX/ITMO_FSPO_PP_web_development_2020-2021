@@ -1,9 +1,7 @@
-from django.db import models
-from django.contrib.auth.models import AbstractUser
-
-
-# On 1234
-
+#Модель данных
+```python
+# Таблица Вагон, хранит в себе указатели к чему приписан вагон,
+# уникальное имя и код, а также тип и счётчик лет с последнего тех-обслуживания
 class Wagon(models.Model):
     reg_number = models.IntegerField(unique=True)
     reg_name = models.CharField(max_length=60, unique=True)
@@ -17,18 +15,21 @@ class Wagon(models.Model):
         return "{} {} {} {} {} {}".format(self.reg_number, self.reg_name, self.reg_chief, self.type, self.type_year,
                                           self.dop_number)
 
-
+# Таблица Ремонтная бригада 
+# содержит фио бригадира, процент награды на бригаду за ремонт
 class RepairBrigade(models.Model):
     bonus_persent = models.IntegerField()
     fio_chief = models.CharField(max_length=30)
 
-
+# Таблица График работ
+# содержит сколько длиться смена, смены
 class Schedule_works(models.Model):
     data = models.IntegerField()
     work_shift = models.CharField(max_length=10)
     repair_brigade = models.ForeignKey(RepairBrigade, on_delete=models.CASCADE)
 
-
+# Таблица Ремонт
+# содержит причину, результат, стоимость, начало и конец ремонта, а также что ремонтировалось
 class Repair(models.Model):
     resalt = models.CharField(max_length=10)
     reason = models.CharField(max_length=100)
@@ -43,7 +44,9 @@ class Repair(models.Model):
         return "{} {} {} {} {} {} {}".format(self.resalt, self.reason, self.cost, self.day_start, self.day_stop,
                                              self.type_repair, self.schedule)
 
-
+# Таблица Рабочий
+# содержит табельный номер, фио, возраст, образование, номер карточки, в каких бригадах состоит
+# а также имя и пароль от аккаунта
 class Worker(AbstractUser):
     REQUIRED_FIELDS = []
     tab_number = models.IntegerField(unique=True, null=True)
@@ -59,12 +62,14 @@ class Worker(AbstractUser):
                                                 self.year_worker, self.base_worker,
                                                 self.bonus_worker, self.number_cart_bank)
 
-
+# Таблица Депо
+# содержит адрес и юр-адрес депо
 class Depo(models.Model):
     address_depo = models.CharField(max_length=80, unique=True)
     ur_address_depo = models.CharField(max_length=80, unique=True)
 
-
+# Таблица Контракт
+# содержит тип, начало и конец действия контракта, должность, зарплату работника
 class employment_contract(models.Model):
     day_start = models.DateTimeField()
     day_stop = models.DateTimeField()
@@ -73,3 +78,5 @@ class employment_contract(models.Model):
     salary = models.IntegerField()
     worker = models.ForeignKey(Worker, on_delete=models.CASCADE)
     depo = models.ForeignKey(Depo, on_delete=models.CASCADE)
+```
+![Alt text](image.png)

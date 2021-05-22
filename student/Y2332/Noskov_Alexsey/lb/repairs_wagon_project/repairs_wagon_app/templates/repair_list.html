@@ -1,40 +1,31 @@
 {%extends 'menu.html'%}
 {%block content%}
-<head>
-  <meta charset="UTF-8">
-  <title>Список ремонта</title>
-</head>
-
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
-<body>
-  <ol><h3>Список ремонтов</h3>
-  <ol>
+<div class="text-center"><h3>Список ремонтов</h3></div>
+<div class="card-deck">
     {% for object in object_list %}
-    <li><div class="card-group">
-  <div class="card" style="max-width: 14rem;">
-      <div class="card-header">
-        resalt
+    <br>
+    <div class="card text-center">
+      <div class="card-body">
+        <h5 class="card-title">Ремонт</h5>
       </div>
       <ul class="list-group list-group-flush">
-      <li class="list-group-item">cost</li>
-      <li class="list-group-item">day_start</li>
-      <li class="list-group-item">day_stop</li>
+        <li class="list-group-item">resalt: {{ object.resalt }}</li>
+        <li class="list-group-item">cost: {{ object.cost }}</li>
+        <li class="list-group-item">day_start: {{ object.day_start }}</li>
+        <li class="list-group-item">day_stop: {{ object.day_stop }}</li>
       </ul>
-    </div>
-    <div class="card" style="max-width: 14rem;">
-      <div class="card-header">
-        {{ object.resalt }}
+        <div class="card-body" >
+        <a href="{% url 'repair_d' object.id %}" class="card-link">detail</a>
+        {% if request.user.is_authenticated and perms.catalog.can_view_permission %}
+            <a href="{% url 'repair_u' object.id %}" class="card-link">update</a>
+            <a href="{% url 'repair_del' object.id %}" class="card-link">delete</a>
+        {% endif %}
       </div>
-      <ul class="list-group list-group-flush">
-      <li class="list-group-item">{{ object.cost }}</li>
-      <li class="list-group-item">{{ object.day_start }}</li>
-      <li class="list-group-item">{{ object.day_stop }}</li>
-      </ul>
     </div>
-</div></br></li>
-
     {% endfor %}
-  </ol>
-      </ol>
-</body>
+</div>
+{% include 'base.html' %}
+{% block page %}
+{% endblock %}
 {% endblock %}

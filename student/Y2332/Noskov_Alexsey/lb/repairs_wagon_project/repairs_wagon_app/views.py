@@ -1,4 +1,3 @@
-from django.http import Http404
 from django.shortcuts import render
 from django.views.generic.list import ListView
 from django.views.generic.detail import DetailView
@@ -10,15 +9,17 @@ class Menu(ListView):
     model = Worker
     template_name = 'menu.html'
 
+class Menu_reliz(ListView):
+    model = Worker
+    template_name = 'menu_reliz.html'
+
 class Worker_detail(DetailView):
     model = Worker
     template_name = 'worker_detail.html'
 
-
 class Worker_List(ListView):
     model = Worker
     template_name = 'worker_list.html'
-
 
 class WorkerUpdateView(UpdateView):
     model = Worker

@@ -1,0 +1,9 @@
+site_name: Описание сервиса "Ремонт вагонов"
+nav:
+ - Home: index.md
+ - Model:
+      - "model": model/image.md
+      - "url": url/url.md
+
+theme:
+  name: material

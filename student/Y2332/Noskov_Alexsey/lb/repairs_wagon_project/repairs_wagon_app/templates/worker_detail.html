@@ -17,10 +17,11 @@
                 <li class="list-group-item">year_worker</li>
                 <li class="list-group-item">tab_number</li>
                 <li class="list-group-item">base_worker</li>
+                <li class="list-group-item">bonus_worker</li>
                 <li class="list-group-item">number_cart_bank</li>
             </ul>
         </div>
-        <div class="card" style="max-width: 14rem;">
+        <div class="card" style="max-width: 20rem;">
             <div class="card-header">
                 {{ object.fio_worker }}
             </div>
@@ -28,11 +29,11 @@
                 <li class="list-group-item">{{ object.year_worker }}</li>
                 <li class="list-group-item">{{ object.tab_number }}</li>
                 <li class="list-group-item">{{ object.base_worker }}</li>
+                <li class="list-group-item">{{ object.bonus_worker }}</li>
                 <li class="list-group-item">{{ object.number_cart_bank }}</li>
             </ul>
         </div>
     </div>
-    <a href="/worker/list/">Get back</a>
     </body>
     </ol>
     {% endblock %}
