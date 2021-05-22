@@ -8,5 +8,12 @@
       <jdbc-url>jdbc:sqlite:C:\Users\Alexus\PycharmProjects\ITMO_FSPO_PP_web_development_2020-2021\students\Y2332\practical_works\Petrosyan_Alexandr\simple_django_web_projec\django_tests\django_project_petrosyan\db.sqlite3</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
+    <data-source source="LOCAL" name="PostgreSQL - postgres@localhost" uuid="5450f3d4-e208-4300-94d1-cb3e5e8fd74a">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/postgres</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
   </component>
 </project>
