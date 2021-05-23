@@ -12,7 +12,7 @@ class AudienceSerializer(serializers.ModelSerializer):
 class LecturerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Lecturer
-        fields = ("surname", "firstname", "patronymic")
+        fields = ("surname", "first_name", "patronymic")
 
 
 class DisciplineSerializer(serializers.ModelSerializer):
@@ -41,5 +41,5 @@ class SchedulesSerializer(serializers.ModelSerializer):
             "audience",
             "group",
             "day_of_the_week",
-            "begin_time"
+            "lecture_begin"
         )
