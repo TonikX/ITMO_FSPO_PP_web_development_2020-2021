@@ -2,7 +2,7 @@ from django.db import models
 
 
 class Discipline(models.Model):
-    name = models.CharField(max_length=100, null=False, verbose_name="Название")
+    name = models.CharField(max_length=100, null=False, verbose_name="Название", unique=True)
 
     def __str__(self):
         return self.name
@@ -27,7 +27,7 @@ class Lecturer(models.Model):
 
 
 class Group(models.Model):
-    number = models.CharField(max_length=5, null=False, verbose_name="Номер")
+    number = models.CharField(max_length=5, null=False, verbose_name="Номер", unique=True)
     students_quantity = models.IntegerField(null=False, verbose_name="Количество студентов")
     disciplines = models.ManyToManyField(Discipline, verbose_name="Дисциплины")
 
@@ -40,7 +40,7 @@ class Group(models.Model):
 
 
 class Audience(models.Model):
-    number = models.CharField(max_length=3, null=False, verbose_name="Номер")
+    number = models.CharField(max_length=3, null=False, verbose_name="Номер", unique=True)
     aud_type = models.CharField(max_length=30, null=True, verbose_name="Тип аудитории")
 
     def __str__(self):
