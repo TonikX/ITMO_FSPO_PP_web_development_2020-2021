@@ -1,12 +1,27 @@
-from rest_framework.response import Response
-from rest_framework.views import APIView
-
-from .models import Schedule
-from .serializers import SchedulesSerializer
+from rest_framework import viewsets
+from .serializers import *
 
 
-class ScheduleApiView(APIView):
-    def get(self, request):
-        schedules = Schedule.objects.all()
-        serializer = SchedulesSerializer(schedules, many=True)
-        return Response({"Schedule": serializer.data})
+class DisciplineViewSet(viewsets.ModelViewSet):
+    queryset = Discipline.objects.all()
+    serializer_class = DisciplineSerializer
+
+
+class LecturerViewSet(viewsets.ModelViewSet):
+    queryset = Lecturer.objects.all()
+    serializer_class = LecturerSerializer
+
+
+class GroupViewSet(viewsets.ModelViewSet):
+    queryset = Group.objects.all()
+    serializer_class = GroupSerializer
+
+
+class AudienceViewSet(viewsets.ModelViewSet):
+    queryset = Audience.objects.all()
+    serializer_class = AudienceSerializer
+
+
+class ScheduleViewSet(viewsets.ModelViewSet):
+    queryset = Schedule.objects.all()
+    serializer_class = SchedulesSerializer

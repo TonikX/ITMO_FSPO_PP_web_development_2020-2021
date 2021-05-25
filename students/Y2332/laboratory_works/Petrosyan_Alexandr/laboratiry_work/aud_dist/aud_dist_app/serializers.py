@@ -3,43 +3,31 @@ from rest_framework import serializers
 from .models import *
 
 
-class AudienceSerializer(serializers.ModelSerializer):
+class DisciplineSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Audience
-        fields = ("number",)
+        model = Discipline
+        fields = '__all__'
 
 
 class LecturerSerializer(serializers.ModelSerializer):
     class Meta:
         model = Lecturer
-        fields = ("surname", "first_name", "patronymic")
-
-
-class DisciplineSerializer(serializers.ModelSerializer):
-    class Meta:
-        model = Discipline
-        fields = ("name",)
+        fields = '__all__'
 
 
 class GroupSerializer(serializers.ModelSerializer):
     class Meta:
         model = Group
-        fields = ("number",)
+        fields = '__all__'
+
+
+class AudienceSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Audience
+        fields = '__all__'
 
 
 class SchedulesSerializer(serializers.ModelSerializer):
-    discipline = DisciplineSerializer()
-    audience = AudienceSerializer()
-    lecturer = LecturerSerializer()
-    group = GroupSerializer()
-
     class Meta:
         model = Schedule
-        fields = (
-            "discipline",
-            "lecturer",
-            "audience",
-            "group",
-            "day_of_the_week",
-            "lecture_begin"
-        )
+        fields = '__all__'
