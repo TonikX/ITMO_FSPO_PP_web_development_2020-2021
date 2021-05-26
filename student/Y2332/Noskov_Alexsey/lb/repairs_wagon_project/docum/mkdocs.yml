@@ -3,7 +3,14 @@ nav:
  - Home: index.md
  - Model:
       - "model": model/image.md
-      - "url": url/url.md
+
+ - Url:
+     - "list": url/worker_list.md
+     - "update": url/worker_update.md
+     - "create": url/worker_add.md
+     - "delete": url/worker_delete.md
+     - "detail": url/wagon_detail.md
+     - "menu": url/menu.md
 
 theme:
   name: material
