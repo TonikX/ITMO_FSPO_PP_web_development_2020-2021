@@ -73,6 +73,7 @@ WSGI_APPLICATION = 'django_project_Timofeev.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
+AUTH_USER_MODEL = 'project_first_app.CarOwner'
 
 DATABASES = {
     'default': {
