@@ -1,5 +1,8 @@
 {
   "dependencies": {
     "vue": "^2.6.12"
+  },
+  "devDependencies": {
+    "vue-cli-plugin-vuetify": "~2.4.0"
   }
 }
