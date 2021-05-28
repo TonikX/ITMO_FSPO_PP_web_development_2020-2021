@@ -11,9 +11,6 @@ class Car(models.Model):
 
 
 class CarOwner(AbstractUser):
-    username = models.CharField(max_length=30, unique=True)
-    password = models.CharField(max_length=30)
-    REQUIRED_FIELDS = []
     first_name = models.CharField(max_length=30)
     last_name = models.CharField(max_length=30)
     birth_date = models.DateTimeField(null=True)
@@ -21,6 +18,8 @@ class CarOwner(AbstractUser):
     home_address = models.TextField(default='address')
     nationality = models.TextField(default='nationality')
     cars = models.ManyToManyField(Car, through='Ownership')
+
+    REQUIRED_FIELDS = []
 
 
 class Ownership(models.Model):
