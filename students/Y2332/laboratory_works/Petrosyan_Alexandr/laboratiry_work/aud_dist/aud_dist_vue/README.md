@@ -1,4 +1,4 @@
-# aud-dist-vue
+# aud_dist_vue
 
 > A Vue.js project
 
