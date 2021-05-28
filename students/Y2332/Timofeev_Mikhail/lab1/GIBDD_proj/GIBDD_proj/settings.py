@@ -43,11 +43,8 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'djoser',
     'corsheaders',
-    'crispy_forms',
     'django_filters',
 ]
-
-CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = (

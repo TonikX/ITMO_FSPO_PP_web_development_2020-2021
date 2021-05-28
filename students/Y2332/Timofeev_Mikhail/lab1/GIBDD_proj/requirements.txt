@@ -15,7 +15,6 @@ django-filter==2.4.0
 djangorestframework==3.12.4
 djangorestframework-jsonapi==4.2.0
 djoser==2.1.0
-Faker==8.2.1
 idna==2.10
 inflection==0.5.1
 itypes==1.2.0

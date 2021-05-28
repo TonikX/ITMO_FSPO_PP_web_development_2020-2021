@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.shortcuts import redirect
+from django.views.generic import TemplateView
 from django.urls import path, include
 
 from rest_framework.routers import DefaultRouter
@@ -8,7 +8,7 @@ from GIBDD_app.views import *
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', lambda req: redirect('/home')),
+    path('', TemplateView.as_view(template_name='home.html')),
     path('auth/', include('djoser.urls')),
     path('auth/', include('djoser.urls.authtoken')),
 ]
