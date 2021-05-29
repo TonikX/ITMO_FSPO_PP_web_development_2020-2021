@@ -7,7 +7,8 @@
                 {{ lecturer.attributes.patronymic }}
             </li>
         </ul>
-        <button @click="prevPage"> < </button>
+        <button id="prevPageBtn" @click="prevPage"> < </button>
+        {{currentPageNumber}} из {{pageQuantity}}
         <button @click="nextPage"> > </button>
     </div>
 </template>
@@ -21,6 +22,8 @@ export default {
         return {
             lecturers: '',
             links: '',
+            pageQuantity: Number,
+            currentPageNumber: 1,
         }
     },
     created() {
@@ -37,8 +40,9 @@ export default {
                 url: "http://127.0.0.1:8000/api/lecturers/",
                 type: "GET",
                 success: (response) => {
-                    this.lecturers = response.data
-                    this.links = response.links
+                    let lastPageUrl = response.links.last;
+                    this.pageQuantity = lastPageUrl.substr(lastPageUrl.indexOf('=') + 1)
+                    this.updatePage(response)
                 }
             })
         },
@@ -48,8 +52,8 @@ export default {
                     url: this.links.next,
                     type: "GET",
                     success: (response) => {
-                        this.lecturers = response.data
-                        this.links = response.links
+                        this.currentPageNumber++
+                        this.updatePage(response)
                     }
                 })
             }
@@ -60,12 +64,16 @@ export default {
                     url: this.links.prev,
                     type: "GET",
                     success: (response) => {
-                        this.lecturers = response.data
-                        this.links = response.links
+                        this.currentPageNumber--
+                        this.updatePage(response)
                     }
                 })
             }
-        }
+        },
+        updatePage(response) {
+            this.lecturers = response.data
+            this.links = response.links
+        },
     }
 }
 </script>
