@@ -1,5 +1,4 @@
 from rest_framework.viewsets import *
-from .permissions import *
 from .serializers import *
 
 
@@ -18,7 +17,7 @@ class EngineViewSet(ModelViewSet):
 class CarModelViewSet(ModelViewSet):
     queryset = CarModel.objects.all()
     serializer_class = CarModelSerializer
-    search_fields = ['model', 'brand', 'producer', 'engine_id', 'body_id']
+    search_fields = ['model', 'brand', 'producer']
 
 
 class LegalOwnerViewSet(ModelViewSet):
@@ -39,15 +38,14 @@ class CarViewSet(ModelViewSet):
     search_fields = [
         'car_number', 'helm', 'drive',
         'year', 'owner_type', 'district',
-        'year_tax', 'comment', 'color',
-        'model', 'owner_inn', 'owner_id'
+        'year_tax', 'comment', 'color'
     ]
 
 
 class DriveAwayInfoViewSet(ModelViewSet):
     queryset = DriveAwayInfo.objects.all()
     serializer_class = DriveAwayInfoSerializer
-    search_fields = ['driving_away', 'date_away', 'date_return', 'car_number']
+    search_fields = ['driving_away', 'date_away', 'date_return']
 
 
 class InspectorViewSet(ModelViewSet):

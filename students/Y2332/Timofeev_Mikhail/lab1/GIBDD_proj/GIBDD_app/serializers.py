@@ -46,11 +46,11 @@ class DriveAwayInfoSerializer(ModelSerializer):
 
 class InspectorSerializer(ModelSerializer):
     class Meta:
-        model = DriveAwayInfoSerializer
+        model = Inspector
         fields = '__all__'
 
 
 class WatchInfoSerializer(ModelSerializer):
     class Meta:
-        model = DriveAwayInfoSerializer
+        model = WatchInfo
         fields = '__all__'

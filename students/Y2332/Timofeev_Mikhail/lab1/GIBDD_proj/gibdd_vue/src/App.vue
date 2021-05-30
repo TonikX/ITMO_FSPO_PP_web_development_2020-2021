@@ -5,56 +5,55 @@
       color="primary"
       dark
     >
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-logo-dark.png"
-          transition="scale-transition"
-          width="40"
-        />
+      <v-btn to="/" text>
+        GIBDD
+      </v-btn>
 
-        <v-img
-          alt="Vuetify Name"
-          class="shrink mt-1 hidden-sm-and-down"
-          contain
-          min-width="100"
-          src="https://cdn.vuetifyjs.com/images/logos/vuetify-name-dark.png"
-          width="100"
-        />
-      </div>
+      <v-btn to="/bodies" text>
+        Bodies
+      </v-btn>
 
-      <v-spacer></v-spacer>
+      <v-btn to="/engines" text>
+        Engines
+      </v-btn>
 
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
-        <span class="mr-2">Latest Release</span>
-        <v-icon>mdi-open-in-new</v-icon>
+      <v-btn to="/models" text>
+        Models
+      </v-btn>
+
+      <v-btn to="/lOwners" text>
+        LOwners
+      </v-btn>
+
+      <v-btn to="/pOwners" text>
+        POwners
+      </v-btn>
+
+      <v-btn to="/cars" text>
+        Cars
+      </v-btn>
+
+      <v-btn to="/inspectors" text>
+        Inspectors
+      </v-btn>
+
+      <v-btn to="/away-list" text>
+        Aways
+      </v-btn>
+
+      <v-btn to="/watch-list" text>
+        Watches
       </v-btn>
     </v-app-bar>
 
     <v-main>
-      <HelloWorld/>
+      <router-view />
     </v-main>
   </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld';
-
-export default {
-  name: 'App',
-
-  components: {
-    HelloWorld,
-  },
-
-  data: () => ({
-    //
-  }),
-};
+  export default {
+    name: 'App',
+  };
 </script>

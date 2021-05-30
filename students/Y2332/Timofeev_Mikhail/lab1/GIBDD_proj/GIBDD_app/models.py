@@ -65,7 +65,7 @@ class Car(Model):
     owner_type = BooleanField()
     district = TextField()
     year_tax = FloatField()
-    comment = TextField()
+    comment = TextField(blank=True)
     color = TextField()
 
     model = ForeignKey('CarModel', on_delete=CASCADE)
@@ -89,7 +89,7 @@ class DriveAwayInfo(Model):
 
 
 class Inspector(Model):
-    sign_number = CharField(max_length=7, primary_key=True)
+    sign_number = CharField(max_length=7, unique=True)
     fullname = TextField()
     post = TextField()
 
@@ -103,7 +103,7 @@ class WatchInfo(Model):
     watch_cost = FloatField()
     mileage = FloatField()
     okay = BooleanField()
-    reasons = TextField(null=True)
+    reasons = TextField(blank=True)
 
     car_number = ForeignKey('Car', on_delete=CASCADE)
     inspector = ForeignKey('Inspector', on_delete=CASCADE)
