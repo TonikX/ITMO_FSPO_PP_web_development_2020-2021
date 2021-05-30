@@ -38,7 +38,7 @@ class WorkerCreate(CreateView):
 class WorkerDelete(DeleteView):
     model = Worker
     success_url = '/worker/list/'
-    template_name = 'worker_delete.md.html'
+    template_name = 'worker_delete.html'
 
 
 class Wagon_detail(DetailView):
