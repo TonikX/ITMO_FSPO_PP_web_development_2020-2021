@@ -1,6 +1,6 @@
 <template>
   <div class="submit-form mt-3 mx-auto">
-    <p class="headline">Add Legal Owner</p>
+    <p class="headline">Add Physical Owner</p>
 
     <div v-if="!submitted">
       <v-form ref="form" lazy-validation>

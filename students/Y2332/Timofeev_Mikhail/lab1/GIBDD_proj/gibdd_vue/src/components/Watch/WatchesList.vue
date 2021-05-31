@@ -1,5 +1,5 @@
 <template>
-  <v-row align="center" class="list px-3 mx-auto">
+  <v-row v-if="message === ''" align="center" class="list px-3 mx-auto">
     <v-col cols="12" md="8">
       <v-text-field v-model="search" label="Search"></v-text-field>
     </v-col>
@@ -49,10 +49,10 @@
             <v-icon small @click="deleteItem(item.id)">mdi-delete</v-icon>
           </template>
           <template v-slot:[`item.car_number_number`]="{ item }">
-            <p @click="editInspector(item.car_number)">{{item.car_number_number}}</p>
+            <p @click="editCar(item.car_number)">{{item.car_number_number}}</p>
           </template>
           <template v-slot:[`item.inspector_number`]="{ item }">
-            <p @click="editCar(item.inspector)">{{item.inspector_number}}</p>
+            <p @click="editInspector(item.inspector)">{{item.inspector_number}}</p>
           </template>
         </v-data-table>
 
@@ -64,6 +64,10 @@
       </v-card>
     </v-col>
   </v-row>
+
+  <p v-else class="mx-auto">
+    {{message}}
+  </p>
 </template>
 
 <script>
@@ -93,6 +97,8 @@ export default {
       totalVisible: 0,
 
       pageSizes: [3, 6, 9],
+
+      message: "",
     };
   },
   methods: {
@@ -105,6 +111,7 @@ export default {
         })
         .catch((e) => {
           console.log(e);
+          this.message = "You don't have permission";
         });
     },
 
@@ -191,9 +198,14 @@ export default {
     async getAllInspectors(){
       DataService.setModelsName("inspectors");
 
-      await DataService.getAll().then((response) => {
-        this.inspectors = response.data.data;
-      });
+      await DataService.getAll()
+          .then((response) => {
+            this.inspectors = response.data.data;
+          })
+          .catch((e) => {
+            console.log(e);
+            this.message = "You don't have permission";
+          });
 
       DataService.setModelsName("watch_info_list");
     },
@@ -201,14 +213,20 @@ export default {
     async getAllCars(){
       DataService.setModelsName("cars");
 
-      await DataService.getAll().then((response) => {
-        this.cars = response.data.data;
-      });
+      await DataService.getAll()
+          .then((response) => {
+            this.cars = response.data.data;
+          })
+          .catch((e) => {
+            console.log(e);
+            this.message = "You don't have permission";
+          });
 
       DataService.setModelsName("watch_info_list");
     },
   },
   async mounted() {
+    this.message = "";
     DataService.setModelsName("watch_info_list");
     await this.getAllCars();
     await this.getAllInspectors();

@@ -48,7 +48,7 @@
             <v-icon small class="mr-2" @click="editItem(item.id)">mdi-pencil</v-icon>
             <v-icon small @click="deleteItem(item.id)">mdi-delete</v-icon>
           </template>
-          <template v-slot:[`item.body_type`]="{ item }">
+          <template v-slot:[`item.body_model`]="{ item }">
             <p @click="editBody(item.body_id)">{{item.body_model}}</p>
           </template>
           <template v-slot:[`item.engine_type`]="{ item }">

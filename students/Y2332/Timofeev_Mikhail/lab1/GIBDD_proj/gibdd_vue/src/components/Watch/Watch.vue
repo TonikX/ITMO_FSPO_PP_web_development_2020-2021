@@ -68,13 +68,13 @@
     <p class="mt-3">{{ message }}</p>
   </div>
 
-  <div v-else>
-    <p>Please click on a Model...</p>
+  <div v-else class="mx-auto">
+    <p>Please click on a Watch...</p>
   </div>
 </template>
 
 <script>
-import DataService from "../../services/DataService";
+import DataService from "@/services/DataService";
 
 export default {
   name: "model",
@@ -107,8 +107,8 @@ export default {
             car_number: data.relationships.car_number.data.id,
             inspector: data.relationships.inspector.data.id,
           }
-          this.taken_car = this.engines.find(x => x.id === this.currentItem.engine_id).attributes.engine_type;
-          this.taken_inspector = this.bodies.find(x => x.id === this.currentItem.body_id).attributes.body_model;
+          this.taken_car = this.cars.find(x => x.id === this.currentItem.car_number).attributes.car_number;
+          this.taken_inspector = this.inspectors.find(x => x.id === this.currentItem.inspector).attributes.sign_number;
         })
         .catch((e) => {
           console.log(e);
@@ -175,8 +175,8 @@ export default {
   async mounted() {
     DataService.setModelsName("models")
     this.message = "";
-    await this.getAllEngines();
-    await this.getAllBodies();
+    await this.getAllCars();
+    await this.getAllInspectors();
     this.getItem(this.$route.params.id);
   },
 };

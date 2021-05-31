@@ -52,8 +52,8 @@ REST_FRAMEWORK = {
         'rest_framework.authentication.TokenAuthentication',
     ),
     'DEFAULT_PERMISSION_CLASSES': (
-        #'GIBDD_app.permissions.UserViewPermissions',
-        'rest_framework.permissions.AllowAny',
+        'GIBDD_app.permissions.UserViewPermissions',
+        #'rest_framework.permissions.AllowAny',
     ),
     'EXCEPTION_HANDLER': 'rest_framework_json_api.exceptions.exception_handler',
     'DEFAULT_PARSER_CLASSES': (

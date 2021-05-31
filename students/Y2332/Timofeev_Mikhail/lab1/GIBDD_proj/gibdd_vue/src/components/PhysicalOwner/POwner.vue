@@ -1,6 +1,6 @@
 <template>
   <div v-if="currentItem" class="edit-form py-3">
-    <p class="headline">Edit Legal Owner</p>
+    <p class="headline">Edit Physical Owner</p>
 
     <v-form ref="form" lazy-validation>
       <v-text-field

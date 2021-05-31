@@ -59,5 +59,5 @@ class WatchInfoViewSet(ModelViewSet):
     serializer_class = WatchInfoSerializer
     search_fields = [
         'watch_date', 'sign_cost', 'watch_cost', 'mileage',
-        'okay', 'reasons', 'car_number', 'inspector'
+        'okay', 'reasons'
     ]

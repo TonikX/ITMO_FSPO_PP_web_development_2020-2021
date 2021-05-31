@@ -1,5 +1,5 @@
 <template>
-  <v-row align="center" class="list px-3 mx-auto">
+  <v-row v-if="message === ''" align="center" class="list px-3 mx-auto">
     <v-col cols="12" md="8">
       <v-text-field v-model="search" label="Search"></v-text-field>
     </v-col>
@@ -58,6 +58,10 @@
       </v-card>
     </v-col>
   </v-row>
+
+  <p v-else class="mx-auto">
+    {{message}}
+  </p>
 </template>
 
 <script>
@@ -82,6 +86,8 @@ export default {
       totalVisible: 0,
 
       pageSizes: [3, 6, 9],
+
+      message: "",
     };
   },
   methods: {
@@ -94,6 +100,7 @@ export default {
         })
         .catch((e) => {
           console.log(e);
+          this.message = "You don't have permission";
         });
     },
 
@@ -160,6 +167,7 @@ export default {
     },
   },
   mounted() {
+    this.message = "";
     DataService.setModelsName("physical_owners");
     this.retrieveItems();
   },

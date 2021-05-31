@@ -7,6 +7,11 @@ export default new Router({
   mode: "history",
   routes: [
     {
+      path: "/",
+      name: "home",
+      component: () => import("./App")
+    },
+    {
       path: "/bodies",
       name: "bodies",
       component: () => import("./components/Body/BodiesList")
@@ -140,6 +145,16 @@ export default new Router({
       path: "watch-list/add",
       name: "add-watch",
       component: () => import("./components/Watch/AddWatch")
+    },
+    {
+      path: "/sign-up",
+      name: "signUp",
+      component: () => import("./components/SignUp")
+    },
+    {
+      path: "/log-in",
+      name: "logIn",
+      component: () => import("./components/LogIn")
     }
   ]
 });
