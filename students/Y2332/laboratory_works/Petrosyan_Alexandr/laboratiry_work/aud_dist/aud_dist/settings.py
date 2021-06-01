@@ -40,8 +40,8 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'rest_framework.authtoken',
-    'django_summernote',
     'djoser',
+    'corsheaders',
 
     'aud_dist_app'
 ]
@@ -141,15 +141,15 @@ REST_FRAMEWORK = {
         'rest_framework.permissions.IsAdminUser',
         'rest_framework.permissions.AllowAny',
     ),
-    'PAGE_SIZE': 5,
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework.authentication.TokenAuthentication',
         'rest_framework.authentication.BasicAuthentication',
         'rest_framework.authentication.SessionAuthentication',
     ),
     'EXCEPTION_HANDLER': 'rest_framework_json_api.exceptions.exception_handler',
-    'DEFAULT_PAGINATION_CLASS':
-        'rest_framework_json_api.pagination.JsonApiPageNumberPagination',
+    # 'PAGE_SIZE': 5,
+    # 'DEFAULT_PAGINATION_CLASS':
+    #     'rest_framework_json_api.pagination.JsonApiPageNumberPagination',
     'DEFAULT_PARSER_CLASSES': (
         'rest_framework_json_api.parsers.JSONParser',
         'rest_framework.parsers.FormParser',

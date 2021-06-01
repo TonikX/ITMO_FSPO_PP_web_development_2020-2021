@@ -1,0 +1,3 @@
+export const ADD_LECTURER = 'ADD_LECTURER'
+export const REMOVE_LECTURER = 'REMOVE_LECTURER'
+export const SET_LECTURERS = 'SET_LECTURERS'
