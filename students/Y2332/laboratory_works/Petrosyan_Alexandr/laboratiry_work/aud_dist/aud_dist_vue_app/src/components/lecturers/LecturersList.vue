@@ -13,9 +13,14 @@ import {mapGetters} from "vuex";
 
 export default {
     name: "LecturersList",
-    computed: mapGetters(['lecturers']),
+    computed: {
+        ...mapGetters(['lecturers']),
+    },
     beforeMount() {
         this.$store.dispatch('getLecturers')
+    },
+    props: {
+        msg: String
     }
 }
 </script>

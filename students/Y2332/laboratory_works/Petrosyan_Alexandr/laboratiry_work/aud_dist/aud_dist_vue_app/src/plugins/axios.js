@@ -13,7 +13,7 @@ let config = {
     headers: {
         "Content-type": "application/json",
         // TODO авторизация
-        "Authorization": "Token 364d9d9fa36a8554d9751215d746c22b6accdf51"
+        "Authorization": "Token 433516bbd274c2f0f3e4e06a4a38f9c50f585eb5"
     }
     // baseURL:  process.env.baseURL || process.env.apiUrl || ""
     // timeout: 60 * 1000, // Timeout
