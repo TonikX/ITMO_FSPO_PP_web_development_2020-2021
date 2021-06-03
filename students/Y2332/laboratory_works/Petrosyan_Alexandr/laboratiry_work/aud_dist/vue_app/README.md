@@ -1,4 +1,4 @@
-# aud_dist_vue_app
+# vue_app
 
 ## Project setup
 ```

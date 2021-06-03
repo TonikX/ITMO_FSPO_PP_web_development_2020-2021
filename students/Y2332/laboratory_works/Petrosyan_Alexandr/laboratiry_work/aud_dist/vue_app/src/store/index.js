@@ -1,9 +1,12 @@
-import {createStore} from 'vuex'
+import Vue from 'vue'
+import Vuex from 'vuex'
 import './mutation-types'
 import {ADD_LECTURER, REMOVE_LECTURER, SET_LECTURERS} from "./mutation-types";
 import {Lecturer} from "../api/lecturers";
 
-export default createStore({
+Vue.use(Vuex)
+
+export default new Vuex.Store({
     state: {
         lecturers: []
     },
