@@ -11,7 +11,6 @@ export default new Vuex.Store({
         lecturers: []
     },
     getters: {
-        // получение списков из состояний
         lecturers: state => state.lecturers
     },
     mutations: {
@@ -19,9 +18,8 @@ export default new Vuex.Store({
             state.lecturers = [lecturer, ...state.lecturers]
         },
         [REMOVE_LECTURER](state, {id}) {
-            state.lecturers = state.lecturers.filter(lecturer => {
-                return lecturer.id !== id
-            })
+            let index = state.lecturers.data.findIndex(lecturer => lecturer.id === id)
+            state.lecturers.data.splice(index, 1)
         },
         [SET_LECTURERS](state, {lecturers}) {
             state.lecturers = lecturers

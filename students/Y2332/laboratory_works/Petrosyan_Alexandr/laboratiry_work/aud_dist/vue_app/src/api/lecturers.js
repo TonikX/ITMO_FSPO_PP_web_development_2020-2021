@@ -7,7 +7,7 @@ export const Lecturer = {
         })
     },
     delete(lecturer) {
-        return HTTP.delete(`/lecturers/${lecturer.id}`)
+        return HTTP.delete(`/lecturers/${lecturer.id}/`)
     },
     list() {
         return HTTP.get('/lecturers/').then(response => {
