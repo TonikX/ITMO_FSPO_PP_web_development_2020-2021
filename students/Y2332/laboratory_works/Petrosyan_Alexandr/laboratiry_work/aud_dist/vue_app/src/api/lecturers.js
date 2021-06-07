@@ -1,8 +1,8 @@
 import {HTTP} from "./common";
 
 export const Lecturer = {
-    create(config) {
-        return HTTP.post('/lecturers/', config).then(response => {
+    create(data) {
+        return HTTP.post('/lecturers/', data).then(response => {
             return response.data
         })
     },
@@ -13,5 +13,5 @@ export const Lecturer = {
         return HTTP.get('/lecturers/').then(response => {
             return response.data
         })
-    }
+    },
 }

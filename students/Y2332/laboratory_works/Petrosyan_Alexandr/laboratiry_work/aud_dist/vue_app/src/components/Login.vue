@@ -1,6 +1,6 @@
 <template>
     <div>
-        <h1 class="text-center">Вход</h1>
+        <h1 class="text-center my-5">Вход</h1>
     </div>
 </template>
 
@@ -9,7 +9,3 @@ export default {
     name: "Login"
 }
 </script>
-
-<style scoped>
-
-</style>
