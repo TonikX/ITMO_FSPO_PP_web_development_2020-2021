@@ -14,4 +14,9 @@ export const Lecturer = {
             return response.data
         })
     },
+    update(lecturer) {
+        return HTTP.put(`/lecturers/${lecturer.data.id}/`, lecturer).then(response => {
+            return response.data
+        })
+    }
 }

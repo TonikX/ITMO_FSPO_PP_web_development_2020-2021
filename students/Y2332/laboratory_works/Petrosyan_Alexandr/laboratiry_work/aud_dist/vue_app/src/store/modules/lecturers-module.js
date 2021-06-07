@@ -18,6 +18,9 @@ export default {
         SET_LECTURERS(state, {lecturers}) {
             state.lecturers = lecturers
         },
+        UPDATE_LECTURER(state, lecturer) {
+            state.lecturers.data[lecturer.id] = lecturer
+        }
     },
     actions: {
         createLecturer({commit}, lecturerData) {
@@ -35,5 +38,10 @@ export default {
                 commit('SET_LECTURERS', {lecturers})
             })
         },
+        updateLecturer({commit}, lecturer){
+            Lecturer.update(lecturer).then(lecturer => {
+                commit('UPDATE_LECTURER', lecturer)
+            })
+        }
     },
 };
