@@ -16,10 +16,7 @@ class Lecturer(models.Model):
     first_name = models.CharField(max_length=30, null=False, verbose_name="Имя")
     surname = models.CharField(max_length=30, null=False, verbose_name="Фамилия")
     patronymic = models.CharField(max_length=30, null=True, blank=True, verbose_name="Отчество")
-    # disciplines = models.ManyToManyField(Discipline, null=True, blank=True, verbose_name="Дисциплины")
-
-    #                                                   TEMP       TEMP
-    disciplines = models.ManyToManyField(Discipline, null=True, blank=True, verbose_name="Дисциплины")
+    disciplines = models.ManyToManyField(Discipline, null=False, verbose_name="Дисциплины")
 
     def __str__(self):
         return f"{self.surname} {self.first_name} {self.patronymic or ''}"

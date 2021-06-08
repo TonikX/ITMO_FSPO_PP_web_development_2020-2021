@@ -114,7 +114,6 @@
                     По вашему запросу ничего не найдено
                 </template>
                 <template v-slot:item.actions="{ item }">
-                    <!--                                 TODO       -->
                     <v-icon class="mr-2" small @click="editItem(item)">
                         mdi-pencil
                     </v-icon>
@@ -182,6 +181,7 @@ export default {
                 },
             },
             currentItem: null,
+            originalItem: null,
             dialog: false,
             successSnackbar: false,
             errorSnackbar: false,
@@ -222,7 +222,7 @@ export default {
                     this.snackbarText = 'удалён'
                     this.successSnackbar = true
                 })
-                .catch(e => {
+                .catch(e => { // TODO ошибки не отслеживаются
                     console.log(e);
                     this.errorSnackbar = true
                 })
@@ -247,11 +247,11 @@ export default {
             if (this.$refs.form.validate()) {
                 let type
                 if (this.currentItem.id) {
-                    this.snackbarText = 'изменён'
                     type = 'updateLecturer'
+                    this.snackbarText = 'изменён'
                 } else {
-                    this.snackbarText = 'добавлен'
                     type = 'createLecturer'
+                    this.snackbarText = 'добавлен'
                 }
                 this.$store.dispatch(
                     type,
@@ -270,14 +270,14 @@ export default {
                 ).then(() => {
                     this.close()
                     this.successSnackbar = true
-                }).catch(e => {
+                }).catch(e => { // TODO ошибки не отслеживаются
                     console.log(e);
                     this.errorSnackbar = true
                 })
             }
         },
         editItem(item) {
-            this.currentItem = item
+            this.currentItem = JSON.parse(JSON.stringify(item))
             this.dialog = true
             this.selected = item.relationships.disciplines.data.map(it => it.id)
         }

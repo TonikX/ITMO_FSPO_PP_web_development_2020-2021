@@ -19,7 +19,9 @@ export default {
             state.lecturers = lecturers
         },
         UPDATE_LECTURER(state, lecturer) {
-            state.lecturers.data[lecturer.id] = lecturer
+            let index = state.lecturers.data.findIndex(l => l.id === lecturer.data.id)
+            state.lecturers.data.splice(index, 1)
+            state.lecturers.data.unshift(lecturer.data)
         }
     },
     actions: {
