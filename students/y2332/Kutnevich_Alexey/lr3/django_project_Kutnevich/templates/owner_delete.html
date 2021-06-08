@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>Owner delete</title>
+	</head>
+	<body>
+		<form method="post" accept-charset="utf-8">
+			{% csrf_token %}
+			<p>Delete?</p>
+			<input type="submit" value="Yes">
+		</form>
+		<a href="/owner_list/">Get back </a>
+	</body>
