@@ -1,0 +1,19 @@
+{% load static %}
+{% load template_mod %}
+
+<form>
+    {% csrf_token %}
+
+    {% for field in form %}
+        <div class="field">
+            <label class="label">{{ field.label_tag }}</label>
+            <div class="control">
+                {{ field|addclass:'input' }}
+            </div>
+        </div>
+    {% endfor %}
+
+    <button id="submit" class="button is-info">Добавить активное вещество</button>
+    <button id="cancel" class="button is-danger">Отмена</button>
+    <input type="hidden" name="next" value="{{ next }}"/>
+</form>

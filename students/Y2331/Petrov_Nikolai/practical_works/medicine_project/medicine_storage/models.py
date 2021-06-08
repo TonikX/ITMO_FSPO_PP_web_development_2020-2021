@@ -42,9 +42,9 @@ class Item(models.Model):
         SYRINGE = 11, _("Шприц")
 
     name = models.CharField(max_length=200)
-    active_substance = models.ForeignKey(ActiveSubstance, on_delete=models.DO_NOTHING)
+    active_substance = models.ForeignKey(ActiveSubstance, on_delete=models.CASCADE)
     packaging = models.IntegerField(choices=PackageType.choices)
-    manufacturer = models.ForeignKey(Manufacturer, on_delete=models.DO_NOTHING)
+    manufacturer = models.ForeignKey(Manufacturer, on_delete=models.CASCADE)
 
     def __str__(self):
         return self.name
@@ -65,10 +65,10 @@ class Item(models.Model):
 
 
 class Unit(models.Model):
-    item = models.ForeignKey(Item, on_delete=models.DO_NOTHING)
+    item = models.ForeignKey(Item, on_delete=models.CASCADE)
     amount = models.IntegerField(default=1)
     product_date = models.DateField(null=True)
-    open_date = models.DateField(null=True, default=now)
+    open_date = models.DateField(null=True, blank=True, default=now)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):

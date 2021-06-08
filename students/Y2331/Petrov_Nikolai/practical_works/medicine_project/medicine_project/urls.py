@@ -19,11 +19,27 @@ from django.conf.urls.static import static
 from medicine_storage import views
 
 urlpatterns = [
-    path('accounts/', include('django.contrib.auth.urls')),
-    path('accounts/signup/', views.signup, name='signup'),
-    path('api/users', views.UsersList.as_view(), name='users'),
-    path('api/active-substances', views.ActiveSubstancesList.as_view(), name='active-substances'),
-    path('api/manufactures', views.ManufacturersList.as_view(), name='manufactures'),
-    path('api/items', views.ItemsList.as_view(), name='items'),
-    path('api/units', views.UnitsList.as_view(), name='units'),
-] + static('/', document_root='./dist/')
+                  path('accounts/', include('django.contrib.auth.urls')),
+                  path('accounts/signup/', views.signup, name='signup'),
+                  path('api/users', views.UsersList.as_view(), name='users'),
+                  path('api/active-substances', views.ActiveSubstancesList.as_view(), name='active-substances'),
+                  path('api/manufactures', views.ManufacturersList.as_view(), name='manufactures'),
+                  path('api/items', views.ItemsList.as_view(), name='items'),
+                  path('api/units', views.UnitsList.as_view(), name='units'),
+
+                  path('api/units/create/', views.UnitCreate.as_view()),
+                  path('api/units/update/<int:pk>/', views.UnitUpdate.as_view()),
+                  path('api/units/delete/<int:pk>/', views.UnitDelete.as_view()),
+
+                  path('api/items/create/', views.ItemCreate.as_view()),
+                  path('api/items/update/<int:pk>/', views.ItemUpdate.as_view()),
+                  path('api/items/delete/<int:pk>/', views.ItemDelete.as_view()),
+
+                  path('api/manufactures/create/', views.ManufacturerCreate.as_view()),
+                  path('api/manufactures/update/<int:pk>/', views.ManufacturerUpdate.as_view()),
+                  path('api/manufactures/delete/<int:pk>/', views.ManufacturerDelete.as_view()),
+
+                  path('api/active_substances/create/', views.ActiveSubstanceCreate.as_view()),
+                  path('api/active_substances/update/<int:pk>/', views.ActiveSubstanceUpdate.as_view()),
+                  path('api/active_substances/delete/<int:pk>/', views.ActiveSubstanceDelete.as_view()),
+              ] + static('/', document_root='./dist/')
