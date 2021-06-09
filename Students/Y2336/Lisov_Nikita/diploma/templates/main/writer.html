@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% load static %}
+ {% block content %}
+    <main>
+      <div class="wtiter_page">
+        <div class="wtiter_page__description">
+          <p class="title">{{ writer.name }}</p>
+          <div class="wtiter_page__text">
+            <p>Биография:</p>
+            <p class="text1">
+              {{ writer.biografi }}
+            </p>
+            <button class="expand" onclick="Expand('text1', this)" data-value="0" id="button1">Развернуть</button>
+          </div>
+          <div class="wtiter_page__text">
+            <p>Библиография:</p>
+              {{ writer.bibliografi }}
+            <button class="expand" onclick="Expand('text2', this)" data-value="0" id="button2">Развернуть</button>
+          </div>
+          <div class="wtiter_page__text">
+            <p>Список произведений, описывающих жизнь автора: </p>
+            <div class="text3">
+              {{ writer.about_life }}
+            </div>
+            <button class="expand" onclick="Expand2('text3', this)" data-value="0" id="button3">Развернуть</button>
+          </div>
+        </div>
+        <div class="wtiter_page_image">
+          <img src="{{ writer.image.url }}" alt="">
+          <p>{{ writer.date_life }}</p>
+        </div>
+      </div>
+    </main>
+ {% endblock %}

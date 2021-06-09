@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+ {% block content %}
+    <main>
+      <div class="article_page">
+        <div class="article_image">
+          <img src="{{ article.image.url }}" alt="">
+        </div>
+        <div class="article_text">
+          <p class="author">{{ article.user.last_name }} {{ article.user.first_name }}</p>
+          <p class="correction">{{ article.article_title }}</p>
+          <p class="discription">{{ article.discription }}</p>
+        </div>
+      </div>
+      <div class="book_page__text" style="padding: 36px 55px;">
+        <p style="font-size: 20px;line-height: 25px;">
+        {{ article.content }}
+        </p>
+        <button class="expand" onclick="Expand('text1', this)" data-value="0" id="button1">Развернуть</button>
+      </div>
+
+    </main>
+ {% endblock %}

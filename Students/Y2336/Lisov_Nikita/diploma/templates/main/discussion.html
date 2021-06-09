@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+ {% block content %}
+    <main>
+      <p class="discussion_title">
+        {{ discussion.title }}
+      </p>
+      {% for el in message %}
+        {% if el.discussion == discussion %}
+          <div class="discussion_block">
+            <div style="height: 190px; display: flex">
+              <div style="display:flex; width: 300px;">
+                {% if  el.user.profile.image %}
+                <img src="{{ el.user.profile.image.url }}" alt="" class="avatar1">
+                {% else %}
+                <img src="{% static 'main/img/load_photo.png' %}" alt="" class="avatar1">
+                {% endif %}
+                <p style="font-size: 18px;line-height: 25px;margin-top: 6px;margin-left: 5px;">{{ el.user }}</p>
+              </div>
+              <div class="description">
+                <p class="text">
+                  {{ el.text }}
+                </p>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+      <div class="pagination" style="text-align:center">
+        <div style="display: inline-block;">
+          {% if message.has_previous %}
+              <a href="?page={{ messages.previous_page_number }}">←</a>
+          {% endif %}
+          {% for num in message.paginator.page_range %}
+              {% if num == message.number %}
+                  <span class="current"><b>{{ num }}</b></span>
+              {% else %}
+                  <a href="?page={{ num }}"> {{ num }}</a>
+              {% endif %}
+          {% endfor %}
+          {% if message.has_next %}
+              <a href="?page={{ message.next_page_number }}">→</a>
+          {% endif %}
+        </div>
+      </div>
+      {% if user.is_authenticated %}
+        <div style="display: flex; justify-content: space-between; padding: 0 36px;">
+          <p style="font-size: 20px; line-height: 34px; margin-bottom: 0;">Напишите свое сообщение</p>
+        </div>
+        <form method="post" action="/discussion/{{discussion.id}}/">
+          {% csrf_token %}
+          <input type="hidden" name="discussion_id" value="{{discussion.id}}">
+          <textarea rows="10" cols="45" name="text" class="textarea1"></textarea>
+          <div style="margin-top: 80px;">
+            <button type="submit" name="button" class="save_edit">Отправить</button>
+          </div>
+        </form>
+      {% endif %}
+    </main>
+    <script src="{% static 'main/js/buttons.js' %}"></script>
+     {% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+ {% block content %}
+    <main style="text-align:center">
+      <h3>Панель администрирования</h3>
+      <div style="display: flex; flex-direction: column; margin-left: auto;width:770px; margin-right:auto">
+        <button type="button" name="button" class="admin_button" onclick="document.location.href = '/confirmation_works/'">Одобрение на публикацию произведения</button>
+        <button type="button" name="button" class="admin_button" onclick="document.location.href = '/article_confirmation/'">Одобрение на публикацию статьи</button>
+        <button type="button" name="button" class="admin_button" onclick="document.location.href = '/create_author/'">Добавить страницу автора</button>
+        <button type="button" name="button" class="admin_button" onclick="document.location.href = '/admin_create_composition/'">Добавить страницу произведения </button>
+        <button type="button" name="button" class="admin_button" style="margin-bottom: 200px;" onclick="document.location.href = '{% url "logout" %}?next=/  '">Выйти</button>
+      </div>
+    </main>
+
+
+
+<script src="js/buttons.js"></script>
+{% endblock %}
