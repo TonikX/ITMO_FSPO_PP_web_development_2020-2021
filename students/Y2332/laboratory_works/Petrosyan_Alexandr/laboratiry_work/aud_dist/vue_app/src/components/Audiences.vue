@@ -32,12 +32,20 @@
                         <v-card-text>
                             <v-form ref="form" lazy-validation>
                                 <v-text-field
-                                    v-model="currentItem.attributes.name"
-                                    :counter="100"
-                                    :rules="nameRules"
+                                    v-model="currentItem.attributes.number"
+                                    :counter="3"
+                                    :rules="numberRules"
                                     class="mx-3 my-8"
                                     dense
-                                    label="Наименование*"
+                                    label="Номер*"
+                                ></v-text-field>
+                                <v-text-field
+                                    v-model="currentItem.attributes.aud_type"
+                                    :counter="30"
+                                    :rules="typeRules"
+                                    class="mx-3 my-8"
+                                    dense
+                                    label="Тип"
                                 ></v-text-field>
                             </v-form>
                             <small>*обязательные поля</small>
@@ -74,7 +82,7 @@
             </v-toolbar>
             <v-data-table
                 :headers="headers"
-                :items="disciplines.data"
+                :items="audiences.data"
                 :search="search"
                 multi-sort
             >
@@ -121,18 +129,20 @@ import {mapGetters} from "vuex";
 export default {
     data() {
         return {
-            pageTitle: 'Дисциплины',
-            tableTitle: 'Список дисциплин',
+            pageTitle: 'Аудитории',
+            tableTitle: 'Список аудиторий',
             search: '',
             headers: [
-                {text: 'Наименование', value: 'attributes.name'},
+                {text: 'Номер', value: 'attributes.number'},
+                {text: 'Тип', value: 'attributes.aud_type'},
                 {text: 'Действия', value: 'actions', sortable: false},
             ],
             dialogDelete: false,
             defaultItem: {
                 id: null,
                 attributes: {
-                    name: ''
+                    number: '',
+                    aud_type: ''
                 },
             },
             currentItem: null,
@@ -141,16 +151,19 @@ export default {
             successSnackbar: false,
             errorSnackbar: false,
             snackbarText: '',
-            nameRules: [
+            numberRules: [
                 v => !!v || 'Обязательное поле',
-                v => (v && v.length <= 100) || 'Должно быть меньше 100 символов',
+                v => (v && v.length <= 3) || 'Должно быть меньше 3 символов',
+            ],
+            typeRules: [
+                v => v == null || v === '' || v.length <= 30 || 'Должно быть меньше 30 символов',
             ],
         }
     },
-    name: "Disciplines",
-    computed: mapGetters(['disciplines']),
+    name: "Audiences",
+    computed: mapGetters(['audiences']),
     beforeMount() {
-        this.$store.dispatch('getDisciplines')
+        this.$store.dispatch('getAudiences')
         this.currentItem = this.defaultItem
     },
     methods: {
@@ -163,7 +176,7 @@ export default {
             this.currentItem = this.defaultItem
         },
         deleteConfirm() {
-            this.$store.dispatch('deleteDiscipline', this.currentItem)
+            this.$store.dispatch('deleteAudience', this.currentItem)
                 .then(() => {
                     this.closeDelete()
                     this.snackbarText = 'удалён'
@@ -194,17 +207,17 @@ export default {
             if (this.$refs.form.validate()) {
                 let type
                 if (this.currentItem.id) {
-                    type = 'updateDiscipline'
+                    type = 'updateAudience'
                     this.snackbarText = 'изменён'
                 } else {
-                    type = 'createDiscipline'
+                    type = 'createAudience'
                     this.snackbarText = 'добавлен'
                 }
                 this.$store.dispatch(
                     type,
                     {
                         data: {
-                            type: "Discipline",
+                            type: "Audience",
                             id: this.currentItem.id,
                             attributes: this.currentItem.attributes,
                         }

@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1 class="text-center my-5">{{ pageTitle }}</h1>
-        <v-card class="mx-auto" max-width="800" tile>
+        <v-card class="mx-auto" max-width="800px" tile>
             <v-toolbar flat>
                 <v-toolbar-title>{{ tableTitle }}</v-toolbar-title>
                 <v-spacer></v-spacer>

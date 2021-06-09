@@ -7,9 +7,12 @@
             <div>
                 <v-btn plain to="/lecturers">Преподаватели</v-btn>
             </div>
-            <!--            <div>-->
-            <!--                <v-btn plain to="/disciplines">Дисциплины</v-btn>-->
-            <!--            </div>-->
+            <div>
+                <v-btn plain to="/disciplines">Дисциплины</v-btn>
+            </div>
+            <div>
+                <v-btn plain to="/audiences">Аудитории</v-btn>
+            </div>
             <!--            <v-spacer></v-spacer>-->
             <!--            <v-spacer></v-spacer>-->
             <!--            <v-btn @click="">-->

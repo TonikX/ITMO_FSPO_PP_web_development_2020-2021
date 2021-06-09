@@ -1,4 +1,4 @@
-import {Lecturer} from "../../api/lecturers"
+import {Methods} from "../../api/methods";
 
 export default {
     state: {
@@ -26,22 +26,22 @@ export default {
     },
     actions: {
         createLecturer({commit}, lecturerData) {
-            Lecturer.create(lecturerData).then(lecturer => {
+            Methods.create(lecturerData, 'lecturers').then(lecturer => {
                 commit('ADD_LECTURER', lecturer)
             })
         },
         deleteLecturer({commit}, lecturer) {
-            Lecturer.delete(lecturer).then(response => {
+            Methods.delete(lecturer, 'lecturers').then(() => {
                 commit('REMOVE_LECTURER', lecturer)
             })
         },
         getLecturers({commit}) {
-            Lecturer.list().then(lecturers => {
+            Methods.list('lecturers').then(lecturers => {
                 commit('SET_LECTURERS', {lecturers})
             })
         },
         updateLecturer({commit}, lecturer){
-            Lecturer.update(lecturer).then(lecturer => {
+            Methods.update(lecturer, 'lecturers').then(lecturer => {
                 commit('UPDATE_LECTURER', lecturer)
             })
         }

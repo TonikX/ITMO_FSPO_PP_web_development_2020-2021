@@ -16,7 +16,7 @@ class Lecturer(models.Model):
     first_name = models.CharField(max_length=30, null=False, verbose_name="Имя")
     surname = models.CharField(max_length=30, null=False, verbose_name="Фамилия")
     patronymic = models.CharField(max_length=30, null=True, blank=True, verbose_name="Отчество")
-    disciplines = models.ManyToManyField(Discipline, null=False, verbose_name="Дисциплины")
+    disciplines = models.ManyToManyField(Discipline, verbose_name="Дисциплины")
 
     def __str__(self):
         return f"{self.surname} {self.first_name} {self.patronymic or ''}"
@@ -41,7 +41,7 @@ class Group(models.Model):
 
 class Audience(models.Model):
     number = models.CharField(max_length=3, null=False, verbose_name="Номер", unique=True)
-    aud_type = models.CharField(max_length=30, null=True, verbose_name="Тип аудитории")
+    aud_type = models.CharField(max_length=30, null=True, blank=True, verbose_name="Тип аудитории")
 
     def __str__(self):
         return self.number

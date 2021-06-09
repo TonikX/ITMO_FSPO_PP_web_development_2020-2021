@@ -4,6 +4,7 @@ import Login from "../components/Login";
 import Lecturers from "../components/Lecturers";
 import Home from "../components/Home";
 import Disciplines from "../components/Disciplines";
+import Audiences from "../components/Audiences";
 
 Vue.use(VueRouter)
 
@@ -19,14 +20,19 @@ const routes = [
         component: Lecturers
     },
     {
-        path: '/login',
-        name: 'Login',
-        component: Login
-    },
-    {
         path: '/disciplines',
         name: 'Disciplines',
         component: Disciplines
+    },
+    {
+        path: '/audiences',
+        name: 'Audiences',
+        component: Audiences
+    },
+    {
+        path: '/login',
+        name: 'Login',
+        component: Login
     }
 ]
 
