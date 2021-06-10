@@ -13,6 +13,9 @@
             <div>
                 <v-btn plain to="/audiences">Аудитории</v-btn>
             </div>
+            <div>
+                <v-btn plain to="/groups">Группы</v-btn>
+            </div>
             <!--            <v-spacer></v-spacer>-->
             <!--            <v-spacer></v-spacer>-->
             <!--            <v-btn @click="">-->

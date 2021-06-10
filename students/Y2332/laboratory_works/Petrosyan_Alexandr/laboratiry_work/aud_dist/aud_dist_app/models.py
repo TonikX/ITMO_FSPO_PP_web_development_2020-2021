@@ -79,6 +79,9 @@ class Schedule(models.Model):
 
     lecture_begin = models.CharField(max_length=5, choices=LECTURE_BEGIN, verbose_name="Номер пары")
 
+    def __str__(self):
+        return f"{self.group} {self.day_of_the_week} {self.lecture_begin}"
+
     class Meta:
         verbose_name = "Расписание"
         verbose_name_plural = "Расписание"

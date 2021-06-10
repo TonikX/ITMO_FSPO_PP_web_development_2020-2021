@@ -232,6 +232,7 @@ export default {
             }
         },
         editItem(item) {
+            this.clearForm()
             this.currentItem = JSON.parse(JSON.stringify(item))
             this.dialog = true
         }
