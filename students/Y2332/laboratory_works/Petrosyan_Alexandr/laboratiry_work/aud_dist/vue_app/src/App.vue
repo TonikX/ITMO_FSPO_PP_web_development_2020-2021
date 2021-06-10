@@ -16,11 +16,22 @@
             <div>
                 <v-btn plain to="/groups">Группы</v-btn>
             </div>
-            <!--            <v-spacer></v-spacer>-->
-            <!--            <v-spacer></v-spacer>-->
-            <!--            <v-btn @click="">-->
-            <!--                Выход-->
-            <!--            </v-btn>-->
+            <v-spacer></v-spacer>
+            <v-switch
+                v-model="$vuetify.theme.dark"
+                @click="saveTheme($vuetify.theme.dark)"
+                hide-details
+                inset
+            >
+                <template v-slot:label>
+                    <v-icon>mdi-theme-light-dark</v-icon>
+                </template>
+            </v-switch>
+            <div class="ml-5">
+                <v-btn @click="">
+                    Выход
+                </v-btn>
+            </div>
             <!--            <v-btn to="/login">-->
             <!--                Вход-->
             <!--            </v-btn>-->
@@ -34,5 +45,10 @@
 <script>
 export default {
     name: 'App',
+    methods: {
+        saveTheme(value) {
+            localStorage.setItem('dark_theme', value)
+        }
+    }
 }
 </script>
