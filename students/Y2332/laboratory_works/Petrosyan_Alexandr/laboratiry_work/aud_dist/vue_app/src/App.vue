@@ -4,37 +4,33 @@
             <v-btn icon plain to="/">
                 <v-icon>mdi-home</v-icon>
             </v-btn>
-            <div>
+            <div v-if="isLoggedIn">
                 <v-btn plain to="/lecturers">Преподаватели</v-btn>
-            </div>
-            <div>
                 <v-btn plain to="/disciplines">Дисциплины</v-btn>
-            </div>
-            <div>
                 <v-btn plain to="/audiences">Аудитории</v-btn>
-            </div>
-            <div>
                 <v-btn plain to="/groups">Группы</v-btn>
             </div>
             <v-spacer></v-spacer>
             <v-switch
                 v-model="$vuetify.theme.dark"
-                @click="saveTheme($vuetify.theme.dark)"
                 hide-details
                 inset
+                @click="saveTheme($vuetify.theme.dark)"
             >
                 <template v-slot:label>
                     <v-icon>mdi-theme-light-dark</v-icon>
                 </template>
             </v-switch>
-            <div class="ml-5">
-                <v-btn @click="">
+            <div v-if="isLoggedIn" class="ml-5">
+                <v-btn @click="exit">
                     Выход
                 </v-btn>
             </div>
-            <!--            <v-btn to="/login">-->
-            <!--                Вход-->
-            <!--            </v-btn>-->
+            <div v-else class="ml-5">
+                <v-btn to="/login">
+                    Вход
+                </v-btn>
+            </div>
         </v-app-bar>
         <v-main>
             <router-view/>
@@ -45,9 +41,19 @@
 <script>
 export default {
     name: 'App',
+    data() {
+        return {
+            isLoggedIn: localStorage.getItem('auth_token')
+        }
+    },
     methods: {
         saveTheme(value) {
             localStorage.setItem('dark_theme', value)
+        },
+        exit() {
+            localStorage.removeItem('auth_token')
+            this.$router.push('/')
+            location.reload()
         }
     }
 }

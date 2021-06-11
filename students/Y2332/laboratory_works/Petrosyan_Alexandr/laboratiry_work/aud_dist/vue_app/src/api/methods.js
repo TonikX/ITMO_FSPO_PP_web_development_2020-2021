@@ -2,21 +2,26 @@ import {HTTP} from "./common";
 
 export const Methods = {
     create(data, tableName) {
-        return HTTP.post(`/${tableName}/`, data).then(response => {
+        return HTTP.post(`/api/${tableName}/`, data).then(response => {
             return response.data
         })
     },
     delete(item, tableName) {
-        return HTTP.delete(`/${tableName}/${item.id}/`)
+        return HTTP.delete(`/api/${tableName}/${item.id}/`)
     },
     list(tableName) {
-        return HTTP.get(`/${tableName}/`).then(response => {
+        return HTTP.get(`/api/${tableName}/`).then(response => {
             return response.data
         })
     },
     update(item, tableName) {
-        return HTTP.put(`/${tableName}/${item.data.id}/`, item).then(response => {
+        return HTTP.put(`/api/${tableName}/${item.data.id}/`, item).then(response => {
             return response.data
         })
-    }
+    },
+    login(data) {
+        return HTTP.post('/auth/token/login/', data).then(response => {
+            return response.data
+        })
+    },
 }

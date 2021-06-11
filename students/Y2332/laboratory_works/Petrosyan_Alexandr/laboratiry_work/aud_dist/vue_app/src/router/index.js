@@ -18,22 +18,34 @@ const routes = [
     {
         path: '/lecturers',
         name: 'Lecturers',
-        component: Lecturers
+        component: Lecturers,
+        meta: {
+            requiresAuth: true
+        }
     },
     {
         path: '/disciplines',
         name: 'Disciplines',
-        component: Disciplines
+        component: Disciplines,
+        meta: {
+            requiresAuth: true
+        }
     },
     {
         path: '/audiences',
         name: 'Audiences',
-        component: Audiences
+        component: Audiences,
+        meta: {
+            requiresAuth: true
+        }
     },
     {
         path: '/groups',
         name: 'Groups',
-        component: Groups
+        component: Groups,
+        meta: {
+            requiresAuth: true
+        }
     },
     {
         path: '/login',
@@ -46,6 +58,18 @@ const router = new VueRouter({
     mode: 'history',
     base: process.env.BASE_URL,
     routes
+})
+
+router.beforeEach((to, from, next) => {
+    if(to.matched.some(record => record.meta.requiresAuth)) {
+        if (localStorage.getItem('auth_token')) {
+            next()
+            return
+        }
+        next('/')
+    } else {
+        next()
+    }
 })
 
 export default router

@@ -12,6 +12,6 @@ export default new Vuex.Store({
         lecturers,
         disciplines,
         audiences,
-        groups
+        groups,
     }
 })
