@@ -24,4 +24,9 @@ export const Methods = {
             return response.data
         })
     },
+    logout() {
+        return HTTP.post('/auth/token/logout/').then(response => {
+            return response.data
+        })
+    }
 }

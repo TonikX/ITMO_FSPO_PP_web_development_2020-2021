@@ -39,6 +39,8 @@
 </template>
 
 <script>
+import {Methods} from "./api/methods";
+
 export default {
     name: 'App',
     data() {
@@ -51,6 +53,7 @@ export default {
             localStorage.setItem('dark_theme', value)
         },
         exit() {
+            Methods.logout()
             localStorage.removeItem('auth_token')
             this.$router.push('/')
             location.reload()
