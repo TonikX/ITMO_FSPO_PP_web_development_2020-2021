@@ -4,6 +4,7 @@ import lecturers from "./modules/lecturers-module"
 import disciplines from "./modules/disciplines-module"
 import audiences from "./modules/audiences-module"
 import groups from "./modules/groups-module"
+import schedules from "./modules/schedules-module"
 
 Vue.use(Vuex)
 
@@ -13,5 +14,6 @@ export default new Vuex.Store({
         disciplines,
         audiences,
         groups,
+        schedules
     }
 })

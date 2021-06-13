@@ -6,6 +6,7 @@ import Home from "../components/Home";
 import Disciplines from "../components/Disciplines";
 import Audiences from "../components/Audiences";
 import Groups from "../components/Groups";
+import Schedule from "../components/Schedule";
 
 Vue.use(VueRouter)
 
@@ -43,6 +44,14 @@ const routes = [
         path: '/groups',
         name: 'Groups',
         component: Groups,
+        meta: {
+            requiresAuth: true
+        }
+    },
+    {
+        path: '/schedule',
+        name: 'Schedule',
+        component: Schedule,
         meta: {
             requiresAuth: true
         }

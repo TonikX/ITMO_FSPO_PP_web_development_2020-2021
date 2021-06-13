@@ -5,6 +5,7 @@
                 <v-icon>mdi-home</v-icon>
             </v-btn>
             <div v-if="isLoggedIn">
+                <v-btn plain to="/schedule">Расписание</v-btn>
                 <v-btn plain to="/lecturers">Преподаватели</v-btn>
                 <v-btn plain to="/disciplines">Дисциплины</v-btn>
                 <v-btn plain to="/audiences">Аудитории</v-btn>

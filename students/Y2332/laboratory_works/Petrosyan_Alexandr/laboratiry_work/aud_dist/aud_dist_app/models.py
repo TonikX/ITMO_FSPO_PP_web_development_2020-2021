@@ -58,29 +58,29 @@ class Schedule(models.Model):
     audience = models.ForeignKey(Audience, on_delete=models.CASCADE, verbose_name="Аудитория")
 
     DAYS_OF_WEEK = (
-        ('Понедельник', 'ПН'),
-        ('Вторник',     'ВТ'),
-        ('Среда',       'СР'),
-        ('Четверг',     'ЧТ'),
-        ('Пятница',     'ПТ'),
-        ('Суббота',     'СБ'),
+        (1, 'Понедельник',),
+        (2, 'Вторник'),
+        (3, 'Среда'),
+        (4, 'Четверг'),
+        (5, 'Пятница'),
+        (6, 'Суббота'),
     )
 
-    day_of_the_week = models.CharField(max_length=15, choices=DAYS_OF_WEEK, verbose_name="День недели")
+    day_of_the_week = models.IntegerField(choices=DAYS_OF_WEEK, verbose_name="День недели")
 
     LECTURE_BEGIN = (
-        ('8:20',  '1'),
-        ('10:00', '2'),
-        ('11:40', '3'),
-        ('13:30', '4'),
-        ('15:20', '5'),
-        ('17:00', '6'),
+        (1, '8:20'),
+        (2, '10:00'),
+        (3, '11:40'),
+        (4, '13:30'),
+        (5, '15:20'),
+        (6, '17:00'),
     )
 
-    lecture_begin = models.CharField(max_length=5, choices=LECTURE_BEGIN, verbose_name="Номер пары")
+    lecture_begin = models.IntegerField(choices=LECTURE_BEGIN, verbose_name="Начало пары")
 
     def __str__(self):
-        return f"{self.group} {self.day_of_the_week} {self.lecture_begin}"
+        return f"Группа: {self.group} День: {self.day_of_the_week} Пара: {self.lecture_begin}"
 
     class Meta:
         verbose_name = "Расписание"

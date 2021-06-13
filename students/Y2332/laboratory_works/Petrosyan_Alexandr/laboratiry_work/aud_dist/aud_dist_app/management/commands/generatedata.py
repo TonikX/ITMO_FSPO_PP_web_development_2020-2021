@@ -61,6 +61,33 @@ def generate_audiences(fake):
         )
 
 
+def generate_schedule(
+        first_discipline,
+        last_discipline,
+        first_lecturer,
+        last_lecturer,
+        first_audience,
+        last_audience,
+        first_group,
+        last_group,
+):
+    for group in range(first_group, last_group):
+        for day in range(random.randint(4, 6)):
+            for lecture in range(random.randint(3, 6)):
+                rand_lecturer = random.randint(first_lecturer, last_lecturer)
+                rand_discipline = random.randint(first_discipline, last_discipline)
+                rand_audience = random.randint(first_audience, last_audience)
+
+                Schedule.objects.create(
+                    lecturer_id=rand_lecturer,
+                    discipline_id=rand_discipline,
+                    group_id=group,
+                    audience_id=rand_audience,
+                    day_of_the_week=day,
+                    lecture_begin=lecture,
+                )
+
+
 class Command(BaseCommand):
     help = "Generate data for audience distribution project"
 
@@ -68,23 +95,50 @@ class Command(BaseCommand):
         fake = Faker('ru_RU')
         fake.add_provider(Provider)
 
-        try:
-            discipline_quantity = Discipline.objects.count()
+        # try:
+        discipline_quantity = Discipline.objects.count()
 
-            if discipline_quantity < 10:
-                if input("Not enough disciplines. Generate them? (Y/N): ") in ('y', 'Y'):
-                    generate_disciplines(fake)
-                else:
-                    raise Exception("Error: Not enough disciplines (should be more than 10)")
+        if discipline_quantity < 10:
+            if input("Not enough disciplines. Generate them? (Y/N): ") in ('y', 'Y'):
+                generate_disciplines(fake)
+            else:
+                raise Exception("Error: Not enough disciplines (should be more than 10)")
 
-            discipline_quantity = Discipline.objects.count()
+        discipline_quantity = Discipline.objects.count()
 
-            first_discipline = Discipline.objects.first().pk
-            last_discipline = Discipline.objects.last().pk
+        first_discipline = Discipline.objects.first().pk
+        last_discipline = Discipline.objects.last().pk
 
-            generate_lecturers(fake, first_discipline, last_discipline)
-            generate_groups(fake, first_discipline, last_discipline, discipline_quantity)
-            generate_audiences(fake)
+        generate_lecturers(
+            fake,
+            first_discipline,
+            last_discipline
+        )
+        generate_groups(
+            fake,
+            first_discipline,
+            last_discipline,
+            discipline_quantity
+        )
+        generate_audiences(fake)
 
-        except Exception as e:
-            print(str(e))
+        first_lecturer = Lecturer.objects.first().pk
+        last_lecturer = Lecturer.objects.last().pk
+        first_audience = Audience.objects.first().pk
+        last_audience = Audience.objects.last().pk
+        first_group = Group.objects.first().pk
+        last_group = Group.objects.last().pk
+
+        generate_schedule(
+            first_discipline,
+            last_discipline,
+            first_lecturer,
+            last_lecturer,
+            first_audience,
+            last_audience,
+            first_group,
+            last_group,
+        )
+
+        # except Exception as e:
+        #     print(str(e))
