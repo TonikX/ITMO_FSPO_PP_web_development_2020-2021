@@ -1,0 +1,15 @@
+site_name: GIBDD docs
+nav:
+  - Home: index.md
+  - Model:
+      - "model": models/GIBDD.md
+
+  - Url:
+      - "list": urls/car_list.md
+      - "create": urls/car_create.md
+      - "delete": urls/car_delete.md
+      - "detail": urls/car_update.md
+      - "read": urls/cars_read.md
+
+theme:
+  name: mkdocs
