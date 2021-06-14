@@ -1,6 +1,6 @@
-### Order
+# Order
 
-# Код модели
+## Код модели
 ```python
 class Order(models.Model):
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, null=True)

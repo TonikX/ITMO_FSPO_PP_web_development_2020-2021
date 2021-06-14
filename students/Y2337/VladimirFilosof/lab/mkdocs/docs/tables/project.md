@@ -1,6 +1,6 @@
-### Project
+# Project
 
-# Код модели
+## Код модели
 ```python
 class Project(models.Model):
     title = models.CharField(max_length=255)

@@ -1,15 +1,6 @@
-### Service
+# Service
 
-
-|Name|Type|Primary key|Foreign key|Unique|Inregrity constraints|
-|----|----|-----------|-----------|------|---------------------|
-|id|int|+||+||
-|title|varchar|||||
-|description|text|||||
-|text|varchar|||||
-|preview|varchar|||||
-
-# Код модели
+## Код модели
 ```python
 class Service(models.Model):
     title = models.CharField(max_length=255)
