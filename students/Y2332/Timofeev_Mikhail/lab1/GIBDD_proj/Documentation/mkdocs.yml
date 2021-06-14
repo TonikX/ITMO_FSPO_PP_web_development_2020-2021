@@ -8,7 +8,7 @@ nav:
       - "list": urls/car_list.md
       - "create": urls/car_create.md
       - "delete": urls/car_delete.md
-      - "detail": urls/car_update.md
+      - "update": urls/car_update.md
       - "read": urls/cars_read.md
 
 theme:
