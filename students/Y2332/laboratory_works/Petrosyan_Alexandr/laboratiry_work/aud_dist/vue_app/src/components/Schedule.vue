@@ -20,15 +20,36 @@
                         </v-card-title>
                         <v-card-text>
                             <h3 class="my-3 mx-3">Группа:
-                                {{ getGroupById(this.currentItem.relationships.group.id) }}
+                                {{ getGroupById(this.currentItem.attributes.group) }}
                             </h3>
                             <h3 class="my-3 mx-3 mb-7">День недели:
                                 {{ getDay(this.currentItem.attributes.day_of_the_week) }}
                             </h3>
                             <v-form ref="form" lazy-validation>
                                 <v-select
+                                    v-model="currentItem.attributes.lecture_begin"
+                                    :items="beginTime"
+                                    :rules="rules"
+                                    class="mx-3 mb-8"
+                                    dense
+                                    item-text="time"
+                                    item-value="lecture"
+                                    label="Начало*"
+                                ></v-select>
+                                <v-select
+                                    v-if="audiences.data"
+                                    v-model="currentItem.attributes.audience"
+                                    :items="audiences.data"
+                                    :rules="rules"
+                                    class="mx-3 mb-8"
+                                    dense
+                                    item-text="attributes.number"
+                                    item-value="id"
+                                    label="Аудитория*"
+                                ></v-select>
+                                <v-select
                                     v-if="lecturers.data"
-                                    v-model="currentItem.relationships.lecturer.data.id"
+                                    v-model="currentItem.attributes.lecturer"
                                     :item-text="item => getFullName(item.attributes)"
                                     :items="lecturers.data"
                                     :rules="rules"
@@ -39,7 +60,7 @@
                                 ></v-select>
                                 <v-select
                                     v-if="disciplines.data"
-                                    v-model="currentItem.relationships.discipline.data.id"
+                                    v-model="currentItem.attributes.discipline"
                                     :items="disciplines.data"
                                     :rules="rules"
                                     class="mx-3 mb-8"
@@ -106,6 +127,7 @@
                     <td :colspan="headers.length" class="px-10 py-5">
                         <div v-for="day in daysOfWeek">
                             <v-simple-table dense>
+                                <!--TODO сортировка таблицы. Возможно придётся всё переделать-->
                                 <template v-slot:default>
                                     <thead>
                                     <tr>
@@ -140,12 +162,19 @@
                                     </thead>
                                     <tbody>
                                     <tr v-for="
-                                            schedule in groupSchedule(item).filter(
+                                            schedule in groupSchedule(item)
+                                            .filter(
                                                 sc => sc.attributes.day_of_the_week === day.number
                                             )
                                         ">
                                         <td>{{ schedule.attributes.lecture_begin }}</td>
-                                        <td>{{ beginTime[schedule.attributes.lecture_begin] }}</td>
+                                        <td>
+                                            {{
+                                                beginTime.find(
+                                                    bt => bt.lecture === schedule.attributes.lecture_begin
+                                                ).time
+                                            }}
+                                        </td>
                                         <td>
                                             {{
                                                 audiences.data.find(
@@ -230,47 +259,25 @@ export default {
                 {number: 5, name: 'Пятница'},
                 {number: 6, name: 'Суббота'},
             ],
-            beginTime: {
-                1: '8:20',
-                2: '10:00',
-                3: '11:40',
-                4: '13:30',
-                5: '15:20',
-                6: '17:00',
-            },
+            beginTime: [
+                {lecture: 1, time: '8:20'},
+                {lecture: 2, time: '10:00'},
+                {lecture: 3, time: '11:40'},
+                {lecture: 4, time: '13:30'},
+                {lecture: 5, time: '15:20'},
+                {lecture: 6, time: '17:00'},
+            ],
             dialogDelete: false,
             defaultItem: {
-                "type": "Schedule",
-                "id": null,
-                "attributes": {
-                    "day_of_the_week": 1,
-                    "lecture_begin": 1
-                },
-                "relationships": {
-                    "lecturer": {
-                        "data": {
-                            "type": "Lecturer",
-                            "id": ''
-                        }
-                    },
-                    "discipline": {
-                        "data": {
-                            "type": "Discipline",
-                            "id": ''
-                        }
-                    },
-                    "group": {
-                        "data": {
-                            "type": "Group",
-                            "id": ''
-                        }
-                    },
-                    "audience": {
-                        "data": {
-                            "type": "Audience",
-                            "id": ''
-                        }
-                    }
+                type: "Schedule",
+                id: null,
+                attributes: {
+                    day_of_the_week: '',
+                    lecture_begin: '',
+                    lecturer: '',
+                    discipline: '',
+                    group: '',
+                    audience: ''
                 }
             },
             currentItem: null,
@@ -282,7 +289,6 @@ export default {
             rules: [
                 v => !!v || 'Обязательное поле',
             ],
-            selected: null
         }
     },
     name: "Groups",
@@ -305,15 +311,15 @@ export default {
     },
     methods: {
         deleteItem(item) {
-            // this.dialogDelete = true
-            // this.currentItem = item
+            this.dialogDelete = true
+            this.currentItem = item
         },
         closeDelete() {
             this.dialogDelete = false
             this.currentItem = this.defaultItem
         },
         deleteConfirm() {
-            this.$store.dispatch('deleteGroup', this.currentItem)
+            this.$store.dispatch('deleteSchedule', this.currentItem)
                 .then(() => {
                     this.closeDelete()
                     this.snackbarText = 'удалён'
@@ -345,39 +351,46 @@ export default {
 
                 console.log(this.currentItem)
 
-                // let type
-                // if (this.currentItem.id) {
-                //     type = 'updateGroup'
-                //     this.snackbarText = 'изменён'
-                // } else {
-                //     type = 'createGroup'
-                //     this.snackbarText = 'добавлен'
-                // }
-                // this.$store.dispatch(
-                //     type,
-                //     {
-                //         data: this.currentItem
-                //     }
-                // ).then(() => {
-                //     this.close()
-                //     this.successSnackbar = true
-                // }).catch(e => { // TODO ошибки не отслеживаются
-                //     console.log(e);
-                //     this.errorSnackbar = true
-                // })
+                let type
+                if (this.currentItem.id) {
+                    type = 'updateSchedule'
+                    this.snackbarText = 'изменён'
+                } else {
+                    type = 'createSchedule'
+                    this.snackbarText = 'добавлен'
+                }
+                this.$store.dispatch(
+                    type,
+                    {
+                        data: this.currentItem
+                    }
+                ).then(() => {
+                    this.close()
+                    this.successSnackbar = true
+                }).catch(e => { // TODO ошибки не отслеживаются
+                    console.log(e);
+                    this.errorSnackbar = true
+                })
             }
         },
         editItem(item) {
-            // console.log(item)
-            this.clearForm()
-            this.currentItem = JSON.parse(JSON.stringify(item))
+            // this.clearForm()
+
+            // Отвратительно, но не знаю, как иначе
+            this.currentItem.attributes.discipline = item.relationships.discipline.data.id
+            this.currentItem.attributes.day_of_the_week = item.attributes.day_of_the_week
+            this.currentItem.attributes.lecturer = item.relationships.lecturer.data.id
+            this.currentItem.attributes.audience = item.relationships.audience.data.id
+            this.currentItem.attributes.lecture_begin = item.attributes.lecture_begin
+            this.currentItem.attributes.group = item.relationships.group.data.id
+            this.currentItem.id = item.id
+
             this.dialog = true
-            this.selected = item.relationships.disciplines.data.map(it => it.id)
         },
         newItem(group, day) {
             this.clearForm()
             this.currentItem.attributes.day_of_the_week = day
-            this.currentItem.relationships.group.id = group.id
+            this.currentItem.attributes.group = group.id
             this.dialog = true
         },
         groupSchedule(item) {
@@ -388,9 +401,12 @@ export default {
             }
         },
         getFullName(attr) {
-            return attr.surname + ' ' +
-                attr.first_name[0] + '. ' +
-                attr.patronymic[0] + '. '
+            let fullName = attr.surname + ' ' + attr.first_name[0] + '. '
+            if (attr.patronymic) {
+                fullName += attr.patronymic[0] + '. '
+            }
+
+            return fullName
         },
         getDay(number) {
             if (number) {
