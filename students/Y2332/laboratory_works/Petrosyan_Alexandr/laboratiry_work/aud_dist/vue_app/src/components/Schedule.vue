@@ -14,50 +14,39 @@
                 ></v-text-field>
                 <v-spacer></v-spacer>
                 <v-dialog v-model="dialog" max-width="500px" persistent>
-                    <template v-slot:activator="{ on, attrs }">
-<!--                        <v-btn-->
-<!--                            v-bind="attrs"-->
-<!--                            v-on="on"-->
-<!--                            class="mb-2"-->
-<!--                            color="primary"-->
-<!--                            @click="clearForm"-->
-<!--                        >-->
-<!--                            Добавить-->
-<!--                        </v-btn>-->
-                    </template>
                     <v-card>
                         <v-card-title>
                             <span class="text-h5">{{ formTitle() }}</span>
                         </v-card-title>
                         <v-card-text>
+                            <h3 class="my-3 mx-3">Группа:
+                                {{ getGroupById(this.currentItem.relationships.group.id) }}
+                            </h3>
+                            <h3 class="my-3 mx-3 mb-7">День недели:
+                                {{ getDay(this.currentItem.attributes.day_of_the_week) }}
+                            </h3>
                             <v-form ref="form" lazy-validation>
-                                <v-text-field
-                                    v-model="currentItem.attributes.number"
-                                    :counter="5"
-                                    :rules="numberRules"
-                                    class="mx-3 my-8"
-                                    dense
-                                    label="Номер"
-                                ></v-text-field>
-                                <v-text-field
-                                    v-model="currentItem.attributes.students_quantity"
-                                    :counter="2"
-                                    :rules="quantityRules"
+                                <v-select
+                                    v-if="lecturers.data"
+                                    v-model="currentItem.relationships.lecturer.data.id"
+                                    :item-text="item => getFullName(item.attributes)"
+                                    :items="lecturers.data"
+                                    :rules="rules"
                                     class="mx-3 mb-8"
                                     dense
-                                    label="Количество студентов"
-                                ></v-text-field>
+                                    item-value="id"
+                                    label="Преподаватель*"
+                                ></v-select>
                                 <v-select
                                     v-if="disciplines.data"
-                                    v-model="selected"
+                                    v-model="currentItem.relationships.discipline.data.id"
                                     :items="disciplines.data"
-                                    :rules="disciplinesRules"
+                                    :rules="rules"
                                     class="mx-3 mb-8"
                                     dense
                                     item-text="attributes.name"
                                     item-value="id"
-                                    label="Дисциплины*"
-                                    multiple
+                                    label="Дисциплина*"
                                 ></v-select>
                             </v-form>
                             <small>*обязательные поля</small>
@@ -114,13 +103,84 @@
                     </v-icon>
                 </template>
                 <template v-slot:expanded-item="{ headers, item }">
-                    <td :colspan="headers.length">
-                        <div
-                            v-for="discipline in item.relationships.disciplines.data"
-                            v-if="disciplines.data"
-                            class="ml-6 my-2"
-                        >
-                            {{ disciplines.data.find(dis => dis.id === discipline.id).attributes.name }}
+                    <td :colspan="headers.length" class="px-10 py-5">
+                        <div v-for="day in daysOfWeek">
+                            <v-simple-table dense>
+                                <template v-slot:default>
+                                    <thead>
+                                    <tr>
+                                        <th>
+                                            <div class="my-3">
+                                                <h2>{{ day.name }}</h2>
+                                            </div>
+                                        </th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th></th>
+                                        <th>
+                                            <v-btn
+                                                color="primary"
+                                                outlined
+                                                x-small
+                                                @click="newItem(item, day.number)"
+                                            >
+                                                Добавить
+                                            </v-btn>
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>№</th>
+                                        <th>Начало</th>
+                                        <th>Аудитория</th>
+                                        <th>Дисциплина</th>
+                                        <th>Преподаватель</th>
+                                        <th>Действия</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    <tr v-for="
+                                            schedule in groupSchedule(item).filter(
+                                                sc => sc.attributes.day_of_the_week === day.number
+                                            )
+                                        ">
+                                        <td>{{ schedule.attributes.lecture_begin }}</td>
+                                        <td>{{ beginTime[schedule.attributes.lecture_begin] }}</td>
+                                        <td>
+                                            {{
+                                                audiences.data.find(
+                                                    aud => aud.id === schedule.relationships.audience.data.id
+                                                ).attributes.number
+                                            }}
+                                        </td>
+                                        <td>
+                                            {{
+                                                disciplines.data.find(
+                                                    dis => dis.id === schedule.relationships.discipline.data.id
+                                                ).attributes.name
+                                            }}
+                                        </td>
+                                        <td>
+                                            {{
+                                                getFullName(
+                                                    lecturers.data.find(
+                                                        lec => lec.id === schedule.relationships.lecturer.data.id
+                                                    ).attributes
+                                                )
+                                            }}
+                                        </td>
+                                        <td>
+                                            <v-icon class="mr-2" small @click="editItem(schedule)">
+                                                mdi-pencil
+                                            </v-icon>
+                                            <v-icon small @click="deleteItem(schedule)">
+                                                mdi-delete
+                                            </v-icon>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </template>
+                            </v-simple-table>
                         </div>
                     </td>
                 </template>
@@ -161,15 +221,57 @@ export default {
                 {text: 'Номер', value: 'attributes.number'},
                 {text: 'Расписание', value: 'data-table-expand'},
                 {text: '', sortable: false},
-                // {text: 'Действия', value: 'actions', sortable: false},
             ],
+            daysOfWeek: [
+                {number: 1, name: 'Понедельник'},
+                {number: 2, name: 'Вторник'},
+                {number: 3, name: 'Среда'},
+                {number: 4, name: 'Четверг'},
+                {number: 5, name: 'Пятница'},
+                {number: 6, name: 'Суббота'},
+            ],
+            beginTime: {
+                1: '8:20',
+                2: '10:00',
+                3: '11:40',
+                4: '13:30',
+                5: '15:20',
+                6: '17:00',
+            },
             dialogDelete: false,
             defaultItem: {
-                id: null,
-                attributes: {
-                    number: '',
-                    students_quantity: '',
+                "type": "Schedule",
+                "id": null,
+                "attributes": {
+                    "day_of_the_week": 1,
+                    "lecture_begin": 1
                 },
+                "relationships": {
+                    "lecturer": {
+                        "data": {
+                            "type": "Lecturer",
+                            "id": ''
+                        }
+                    },
+                    "discipline": {
+                        "data": {
+                            "type": "Discipline",
+                            "id": ''
+                        }
+                    },
+                    "group": {
+                        "data": {
+                            "type": "Group",
+                            "id": ''
+                        }
+                    },
+                    "audience": {
+                        "data": {
+                            "type": "Audience",
+                            "id": ''
+                        }
+                    }
+                }
             },
             currentItem: null,
             originalItem: null,
@@ -177,35 +279,34 @@ export default {
             successSnackbar: false,
             errorSnackbar: false,
             snackbarText: '',
-            numberRules: [
+            rules: [
                 v => !!v || 'Обязательное поле',
-                v => (v && v.length <= 5) || 'Должно быть меньше 5 символов',
-            ],
-            quantityRules: [
-                v => !!v || 'Обязательное поле',
-                v => (v && v.length <= 2) || 'Должно быть меньше 2 символов',
-                v => (String(parseInt(v, 10)) && v > 0) ||
-                    'Необходимо положительное натуральное число',
-            ],
-            disciplinesRules: [
-                v => (v && v.length >= 1) || 'Выберете хотя бы одну дисциплину'
             ],
             selected: null
         }
     },
     name: "Groups",
     computed: {
-        ...mapGetters(['groups', 'disciplines']),
+        ...mapGetters([
+            'schedules',
+            'groups',
+            'disciplines',
+            'lecturers',
+            'audiences'
+        ]),
     },
     beforeMount() {
+        this.$store.dispatch('getSchedules')
         this.$store.dispatch('getGroups')
         this.$store.dispatch('getDisciplines')
+        this.$store.dispatch('getLecturers')
+        this.$store.dispatch('getAudiences')
         this.currentItem = this.defaultItem
     },
     methods: {
         deleteItem(item) {
-            this.dialogDelete = true
-            this.currentItem = item
+            // this.dialogDelete = true
+            // this.currentItem = item
         },
         closeDelete() {
             this.dialogDelete = false
@@ -236,47 +337,74 @@ export default {
             if (this.currentItem.id) {
                 return 'Редактирование'
             } else {
-                return 'Новый группа'
+                return 'Новая запись'
             }
         },
         save() {
             if (this.$refs.form.validate()) {
-                let type
-                if (this.currentItem.id) {
-                    type = 'updateGroup'
-                    this.snackbarText = 'изменён'
-                } else {
-                    type = 'createGroup'
-                    this.snackbarText = 'добавлен'
-                }
-                this.$store.dispatch(
-                    type,
-                    {
-                        data: {
-                            type: "Group",
-                            id: this.currentItem.id,
-                            attributes: this.currentItem.attributes,
-                            relationships: {
-                                disciplines: {
-                                    data: this.selected
-                                }
-                            }
-                        }
-                    }
-                ).then(() => {
-                    this.close()
-                    this.successSnackbar = true
-                }).catch(e => { // TODO ошибки не отслеживаются
-                    console.log(e);
-                    this.errorSnackbar = true
-                })
+
+                console.log(this.currentItem)
+
+                // let type
+                // if (this.currentItem.id) {
+                //     type = 'updateGroup'
+                //     this.snackbarText = 'изменён'
+                // } else {
+                //     type = 'createGroup'
+                //     this.snackbarText = 'добавлен'
+                // }
+                // this.$store.dispatch(
+                //     type,
+                //     {
+                //         data: this.currentItem
+                //     }
+                // ).then(() => {
+                //     this.close()
+                //     this.successSnackbar = true
+                // }).catch(e => { // TODO ошибки не отслеживаются
+                //     console.log(e);
+                //     this.errorSnackbar = true
+                // })
             }
         },
         editItem(item) {
+            // console.log(item)
             this.clearForm()
             this.currentItem = JSON.parse(JSON.stringify(item))
             this.dialog = true
             this.selected = item.relationships.disciplines.data.map(it => it.id)
+        },
+        newItem(group, day) {
+            this.clearForm()
+            this.currentItem.attributes.day_of_the_week = day
+            this.currentItem.relationships.group.id = group.id
+            this.dialog = true
+        },
+        groupSchedule(item) {
+            if (this.schedules.data) {
+                return this.schedules.data.filter(
+                    sch => sch.relationships.group.data.id === item.id
+                )
+            }
+        },
+        getFullName(attr) {
+            return attr.surname + ' ' +
+                attr.first_name[0] + '. ' +
+                attr.patronymic[0] + '. '
+        },
+        getDay(number) {
+            if (number) {
+                return this.daysOfWeek.find(
+                    day => day.number === number
+                ).name
+            }
+        },
+        getGroupById(id) {
+            if (id) {
+                return this.groups.data.find(
+                    gro => gro.id === id
+                ).attributes.number
+            }
         }
     }
 }

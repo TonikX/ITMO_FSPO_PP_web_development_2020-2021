@@ -37,7 +37,7 @@
                                     :rules="numberRules"
                                     class="mx-3 my-8"
                                     dense
-                                    label="Номер"
+                                    label="Номер*"
                                 ></v-text-field>
                                 <v-text-field
                                     v-model="currentItem.attributes.students_quantity"
@@ -45,7 +45,7 @@
                                     :rules="quantityRules"
                                     class="mx-3 mb-8"
                                     dense
-                                    label="Количество студентов"
+                                    label="Количество студентов*"
                                 ></v-text-field>
                                 <v-select
                                     v-if="disciplines.data"
@@ -184,7 +184,7 @@ export default {
                 v => !!v || 'Обязательное поле',
                 v => (v && v.length <= 2) || 'Должно быть меньше 2 символов',
                 v => (String(parseInt(v, 10)) && v > 0) ||
-                    'Необходимо положительное натуральное число',
+                    'Необходимо положительное целое число',
             ],
             disciplinesRules: [
                 v => (v && v.length >= 1) || 'Выберете хотя бы одну дисциплину'

@@ -37,7 +37,7 @@ export default {
         },
         getSchedules({commit}) {
             Methods.list('schedules').then(schedules => {
-                commit('SET_SCHEDULES', {lecturers: schedules})
+                commit('SET_SCHEDULES', {schedules})
             })
         },
         updateSchedule({commit}, schedule){
