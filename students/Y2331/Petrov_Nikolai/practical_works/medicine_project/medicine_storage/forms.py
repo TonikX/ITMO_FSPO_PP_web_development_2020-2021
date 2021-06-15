@@ -37,10 +37,11 @@ class ItemForm(ModelForm):
 class UnitForm(ModelForm):
     class Meta:
         model = models.Unit
-        fields = ['item', 'amount', 'product_date', 'open_date', 'user']
+        # fields = ['item', 'amount', 'product_date', 'open_date', 'user']
+        fields = ['item', 'amount', 'product_date', 'user']
         labels = {
             'item': _('Название'),
             'amount': _('Количество'),
             'product_date': _('Дата производства'),
-            'open_date': _('Дата вскрытия упаковки')
+            # 'open_date': _('Дата вскрытия упаковки')
         }

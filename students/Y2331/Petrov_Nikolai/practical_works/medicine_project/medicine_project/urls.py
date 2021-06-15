@@ -19,6 +19,8 @@ from django.conf.urls.static import static
 from medicine_storage import views
 
 urlpatterns = [
+                  path('index/', views.index, name='index'),
+
                   path('accounts/', include('django.contrib.auth.urls')),
                   path('accounts/signup/', views.signup, name='signup'),
                   path('api/users', views.UsersList.as_view(), name='users'),
