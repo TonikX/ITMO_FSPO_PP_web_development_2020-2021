@@ -135,7 +135,6 @@ class ViewGenerator:
                 cancel_url=self.mapped_fields['root_path'] + success_url_postfix,
                 **kwargs
             )
-            self.doc_md_ += f"\n- **delete** {self.paths['delete']} -- Удалить объект с id = pk"
         return self.paths['delete'], self.delete_view
 
     def generate_create_view(self, success_url_postfix='list', **kwargs):
@@ -148,7 +147,6 @@ class ViewGenerator:
                     'fields': self.field_names
                 }, **kwargs
             )
-            self.doc_md_ += f"\n- **create** {self.paths['create']} -- Создать объект"
         return self.paths['create'], self.create_view
 
     def generate_list_view(self, paginate_by=10, **kwargs):
@@ -158,7 +156,6 @@ class ViewGenerator:
                 base_template_name='list_view.html',
                 class_fields={'paginate_by': paginate_by}, **kwargs
             )
-            self.doc_md_ += f"\n- **list** {self.paths['list']} -- Список всех объектов"
 
         return self.paths['list'], self.list_view
 
@@ -172,7 +169,7 @@ class ViewGenerator:
                     'fields': [
                         field.set(
                             value=getattr(obj, field.name)
-                        ) # todo: обновлять не гиперпараметры не флюент. лучше разделить класс и обьект
+                        )
                         if not field.is_foreign
                         else field.set(
                             value=Foreign(
@@ -204,7 +201,6 @@ class ViewGenerator:
                 DetailView, 'detail_view.html',
                 custom_context_f=custom_context, **kwargs
             )
-            self.doc_md_ += f"\n- **detail** {self.paths['detail']} -- Подробности об объекте с id = pk"
         return self.paths['detail'], self.detail_view
 
     def generate_search_view(self, paginate_by=10, query_obj=None, **kwargs):
@@ -234,7 +230,6 @@ class ViewGenerator:
                 }, **kwargs, q=query_obj
             )
 
-            self.doc_md_ += f"\n- **search** {self.paths['search']} -- Поиск объекта"
         return self.paths['search'], self.search_view
 
     def generate_update_view(self, success_url_postfix='list', **kwargs):
@@ -248,7 +243,6 @@ class ViewGenerator:
                 }, **kwargs
             )
 
-            self.doc_md_ += f"\n- **update** {self.paths['update']} -- Обновление данных объекта с id = pk"
 
         return self.paths['update'], self.update_view
 
