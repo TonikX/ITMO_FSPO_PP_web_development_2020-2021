@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Владелец автомобиля</title>
+</head>
+<body>
+    <h1>{{ object }}</h1>
+    <p><strong>Дата рождения: </strong>{{ object.date_birth }}</p>
+    <a href="/owner_list/">Get back</a>
+    <a href="{% url 'up_owner' object.pk %}">   Update</a>
+    <a href="{% url 'del_owner' object.pk %}">   Delete</a>
+</body>
+</html>

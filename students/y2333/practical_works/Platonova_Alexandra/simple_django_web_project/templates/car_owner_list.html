@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CarOwners</title>
+</head>
+<body>
+<div style="background-color: #f4fcff">
+    <span><h1>Owners</h1><a href="/create_owner/">Add new one</a></span>
+    <ul style="font-size: 22px">
+    <!-- Iterate over object_list -->
+    {% for object in object_list %}
+    <!-- Display Objects -->
+    <li>{{ object.first_name }}, actions:
+        <a href="/owner/{{ object.id }}/update/">Edit</a>
+        |<a href="/owner/{{ object.id }}/delete/">Delete</a>
+        | <a href="/owner/{{ object.id }}/">Detail</a>
+    <p>{{ object.last_name }}</p>
+     <p>{{ object.bith_date}}</p>
+    </li>
+    <hr/>
+    <!-- If objet_list is empty  -->
+    {% empty %}
+    <li>No objects yet.</li>
+    {% endfor %}
+</ul>
+</div>
+</body>
+</html>
