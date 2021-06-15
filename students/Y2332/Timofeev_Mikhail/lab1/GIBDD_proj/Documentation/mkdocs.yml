@@ -4,12 +4,21 @@ nav:
   - Model:
       - "model": models/GIBDD.md
 
-  - Url:
-      - "list": urls/car_list.md
-      - "create": urls/car_create.md
-      - "delete": urls/car_delete.md
-      - "update": urls/car_update.md
-      - "read": urls/cars_read.md
+  - Urls: urls/urls_back.md
+
+  - Body:
+      - "list": urls/body/body_list.md
+      - "create": urls/body/body_create.md
+      - "delete": urls/body/body_delete.md
+      - "update": urls/body/body_update.md
+      - "read": urls/body/body_read.md
+
+  - Car:
+      - "list": urls/car/car_list.md
+      - "create": urls/car/car_create.md
+      - "delete": urls/car/car_delete.md
+      - "update": urls/car/car_update.md
+      - "read": urls/car/cars_read.md
 
 theme:
   name: mkdocs

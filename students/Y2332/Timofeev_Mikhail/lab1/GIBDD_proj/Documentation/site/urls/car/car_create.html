@@ -7,15 +7,15 @@
         
         
         
-        <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>read - GIBDD docs</title>
-        <link href="../css/bootstrap.min.css" rel="stylesheet">
-        <link href="../css/font-awesome.min.css" rel="stylesheet">
-        <link href="../css/base.css" rel="stylesheet">
+        <link rel="shortcut icon" href="../../img/favicon.ico">
+        <title>create - GIBDD docs</title>
+        <link href="../../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../../css/base.css" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
 
-        <script src="../js/jquery-1.10.2.min.js" defer></script>
-        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="../../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../../js/bootstrap.min.js" defer></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script> 
     </head>
@@ -23,7 +23,7 @@
     <body>
         <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
             <div class="container">
-                <a class="navbar-brand" href="../index.html">GIBDD docs</a>
+                <a class="navbar-brand" href="../../index.html">GIBDD docs</a>
                 <!-- Expander button -->
                 <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
                     <span class="navbar-toggler-icon"></span>
@@ -34,19 +34,47 @@
                         <!-- Main navigation -->
                         <ul class="nav navbar-nav">
                             <li class="navitem">
-                                <a href="../index.html" class="nav-link">Home</a>
+                                <a href="../../index.html" class="nav-link">Home</a>
                             </li>
                             <li class="dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Model <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
-    <a href="../models/GIBDD.html" class="dropdown-item">model</a>
+    <a href="../../models/GIBDD.html" class="dropdown-item">model</a>
+</li>
+                                </ul>
+                            </li>
+                            <li class="navitem">
+                                <a href="../urls_back.html" class="nav-link">Urls</a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Body <b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                    
+<li>
+    <a href="../body/body_list.html" class="dropdown-item">list</a>
+</li>
+                                    
+<li>
+    <a href="../body/body_create.html" class="dropdown-item">create</a>
+</li>
+                                    
+<li>
+    <a href="../body/body_delete.html" class="dropdown-item">delete</a>
+</li>
+                                    
+<li>
+    <a href="../body/body_update.html" class="dropdown-item">update</a>
+</li>
+                                    
+<li>
+    <a href="../body/body_read.html" class="dropdown-item">read</a>
 </li>
                                 </ul>
                             </li>
                             <li class="dropdown active">
-                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Url <b class="caret"></b></a>
+                                <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Car <b class="caret"></b></a>
                                 <ul class="dropdown-menu">
                                     
 <li>
@@ -54,7 +82,7 @@
 </li>
                                     
 <li>
-    <a href="car_create.html" class="dropdown-item">create</a>
+    <a href="car_create.html" class="dropdown-item active">create</a>
 </li>
                                     
 <li>
@@ -66,7 +94,7 @@
 </li>
                                     
 <li>
-    <a href="cars_read.html" class="dropdown-item active">read</a>
+    <a href="cars_read.html" class="dropdown-item">read</a>
 </li>
                                 </ul>
                             </li>
@@ -79,12 +107,12 @@
                             </a>
                         </li>
                             <li class="nav-item">
-                                <a rel="prev" href="car_update.html" class="nav-link">
+                                <a rel="prev" href="car_list.html" class="nav-link">
                                     <i class="fa fa-arrow-left"></i> Previous
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a rel="next" class="nav-link disabled">
+                                <a rel="next" href="car_delete.html" class="nav-link">
                                     Next <i class="fa fa-arrow-right"></i>
                                 </a>
                             </li>
@@ -105,24 +133,13 @@
     
     <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
         <ul class="nav flex-column">
-            
-            <li class="nav-item" data-level="2"><a href="#success-responses" class="nav-link">Success Responses</a>
-              <ul class="nav flex-column">
-              </ul>
-            </li>
         </ul>
     </div>
 </div></div>
                     <div class="col-md-9" role="main">
 
-<p>Выводит меню</p>
-<p><strong>URL</strong> : <code>cars/&lt;int:pk&gt;/</code></p>
-<p><strong>Method</strong> : <code>GET</code></p>
-<p><strong>Auth required</strong> : YES</p>
-<p><strong>Permissions required</strong> : YES</p>
-<p><strong>Data constraints</strong> : <code>{}</code></p>
-<h2 id="success-responses">Success Responses</h2>
-<p><img alt="Alt text" src="car_update.png" /></p></div>
+<p>Выводит интерфейс для добавления автомобиля</p>
+<p><img alt="Alt text" src="car_create.png" /></p></div>
             </div>
         </div>
 
@@ -131,11 +148,11 @@
             <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
         </footer>
         <script>
-            var base_url = "..",
+            var base_url = "../..",
                 shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
         </script>
-        <script src="../js/base.js" defer></script>
-        <script src="../search/main.js" defer></script>
+        <script src="../../js/base.js" defer></script>
+        <script src="../../search/main.js" defer></script>
 
         <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
