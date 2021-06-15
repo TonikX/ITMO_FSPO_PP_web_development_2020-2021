@@ -6,66 +6,65 @@ admin/
 auth/
 
 #Все кузова
-^bodies/$ [name='body-list']
+bodies/
 #Поиск по кузовам
-^bodies\.(?P<format>[a-z0-9]+)/?$ [name='body-list']
+bodies?s=something
 #Детали кузова
-^bodies/(?P<pk>[^/.]+)/$ [name='body-detail']
+bodies/<int:pk>/
 
 #Все двигатели
-^engines/$ [name='engine-list']
+engines/
 #Поиск по двигателям
-^engines\.(?P<format>[a-z0-9]+)/?$ [name='engine-list']
+engines?s=something
 #Детали двигателя
-^engines/(?P<pk>[^/.]+)/$ [name='engine-detail']
+engines/<int:pk>/
 
 #Все модели
-^models/$ [name='model-list']
+models/
 #Поиск по моделям
-^models\.(?P<format>[a-z0-9]+)/?$ [name='model-list']
+models?s=something
 #Детали модели
-^models/(?P<pk>[^/.]+)/$ [name='model-detail']
+models/<int:pk>/
 
 #Все юридические владельцы
-^legal_owners/$ [name='legal_owner-list']
+legal_owners/
 #Поиск по юридическим владельцам
-^legal_owners\.(?P<format>[a-z0-9]+)/?$ [name='legal_owner-list']
+legal_owners?s=something
 #Детали юридического владельца
-^legal_owners/(?P<pk>[^/.]+)/$ [name='legal_owner-detail']
+legal_owners/<int:pk>/
 
 #Все физические владельцы
-^physical_owners/$ [name='physical_owner-list']
+physical_owners/
 #Поиск по физическим владельцам
-^physical_owners\.(?P<format>[a-z0-9]+)/?$ [name='physical_owner-list']
+physical_owners?s=something
 #Детали физического владельца
-^physical_owners/(?P<pk>[^/.]+)/$ [name='physical_owner-detail']
+physical_owners/<int:pk>/
 
 #Все автомобили
-^cars/$ [name='car-list']
+cars/
 #Поиск по автомобилям
-^cars\.(?P<format>[a-z0-9]+)/?$ [name='car-list']
+cars?s=something
 #Детали автомобиля
-^cars/(?P<pk>[^/.]+)/$ [name='car-detail']
+cars/<int:pk>/
 
 #Все угоны
-^drive_away_info_list/$ [name='drive_away_info-list']
+drive_away_info_list/
 #Поиск по угонам
-^drive_away_info_list\.(?P<format>[a-z0-9]+)/?$ [name='drive_away_info-list']
+drive_away_info_list?s=something
 #Детали автомобиля
-^drive_away_info_list/(?P<pk>[^/.]+)/$ [name='drive_away_info-detail']
+drive_away_info_list/<int:pk>/
 
 #Все инспекторы
-^inspectors/$ [name='inspector-list']
+inspectors/
 #Поиск по инеспекторам
-^inspectors\.(?P<format>[a-z0-9]+)/?$ [name='inspector-list']
+inspectors?s=something
 #Детали инспектора
-^inspectors/(?P<pk>[^/.]+)/$ [name='inspector-detail']
+inspectors/<int:pk>/
 
 #Все техосмотры
-^watch_info_list/$ [name='watch_info-list']
+watch_info_list/
 #Поиск по техосмотрам
-^watch_info_list\.(?P<format>[a-z0-9]+)/?$ [name='watch_info-list']
+watch_info_list?s=something
 #Детали инспектора
-^watch_info_list/(?P<pk>[^/.]+)/$ [name='watch_info-detail']
-^watch_info_list/(?P<pk>[^/.]+)\.(?P<format>[a-z0-9]+)/?$ [name='watch_info-detail']
+watch_info_list/<int:pk>/
 ```
