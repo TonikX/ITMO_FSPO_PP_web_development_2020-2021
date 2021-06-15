@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weight calculator</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/all.css">
+    <script src="/static/js/manager.js"></script>
+    <script src="/static/js/themes.js"></script>
+    <script src="/static/js/front/vue_addMeal.js"></script>  
+    <script src="/static/js/front/vue_info.js"></script>
+    <script src="/static/js/front/vue_calc.js"></script>
+    <script src="/static/js/front/vue_ingrs.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header__content">
+            <div class="header__theme theme">
+                <div class="theme__activator"></div>
+                <div class="theme__option theme__option_active">Light</div>
+                <div class="theme__option">Dark</div>
+            </div>
+
+            <h1 class="header__name">Weight calculator</h1>
+
+            <div class="header__profile profile">
+                <div class="profile__icon"><i class="fas fa-user-alt"></i></div>
+                <div class="profile__name">-</div>
+                <div class="profile__exit"><div class="profile__action">Выйти</div></div>
+            </div>
+        </div>
+    </header>
+
+    <section class="calc">
+        
+        <div class="calc__profileInfo profileInfo" id="info">
+            <div class="blockName"><i class="fas fa-sliders-h"></i> Settings</div>
+            <div class="profileInfo__event profileInfo__event_weight">
+                <div class="profileInfo__name">Age:</div>
+                <input class="profileInfo__data" type="number" v-model="age">
+                <div class="profileInfo__pts">years</div>
+            </div>
+            <div class="profileInfo__event profileInfo__event_weight">
+                <div class="profileInfo__name">Weight:</div>
+                <input class="profileInfo__data" type="number" v-model="weight">
+                <div class="profileInfo__pts">kg</div>
+            </div>
+            <div class="profileInfo__event profileInfo__event_height">
+                <div class="profileInfo__name">Height:</div>
+                <input class="profileInfo__data" type="number" v-model="height">
+                <div class="profileInfo__pts">sm</div>
+            </div>
+            <div class="profileInfo__event profileInfo__event_sex">
+                <div class="profileInfo__name">Sex:</div>
+                <input class="profileInfo__data profileInfo__data_radio profileInfo__data_first" type="radio" value="man" id="sex_man" name="sex" v-model="sex">
+                <label for="sex_man">Man</label>
+                <input class="profileInfo__data profileInfo__data_radio" type="radio" id="sex_woman" value="woman" name="sex" v-model="sex">
+                <label for="sex_woman">Feminist</label>
+            </div>
+            <div class="blockAction" v-on:click="update">Save</div>
+        </div>
+
+        <div class="calc__profileInfo profileInfo" id="addMeal">
+            <div class="blockName"><i class="fas fa-drumstick-bite"></i> Kitchen</div>
+            <div class="profileInfo__event">
+                <div class="profileInfo__name">Name:</div>
+                <input class="profileInfo__data" type="text" v-model="newName">
+            </div>
+            <div class="profileInfo__event">
+                <div class="profileInfo__name">Calories:</div>
+                <input class="profileInfo__data" type="number" v-model="newCal">
+                <div class="profileInfo__pts">kcal</div>
+            </div>
+            <div class="profileInfo__event">
+                <div class="profileInfo__name">Type:</div>
+                <div class="profileInfo__cooking cooking">
+                    <div class="cooking__cook cooking__cook_active cook" data-type="Milky" v-on:click="setType(0, 'Milky')">
+                        <div>
+                            <div class="cook__icon"><i class="fas fa-egg"></i></div>
+                            <div class="cook__name">Milky</div>
+                        </div>
+                    </div>
+
+                    <div class="cooking__cook cook" data-type="Drink" v-on:click="setType(1, 'Drink')">
+                        <div>
+                            <div class="cook__icon"><i class="fas fa-tint"></i></div>
+                            <div class="cook__name">Drink</div>
+                        </div>
+                    </div>
+
+                    <div class="cooking__cook cook" data-type="Fruit" v-on:click="setType(2, 'Fruit')">
+                        <div>
+                            <div class="cook__icon"><i class="fas fa-apple-alt"></i></div>
+                            <div class="cook__name">Fruit</div>
+                        </div>
+                    </div>
+
+                    <div class="cooking__cook cook" data-type="Green" v-on:click="setType(3, 'Green')">
+                        <div>
+                            <div class="cook__icon"><i class="fas fa-carrot"></i></div>
+                            <div class="cook__name">Green</div>
+                        </div>
+                    </div>
+
+                    <div class="cooking__cook cook" data-type="Meat" v-on:click="setType(4, 'Meat')">
+                        <div>
+                            <div class="cook__icon"><i class="fas fa-bacon"></i></div>
+                            <div class="cook__name">Meat</div>
+                        </div>
+                    </div>
+
+                    <div class="cooking__cook cook" data-type="Fish" v-on:click="setType(5, 'Fish')">
+                        <div>
+                            <div class="cook__icon"><i class="fas fa-fish"></i></div>
+                            <div class="cook__name">Fish</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="blockAction" v-on:click="addIngr">Add</div>
+        </div>
+
+        <div class="ingrs" id="ingrs">
+            <div class="blockName blockName_light"><i class="fas fa-book"></i> Recipes</div>
+            <div class="ingrs__ingr ingr">
+                <div class="blockName"><i class="fas fa-egg"></i> Milky</div>
+                <div class="ingrs__inner">
+                    <div v-for="meal in meals.Milky" class="cooking__cook cook" v-on:click="calcIngr(meal)">
+                        <div>
+                            <div class="cook__cal">{{meal.cal}} kcal</div>
+                            <div class="cook__name">{{meal.name}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ingrs__ingr ingr">
+                <div class="blockName"><i class="fas fa-tint"></i> Drink</div>
+                <div class="ingrs__inner">
+                    <div v-for="meal in meals.Drink" class="cooking__cook cook" v-on:click="calcIngr(meal)">
+                        <div>
+                            <div class="cook__cal">{{meal.cal}} kcal</div>
+                            <div class="cook__name">{{meal.name}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ingrs__ingr ingr">
+                <div class="blockName"><i class="fas fa-apple-alt"></i> Fruit</div>
+                <div class="ingrs__inner">
+                    <div v-for="meal in meals.Fruit" class="cooking__cook cook" v-on:click="calcIngr(meal)">
+                        <div>
+                            <div class="cook__cal">{{meal.cal}} kcal</div>
+                            <div class="cook__name">{{meal.name}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ingrs__ingr ingr">
+                <div class="blockName"><i class="fas fa-carrot"></i> Green</div>
+                <div class="ingrs__inner">
+                    <div v-for="meal in meals.Green" class="cooking__cook cook" v-on:click="calcIngr(meal)">
+                        <div>
+                            <div class="cook__cal">{{meal.cal}} kcal</div>
+                            <div class="cook__name">{{meal.name}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ingrs__ingr ingr">
+                <div class="blockName"><i class="fas fa-bacon"></i> Meat</div>
+                <div class="ingrs__inner">
+                    <div v-for="meal in meals.Meat" class="cooking__cook cook" v-on:click="calcIngr(meal)">
+                        <div>
+                            <div class="cook__cal">{{meal.cal}} kcal</div>
+                            <div class="cook__name">{{meal.name}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="ingrs__ingr ingr">
+                <div class="blockName"><i class="fas fa-fish"></i> Fish</div>
+                <div class="ingrs__inner">
+                    <div v-for="meal in meals.Fish" class="cooking__cook cook" v-on:click="calcIngr(meal)">
+                        <div>
+                            <div class="cook__cal">{{meal.cal}} kcal</div>
+                            <div class="cook__name">{{meal.name}}</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="calc__profileInfo profileInfo" id="calc">
+            <div class="blockName blockName_big"><i class="fas fa-calculator"></i> Calculator</div>
+            <div class="profileInfo__event">
+                <div class="profileInfo__name">Ingridients:</div>
+                <div class="calculator__list">
+                    <div>
+                        <p class="calculator__ingr" v-for="ingr in ingrs">{{ingr.name}}: {{ingr.cal}} kcal</p>
+                    </div>
+                </div>
+            </div>
+            <div class="profileInfo__event">
+                <div class="profileInfo__name">Your calories:</div>
+                <input class="profileInfo__data" type="number" readonly v-model="cals">
+                <div class="profileInfo__pts">kcal</div>
+            </div>
+            <div class="profileInfo__event">
+                <div class="profileInfo__name">Target calories:</div>
+                <input class="profileInfo__data" type="number" readonly v-model="calculatedTarget">
+                <div class="profileInfo__pts">kcal</div>
+            </div>
+            <div class="blockAction" v-on:click="reset">Reset</div>
+        </div>
+    </section>
+
+    <footer>
+        <p class="footer__text">Powered by cookies and tea<br/>Made by <a href="https://github.com/Pechenyice">German Iskhakov</a><br/>And yes, even this website uses Cookies!</p>
+    </footer>
+</body>
+</html>

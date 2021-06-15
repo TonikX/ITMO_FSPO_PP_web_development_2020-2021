@@ -1,0 +1,135 @@
+
+:root {
+    --background-color: #fff;
+    --background-accent-color: #00a2ff;
+    --accent-color: #0083cf;
+    --content-color: #fff;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: underline;
+    color: unset;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto Condensed', sans-serif;
+    font-style: italic;
+    font-weight: bold;
+    background-color: var(--background-color);
+}
+
+header {
+    display: block;
+}
+
+
+.header__name {
+    margin: 0;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    width: 100%;
+    text-align: center;
+}
+
+.header__theme {
+    margin: auto;
+}
+
+.auth__wrapper {
+    min-width: 100%;
+    min-height: calc(100vh - 100px);
+    background-color: var(--accent-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth__choice {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.auth__inner {
+    width: 900px;
+    margin-left: 20px;
+    margin-right: 20px;
+    color: var(--content-color);
+    font-size: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.auth__form {
+    display: block;
+    width: 250px;
+}
+
+.fem {
+    margin-left: 40px;
+}
+
+input {
+    margin-bottom: 10px;
+    color: var(--accent-color);
+}
+
+input::placeholder {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-style: italic;
+    font-weight: bold;
+    color: var(--background-accent-color);
+}
+
+.button {
+    margin: auto;
+    margin-top: 40px;
+    width: 150px;
+    height: 40px;
+    border: 2px solid var(--content-color);
+    color: var(--content-color);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.button:hover {
+    border: 2px solid var(--content-color);
+    background-color: var(--content-color);
+    color: var(--background-accent-color);
+    transition: .2s;
+}
+
+@media screen and (max-width: 650px){
+    .auth__inner {
+        justify-content: center;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+
+    .auth__choice {
+        width: 300px;
+        text-align: center;
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+}
+
+
+@media screen and (max-width: 450px){
+    .auth__inner {
+        padding-left: 0px;
+        padding-right: 0px;
+    }
+}

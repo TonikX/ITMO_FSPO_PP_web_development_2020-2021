@@ -1,0 +1,7 @@
+site_name: My Docs
+nav:
+ - Rest: index.md
+ - Model: model.md
+ - Urls: urls.md
+theme:
+ name: material
