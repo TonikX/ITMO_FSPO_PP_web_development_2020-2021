@@ -3,21 +3,19 @@
 {% block title %}Search results{% endblock %}
 {% block block_title %}Search results{% endblock %}
 {% block content %}
-    <a href="/management/create"><button type="button" class="btn btn-success">Create</button></a>
-    <hr/>
+    <form action="{% url 'search_results' %}" method="get">
+        <label>
+            <input name="{{ q }}" type="text" placeholder="Search...">
+        </label>
+    </form>
     <ul>
       {% for object in object_list %}
             {{ object }}
         <div class="btn-group btn-group-sm me-2 float-right" role="group" aria-label="First group">
-            <a class="btn btn-outline-primary" href="/management/{{ object.id }}">Details</a>
-            <a class="btn btn-outline-primary" href="/management/{{ object.id }}/update">Edit</a>
-            <a class="btn btn-outline-primary" href="/management/{{ object.id }}/delete">Delete</a>
+            <a class="btn btn-outline-primary" href="{{ root_path }}/{{ object.id }}">Details</a>
+            <a class="btn btn-outline-primary" href="{{ root_path }}/{{ object.id }}/update">Edit</a>
+            <a class="btn btn-outline-primary" href="{{ root_path }}/{{ object.id }}/delete">Delete</a>
         </div>
-{#        <p class="action">#}
-{#            <a class="action" href="/management/{{ object.id }}">Details</a>#}
-{#            <a class="action" href="/management/{{ object.id }}/update">Edit</a>#}
-{#            <a class="action" href="/management/{{ object.id }}/delete">Delete</a>#}
-{#        </p>#}
         <hr/>
         {% empty %}
         No objects yet.

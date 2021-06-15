@@ -1,81 +1,81 @@
-### Models
-#### Building
-> Здание университета
+# Models
+## Building
+> Р—РґР°РЅРёРµ СѓРЅРёРІРµСЂСЃРёС‚РµС‚Р°
 
-- **list** building/list -- Список всех объектов
-- **detail** building/<int:pk> -- Подробности об объекте с id = pk
-- **create** building/create -- Создать объект
-- **delete** building/<int:pk>/delete -- Удалить объект с id = pk
-- **update** building/<int:pk>/update -- Обновление данных объекта с id = pk
-#### Department
-> Подразделение университета (деканат, кафедра, вычислительный центр)
+- **list** `building/list` -- РЎРїРёСЃРѕРє РІСЃРµС… РѕР±СЉРµРєС‚РѕРІ
+- **detail** `building/<int:pk>` -- РџРѕРґСЂРѕР±РЅРѕСЃС‚Рё РѕР± РѕР±СЉРµРєС‚Рµ СЃ id = pk
+- **create** `building/create` -- РЎРѕР·РґР°С‚СЊ РѕР±СЉРµРєС‚
+- **delete** `building/<int:pk>/delete` -- РЈРґР°Р»РёС‚СЊ РѕР±СЉРµРєС‚ СЃ id = pk
+- **update** `building/<int:pk>/update` -- РћР±РЅРѕРІР»РµРЅРёРµ РґР°РЅРЅС‹С… РѕР±СЉРµРєС‚Р° СЃ id = pk
+## Department
+> РџРѕРґСЂР°Р·РґРµР»РµРЅРёРµ СѓРЅРёРІРµСЂСЃРёС‚РµС‚Р° (РґРµРєР°РЅР°С‚, РєР°С„РµРґСЂР°, РІС‹С‡РёСЃР»РёС‚РµР»СЊРЅС‹Р№ С†РµРЅС‚СЂ)
 
-- **list** department/list -- Список всех объектов
-- **detail** department/<int:pk> -- Подробности об объекте с id = pk
-- **create** department/create -- Создать объект
-- **delete** department/<int:pk>/delete -- Удалить объект с id = pk
-- **update** department/<int:pk>/update -- Обновление данных объекта с id = pk
-#### Worker
-> Работник университета. Может руководить подразделением или нести ответственность за аудиторию 
+- **list** `department/list` -- РЎРїРёСЃРѕРє РІСЃРµС… РѕР±СЉРµРєС‚РѕРІ
+- **detail** `department/<int:pk>` -- РџРѕРґСЂРѕР±РЅРѕСЃС‚Рё РѕР± РѕР±СЉРµРєС‚Рµ СЃ id = pk
+- **create** `department/create` -- РЎРѕР·РґР°С‚СЊ РѕР±СЉРµРєС‚
+- **delete** `department/<int:pk>/delete` -- РЈРґР°Р»РёС‚СЊ РѕР±СЉРµРєС‚ СЃ id = pk
+- **update** `department/<int:pk>/update` -- РћР±РЅРѕРІР»РµРЅРёРµ РґР°РЅРЅС‹С… РѕР±СЉРµРєС‚Р° СЃ id = pk
+## Worker
+> Р Р°Р±РѕС‚РЅРёРє СѓРЅРёРІРµСЂСЃРёС‚РµС‚Р°. РњРѕР¶РµС‚ СЂСѓРєРѕРІРѕРґРёС‚СЊ РїРѕРґСЂР°Р·РґРµР»РµРЅРёРµРј РёР»Рё РЅРµСЃС‚Рё РѕС‚РІРµС‚СЃС‚РІРµРЅРЅРѕСЃС‚СЊ Р·Р° Р°СѓРґРёС‚РѕСЂРёСЋ 
 
-- **list** worker/list -- Список всех объектов
-- **detail** worker/<int:pk> -- Подробности об объекте с id = pk
-- **create** worker/create -- Создать объект
-- **delete** worker/<int:pk>/delete -- Удалить объект с id = pk
-- **update** worker/<int:pk>/update -- Обновление данных объекта с id = pk
-#### Management
-> Управление выражавет зависимость между работником и подразделением
+- **list** `worker/list` -- РЎРїРёСЃРѕРє РІСЃРµС… РѕР±СЉРµРєС‚РѕРІ
+- **detail** `worker/<int:pk>` -- РџРѕРґСЂРѕР±РЅРѕСЃС‚Рё РѕР± РѕР±СЉРµРєС‚Рµ СЃ id = pk
+- **create** `worker/create` -- РЎРѕР·РґР°С‚СЊ РѕР±СЉРµРєС‚
+- **delete** `worker/<int:pk>/delete` -- РЈРґР°Р»РёС‚СЊ РѕР±СЉРµРєС‚ СЃ id = pk
+- **update** `worker/<int:pk>/update` -- РћР±РЅРѕРІР»РµРЅРёРµ РґР°РЅРЅС‹С… РѕР±СЉРµРєС‚Р° СЃ id = pk
+## Management
+> РЈРїСЂР°РІР»РµРЅРёРµ РІС‹СЂР°Р¶Р°РІРµС‚ Р·Р°РІРёСЃРёРјРѕСЃС‚СЊ РјРµР¶РґСѓ СЂР°Р±РѕС‚РЅРёРєРѕРј Рё РїРѕРґСЂР°Р·РґРµР»РµРЅРёРµРј
 
-- **list** management/list -- Список всех объектов
-- **detail** management/<int:pk> -- Подробности об объекте с id = pk
-- **create** management/create -- Создать объект
-- **delete** management/<int:pk>/delete -- Удалить объект с id = pk
-- **update** management/<int:pk>/update -- Обновление данных объекта с id = pk
-#### Hall
-> Аудитория закреплена за подразделением. Может быть компьютерным классом, актовым залом или лекционной аудитоией
+- **list** `management/list` -- РЎРїРёСЃРѕРє РІСЃРµС… РѕР±СЉРµРєС‚РѕРІ
+- **detail** `management/<int:pk>` -- РџРѕРґСЂРѕР±РЅРѕСЃС‚Рё РѕР± РѕР±СЉРµРєС‚Рµ СЃ id = pk
+- **create** `management/create` -- РЎРѕР·РґР°С‚СЊ РѕР±СЉРµРєС‚
+- **delete** `management/<int:pk>/delete` -- РЈРґР°Р»РёС‚СЊ РѕР±СЉРµРєС‚ СЃ id = pk
+- **update** `management/<int:pk>/update` -- РћР±РЅРѕРІР»РµРЅРёРµ РґР°РЅРЅС‹С… РѕР±СЉРµРєС‚Р° СЃ id = pk
+## Hall
+> РђСѓРґРёС‚РѕСЂРёСЏ Р·Р°РєСЂРµРїР»РµРЅР° Р·Р° РїРѕРґСЂР°Р·РґРµР»РµРЅРёРµРј. РњРѕР¶РµС‚ Р±С‹С‚СЊ РєРѕРјРїСЊСЋС‚РµСЂРЅС‹Рј РєР»Р°СЃСЃРѕРј, Р°РєС‚РѕРІС‹Рј Р·Р°Р»РѕРј РёР»Рё Р»РµРєС†РёРѕРЅРЅРѕР№ Р°СѓРґРёС‚РѕРёРµР№
 
-- **list** hall/list -- Список всех объектов
-- **detail** hall/<int:pk> -- Подробности об объекте с id = pk
-- **create** hall/create -- Создать объект
-- **delete** hall/<int:pk>/delete -- Удалить объект с id = pk
-- **update** hall/<int:pk>/update -- Обновление данных объекта с id = pk
-#### Responsibility
-> Ответственность работника за аудиторией
+- **list** `hall/list` -- РЎРїРёСЃРѕРє РІСЃРµС… РѕР±СЉРµРєС‚РѕРІ
+- **detail** `hall/<int:pk>` -- РџРѕРґСЂРѕР±РЅРѕСЃС‚Рё РѕР± РѕР±СЉРµРєС‚Рµ СЃ id = pk
+- **create** `hall/create` -- РЎРѕР·РґР°С‚СЊ РѕР±СЉРµРєС‚
+- **delete** `hall/<int:pk>/delete` -- РЈРґР°Р»РёС‚СЊ РѕР±СЉРµРєС‚ СЃ id = pk
+- **update** `hall/<int:pk>/update` -- РћР±РЅРѕРІР»РµРЅРёРµ РґР°РЅРЅС‹С… РѕР±СЉРµРєС‚Р° СЃ id = pk
+## Responsibility
+> РћС‚РІРµС‚СЃС‚РІРµРЅРЅРѕСЃС‚СЊ СЂР°Р±РѕС‚РЅРёРєР° Р·Р° Р°СѓРґРёС‚РѕСЂРёРµР№
 
-- **list** responsibility/list -- Список всех объектов
-- **detail** responsibility/<int:pk> -- Подробности об объекте с id = pk
-- **create** responsibility/create -- Создать объект
-- **delete** responsibility/<int:pk>/delete -- Удалить объект с id = pk
-- **update** responsibility/<int:pk>/update -- Обновление данных объекта с id = pk
-#### Property
-> Словарь, содержащий список стандартных кодов
+- **list** `responsibility/list` -- РЎРїРёСЃРѕРє РІСЃРµС… РѕР±СЉРµРєС‚РѕРІ
+- **detail** `responsibility/<int:pk>` -- РџРѕРґСЂРѕР±РЅРѕСЃС‚Рё РѕР± РѕР±СЉРµРєС‚Рµ СЃ id = pk
+- **create** `responsibility/create` -- РЎРѕР·РґР°С‚СЊ РѕР±СЉРµРєС‚
+- **delete** `responsibility/<int:pk>/delete` -- РЈРґР°Р»РёС‚СЊ РѕР±СЉРµРєС‚ СЃ id = pk
+- **update** `responsibility/<int:pk>/update` -- РћР±РЅРѕРІР»РµРЅРёРµ РґР°РЅРЅС‹С… РѕР±СЉРµРєС‚Р° СЃ id = pk
+## Property
+> РЎР»РѕРІР°СЂСЊ, СЃРѕРґРµСЂР¶Р°С‰РёР№ СЃРїРёСЃРѕРє СЃС‚Р°РЅРґР°СЂС‚РЅС‹С… РєРѕРґРѕРІ
 
-- **list** property/list -- Список всех объектов
-- **detail** property/<int:pk> -- Подробности об объекте с id = pk
-- **create** property/create -- Создать объект
-- **delete** property/<int:pk>/delete -- Удалить объект с id = pk
-- **update** property/<int:pk>/update -- Обновление данных объекта с id = pk
-#### Unit
-> Единица имущества закреплена за аудиторией посредством сущности Consist
+- **list** `property/list` -- РЎРїРёСЃРѕРє РІСЃРµС… РѕР±СЉРµРєС‚РѕРІ
+- **detail** `property/<int:pk>` -- РџРѕРґСЂРѕР±РЅРѕСЃС‚Рё РѕР± РѕР±СЉРµРєС‚Рµ СЃ id = pk
+- **create** `property/create` -- РЎРѕР·РґР°С‚СЊ РѕР±СЉРµРєС‚
+- **delete** `property/<int:pk>/delete` -- РЈРґР°Р»РёС‚СЊ РѕР±СЉРµРєС‚ СЃ id = pk
+- **update** `property/<int:pk>/update` -- РћР±РЅРѕРІР»РµРЅРёРµ РґР°РЅРЅС‹С… РѕР±СЉРµРєС‚Р° СЃ id = pk
+## Unit
+> Р•РґРёРЅРёС†Р° РёРјСѓС‰РµСЃС‚РІР° Р·Р°РєСЂРµРїР»РµРЅР° Р·Р° Р°СѓРґРёС‚РѕСЂРёРµР№ РїРѕСЃСЂРµРґСЃС‚РІРѕРј СЃСѓС‰РЅРѕСЃС‚Рё Consist
 
-- **list** unit/list -- Список всех объектов
-- **detail** unit/<int:pk> -- Подробности об объекте с id = pk
-- **create** unit/create -- Создать объект
-- **delete** unit/<int:pk>/delete -- Удалить объект с id = pk
-- **update** unit/<int:pk>/update -- Обновление данных объекта с id = pk
-#### Consist
-> Содержание связывает аудиторию и единицу имущества 
+- **list** `unit/list` -- РЎРїРёСЃРѕРє РІСЃРµС… РѕР±СЉРµРєС‚РѕРІ
+- **detail** `unit/<int:pk>` -- РџРѕРґСЂРѕР±РЅРѕСЃС‚Рё РѕР± РѕР±СЉРµРєС‚Рµ СЃ id = pk
+- **create** `unit/create` -- РЎРѕР·РґР°С‚СЊ РѕР±СЉРµРєС‚
+- **delete** `unit/<int:pk>/delete` -- РЈРґР°Р»РёС‚СЊ РѕР±СЉРµРєС‚ СЃ id = pk
+- **update** `unit/<int:pk>/update` -- РћР±РЅРѕРІР»РµРЅРёРµ РґР°РЅРЅС‹С… РѕР±СЉРµРєС‚Р° СЃ id = pk
+## Consist
+> РЎРѕРґРµСЂР¶Р°РЅРёРµ СЃРІСЏР·С‹РІР°РµС‚ Р°СѓРґРёС‚РѕСЂРёСЋ Рё РµРґРёРЅРёС†Сѓ РёРјСѓС‰РµСЃС‚РІР° 
 
-- **list** consist/list -- Список всех объектов
-- **detail** consist/<int:pk> -- Подробности об объекте с id = pk
-- **create** consist/create -- Создать объект
-- **delete** consist/<int:pk>/delete -- Удалить объект с id = pk
-- **update** consist/<int:pk>/update -- Обновление данных объекта с id = pk
-#### Revaluation
-> Переоценка 
+- **list** `consist/list` -- РЎРїРёСЃРѕРє РІСЃРµС… РѕР±СЉРµРєС‚РѕРІ
+- **detail** `consist/<int:pk>` -- РџРѕРґСЂРѕР±РЅРѕСЃС‚Рё РѕР± РѕР±СЉРµРєС‚Рµ СЃ id = pk
+- **create** `consist/create` -- РЎРѕР·РґР°С‚СЊ РѕР±СЉРµРєС‚
+- **delete** `consist/<int:pk>/delete` -- РЈРґР°Р»РёС‚СЊ РѕР±СЉРµРєС‚ СЃ id = pk
+- **update** `consist/<int:pk>/update` -- РћР±РЅРѕРІР»РµРЅРёРµ РґР°РЅРЅС‹С… РѕР±СЉРµРєС‚Р° СЃ id = pk
+## Revaluation
+> РџРµСЂРµРѕС†РµРЅРєР° 
 
-- **list** revaluation/list -- Список всех объектов
-- **detail** revaluation/<int:pk> -- Подробности об объекте с id = pk
-- **create** revaluation/create -- Создать объект
-- **delete** revaluation/<int:pk>/delete -- Удалить объект с id = pk
-- **update** revaluation/<int:pk>/update -- Обновление данных объекта с id = pk
+- **list** `revaluation/list` -- РЎРїРёСЃРѕРє РІСЃРµС… РѕР±СЉРµРєС‚РѕРІ
+- **detail** `revaluation/<int:pk>` -- РџРѕРґСЂРѕР±РЅРѕСЃС‚Рё РѕР± РѕР±СЉРµРєС‚Рµ СЃ id = pk
+- **create** `revaluation/create` -- РЎРѕР·РґР°С‚СЊ РѕР±СЉРµРєС‚
+- **delete** `revaluation/<int:pk>/delete` -- РЈРґР°Р»РёС‚СЊ РѕР±СЉРµРєС‚ СЃ id = pk
+- **update** `revaluation/<int:pk>/update` -- РћР±РЅРѕРІР»РµРЅРёРµ РґР°РЅРЅС‹С… РѕР±СЉРµРєС‚Р° СЃ id = pk
