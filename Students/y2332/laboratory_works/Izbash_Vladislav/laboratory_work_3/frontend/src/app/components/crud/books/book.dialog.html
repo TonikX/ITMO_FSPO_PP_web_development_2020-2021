@@ -1,0 +1,49 @@
+<div>
+  <h2 mat-dialog-title *ngIf="data">Редактировать книгу</h2>
+  <h2 mat-dialog-title *ngIf="!data">Добавить книгу</h2>
+  <form [formGroup]="form" (ngSubmit)="apply()">
+    <mat-dialog-content>
+      <p>
+        <mat-form-field>
+          <input type="text" matInput placeholder="Название" formControlName="name">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input type="number" matInput placeholder="Номер тома" formControlName="volume">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input type="text" matInput placeholder="Язык оригинала" formControlName="orig_lang">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input type="text" matInput placeholder="Тип" formControlName="kind">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input type="text" matInput placeholder="Область" formControlName="discipline">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input type="number" matInput placeholder="ID автора" formControlName="author">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input type="number" matInput placeholder="ID переводчика" formControlName="translator">
+        </mat-form-field>
+      </p>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <div class="button">
+        <button mat-button mat-dialog-close>Отмена</button>
+        <button type="submit" color="primary" mat-button>Применить</button>
+      </div>
+    </mat-dialog-actions>
+  </form>
+</div>

@@ -1,0 +1,59 @@
+<div>
+  <mat-form-field class="search-field">
+    <mat-label>Поиск по книге</mat-label>
+    <input matInput placeholder="Название" (input)="updateSearch($event)">
+  </mat-form-field>
+  <mat-table class="mat-elevation-z8" [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>#</mat-header-cell>
+      <mat-cell *matCellDef="let borrower">{{borrower.id}}</mat-cell>
+      <mat-footer-cell *matFooterCellDef><button mat-icon-button (click)="addRow()"><mat-icon>add</mat-icon></button></mat-footer-cell>
+    </ng-container>
+    <ng-container matColumnDef="firstname">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Имя</mat-header-cell>
+      <mat-cell *matCellDef="let borrower">{{borrower.firstname}}</mat-cell>
+      <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+    </ng-container>
+    <ng-container matColumnDef="lastname">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Фамилия</mat-header-cell>
+      <mat-cell *matCellDef="let borrower">{{borrower.lastname}}</mat-cell>
+      <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+    </ng-container>
+    <ng-container matColumnDef="patronymic">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Отчество</mat-header-cell>
+      <mat-cell *matCellDef="let borrower">{{borrower.patronymic}}</mat-cell>
+      <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+    </ng-container>
+    <ng-container matColumnDef="birthdate">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Дата рождения</mat-header-cell>
+      <mat-cell *matCellDef="let borrower">{{borrower.birthdate}}</mat-cell>
+      <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+    </ng-container><ng-container matColumnDef="address">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Адрес</mat-header-cell>
+      <mat-cell *matCellDef="let borrower">{{borrower.address}}</mat-cell>
+      <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+    </ng-container>
+    <ng-container matColumnDef="telnumber">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Телефон</mat-header-cell>
+      <mat-cell *matCellDef="let borrower">{{borrower.telnumber}}</mat-cell>
+      <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+    </ng-container>
+    <ng-container matColumnDef="card_num">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Читательский билет</mat-header-cell>
+      <mat-cell *matCellDef="let borrower">{{borrower.card_num}}</mat-cell>
+      <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>Действия</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button mat-icon-button (click)="updateRow(row)"><mat-icon>edit</mat-icon></button>
+        <button mat-icon-button (click)="deleteRow(row)"><mat-icon>delete</mat-icon></button>
+      </mat-cell>
+      <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    <mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></mat-footer-row>
+  </mat-table>
+  <mat-paginator [length]="dataSource.total" [pageSize]="5"></mat-paginator>
+</div>

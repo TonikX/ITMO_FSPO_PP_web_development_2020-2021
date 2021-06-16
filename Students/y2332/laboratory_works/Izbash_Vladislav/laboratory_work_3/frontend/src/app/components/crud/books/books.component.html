@@ -1,0 +1,50 @@
+<div>
+  <mat-form-field class="search-field">
+    <mat-label>Поиск по книге</mat-label>
+    <input matInput placeholder="Название" (input)="updateSearch($event)">
+  </mat-form-field>
+  <mat-table class="mat-elevation-z8" [dataSource]="dataSource" matSort>
+    <ng-container matColumnDef="id">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>#</mat-header-cell>
+      <mat-cell *matCellDef="let book">{{book.id}}</mat-cell>
+      <mat-footer-cell *matFooterCellDef><button mat-icon-button (click)="addRow()"><mat-icon>add</mat-icon></button></mat-footer-cell>
+    </ng-container>
+    <ng-container matColumnDef="name">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Название</mat-header-cell>
+      <mat-cell *matCellDef="let book">{{book.name}}</mat-cell>
+      <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+    </ng-container>
+    <ng-container matColumnDef="volume">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Том</mat-header-cell>
+      <mat-cell *matCellDef="let book">{{book.volume}}</mat-cell>
+      <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+    </ng-container>
+    <ng-container matColumnDef="orig_lang">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Язык оригинала</mat-header-cell>
+      <mat-cell *matCellDef="let book">{{book.orig_lang}}</mat-cell>
+      <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+    </ng-container>
+    <ng-container matColumnDef="kind">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Тип</mat-header-cell>
+      <mat-cell *matCellDef="let book">{{book.kind}}</mat-cell>
+      <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+    </ng-container>
+    <ng-container matColumnDef="discipline">
+      <mat-header-cell *matHeaderCellDef mat-sort-header>Область</mat-header-cell>
+      <mat-cell *matCellDef="let book">{{book.discipline}}</mat-cell>
+      <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+    </ng-container>
+    <ng-container matColumnDef="actions">
+      <mat-header-cell *matHeaderCellDef>Действия</mat-header-cell>
+      <mat-cell *matCellDef="let row">
+        <button mat-icon-button (click)="updateRow(row)"><mat-icon>edit</mat-icon></button>
+        <button mat-icon-button (click)="deleteRow(row)"><mat-icon>delete</mat-icon></button>
+      </mat-cell>
+      <mat-footer-cell *matFooterCellDef></mat-footer-cell>
+    </ng-container>
+    <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+    <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+    <mat-footer-row *matFooterRowDef="displayedColumns; sticky: true"></mat-footer-row>
+  </mat-table>
+  <mat-paginator [length]="dataSource.total" [pageSize]="5"></mat-paginator>
+</div>
