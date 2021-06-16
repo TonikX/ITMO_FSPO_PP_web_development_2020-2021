@@ -453,7 +453,12 @@
 <p>address: /api/registerMeal</p>
 <p>method: POST </p>
 <pre><code>req: {
-    signedCookie?: token
+    signedCookie?: token,
+    body: {
+        type,
+        name,
+        cal
+    }
 }
 </code></pre>
 <pre><code>res: {
@@ -469,7 +474,13 @@
 <p>address: /api/updateUser</p>
 <p>method: POST </p>
 <pre><code>req: {
-    signedCookie?: token
+    signedCookie?: token,
+    body: {
+        age,
+        weight,
+        height,
+        sex
+    }
 }
 </code></pre>
 <pre><code>res: {
@@ -485,7 +496,11 @@
 <p>address: /api/logUser</p>
 <p>method: POST </p>
 <pre><code>req: {
-    signedCookie?: token
+    signedCookie?: token,
+    body: {
+        login,
+        password
+    }
 }
 </code></pre>
 <pre><code>res: {
@@ -501,7 +516,17 @@
 <p>address: /api/createUser</p>
 <p>method: POST </p>
 <pre><code>req: {
-    signedCookie?: token
+    signedCookie?: token,
+    body: {
+        login,
+        password,
+        name,
+        surname,
+        height,
+        weight,
+        age,
+        sex
+    }
 }
 </code></pre>
 <pre><code>res: {

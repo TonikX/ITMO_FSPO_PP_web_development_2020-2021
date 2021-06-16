@@ -6,6 +6,10 @@
 
 /auth
 
+![auth](auth.png)
+
 ### 2. Калькулятор калорий
 
 /
+
+![main](main.png)

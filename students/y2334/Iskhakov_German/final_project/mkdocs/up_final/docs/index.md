@@ -79,7 +79,12 @@ method: POST
 
 ```
 req: {
-    signedCookie?: token
+    signedCookie?: token,
+    body: {
+        type,
+        name,
+        cal
+    }
 }
 ```
 
@@ -104,7 +109,13 @@ method: POST
 
 ```
 req: {
-    signedCookie?: token
+    signedCookie?: token,
+    body: {
+        age,
+        weight,
+        height,
+        sex
+    }
 }
 ```
 
@@ -129,7 +140,11 @@ method: POST
 
 ```
 req: {
-    signedCookie?: token
+    signedCookie?: token,
+    body: {
+        login,
+        password
+    }
 }
 ```
 
@@ -154,7 +169,17 @@ method: POST
 
 ```
 req: {
-    signedCookie?: token
+    signedCookie?: token,
+    body: {
+        login,
+        password,
+        name,
+        surname,
+        height,
+        weight,
+        age,
+        sex
+    }
 }
 ```
 

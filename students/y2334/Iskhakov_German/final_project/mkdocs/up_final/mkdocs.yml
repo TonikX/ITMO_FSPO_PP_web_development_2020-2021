@@ -3,5 +3,6 @@ nav:
  - Rest: index.md
  - Model: model.md
  - Urls: urls.md
+ - Migrations: mig.md
 theme:
  name: material
