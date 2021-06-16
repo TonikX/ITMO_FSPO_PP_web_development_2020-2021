@@ -21,7 +21,8 @@ export class MainComponent implements OnInit {
   }
 
   logout() {
-      this.auth.logout();
-      this.router.navigate(["/"]);
+      this.auth.logout().subscribe(_ => {
+          this.router.navigate(["/"]);
+      });
   }
 }

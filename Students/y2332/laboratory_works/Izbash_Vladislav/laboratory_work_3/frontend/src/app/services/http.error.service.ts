@@ -12,7 +12,9 @@ export class HttpErrorService implements HttpInterceptor {
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         return next.handle(req).pipe(
             catchError(error => {
-                this.dialog.open(ErrorDialog, { data: error });
+                if (!req.url.includes("login")) {
+                    this.dialog.open(ErrorDialog, {data: error});
+                }
                 return throwError(error);
             }),
         );

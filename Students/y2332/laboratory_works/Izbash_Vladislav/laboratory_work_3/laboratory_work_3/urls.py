@@ -1,3 +1,4 @@
+from django.conf.urls import url
 from django.contrib import admin
 from django.urls import path, include
 from django.shortcuts import redirect
@@ -15,7 +16,7 @@ schema = get_schema_view(
 )
 
 urlpatterns = [
-    path('', lambda _: redirect('static/index.html')),
+    path('', lambda _: redirect('static/elibrary/index.html')),
     path('admin/', admin.site.urls),
     path('api/', include('elibrary.urls')),
     path('api/docs/', schema.with_ui('swagger', cache_timeout=0), name='swagger'),

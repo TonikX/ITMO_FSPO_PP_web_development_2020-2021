@@ -29,13 +29,16 @@ export class AuthService {
             }));
     }
 
-    logout() {
-        localStorage.removeItem("auth_token");
-        this._httpHeaders = new HttpHeaders();
+    logout(): Observable<void> {
+        return this.http.post("/api/token/logout", {}, { headers: this._httpHeaders })
+            .pipe(map(_ => {
+                localStorage.removeItem("auth_token");
+                this._httpHeaders = new HttpHeaders()
+            }));
     }
 
     getCurrentUser(): Observable<UserModel> {
-        return this.http.get<UserModel>("/api/users/me", {headers: this.httpHeaders});
+        return this.http.get<UserModel>("/api/users/me", { headers: this._httpHeaders });
     }
 
     get httpHeaders(): HttpHeaders {

@@ -1,0 +1,7 @@
+site_name: ELibrary
+site_url: https://localhost:8000/
+nav:
+  - Главная: index.md
+  - Модель данных: models.md
+  - Доступные URL: urls.md
+  - Веб-приложение: webapp.md

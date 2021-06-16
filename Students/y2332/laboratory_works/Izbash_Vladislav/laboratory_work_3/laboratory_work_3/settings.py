@@ -25,7 +25,7 @@ SECRET_KEY = 'e7sxi^8l8=@z%lnf8w34qsh)d!2-!0z#=*n01w$phq2h4r=74d'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -143,5 +143,5 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
-    BASE_DIR / 'frontend/dist/elibrary',
+    BASE_DIR / 'frontend/dist',
 ]
