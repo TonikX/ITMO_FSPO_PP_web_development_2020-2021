@@ -1,0 +1,17 @@
+site_name: Реализация web-приложения
+nav:
+ - Модель БД: index.md
+ - URLS:
+     - "home": urls/home.md
+     - "makeOrder": urls/makeOrder.md
+     - "view_orders": urls/view_orders.md
+     - "admin_view_orders": urls/admin_view_orders.md
+     - "view_computers": urls/view_computers.md
+     - "edit_order": urls/edit.md
+     - "delete_order": urls/delete.md
+     - "login": urls/login.md
+     - "signup": urls/signup.md
+     - "logout": urls/logout.md
+
+theme:
+ name: material

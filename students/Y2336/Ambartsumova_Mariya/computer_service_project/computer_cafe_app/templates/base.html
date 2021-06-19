@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <title>Стартовая страница.</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+          integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <h3 class="navbar-brand">КомпьютерСервис</h3>
+                <a class="nav-link active" aria-current="page" href="{% url 'home' %}">Адреса</a>
+                <a class="nav-link" href="{% url 'new_order' %}">Бронь</a>
+                <a class="nav-link" href={% url 'orders' %}>Личный кабинет</a>
+            {% if user.is_authenticated and user.is_staff %}
+                <a class="nav-link" href={% url 'admins' %}>Admin</a>
+            {% endif %}
+                {% if user.is_authenticated %}
+                    <a class="nav-link text-primary" href="{% url 'logout' %}">Выйти</a>
+                    <p style="" class="navbar-text text-success">| Привет, {{ user.username }}!</p>
+                {% else %}
+                    <a class="nav-link text-primary" href="{% url 'signup' %}">Зарегистрироваться</a>
+                    <a class="nav-link text-primary" href="{% url 'login' %}">Войти</a>
+                    <p class="navbar-text text-warning">| Вы не вошли в аккаунт.</p>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</nav>
+</header>
+<div>
+    {% block content %}
+    {% endblock content %}
+</div>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js"
+        integrity="sha384-oesi62hOLfzrys4LxRF63OJCXdXDipiYWBnvTl9Y9/TRlw5xlKIEHpNyvvDShgf/"
+        crossorigin="anonymous"></script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>List of Cars</title>
+</head>
+<body>
+<div class="main">
+    <span><h1>Cars</h1></span>
+    <a href="createCar/">Add new one</a>
+    <br>
+    <br>
+    <hr/>
+
+    {% for data in dataset %}
+
+    State number: {{data.state_number}}<br>
+    Brand: {{data.brand}}<br>
+    Model: {{data.model}}<br>
+    Color: {{data.color}}
+        <br>
+        Actions:
+        <a href="{{ data.pk }}/update/">Edit</a> |
+        <a href="{{ data.pk }}/delete/">Delete</a> |
+        <a href="{{ data.pk }}/">Detail</a>
+    <hr/>
+
+    {% endfor %}
+</div>
+
+</body>
+</html>
