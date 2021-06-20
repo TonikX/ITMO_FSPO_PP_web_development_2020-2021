@@ -3,6 +3,7 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+
 # C extensions
 *.so
 
@@ -59,8 +60,8 @@ coverage.xml
 
 # Django stuff:
 *.log
+settings.py
 local_settings.py
-db.sqlite3
 db.sqlite3-journal
 
 # Flask stuff:

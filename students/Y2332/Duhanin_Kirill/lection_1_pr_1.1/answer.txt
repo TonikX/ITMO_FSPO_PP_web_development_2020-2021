@@ -1,0 +1,8 @@
+Frontend - Это оболочка сайта, тоесть оформление страниц, анимации, кнопки и тд
+Backend - это часть, отвечающая за сам сервер, взаимодействие с бд
+
+Frontend фреймворки: Vue.js, React, JQuery, Angular
+Backend фреймворки: Laravel, Django, Ruby on Rails, Flask, Node.js
+
+Frontend фреймворки +- похожи
+Backend фреймворки используют разные языки программирования: PHP, Python, Ruby и JS

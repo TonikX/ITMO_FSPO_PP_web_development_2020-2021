@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auth stage | Weight calculator</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/all.css">
+    <link rel="stylesheet" href="/static/css/auth.css">
+    
+    <script src="/static/js/themes.js"></script>
+    <script src="/static/js/auth/vue_log.js"></script>
+    <script src="/static/js/auth/vue_reg.js"></script>
+</head>
+<body>
+    <div class="auth">
+
+        <header>
+            <h1 class="header__name">Weight calculator</h1>
+            <div class="header__theme theme">
+                <div class="theme__activator"></div>
+                <div class="theme__option theme__option_active">Light</div>
+                <div class="theme__option">Dark</div>
+            </div>
+        </header>
+
+        <div class="auth__wrapper">
+            <div class="auth__inner">
+                <div class="auth__form auth__log log" id="login">
+                    <input type="text" class="log__login" placeholder="login" v-model="login">
+                    <input type="password" class="log__password" placeholder="password" v-model="password">
+                    <div class="button login" v-on:click="log">Login</div>
+                </div>
+                <div class="auth__choice">Or</div>
+                <div class="auth__form auth__reg reg" id="signup">
+                    <input type="text" class="log__login" placeholder="login" v-model="login">
+                    <input type="password" class="log__password" placeholder="password" v-model="password">
+                    <input type="text" class="log__name" placeholder="name" v-model="name">
+                    <input type="text" class="log__surname" placeholder="surname" v-model="surname">
+                    <input type="text" class="log__height" placeholder="height" v-model="height">
+                    <input type="text" class="log__weight" placeholder="weight" v-model="weight">
+                    <input type="text" class="log__age" placeholder="age" v-model="age">
+                    <input type="radio" name="sex" id="man" value="man" class="log__sex" checked v-model="sex">
+                    <label for="man">Man</label>
+                    <input type="radio" name="sex" id="woman" value="woman" class="log__sex fem" v-model="sex">
+                    <label for="woman">Feminist</label>
+                    <div class="button signup" v-on:click="sign">Sign up</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

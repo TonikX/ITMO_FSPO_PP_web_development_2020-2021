@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block title %}Автомобили{% endblock %}
+
+{% block content %}
+<div>
+    {% for object in object_list %}
+        <p>{{ object.id_car }} {{ object.model }} <a href="car/{{ object.id_car }}">Подробнее</a>
+            <a href="car/{{ object.id_car }}/update">Изменить</a>
+            <a href="car/{{ object.id_car }}/delete">Удалить</a>
+        </p>
+        <hr/>
+        {% empty %}
+        <p>Автомобилей пока нет.</p>
+    {% endfor %}
+</div>
+{% endblock %}

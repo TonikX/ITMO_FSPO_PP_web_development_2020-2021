@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Удалить машину</title>
+</head>
+
+<body>
+<form method="post">{% csrf_token %}
+    <p>Вы действительно хотите удалить машину "{{ object }}"?</p>
+    <input type="submit" value="Удалить">
+</form>
+<br>
