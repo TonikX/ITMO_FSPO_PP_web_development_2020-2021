@@ -1,0 +1,36 @@
+<ul>
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  </head>
+    {% load crispy_forms_tags %}
+    <h4 class="card-title">House detail</h4>
+        <div>
+									<div class="text-secondary"><strong>Building id:</strong></div>
+									<div class="text-primary"><strong>{{ object.idBuilding }}</strong></div>
+                                    <div class="text-secondary"><li>Address id:</li></div>
+									<div class="text-primary">{{ object.idAdress }}</div>
+                                    <div class="text-secondary"><li>Street:</li></div>
+									<div class="text-primary">{{ object.idAdress.street }}</div>
+                                    <div class="text-secondary"><li>District:</li></div>
+									<div class="text-primary">{{ object.idAdress.district }}</div>
+          <div><p></p></div>
+                                    <div class="text-secondary">Number of building:</div>
+									<div class="text-primary">{{ object.buildingNumb }}</div>
+									<div class="text-secondary">Building corps:</div>
+									<div class="text-primary">{{ object.building }}</div>
+            {% if request.user.is_authenticated %}
+{%if user.is_staff%}
+            {%if user.is_superuser%}
+									<br><input type="button" class="btn btn-primary" onclick="location.href='http://127.0.0.1:8000/house_detail/update/{{object.idBuilding}}/'" value="Update"/> <input type="button" class="btn btn-danger" onclick="location.href='http://127.0.0.1:8000/house_detail/delete/{{object.idBuilding}}/'" value="Delete"/>
+            {% endif %}
+             {% endif %}
+{% endif %}
+</br>           <div><p></p></div>
+            <div class="col-8">
+                <br><input type="button" class="btn btn-outline-primary" onclick="location.href='/house_list/'" value="Get back"/></br>
+            </div>
+    </div>
+
+</ul>

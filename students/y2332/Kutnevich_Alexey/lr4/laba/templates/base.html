@@ -1,0 +1,41 @@
+{% load crispy_forms_tags %}
+<div class="content-text">
+  <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+<link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet", type="text/css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  {% block content %}
+  {% endblock %}
+  {% if page_obj.has_other_pages %}
+  <br><nav class="list-pages"></br>
+            <ul>
+              {% if page_obj.has_previous %}
+              <a class="page-num">
+                <a class="page-item" href="?page={{ page_obj.previous_page_number }}{% if request.GET.q %}&q=
+                      {{request.GET.q }}{% endif %}">&lt;</a>
+                </a>
+              {% endif %}
+                {% for p in paginator.page_range %}
+              {% if page_obj.number == p %}
+              <a class="page-num page-num-selected">{{ p }}</a>
+              {% elif p >= page_obj.number|add:-2 and p <= page_obj.number|add:2 %}
+              <a class="page-num">
+                <a class="page-item" href="?page={{ p }}{% if request.GET.q %}&q=
+                      {{request.GET.q }}{% endif %}">{{ p }}</a>
+                </a>
+              {% endif %}
+                {% endfor %}
+              {% if page_obj.has_next %}
+              <a class="page-num">
+                <a class="page-item" href="?page={{ page_obj.next_page_number }}{% if request.GET.q %}&q=
+                      {{request.GET.q }}{% endif %}">&gt;</a>
+                </a>
+              {% endif %}
+            </ul>
+        </nav>
+  {% endif %}
+</div>
+</div>

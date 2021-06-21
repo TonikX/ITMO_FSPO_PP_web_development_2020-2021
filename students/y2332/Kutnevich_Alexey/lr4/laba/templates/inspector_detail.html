@@ -1,0 +1,34 @@
+<ul>
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  </head>
+    {% load crispy_forms_tags %}
+    <h4 class="card-title">Inspector detail</h4>
+        <div>
+            {% if request.user.is_authenticated %}
+{%if user.is_staff%}
+									<div class="text-secondary"><strong>Service number:</strong></div>
+									<div class="text-primary"><strong>{{ object.servNumb }}</strong></div>
+                                    <div class="text-secondary">First name:</div>
+									<div class="text-primary">{{ object.first_name }}</div>
+									<div class="text-secondary">Surname:</div>
+									<div class="text-primary">{{ object.last_name }}</div>
+                                    <div class="text-secondary">Patronymic:</div>
+									<div class="text-primary">{{ object.patronymic }}</div>
+									<div class="text-secondary">Phone:</div>
+									<div class="text-primary">{{ object.phone }}</div>
+            {%if user.is_superuser%}
+									<br><input type="button" class="btn btn-primary" onclick="location.href='http://127.0.0.1:8000/inspector_detail/update/{{object.servNumb}}/'" value="Update"/> <input type="button" class="btn btn-danger" onclick="location.href='http://127.0.0.1:8000/inspector_detail/delete/{{object.servNumb}}/'" value="Delete"/></br>
+            {% endif %}
+
+            <div><p></p></div>
+            <div class="col-8">
+                <br><input type="button" class="btn btn-outline-primary" onclick="location.href='/inspector_list/'" value="Get back"/></br>
+            </div>
+            {% endif %}
+{% endif %}
+    </div>
+
+</ul>

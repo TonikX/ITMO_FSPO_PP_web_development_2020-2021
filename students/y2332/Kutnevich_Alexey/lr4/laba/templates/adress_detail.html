@@ -1,0 +1,29 @@
+<ul>
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  </head>
+    {% load crispy_forms_tags %}
+    <h4 class="card-title">Adress detail</h4>
+        <div>
+									<div class="text-secondary"><strong>Address id:</strong></div>
+									<div class="text-primary"><strong>{{ object.idAdress }}</strong></div>
+                                    <div class="text-secondary">District:</div>
+									<div class="text-primary">{{ object.district }}</div>
+									<div class="text-secondary">Street:</div>
+									<div class="text-primary">{{ object.street }}</div>
+            {% if request.user.is_authenticated %}
+            {%if user.is_staff%}
+            {%if user.is_superuser%}
+									<br><input type="button" class="btn btn-primary" onclick="location.href='http://127.0.0.1:8000/adress_detail/update/{{object.idAdress}}/'" value="Update"/> <input type="button" class="btn btn-danger" onclick="location.href='http://127.0.0.1:8000/adress_detail/delete/{{object.idAdress}}/'" value="Delete"/></br>
+            {% endif %}
+            {% endif %}
+            {% endif %}
+            <div><p></p></div>
+            <div class="col-8">
+                <br><input type="button" class="btn btn-outline-primary" onclick="location.href='/adress_list/'" value="Get back"/></br>
+            </div>
+    </div>
+
+</ul>

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% load crispy_forms_tags %}
+<html>
+	<head>
+				<meta charset="utf-8">
+    	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<title>Renter update</title>
+	</head>
+	<body>
+		<form method="post"> {% csrf_token %}
+			{{ form|crispy }}
+			<input type="submit" class="btn btn-success" value="Update">
+            <input type="button" class="btn btn-danger" onclick="history.back();" value="Cancel"/>
+		</form>
+	</body>
+</html>

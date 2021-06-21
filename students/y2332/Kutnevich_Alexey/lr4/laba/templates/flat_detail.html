@@ -1,0 +1,44 @@
+<ul>
+    <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+  </head>
+    {% load crispy_forms_tags %}
+
+    <h4 class="card-title">Flat detail</h4>
+        <div>
+									<div class="text-secondary"><strong>Flat id:</strong></div>
+									<div class="text-primary"><strong>{{ object.idFlat }}</strong></div>
+                                    <div class="text-secondary"><li>Renter surname:</li></div>
+									<div class="text-primary">{{ object.renter.surname }}</div>
+                                    <div class="text-secondary"><li>Renter name:</li></div>
+									<div class="text-primary">{{ object.renter.firstName }}</div>
+                                    <div class="text-secondary"><li>Renter passport:</li></div>
+									<div class="text-primary">{{ object.renter.passport }}</div>
+                                    <div class="text-secondary"><li>House:</li></div>
+									<div class="text-primary">{{ object.house.buildingNumb }}</div>
+                                    <div class="text-secondary"><li>Corpus:</li></div>
+									<div class="text-primary">{{ object.house.building }}</div>
+          <div><p></p></div>
+                                    <div class="text-secondary">Flat number:</div>
+									<div class="text-primary">{{ object.flat }}</div>
+									<div class="text-secondary">Flat type:</div>
+									<div class="text-primary">{{ object.flatType }}</div>
+                                    <div class="text-secondary">The presence of an electric stove:</div>
+									<div class="text-primary">{{ object.eStove }}</div>
+                                    <div class="text-secondary">Count of people in flat:</div>
+									<div class="text-primary">{{ object.peopleCount }}</div>
+            {% if request.user.is_authenticated %}
+{%if user.is_staff%}
+									<br><input type="button" class="btn btn-primary" onclick="location.href='http://127.0.0.1:8000/flat_detail/update/{{object.idFlat}}/'" value="Update"/> {%if user.is_superuser%} <input type="button" class="btn btn-danger" onclick="location.href='http://127.0.0.1:8000/flat_detail/delete/{{object.idFlat}}/'" value="Delete"/>
+            {% endif %}
+            {% endif %}
+{% endif %}
+</br>           <div><p></p></div>
+            <div class="col-8">
+                <br><input type="button" class="btn btn-outline-primary" onclick="location.href='/flats/'" value="Get back"/></br>
+            </div>
+    </div>
+
+</ul>
