@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="None">
+  
+  
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <title>Описание сервиса обхода квартир</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u0411\u0430\u0437\u0430 \u0434\u0430\u043d\u043d\u044b\u0445";
+    var mkdocs_page_input_path = "index.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="js/jquery-2.1.1.min.js" defer></script>
+  <script src="js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="icon icon-home"> Описание сервиса обхода квартир</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="index.html">База данных</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#renter">Модель Renter</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#adress">Модель Adress</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#house">Модель House</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#inspector">Модель Inspector</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#flat">Модель Flat</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#bypass">Модель Bypass</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="forms.html">Формы</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="views.html">Views</a>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Описание сервиса обхода квартир</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>База данных</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="_1">База данных обхода квартир</h1>
+<p>В базе данных реализованы модели: инспектора (Inspector), обхода (Bypass), квартиры (Flat), плательщик (Renter), здания (House) и адресса (Address)</p>
+<h2 id="renter">Модель Renter</h2>
+<pre><code>class Renter(models.Model):
+idRenter = models.IntegerField(primary_key=True)
+passport = models.CharField("Person's passport", max_length=12)
+privilege = models.FloatField("Person's privilege")
+firstName = models.CharField("First name", max_length=20)
+surname = models.CharField("Surname", max_length=20)
+patronymic = models.CharField("Patronymic", max_length=20)
+
+class Meta:
+    ordering = ['idRenter']
+</code></pre>
+<ul>
+<li><code>idRenter</code> - Идентификатор плательщика</li>
+<li><code>passport</code> - Серия и номер паспорта</li>
+<li><code>firstName</code> - Имя плательщика</li>
+<li><code>surname</code> - Фамилия плательщика</li>
+<li><code>patronymic</code> - Отчество плательщика<pre><code>class Meta:
+    ordering = ['idRenter']
+</code></pre>
+</li>
+</ul>
+<p>В данном фрагменте кода происходит сортировка по полю <code>idRenter</code></p>
+<h2 id="adress">Модель Adress</h2>
+<pre><code>class Adress(models.Model):
+idAdress = models.IntegerField(primary_key=True)
+district = models.CharField("District", max_length=20)
+street = models.CharField("Street", max_length=20)
+
+class Meta:
+    ordering = ['idAdress']
+</code></pre>
+<ul>
+<li><code>idAdress</code> - Идентификатор адреса</li>
+<li><code>district</code> - Район</li>
+<li><code>street</code> - Улица</li>
+</ul>
+<h2 id="house">Модель House</h2>
+<pre><code>class House(models.Model):
+idAdress = models.ForeignKey(Adress, on_delete=models.CASCADE)
+idBuilding = models.IntegerField(primary_key=True)
+buildingNumb = models.IntegerField("Number of building")
+building = models.IntegerField("Corps")
+
+class Meta:
+    ordering = ['idBuilding']
+</code></pre>
+<ul>
+<li><code>idAdress</code> - Идентификатор адреса</li>
+<li><code>idBuilding</code> - Идентификатор здания</li>
+<li><code>buildingNumb</code> - Номер дома</li>
+<li><code>building</code> - Корпус дома</li>
+</ul>
+<h2 id="inspector">Модель Inspector</h2>
+<p>Данная модель используется для создания пользователей, наследуясь от класса <code>AbstractUser</code></p>
+<pre><code>class Inspector(AbstractUser):
+servNumb = models.IntegerField("Service number", primary_key=True)
+phone = models.CharField("Phone number", max_length=12)
+first_name = models.CharField("First name", max_length=20)
+last_name = models.CharField("Surname", max_length=20)
+patronymic = models.CharField("Patronymic", max_length=20)
+is_staff = models.BooleanField(default=True)
+
+class Meta:
+    ordering = ['servNumb']
+</code></pre>
+<ul>
+<li><code>servNumb</code> - Табельный номер инспектора</li>
+<li><code>phone</code> - Номер телефон инспектора</li>
+<li><code>first_name</code> - Имя инспектора</li>
+<li><code>last_name</code> - Фамилия инспектора</li>
+<li><code>patronymic</code> - Отчество инспектора</li>
+<li>
+<p><code>is_staff</code> - Поле, наследуемое из класса <code>AbstractUser</code> и обозначающее то, является ли пользователь сотрудником. </p>
+<p>Данное поле не учавствует на этапе регистрации, вместо этого на этапе регистрации, данное поле принимает значение <code>True</code> - <code>Является работником</code>. В дальнейшем поле может изминять пользователь с правами<code>superuser</code></p>
+</li>
+</ul>
+<h2 id="flat">Модель Flat</h2>
+<pre><code>class Flat(models.Model):
+idFlat = models.IntegerField(primary_key=True)
+flat = models.IntegerField("Flat")
+flatType = models.CharField("Flat type", max_length=30)
+eStove1 = 'Is present'
+eStove2 = 'Isn\'t present'
+eStoveChoices = (
+    (eStove1, "Is present"),
+    (eStove2, "Isn't present")
+)
+eStove = models.CharField("Availability of electric stove", max_length=13, choices=eStoveChoices, default=eStove2)
+peopleCount = models.IntegerField("People count")
+house = models.ForeignKey(House, on_delete=models.CASCADE)
+renter = models.ForeignKey(Renter, on_delete=models.CASCADE)
+
+class Meta:
+    ordering = ['idFlat']
+</code></pre>
+<ul>
+<li><code>idFlat</code> - Идентификатор квартиры</li>
+<li><code>flat</code> - Номер квартиры</li>
+<li><code>eStove</code> - Наличие электрической плиты в квартире</li>
+<li><code>peopleCount</code> - Количество жильцов</li>
+<li><code>house</code> - Дом, в котором расположена квартира</li>
+<li>
+<p><code>renter</code> - Плательщик</p>
+<p>В данной модели используется выбор из списка значений</p>
+<pre><code>eStove1 = 'Is present'
+eStove2 = 'Isn\'t present'
+eStoveChoices = (
+    (eStove1, "Is present"),
+    (eStove2, "Isn't present")
+)
+eStove = models.CharField("Availability of electric stove", max_length=13, choices=eStoveChoices, default=eStove2)
+</code></pre>
+</li>
+</ul>
+<h2 id="bypass">Модель Bypass</h2>
+<pre><code>class Bypass(models.Model):
+bypassNumb = models.IntegerField("Bypass number", primary_key=True)
+dateOfBypass = models.DateField("Bypass date")
+status1 = 'completed'
+status2 = 'uncompleted'
+statusChoices = (
+    (status1, 'completed'),
+    (status2, 'uncompleted')
+)
+status = models.CharField("Bypass status", max_length=11, choices=statusChoices, default=status2)
+comment = models.CharField("Comment", max_length=100, blank=True)
+inspectorServNumb = models.ForeignKey(Inspector, on_delete=models.CASCADE)
+flat = models.ForeignKey(Flat, on_delete=models.CASCADE)
+
+class Meta:
+    ordering = ['bypassNumb']
+</code></pre>
+<ul>
+<li><code>bypassNumb</code> - Табельный номер обхода</li>
+<li><code>dateOfBypass</code> - Дата обхода</li>
+<li><code>status</code> - Статус обхода</li>
+<li><code>comment</code> - Комментарий</li>
+<li><code>inspectorServNumb</code> - Табельный номер инспектора</li>
+<li><code>flat</code> - Квартира</li>
+</ul>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="forms.html" class="btn btn-neutral float-right" title="Формы">Next <span class="icon icon-circle-arrow-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+    
+      <span><a href="forms.html" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '.';</script>
+    <script src="js/theme_extra.js" defer></script>
+    <script src="js/theme.js" defer></script>
+      <script src="search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.2.1
+Build Date UTC : 2021-06-21 22:10:00.473328+00:00
+-->

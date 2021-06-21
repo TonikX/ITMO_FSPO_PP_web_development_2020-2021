@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  
+  
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <title>Views - Описание сервиса обхода квартир</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "Views";
+    var mkdocs_page_input_path = "views.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="js/jquery-2.1.1.min.js" defer></script>
+  <script src="js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="index.html" class="icon icon-home"> Описание сервиса обхода квартир</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="index.html">База данных</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li class="toctree-l1"><a class="reference internal" href="forms.html">Формы</a>
+                    </li>
+                </ul>
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href="views.html">Views</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#menu">Menu</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#renterslist">RentersList</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#rentersretrieveview">RentersRetrieveView</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#rentercreate">RenterCreate</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#renterupdate">RenterUpdate</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#renterdeleteview">RenterDeleteView</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#registeruser">RegisterUser</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#loginuser">LoginUser</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#logout_user">logout_user</a>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="index.html">Описание сервиса обхода квартир</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="index.html">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Views</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="views">Views</h1>
+<p>Представления реализованы через классы, за исключением выхода из аккаунта.</p>
+<h2 id="menu">Menu</h2>
+<pre><code>class Menu(ListView):
+    model = Inspector
+    template_name = 'home.html'
+</code></pre>
+<p>Данное представление выводит главную страницу - меню</p>
+<h2 id="renterslist">RentersList</h2>
+<pre><code>class RentersList(ListView):
+    paginate_by = 3
+    model = Renter
+    template_name = 'renter_list.html'
+</code></pre>
+<p>Данное представление выводит лист плательщиков, ограничивая количество записей на странице до 3-ёх</p>
+<h2 id="rentersretrieveview">RentersRetrieveView</h2>
+<pre><code>class RentersRetrieveView(DetailView):
+    model = Renter
+    template_name = 'renter_detail.html'
+</code></pre>
+<p>Данное представление выводит подробную информацию о плательщике</p>
+<h2 id="rentercreate">RenterCreate</h2>
+<pre><code>class RenterCreate(CreateView):
+    model = Renter
+    fields = '__all__'
+    template_name = 'renter_create.html'
+    success_url = '/renters/'
+</code></pre>
+<p>Данное представление выводит форму создания плательщика, а затем перенапраляет пользователя на лис плательщиков</p>
+<h2 id="renterupdate">RenterUpdate</h2>
+<pre><code>class RenterUpdate(UpdateView):
+    model = Renter
+    form_class = RenterForm
+    template_name = "renter_update.html"
+    success_url = '/renters/'
+</code></pre>
+<p>Данное представление выводит форму обновления плательщика, а затем перенапраляет пользователя на лис плательщиков</p>
+<h2 id="renterdeleteview">RenterDeleteView</h2>
+<pre><code>class RenterDeleteView(DeleteView):
+    model = Renter
+    template_name = "renter_delete.html"
+    success_url = '/renters/'
+</code></pre>
+<p>Данное представление выводит подтверждение удаления плательщика, а затем перенапраляет пользователя на лис плательщиков</p>
+<p>Для остальных моделей представления аналогичны</p>
+<h2 id="registeruser">RegisterUser</h2>
+<pre><code>class RegisterUser(CreateView):
+    form_class = RegisterInspectorForm
+    template_name = 'register.html'
+    success_url = 'http://127.0.0.1:8000/menu/'
+
+    def form_valid(self, form):
+        user = form.save()
+        login(self.request, user)
+        return redirect('http://127.0.0.1:8000/menu/')
+</code></pre>
+<p>Данное представление, наследуясь от класса <code>CreateView</code>, выводит форму регистрации <code>RegisterInspectorForm</code> и после создания пользователя, сразу авторизирует его</p>
+<h2 id="loginuser">LoginUser</h2>
+<pre><code>class LoginUser(LoginView):
+    form_class = LoginInspectorForm
+    template_name = "login.html"
+
+    def get_success_url(self):
+        return reverse_lazy('home')
+</code></pre>
+<p>Данное представление, наследуясь от класса <code>LoginView</code>, выводит форму авторизации <code>LoginInspectorForm</code> и после входа, перенаправляет пользователя на главную страницу</p>
+<h2 id="logout_user">logout_user</h2>
+<pre><code>def logout_user(request):
+    logout(request)
+    return redirect('http://127.0.0.1:8000/menu/')
+</code></pre>
+<p>Данное представление служит для выхода из аккаунта</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+      
+        <a href="forms.html" class="btn btn-neutral" title="Формы"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="forms.html" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script>var base_url = '.';</script>
+    <script src="js/theme_extra.js" defer></script>
+    <script src="js/theme.js" defer></script>
+      <script src="search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

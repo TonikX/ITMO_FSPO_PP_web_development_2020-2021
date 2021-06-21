@@ -1,0 +1,7 @@
+site_name: Описание сервиса обхода квартир
+nav:
+ - База данных: index.md
+ - Формы: forms.md
+ - Views: views.md
+
+theme: readthedocs
