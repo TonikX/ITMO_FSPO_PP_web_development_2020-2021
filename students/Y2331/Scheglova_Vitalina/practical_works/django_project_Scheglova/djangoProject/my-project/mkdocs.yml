@@ -1,0 +1,7 @@
+site_name: Авиасейлс
+site_url: https://example.com/
+nav:
+    - Home: index.md
+    - Create model: about.md
+    - Endpoints: end.md
+    - Urls: urls.md

@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block page %}
+    <h1>Поиск</h1>
+    {% if plane_type_list %}
+        {% for plane_type in plane_type_list %}
+            <article>
+                <a href="{{ plane_type.get_absolute_url }}">
+                    <h2>{{ Plane_type.model_name }}</h2>
+                </a>
+                {{ Plane_type.manufacturer }}
+                <p><a class="btn btn-default btn-sm" href="{{ plane_type.get_absolute_url }}">Читать далее</a></p>
+            </article>
+        {% endfor %}
+        {% bootstrap_pagination plane_type_list url=last_question %}
+    {% else %}
+        <p>Не найдено публикаций по вашему запросу<br>Попробуйте повторить запрос с другой формулировкой</p>
+    {% endif %}
+{% endblock %}

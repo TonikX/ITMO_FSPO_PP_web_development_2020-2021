@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        
+        
+        <link rel="canonical" href="https://example.com/about/">
+        <link rel="shortcut icon" href="../img/favicon.ico">
+        <title>Create model - Авиасейлс</title>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/font-awesome.min.css" rel="stylesheet">
+        <link href="../css/base.css" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css">
+
+        <script src="../js/jquery-1.10.2.min.js" defer></script>
+        <script src="../js/bootstrap.min.js" defer></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script> 
+    </head>
+
+    <body>
+        <div class="navbar fixed-top navbar-expand-lg navbar-dark bg-primary">
+            <div class="container">
+                <a class="navbar-brand" href="..">Авиасейлс</a>
+                <!-- Expander button -->
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <!-- Expanded navigation -->
+                <div id="navbar-collapse" class="navbar-collapse collapse">
+                        <!-- Main navigation -->
+                        <ul class="nav navbar-nav">
+                            <li class="navitem">
+                                <a href=".." class="nav-link">Home</a>
+                            </li>
+                            <li class="navitem active">
+                                <a href="./" class="nav-link">Create model</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../end/" class="nav-link">Endpoints</a>
+                            </li>
+                            <li class="navitem">
+                                <a href="../urls/" class="nav-link">Urls</a>
+                            </li>
+                        </ul>
+
+                    <ul class="nav navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a href="#" class="nav-link" data-toggle="modal" data-target="#mkdocs_search_modal">
+                                <i class="fa fa-search"></i> Search
+                            </a>
+                        </li>
+                            <li class="nav-item">
+                                <a rel="prev" href=".." class="nav-link">
+                                    <i class="fa fa-arrow-left"></i> Previous
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a rel="next" href="../end/" class="nav-link">
+                                    Next <i class="fa fa-arrow-right"></i>
+                                </a>
+                            </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="row">
+                    <div class="col-md-3"><div class="navbar-light navbar-expand-md bs-sidebar hidden-print affix" role="complementary">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggler collapsed" data-toggle="collapse" data-target="#toc-collapse" title="Table of Contents">
+            <span class="fa fa-angle-down"></span>
+        </button>
+    </div>
+
+    
+    <div id="toc-collapse" class="navbar-collapse collapse card bg-secondary">
+        <ul class="nav flex-column">
+            
+            <li class="nav-item" data-level="1"><a href="#django-orm" class="nav-link">Создание модели данных Django ORM</a>
+              <ul class="nav flex-column">
+              </ul>
+            </li>
+        </ul>
+    </div>
+</div></div>
+                    <div class="col-md-9" role="main">
+
+<h1 id="django-orm">Создание модели данных Django ORM</h1>
+<pre><code class="language-python">from django.db import models
+from django.db.models import CharField
+
+
+class Plane_type(models.Model): # Модель типа самолета
+    model_name = models.CharField(max_length=20) # Имя модели
+    manufacturer = models.CharField(max_length=20) # Изготовитель
+    capacity = models.IntegerField() # Вместимость
+
+class Plane(models.Model): # Модель самолета
+    last_date_of_check = models.DateField() # Дата последней проверки
+    made_year = models.DateField() # Дата изготовления
+    plane_type = models.CharField(max_length=20) # Тип самолета
+    plane_name = models.ForeignKey(Plane_type, on_delete=models.CASCADE) # Имя модели
+
+
+class Client(models.Model): # Модель клиента
+    FIO_client = models.CharField(max_length=50) # ФИО клиента
+    passport_number = models.IntegerField() # Паспортный номер
+    date_of_passport_start = models.DateField() # Дата начала паспорта
+    registration_number = models.IntegerField() # Регистрационный номер
+    who_give_the_passport = models.CharField(max_length=100) # Кто выдал паспорт
+
+
+class Ticket_office(models.Model): # Модель билетного офиса
+    ticket_office_adress = models.CharField(max_length=60) # Адрес билетного офиса
+
+class Cashier(models.Model): # Модель кассира
+    cashier_FIO = models.CharField(max_length=60) # ФИО кассира
+    ticket_office_name = models.ForeignKey(Ticket_office, on_delete=models.CASCADE) # Адрес билетного офиса
+
+class Ticket(models.Model):  # Модель билета
+    type_ticket = models.CharField(max_length=20) # Тип билета
+    cost = models.IntegerField() # Цена
+    ticket_status = models.CharField(max_length=20) # Статус билета
+    ticket_class = models.CharField(max_length=20) # Класс билета
+    ticket_number = models.IntegerField() # Номер билета
+    cashier_name = models.ForeignKey(Cashier, on_delete=models.CASCADE) # ФИО кассира
+
+class Order(models.Model): # Модель заказа
+    order_date = models.DateField() # Дата заказа
+    order_status = models.CharField(max_length=20) # Статус заказа
+    ticket_name = models.ForeignKey(Ticket, on_delete=models.CASCADE) # Номер билета
+    client_name = models.ForeignKey(Client, on_delete=models.CASCADE) # ФИО клиента
+
+class Flight(models.Model): # Модель полета
+    time_flight_start = models.DateTimeField() # Время начала полета
+    time_flight_finish = models.DateTimeField() # Время конца полета
+    date_flight_start = models.DateField() # Дата начала полета
+    date_flight_finish = models.DateField() # Дата конца полета
+    name_of_flight = models.CharField(max_length=20) # Название полета
+    airport_start = models.CharField(max_length=40) # Аэропорт начальный
+    airport_finish = models.CharField(max_length=40) # Аэропорт конечный
+    type_of_flight = models.CharField(max_length=20) # Тип полета
+    board_name = models.ForeignKey(Plane, on_delete=models.CASCADE) # Название 
+    ticket_name = models.ForeignKey(Ticket, on_delete=models.CASCADE) # Номер билета
+
+
+class Transit_boarding(models.Model): # Модель транзитной посадки
+    transit_airport = models.CharField(max_length=20) # Название транзитного аэропорта
+    date_flight_start = models.DateField() # Дата полета начало
+    date_flight_finish = models.DateField() # Дата полета конец
+    time_flight_start = models.DateTimeField() # Время полета начало
+    time_flight_finish = models.DateTimeField() # Время полета конец
+    flight_number = models.ForeignKey(Flight, on_delete=models.CASCADE) # Номер полета
+
+class Staff(models.Model): # Модель рабочих
+    employee_position = models.CharField(max_length=50) # Должность
+    employee_FIO = models.CharField(max_length=60) # ФИО
+    people = models.ManyToManyField(Flight, through='Crew') # Люди
+
+class Crew(models.Model): # Модель экипажа
+    staff = models.ForeignKey(Staff, on_delete=models.CASCADE) # Рабочие
+    flight = models.ForeignKey(Flight, on_delete=models.CASCADE) # Название полета
+
+</code></pre></div>
+            </div>
+        </div>
+
+        <footer class="col-md-12">
+            <hr>
+            <p>Documentation built with <a href="https://www.mkdocs.org/">MkDocs</a>.</p>
+        </footer>
+        <script>
+            var base_url = "..",
+                shortcuts = {"help": 191, "next": 78, "previous": 80, "search": 83};
+        </script>
+        <script src="../js/base.js" defer></script>
+        <script src="../search/main.js" defer></script>
+
+        <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="dialog" aria-labelledby="searchModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="searchModalLabel">Search</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p>From here you can search these documents. Enter your search terms below.</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" placeholder="Search..." id="mkdocs-search-query" title="Type search term here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No results found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div><div class="modal" id="mkdocs_keyboard_modal" tabindex="-1" role="dialog" aria-labelledby="keyboardModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="keyboardModalLabel">Keyboard Shortcuts</h4>
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th style="width: 20%;">Keys</th>
+                    <th>Action</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td class="help shortcut"><kbd>?</kbd></td>
+                    <td>Open this help</td>
+                  </tr>
+                  <tr>
+                    <td class="next shortcut"><kbd>n</kbd></td>
+                    <td>Next page</td>
+                  </tr>
+                  <tr>
+                    <td class="prev shortcut"><kbd>p</kbd></td>
+                    <td>Previous page</td>
+                  </tr>
+                  <tr>
+                    <td class="search shortcut"><kbd>s</kbd></td>
+                    <td>Search</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+
+    </body>
+</html>

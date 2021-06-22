@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load bootstrap4 %}
+
+    <h1>Поиск</h1>
+    <form action="{% url 'clients_list' %}" class="navbar-form navbar-left" method="get">
+        <div class="input-group">
+            <input id="search" name="q" type="text" class="form-control" placeholder="Поиск">
+            <span class="input-group-btn">
+                <button type="submit" class="btn btn-default">Поиск</button>
+            </span>
+        </div>
+    </form>
+    {% if clients_list %}
+        {% for client in clients_list %}
+            <hr>
+
+            <article>
+                    <h2>{{ client.FIO_client }}</h2>
+                </a>
+                <p><a class="btn btn-default btn-sm" onclick="document.location='/client_detail/{{ client.id }}/'">Читать далее</a></p>
+            </article>
+        {% endfor %}
+            <button type="submit" class="btn btn-outline-success" onclick="document.location='/client/create'">Добавить</button>
+        {% bootstrap_pagination clients_list %}
+    {% else %}
+        <p>Не найдено публикаций по вашему запросу<br>Попробуйте повторить запрос с другой формулировкой</p>
+    {% endif %}
+
+
+
+<!--    <h1>Клиенты</h1>-->
+<!--    {% if clients_list %}-->
+<!--        {% for Client in clients_list %}-->
+<!--                    <h2>{{ Client.id }})-->
+<!--                {{ Client.FIO_client|safe }}-->
+<!--                    </h2><hr>-->
+<!--        {% endfor %}-->
+<!--            <button type="submit" class="btn btn-outline-success" onclick="document.location='/client/create'">Добавить</button>-->
+
+<!--    {% endif %}-->
+<!--{% load bootstrap4 %}-->
+<!--{% bootstrap_pagination clients_list %}-->
+<!--{% endblock %}-->

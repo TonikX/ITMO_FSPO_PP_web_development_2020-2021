@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <form method="post" novalidate>
+    {% csrf_token %}
+    <div class="row">
+      <div class="col-6">
+        {{ form.model_name|as_crispy_field }}
+      </div>
+      <div class="col-6">
+        {{ form.manufacturer|as_crispy_field }}
+      </div>
+    </div>
+    {{ form.capacity|as_crispy_field }}
+    <button type="submit" class="btn btn-success" value="Update">Update plane</button>
+  </form>
+{% endblock %}

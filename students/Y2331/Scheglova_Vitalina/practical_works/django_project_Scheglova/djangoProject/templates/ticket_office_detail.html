@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+    {% csrf_token %}
+    <div class="row">
+      <div class="col-lg-10">
+        Адрес офиса: {{ ticket_office.ticket_office_adress }}
+      </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+    {% csrf_token %}
+    <div class="row">
+      <div class="col-lg-10">
+        ФИО клиента: {{ client.FIO_client }}
+      </div>
+      <div class="col-10">
+        Пасспортный номер: {{ client.passport_number }}
+      </div>
+      <div class="col-10">
+          Дата начала старта пасспорта: {{ client.date_of_passport_start}}
+      </div>
+    </div>
+{% endblock %}
