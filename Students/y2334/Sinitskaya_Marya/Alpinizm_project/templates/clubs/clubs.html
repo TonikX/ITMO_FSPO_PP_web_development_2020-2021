@@ -1,0 +1,71 @@
+{% extends "base_main.html" %}
+
+{% block title %}
+    Клубы
+{% endblock %}
+
+{% block content %}
+    <style>
+    .ap{
+    color: red;
+    text-decoration: none;
+}
+    .ap:hover{
+    color: darkred;
+    text-decoration: none;"
+}
+    </style>
+    <h2 class="text-center mt-5 mb-5">Клубы</h2>
+
+
+    <div class="d-flex justify-content-center">
+        <a class="btn btn-success btn-lg btn-block" href="{% url "add_club" %}" role="button" style="width: 600px; ">Добавить клуб</a>
+    </div>
+
+    <br>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success" role="alert" style="width: 600px; margin: auto; text-align: center">
+                {{message}}
+            </div>
+        {% endfor %}
+            <br>
+    {% endif %}
+    <br>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Название</th>
+            <th scope="col">Город</th>
+            <th scope="col">Эл. почта</th>
+            <th scope="col">Телефон</th>
+            <th scope="col">Страна</th>
+            <th scope="col">Контакт</th>
+            <th scope="col"></th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for club in clubs %}
+        <tr>
+
+            <th scope="row">{{ club.club_name }}</th>
+            <th scope="row">{{ club.club_city }}</th>
+            <th scope="row">{{ club.club_mail }}</th>
+            <th scope="row">{{ club.club_phone }}</th>
+            <th scope="row">{{ club.country }}</th>
+            <th scope="row">{{ club.club_contact_person }}</th>
+            <th>
+                <a class="ap" href="{% url "delete_club" club_id=club.club_id %}"><span class="ingredient ">Удалить</span></a>
+                <br>
+                <a style="margin-top: 20px; text-decoration: none;" href="{% url "edit_club" club_id=club.club_id %}"><span class="ingredient">Редактировать</span></a>
+            </th>
+
+        </tr>
+        {% endfor %}
+
+
+        </tbody>
+    </table>
+{% endblock %}

@@ -1,0 +1,65 @@
+{% extends "base_main.html" %}
+
+{% block title %}
+    Участники
+{% endblock %}
+
+{% block content %}
+    <h2 class="text-center mt-5 mb-5">Участники группы {{ group.group_name }}</h2>
+
+    <br>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success" role="alert" style="width: 600px; margin: auto; text-align: center">
+                {{message}}
+            </div>
+        {% endfor %}
+            <br>
+    {% endif %}<br>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ФИО</th>
+            <th scope="col">Возраст</th>
+            <th scope="col">Опыт (лет)</th>
+            <th scope="col">Клуб</th>
+            <th scope="col">Адрес</th>
+            <th scope="col">Нештатная ситуация</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for climber in group.climber.all %}
+        <tr>
+
+            <th scope="row">{{ climber.climber_name }} {{ climber.climber_surname }}</th>
+            <th scope="row">{{ climber.climber_age }}</th>
+            <th scope="row">{{ climber.climber_xp }}</th>
+            <th scope="row">{{ climber.club_id.club_name }}</th>
+            <th scope="row">{{ climber.climber_address }}</th>
+            <th><a style="margin-top: 20px; text-decoration: none;" href="{% url "add_emergency" group_id=group.group_id climber_id=climber.climber_id%}"><span class="ingredient">Добавить</span></a></th>
+        </tr>
+        {% endfor %}
+
+
+
+        </tbody>
+    </table>
+    <div class="container mt-5">
+        <h2 class="text-center mt-5 mb-5">Нештатные ситуации</h2>
+        {% if  group.emergency.count == 0 %}
+            <h5 class="text-center mt-5 mb-5"> Нештатных ситуаций нет </h5>
+        {% else %}
+            {% for situation in group.emergency.all %}
+                <div class="card">
+                    <h5 class="card-header">Альпинист: {{ situation.climber }}</h5>
+                    <div class="card-body">
+                        <p class="card-text">{{ situation.desc }}</p>
+                    </div>
+
+                </div>
+            {% endfor %}
+        {% endif %}
+    </div>
+{% endblock %}

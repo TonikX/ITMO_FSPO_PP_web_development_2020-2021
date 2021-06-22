@@ -1,0 +1,19 @@
+{% extends "base_main.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Нештатная ситуация
+{% endblock %}
+
+{% block content %}
+    <h3 class="text-center mt-5 mb-5">Нештатная ситуация</h3>
+    <hr>
+    <div style="width: 500px; height: 1000px; margin-left: 30%">
+
+        <form action=""  method="POST">
+            {% csrf_token %}
+            {{ form|crispy}}
+        <input type="submit" class="btn btn-success btn-block mt-4" value="Сохранить">
+    </form>
+    </div>
+{% endblock %}

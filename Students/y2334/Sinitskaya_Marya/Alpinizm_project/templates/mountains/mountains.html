@@ -1,0 +1,48 @@
+{% extends "base_main.html" %}
+
+{% block title %}
+    Горы
+{% endblock %}
+
+{% block content %}
+
+    <h2 class="text-center mt-5 mb-5">Горы</h2>
+
+
+    <div class="d-flex justify-content-center">
+        <a class="btn btn-success btn-lg btn-block" href="{% url "add_mountain" %}" role="button" style="width: 600px;">Добавить гору</a>
+    </div>
+    <div class="d-flex justify-content-center mt-3">
+        <a class="btn btn-primary btn-lg btn-block" href="{% url "all_waypoints" %}" role="button" style="width: 600px;">Все вершины</a>
+    </div>
+
+
+    <br>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success" role="alert" style="width: 600px; margin: auto; text-align: center">
+                {{message}}
+            </div>
+        {% endfor %}
+            <br>
+    {% endif %}
+    <br>
+    {% for mountain in  mountains %}
+    <div class="card">
+        <h5 class="card-header">{{ mountain.mountain_name }}</h5>
+        <div class="card-body">
+            <h6 class="card-title">Высота: {{ mountain.mountain_high }} м</h6>
+            <h6 class="card-title">Страна: {{ mountain.country }}</h6>
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">
+                <button type="button" class="btn btn-danger"><a style="color: white; text-decoration: none;" href="{% url "delete_mountain" mountain_id=mountain.mountain_id %}">Удалить</a></button>
+            </button>
+                <button type="button" class="btn btn-primary ml-3"><a style="color: white; text-decoration: none;" href="{% url "mountain_waypoints" mountain_name=mountain.mountain_name %}">Посмотреть вершины</a>
+            </button>
+            </small>
+        </div>
+    </div>
+        <br>
+    {% endfor %}
+{% endblock %}

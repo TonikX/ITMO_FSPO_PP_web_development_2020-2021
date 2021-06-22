@@ -1,0 +1,50 @@
+{% extends "base_main.html" %}
+
+{% block title %}
+    Вершины
+{% endblock %}
+
+{% block content %}
+
+    <h2 class="text-center mt-5 mb-5">Вершины</h2>
+
+
+    <div class="d-flex justify-content-center">
+        <a class="btn btn-success btn-lg btn-block" href="{% url "add_waypoint" %}" role="button" style="width: 600px;">Добавить вершину</a>
+    </div>
+
+    <div class="d-flex justify-content-center mt-3">
+        <a class="btn btn-primary btn-lg btn-block" href="{% url "all_mountains" %}" role="button" style="width: 600px;  ">Все горы</a>
+    </div>
+
+    <br>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success" role="alert" style="width: 600px; margin: auto; text-align: center">
+                {{message}}
+            </div>
+        {% endfor %}
+            <br>
+    {% endif %}
+    <br>
+    {% for waypoint in  waypoints %}
+    <div class="card">
+        <h5 class="card-header">{{ waypoint.waypoint_name }}</h5>
+        <div class="card-body">
+            <h6 class="card-title">Гора: {{ waypoint.mountain }}</h6>
+            <p class="card-text">{{ waypoint.waypoint_desc }}</p>
+        </div>
+        <div class="card-footer">
+            <small class="text-muted">
+                <button type="button" class="btn btn-danger"><a style="color: white; text-decoration: none;" href="{% url "delete_waypoint" waypoint_id=waypoint.waypoint_id %}">Удалить</a></button>
+            <button type="button" class="btn btn-primary ml-3"><a style="color: white; text-decoration: none;" href="{% url "edit_waypoint" waypoint_id=waypoint.waypoint_id %}">Редактировать</a>
+            </button>
+            </small>
+        </div>
+    </div>
+        <br>
+    {% endfor %}
+    {% if string %}
+        <h5 class="card-header d-flex justify-content-center">{{ string }}</h5>
+    {% endif %}
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "base_main.html" %}
+
+{% block title %}
+    Участники
+{% endblock %}
+
+{% block content %}
+    <h2 class="text-center mt-5 mb-5">Участники группы {{ group.group_name }}</h2>
+
+
+    <div class="d-flex justify-content-center">
+        <a class="btn btn-success btn-lg btn-block" href="{% url "edit_group" group_id=group.group_id %}" role="button" style="width: 600px; ">Изменить группу</a>
+    </div>
+
+    <br>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success" role="alert" style="width: 600px; margin: auto; text-align: center">
+                {{message}}
+            </div>
+        {% endfor %}
+            <br>
+    {% endif %}<br>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ФИО</th>
+            <th scope="col">Возраст</th>
+            <th scope="col">Опыт (лет)</th>
+            <th scope="col">Клуб</th>
+            <th scope="col">Адрес</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for climber in group.climber.all %}
+        <tr>
+
+            <th scope="row">{{ climber.climber_name }} {{ climber.climber_surname }}</th>
+            <th scope="row">{{ climber.climber_age }}</th>
+            <th scope="row">{{ climber.climber_xp }}</th>
+            <th scope="row">{{ climber.club_id.club_name }}</th>
+            <th scope="row">{{ climber.climber_address }}</th>
+
+        </tr>
+        {% endfor %}
+
+
+        </tbody>
+    </table>
+{% endblock %}

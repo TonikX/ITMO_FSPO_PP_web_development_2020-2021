@@ -1,0 +1,68 @@
+{% extends "base_main.html" %}
+
+{% block title %}
+    Альпинисты
+{% endblock %}
+
+{% block content %}
+    <style>
+    .ap{
+    color: red;
+    text-decoration: none;
+}
+    .ap:hover{
+    color: darkred;
+    text-decoration: none;"
+}
+    </style>
+    <h2 class="text-center mt-5 mb-5">Альпинисты</h2>
+
+
+    <div class="d-flex justify-content-center">
+        <a class="btn btn-success btn-lg btn-block" href="{% url "add_climber" %}" role="button" style="width: 600px; ">Добавить альпиниста</a>
+    </div>
+
+    <br>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success" role="alert" style="width: 600px; margin: auto; text-align: center">
+                {{message}}
+            </div>
+        {% endfor %}
+            <br>
+    {% endif %}<br>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">ФИО</th>
+            <th scope="col">Возраст</th>
+            <th scope="col">Опыт (лет)</th>
+            <th scope="col">Клуб</th>
+            <th scope="col">Адрес</th>
+            <th scope="col"></th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for climber in climbers %}
+        <tr>
+
+            <th scope="row">{{ climber.climber_name }} {{ climber.climber_surname }}</th>
+            <th scope="row">{{ climber.climber_age }}</th>
+            <th scope="row">{{ climber.climber_xp }}</th>
+            <th scope="row">{{ climber.club_id.club_name }}</th>
+            <th scope="row">{{ climber.climber_address }}</th>
+            <th>
+                <a class="ap" href="{% url "delete_climber" climber_id=climber.climber_id %}"><span class="ingredient ">Удалить</span></a>
+                <br>
+                <a style="margin-top: 20px; text-decoration: none;" href="{% url "edit_climber" climber_id=climber.climber_id %}"><span class="ingredient">Редактировать</span></a>
+            </th>
+
+        </tr>
+        {% endfor %}
+
+
+        </tbody>
+    </table>
+{% endblock %}
