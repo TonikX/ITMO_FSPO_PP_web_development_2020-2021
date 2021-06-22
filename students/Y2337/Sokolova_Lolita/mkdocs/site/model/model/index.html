@@ -9,19 +9,19 @@
       
       
       
-      <link rel="shortcut icon" href="/assets/images/favicon.png">
+      <link rel="shortcut icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.1.2, mkdocs-material-7.0.5">
     
     
       
-        <title>Администрирование автобаз</title>
+        <title>Models - Администрирование автобаз</title>
       
     
     
-      <link rel="stylesheet" href="/assets/stylesheets/main.77f3fd56.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.77f3fd56.min.css">
       
         
-        <link rel="stylesheet" href="/assets/stylesheets/palette.7fa14f5b.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.7fa14f5b.min.css">
         
       
     
@@ -57,6 +57,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -66,7 +71,7 @@
 
 <header class="md-header" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="/." title="Администрирование автобаз" class="md-header__button md-logo" aria-label="Администрирование автобаз">
+    <a href="../.." title="Администрирование автобаз" class="md-header__button md-logo" aria-label="Администрирование автобаз">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -85,7 +90,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              
+              Models
             
           </span>
         </div>
@@ -149,7 +154,7 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="/." title="Администрирование автобаз" class="md-nav__button md-logo" aria-label="Администрирование автобаз">
+    <a href="../.." title="Администрирование автобаз" class="md-nav__button md-logo" aria-label="Администрирование автобаз">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54z"/></svg>
@@ -168,7 +173,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         Home
       </a>
     </li>
@@ -181,11 +186,20 @@
 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="/model/model/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         Models
       </a>
+      
     </li>
   
 
@@ -198,7 +212,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/endpoints/endpoints/" class="md-nav__link">
+      <a href="../../endpoints/endpoints/" class="md-nav__link">
         Endpoints
       </a>
     </li>
@@ -213,7 +227,7 @@
   
   
     <li class="md-nav__item">
-      <a href="/urls/urls/" class="md-nav__link">
+      <a href="../../urls/urls/" class="md-nav__link">
         Urls
       </a>
     </li>
@@ -227,11 +241,81 @@
               </div>
             
             
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+    
+  
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
           
           <div class="md-content" data-md-component="content">
             <article class="md-content__inner md-typeset">
               
-  <h1>404 - Not found</h1>
+                
+                
+                <h1 id="_1">Создание модели</h1>
+<pre><code class="language-python">class Driver(models.Model):
+    name = models.CharField(max_length=45)
+    exp_start = models.DateField()
+
+
+class MotorDepot(models.Model):
+    name = models.CharField(max_length=45)
+    address = models.CharField(max_length=60)
+
+
+class Garage(models.Model):
+    address = models.CharField(max_length=60)
+    motor_depot_id = models.ForeignKey(MotorDepot, on_delete=models.CASCADE, null=True)
+
+
+class Fuel(models.Model):
+    fuel_name = models.CharField(max_length=45)
+    liter = models.FloatField()
+
+
+class Car(models.Model):
+    car_model = models.CharField(max_length=45)
+    reg_number = models.CharField(max_length=12)
+    garage_id = models.ForeignKey(Garage, on_delete=models.SET_NULL, null=True)
+    refuels = models.ManyToManyField(to=Fuel, through='Refuel')
+
+
+class Refuel(models.Model):
+    car_id = models.ForeignKey(Car, on_delete=models.SET_NULL, null=True)
+    id_fuel = models.ForeignKey(Fuel, on_delete=models.SET_NULL, null=True)
+    liters = models.FloatField()
+
+
+class Waybill(models.Model):
+    id_car = models.ForeignKey(Car, on_delete=models.SET_NULL, null=True)
+    id_driver = models.ForeignKey(Driver, on_delete=models.SET_NULL, null=True)
+    trip_date = models.DateField(default=date.today)
+
+    point_of_loading = models.CharField(max_length=255)
+    point_if_unloading = models.CharField(max_length=255)
+    mileage_total = models.IntegerField(null=True, blank=True, default=None)
+    mileage_cargo = models.IntegerField(null=True, blank=True, default=None)
+    consignor = models.CharField(max_length=255)
+    consignee = models.CharField(max_length=255)
+    order_time = models.FloatField(null=True, blank=True, default=None)
+
+</code></pre>
+                
+              
+              
+                
+
 
               
             </article>
@@ -241,6 +325,39 @@
       
         
 <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        <a href="../.." class="md-footer__link md-footer__link--prev" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Home
+            </div>
+          </div>
+        </a>
+      
+      
+        <a href="../../endpoints/endpoints/" class="md-footer__link md-footer__link--next" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              Endpoints
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
   
   <div class="md-footer-meta md-typeset">
     <div class="md-footer-meta__inner md-grid">
@@ -261,10 +378,10 @@
     <div class="md-dialog" data-md-component="dialog">
       <div class="md-dialog__inner md-typeset"></div>
     </div>
-    <script id="__config" type="application/json">{"base": "/", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "/assets/javascripts/workers/search.fb4a9340.min.js", "version": null}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing"}, "search": "../../assets/javascripts/workers/search.fb4a9340.min.js", "version": null}</script>
     
     
-      <script src="/assets/javascripts/bundle.5cf3e710.min.js"></script>
+      <script src="../../assets/javascripts/bundle.5cf3e710.min.js"></script>
       
     
   </body>
