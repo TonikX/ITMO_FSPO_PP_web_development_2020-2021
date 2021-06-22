@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="None">
+  
+  
+  <link rel="shortcut icon" href="img/favicon.ico">
+  <title>My Docs</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700|Inconsolata:400,700" />
+
+  <link rel="stylesheet" href="css/theme.css" />
+  <link rel="stylesheet" href="css/theme_extra.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css" />
+  
+  <script>
+    // Current page data
+    var mkdocs_page_name = "\u0417\u0430\u043a\u043b\u044e\u0447\u0435\u0442\u0435\u043b\u044c\u043d\u0430\u044f \u0440\u0430\u0431\u043e\u0442\u0430 \u043a\u0443\u0440\u0441\u0430 \u043f\u043e web-\u0440\u0430\u0437\u0440\u0430\u0431\u043e\u0442\u043a\u0435 \u043d\u0430 Django \u0424\u0421\u041f\u041e \u0418\u0422\u041c\u041e";
+    var mkdocs_page_input_path = "index.md";
+    var mkdocs_page_url = null;
+  </script>
+  
+  <script src="js/jquery-2.1.1.min.js" defer></script>
+  <script src="js/modernizr-2.8.3.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script> 
+  
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+        <a href="." class="icon icon-home"> My Docs</a>
+        <div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="./search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+                <ul class="current">
+                    <li class="toctree-l1 current"><a class="reference internal current" href=".">Заключетельная работа курса по web-разработке на Django ФСПО ИТМО</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#_1">Модель</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#django">Django модели</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#django-urls">Django URLs</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#apirides">/api/rides/</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#get">GET</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#post">POST</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#_2">Формат записи с аттракционом</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#apiplaygrounds">/api/playgrounds/</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#get_1">GET</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#post_1">POST</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#_3">Формат записи с парком</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#apiusages">/api/usages/</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#get_2">GET</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#post_2">POST</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#_4">Формат записи об использовании аттракциона</a>
+    </li>
+        </ul>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#front-urls">Front URLs</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#login">/login</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#playgrounds">/playgrounds</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#rides">/rides</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#usages">/usages</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#registerusage">/registerUsage</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#registerride">/registerRide</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#registerplayground">/registerPlayground</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                    </li>
+                </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href=".">My Docs</a>
+      </nav>
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href=".">Docs</a> &raquo;</li>
+    
+      
+    
+    <li>Заключетельная работа курса по web-разработке на Django ФСПО ИТМО</li>
+    <li class="wy-breadcrumbs-aside">
+      
+    </li>
+  </ul>
+  
+  <hr/>
+</div>
+          <div role="main">
+            <div class="section">
+              
+                <h1 id="web-django">Заключетельная работа курса по web-разработке на Django ФСПО ИТМО</h1>
+<h2 id="_1">Модель</h2>
+<p><img alt="image" src="https://user-images.githubusercontent.com/43097289/122927664-c4b69f80-d371-11eb-9386-711ae05b8b53.png" /></p>
+<h2 id="django">Django модели</h2>
+<pre><code class="language-python">class Playground(models.Model):
+    address = models.CharField(max_length=50)
+    directorSurname = models.CharField(max_length=50)
+    childrenPrice = models.FloatField()
+    discountPrice = models.FloatField()
+    adultPrice = models.FloatField()
+
+    def __str__(self):
+        return '%s %s' % (self.directorSurname, self.address)
+
+
+class Ride(models.Model):
+    name = models.CharField(max_length=50)
+    startDate = models.DateField(default=datetime.now())
+    lifetime = models.BigIntegerField()
+    basePrice = models.BigIntegerField()
+    playground = models.ForeignKey('Playground', on_delete=models.CASCADE)
+
+    db_constraints = {
+        'price_rule': 'check (basePrice &gt; 0)',
+    }
+
+    def __str__(self):
+        return '%s' % self.name
+
+
+class Usage(models.Model):
+    day = models.DateField(default=datetime.now())
+    ride = models.ForeignKey('Ride', on_delete=models.CASCADE)
+    childrenSales = models.BigIntegerField()
+    discountSales = models.BigIntegerField()
+    adultSales = models.BigIntegerField()
+
+    def __str__(self):
+        return '%s' % self.day
+</code></pre>
+<h2 id="django-urls">Django URLs</h2>
+<pre><code class="language-python">router = DefaultRouter()
+router.register(r'rides', RideViewSet)
+router.register(r'playgrounds', PlaygroundViewSet)
+router.register(r'usages', UsageViewSet)
+urlpatterns = [
+    path('', include(router.urls)),
+]
+</code></pre>
+<h3 id="apirides">/api/rides/</h3>
+<h5 id="get">GET</h5>
+<p>Возвращает JSON массив с аттракционами</p>
+<h5 id="post">POST</h5>
+<p>Позволяет добавить новый аттракцион</p>
+<h5 id="_2">Формат записи с аттракционом</h5>
+<pre><code class="language-json">{
+    &quot;id&quot;: &lt;id&gt;,
+    &quot;name&quot;: &lt;Название аттракциона&gt;,
+    &quot;startDate&quot;: &lt;Дата создания аттракциона&gt;,
+    &quot;lifetime&quot;: &lt;Время действия гарантии&gt;,
+    &quot;basePrice&quot;: &lt;Базовая цена за использование аттракциона&gt;,
+    &quot;playground&quot;: &lt;id площадки&gt;
+}
+</code></pre>
+<h3 id="apiplaygrounds">/api/playgrounds/</h3>
+<h5 id="get_1">GET</h5>
+<p>Возвращает JSON массив с парками аттракционов</p>
+<h5 id="post_1">POST</h5>
+<p>Позволяет добавить новый парк аттракционов</p>
+<h5 id="_3">Формат записи с парком</h5>
+<pre><code class="language-json">{
+    &quot;id&quot;: &lt;id&gt;,
+    &quot;address&quot;: &lt;Местонахождение парка&gt;,
+    &quot;directorSurname&quot;: &lt;Директор парка&gt;,
+    &quot;childrenPrice&quot;: &lt;Модификатор цены аттракционов для детей&gt;,
+    &quot;discountPrice&quot;: &lt;Модификатор цены аттракционов для льготников&gt;,
+    &quot;adultPrice&quot;: &lt;Модификатор цены аттракционов для взрослых&gt;
+}
+</code></pre>
+<h3 id="apiusages">/api/usages/</h3>
+<h5 id="get_2">GET</h5>
+<p>Возвращает JSON массив с использованием аттракционов</p>
+<h5 id="post_2">POST</h5>
+<p>Позволяет добавить запись об использовании аттракциона</p>
+<h5 id="_4">Формат записи об использовании аттракциона</h5>
+<pre><code class="language-json">{
+    &quot;id&quot;: &lt;id&gt;,
+    &quot;day&quot;: &lt;Дата в которую использовался аттракцион&gt;,
+    &quot;ride&quot;: &lt;id аттракциона&gt;,
+    &quot;childrenSales&quot;: &lt;Количество проданных детских билетов&gt;,
+    &quot;discountSales&quot;: &lt;Количество проданных льготных билетов&gt;,
+    &quot;adultSales&quot;: &lt;Количество проданных взрослых билетов&gt;
+}
+</code></pre>
+<h2 id="front-urls">Front URLs</h2>
+<h3 id="login">/login</h3>
+<p>Вход</p>
+<h3 id="playgrounds">/playgrounds</h3>
+<p>Список и редактирование парков аттракционов</p>
+<h3 id="rides">/rides</h3>
+<p>Список и редактирование аттракционов</p>
+<h3 id="usages">/usages</h3>
+<p>Список и редактирование использований аттракционов</p>
+<h3 id="registerusage">/registerUsage</h3>
+<p>Добавление использований аттракционов</p>
+<h3 id="registerride">/registerRide</h3>
+<p>Добавление аттракционов</p>
+<h3 id="registerplayground">/registerPlayground</h3>
+<p>Добавление парков аттракционов</p>
+              
+            </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+    
+      <p>Выполнена студентом группы Y2336 Макуриным Александром</p>
+    
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/snide/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+      
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      
+      
+      
+    </span>
+</div>
+    <script>var base_url = '.';</script>
+    <script src="js/theme.js" defer></script>
+      <script src="search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
+
+<!--
+MkDocs version : 1.1.2
+Build Date UTC : 2021-06-22 13:45:05.673700+00:00
+-->
