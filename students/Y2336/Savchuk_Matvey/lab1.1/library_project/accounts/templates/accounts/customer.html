@@ -1,0 +1,105 @@
+{%  extends 'accounts/main.html' %}
+
+{% block content %}
+
+	<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Заказчик {{customer.name}}</h5>
+			{% if request.user.is_superuser %}
+			<hr>
+			<!--<a class="btn btn-outline-info  btn-sm btn-block" href="">Изменить данные</a>-->
+			<a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'create_order' customer.id %}">Выставить заказ</a>
+			{% endif %}
+
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Контактная информация</h5>
+			<hr>
+			<p>Электронная почта: {{customer.email}}</p>
+			<p>Номер телефона: {{customer.phone}}</p>
+		</div>
+	</div>
+
+	<div class="col-md">
+		<div class="card card-body">
+			<h5>Всего заказов</h5>
+			<hr>
+			<h1 style="text-align: center;padding: 10px">{{order_count}}</h1>
+		</div>
+	</div>
+</div>
+
+
+<br>
+<div class="row">
+	<div class="col">
+		<div class="card card-body">
+
+			<form method="get">
+				{{myFilter.form}}
+
+		    <button class="btn btn-primary" type="submit">Поиск</button>
+		  </form>
+
+		</div>
+	</div>
+	
+</div>
+<br>
+
+<div class="row">
+	<div class="col-md">
+		<div class="card card-body">
+			<table class="table table-sm">
+				<tr>
+					<th>Книга</th>
+					<th>Примечание</th>
+					<th>Дата заказа</th>
+					<th>Статус</th>
+					{% if request.user.is_superuser %}
+					<th>Изменить</th>
+					<th>Удалить</th>
+					{% endif %}
+				</tr>
+
+				{% for order in orders %}
+
+				<tr>
+					<td>{{order.book}}</td>
+					<td>
+						{% if order.note is None %}
+						Отсутствует
+						{% else %}
+						{{order.note}}
+						{% endif %}
+					</td>
+					<td>{{order.date_created}}</td>
+					<td>
+						{% if order.status == "Выполнено"%}
+						Выполнено
+						{% elif order.status == "В ожидании"%}
+						В ожидании
+						{% else %}
+						Заказ отменен
+						{% endif %}
+					</td>
+					{% if request.user.is_superuser %}
+					<td><a class="btn btn-sm btn-info" href="{% url 'update_order' order.id %}">Изменить</a></td>
+
+					<td><a class="btn btn-sm btn-danger" href="{% url 'delete_order' order.id %}">Удалить</a></td>
+					{% endif %}
+				</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,60 @@
+{%  extends 'accounts/main.html' %}
+
+{% block content %}
+
+		<br>
+
+		<div class="row">
+			<div class="col-md">
+				<div class="card card-body">
+					<h5>Книги</h5>
+					{% if request.user.is_superuser %}
+					<a class="btn btn-outline-info  btn-sm btn-block" href="{% url 'create_book' %}">Новая</a>
+					{% endif %}
+				</div>
+
+				<div class="row">
+					<div class="col">
+						<div class="card card-body">
+
+							<form method="get">
+								{{bookFilter.form}}
+
+							<button class="btn btn-primary" type="submit">Поиск</button>
+						  </form>
+
+						</div>
+					</div>
+
+				</div>
+
+				<div class="card card-body">
+					<table class="table">
+						<tr>
+							<th>Книга</th>
+							<th>Категория</th>
+							<th>Цена</th>
+						</tr>
+
+						{% for i in books %}
+							<tr>
+								<td>{{i.name}}</td>
+								<td>{{i.category}}</td>
+								<td>{{i.price}}</td>
+								{% if request.user.is_superuser %}
+								<td><a class="btn btn-sm btn-info" href="{% url 'update_book' i.id %}">Изменить</a></td>
+								<td><a class="btn btn-sm btn-danger" href="{% url 'delete_book' i.id %}">Удалить</a></td>
+								{% endif %}
+							</tr>
+
+
+
+						{% endfor %}
+						
+					</table>
+				</div>
+			</div>
+			
+		</div>
+
+{% endblock content %}

@@ -1,0 +1,22 @@
+site_name: y2336 django savchuk
+site_url: https://matbeu.github.io
+nav:
+ - Модель БД: index.md
+ - Аккаунт:
+     - "Регистрация": urls/reg.md
+     - "Авторизация": urls/log.md
+ - Главная:
+     - "Главная": urls/main.md
+ - Заказы:
+     - "Профиль заказчика": urls/prz.md
+     - "Выставление заказа": urls/vz.md
+     - "Редактирование заказа": urls/rz.md
+     - "Удаление заказа": urls/uz.md
+ - Книги:
+     - "Список книг": urls/sk.md
+     - "Добавление книги": urls/dk.md
+     - "Редактирование книги": urls/rk.md
+     - "Удаление книги": urls/uk.md
+
+theme:
+ name: readthedocs
