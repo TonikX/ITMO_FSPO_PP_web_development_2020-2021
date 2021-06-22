@@ -1,10 +1,13 @@
+from django import http
 from django.contrib import auth
 from django.contrib.auth import forms as auth_forms
+from django.http import HttpResponseRedirect
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 from django.views.generic.edit import UpdateView, CreateView, DeleteView
 from rest_framework import mixins, generics, permissions, status
 import medicine_storage.forms as forms
+from django.utils.translation import gettext_lazy as _
 
 from . import models, serializers
 
@@ -44,6 +47,11 @@ class UsersList(mixins.ListModelMixin,
 
     def get(self, request, *args, **kwargs):
         return self.list(request, *args, **kwargs)
+
+
+class UserDelete(DeleteView):
+    model = models.User
+    success_url = success_url
 
 
 class ActiveSubstanceUpdate(UpdateView):
@@ -138,8 +146,19 @@ class UnitUpdate(UpdateView):
 
 class UnitCreate(CreateView):
     model = models.Unit
-    form_class = forms.UnitForm
+    fields = ['item', 'amount', 'product_date']
+    labels = {
+        'item': _('Название'),
+        'amount': _('Количество'),
+        'product_date': _('Дата производства'),
+    }
     success_url = success_url
+
+    def form_valid(self, form):
+        self.object = form.save(commit=False)
+        self.object.user = self.request.user
+        self.object.save()
+        return HttpResponseRedirect(self.get_success_url())
 
 
 class UnitDelete(DeleteView):

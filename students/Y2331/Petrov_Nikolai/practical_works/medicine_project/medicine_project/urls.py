@@ -28,6 +28,7 @@ urlpatterns = [
                   path('api/manufactures', views.ManufacturersList.as_view(), name='manufactures'),
                   path('api/items', views.ItemsList.as_view(), name='items'),
                   path('api/units', views.UnitsList.as_view(), name='units'),
+                  path('api/users/delete/<int:pk>/', views.UserDelete.as_view()),
 
                   path('api/units/create/', views.UnitCreate.as_view()),
                   path('api/units/update/<int:pk>/', views.UnitUpdate.as_view()),

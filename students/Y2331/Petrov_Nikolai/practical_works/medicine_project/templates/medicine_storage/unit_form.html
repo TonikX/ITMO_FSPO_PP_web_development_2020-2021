@@ -4,14 +4,26 @@
 <form>
     {% csrf_token %}
 
-    {% for field in form %}
-        <div class="field">
-            <label class="label">{{ field.label_tag }}</label>
-            <div class="control">
-                {{ field|addclass:'input' }}
-            </div>
+    <div class="field">
+        <label class="label">Название</label>
+        <div class="control">
+            {{ form.item|addclass:'input' }}
         </div>
-    {% endfor %}
+    </div>
+
+    <div class="field">
+        <label class="label">Количество</label>
+        <div class="control">
+            {{ form.amount|addclass:'input' }}
+        </div>
+    </div>
+
+    <div class="field">
+        <label class="label">Дата производства</label>
+        <div class="control">
+            {{ form.product_date|addclass:'input' }}
+        </div>
+    </div>
 
     <button id="submit" class="button is-info">Добавить препарат</button>
     <button id="cancel" class="button is-danger">Отмена</button>

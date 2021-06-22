@@ -17,12 +17,6 @@ function create(type, reload) {
     fetch('/api/' + type + '/create/')
         .then(r => r.text().then(html => {
             modal_box.innerHTML = html
-            if (type === 'units') {
-                let user_id = document.getElementById('id_user')
-                user_id.value = 1
-                let user_field = user_id.parentElement.parentElement
-                user_field.classList.add('is-hidden')
-            }
             let submit_button = document.getElementById('submit')
             submit_button.addEventListener('click', (e) => {
                 e.preventDefault()
@@ -59,12 +53,6 @@ function update(id, type, reload) {
     fetch('/api/' + type + '/update/' + id + '/')
         .then(r => r.text().then(html => {
             modal_box.innerHTML = html
-            if (type === 'units') {
-                let user_id = document.getElementById('id_user')
-                //user_id.value = 1
-                let user_field = user_id.parentElement.parentElement
-                user_field.classList.add('is-hidden')
-            }
             let submit_button = document.getElementById('submit')
             submit_button.innerText = 'Изменить' + submit_button.innerText.slice(8)
             submit_button.addEventListener('click', (e) => {
@@ -144,7 +132,11 @@ class App extends React.Component {
         let units = await resp.json()
 
         resp = await fetch(this.url + 'api/users?format=json')
-        let users = await resp.json()
+        let users
+        if (resp.ok)
+            users = await resp.json()
+        else
+            users = []
 
         this.setState({
             'loading': false,
@@ -248,9 +240,9 @@ class InteractiveTable extends React.Component {
                     type={this.state.selected}
                     reload={this.props.reload}
                 />
-                <button className="button is-info is-light"
+                {this.state.selected !== 'users' ? <button className="button is-info is-light"
                         onClick={() => create(this.state.selected, this.props.reload)}>Добавить
-                </button>
+                </button> : <></>}
             </>
         )
     }
@@ -270,7 +262,7 @@ class ItemRow extends React.Component {
         return (<tr>
             {columns}
             <td>
-                <i className="icon"><img src={edit_img} alt="update" onClick={this.props.update}/></i>
+                {this.props.type !== 'users' ? <i className="icon"><img src={edit_img} alt="update" onClick={this.props.update}/></i> : <></>}
                 <i className="icon"><img src={delete_img} alt="delete" onClick={this.props.del}/></i>
             </td>
         </tr>)
