@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html>
+{% extends 'menu.html' %}
+{% block content %}
 {% if request.user.is_authenticated %}
 {%if user.is_staff%}
 	<head>
@@ -19,4 +21,5 @@
 	</body>
 {% endif %}
 {% endif %}
+{% endblock %}
 </html>

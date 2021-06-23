@@ -1,4 +1,6 @@
 <!DOCTYPE html>
+{% extends 'menu.html' %}
+{% block content %}
 {% load crispy_forms_tags %}
 <html>
 {% if request.user.is_authenticated %}
@@ -27,3 +29,4 @@
 {% endif %}
 {% endif %}
 </html>
+{% endblock %}

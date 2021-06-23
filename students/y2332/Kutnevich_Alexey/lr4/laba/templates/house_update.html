@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html>
+{% extends 'menu.html' %}
+{% block content %}
 {% if request.user.is_authenticated %}
 {%if user.is_staff%}
 {%if user.is_superuser%}
@@ -21,4 +23,5 @@
             <input type="button" class="btn btn-danger" onclick="history.back();" value="Cancel"/>
 		</form>
 	</body>
+{% endblock %}
 </html>

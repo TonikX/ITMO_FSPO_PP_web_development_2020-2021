@@ -1,3 +1,5 @@
+{% extends 'menu.html' %}
+{% block content %}
 {% load crispy_forms_tags %}
 <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -12,8 +14,10 @@
     {% csrf_token %}
     {{ form|crispy }}
     <button type="submit" class="btn btn-success" onclick="location.href='/menu/'">Save</button>
+      <input type="button" class="btn btn-outline-primary" onclick="location.href='http://127.0.0.1:8000/inspector_list/'" value="Cancel"/>
   </form>
     {% endif %}
 {% endif %}
 {% endif %}
 </ol>
+{% endblock %}

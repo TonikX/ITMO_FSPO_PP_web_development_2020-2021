@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html>
+{% extends 'menu.html' %}
+{% block content %}
 	<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -15,4 +17,5 @@
 			<br><input type="submit" class="btn btn-primary" value="Yes"/> <input type="button" class="btn btn-danger"  onclick="history.back();" value="Cancel"/></br>
 		</form>
 	</body>
+{% endblock %}
 </html>
