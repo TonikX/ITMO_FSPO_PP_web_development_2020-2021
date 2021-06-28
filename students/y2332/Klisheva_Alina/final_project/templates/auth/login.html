@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block title %}Вход{% endblock %}
+
+{% block content %}
+    <div class="container is-max-widescreen">
+        <h1 class="title is-1">Вход</h1>
+        <div class="box">
+            <form id="login-form">
+                <div class="field">
+                    <label class="label" for="email">E-mail</label>
+                    <div class="control">
+                        <input id="email" name="email" class="input" type="email" placeholder="Введите e-mail">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label" for="pass">Пароль</label>
+                    <div class="control">
+                        <input id="pass" name="password" class="input" type="password" placeholder="Введите пароль">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <p class="control">
+                        <button id="login-button" class="button is-success">
+                            Войти
+                        </button>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let btn = document.getElementById('login-button')
+        let form = document.getElementById('login-form')
+
+        btn.onclick = (e) => {
+            e.preventDefault()
+            btn.classList.add('is-loading')
+            fetch('/auth/token/login/', {
+                method: 'POST',
+                body: new FormData(form)
+            })
+                .then((r) => {
+                    if (r.status === 200) {
+                        r.json().then(json => {
+                            sessionStorage.setItem('token', json['auth_token'])
+                            document.location = '/hack/index/'
+                        })
+                    } else {
+                        document.querySelectorAll('#login-form input').forEach((i) => {
+                            i.classList.add('is-danger')
+                            i.onclick = () => i.classList.remove('is-danger')
+                        })
+                    }
+                })
+                .finally(() => btn.classList.remove('is-loading'))
+        }
+    </script>
+{% endblock %}

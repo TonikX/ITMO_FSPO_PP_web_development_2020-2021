@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block title %}Регистрация{% endblock %}
+
+{% block content %}
+    <div class="container is-max-widescreen">
+        <h1 class="title is-1">Регистрация</h1>
+        <div class="box">
+            <form id="signup-form">
+                <div class="field">
+                    <label class="label" for="username">Username</label>
+                    <div class="control">
+                        <input id="username" name="username" class="input" type="text" placeholder="Введите username">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label" for="role">Роль:</label>
+                    <div class="control">
+
+                        <select id="role" name="role" class="select">
+                            {#                                            <option value="0"></option>#}
+                            <option value="1">Капитан</option>
+                            <option value="2">Жюри</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label" for="email">E-mail</label>
+                    <div class="control">
+                        <input id="" name="email" class="input" type="email" placeholder="Введите e-mail">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <label class="label" for="pass">Пароль</label>
+                    <div class="control">
+                        <input id="pass" name="password" class="input" type="password" placeholder="Введите пароль">
+                    </div>
+                </div>
+
+                <div class="field">
+                    <p class="control">
+                        <button id="signup-button" class="button is-success">
+                            Зарегестрироваться
+                        </button>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        let btn = document.getElementById('signup-button')
+        let form = document.getElementById('signup-form')
+
+        btn.onclick = (e) => {
+            e.preventDefault()
+            btn.classList.add('is-loading')
+            fetch('/auth/users/', {
+                method: 'POST',
+                body: new FormData(form)
+            })
+                .then((r) => {
+                    if (r.status === 201) {
+                        document.location = '/hack/login/'
+                    } else {
+                        document.querySelectorAll('#signup-form input').forEach((i) => {
+                            i.classList.add('is-danger')
+                            i.onclick = () => i.classList.remove('is-danger')
+                        })
+                    }
+                })
+                .finally(() => btn.classList.remove('is-loading'))
+        }
+    </script>
+{% endblock %}
