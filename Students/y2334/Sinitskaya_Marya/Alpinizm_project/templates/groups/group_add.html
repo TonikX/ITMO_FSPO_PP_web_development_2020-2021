@@ -1,0 +1,29 @@
+{% extends "base_main.html" %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+    Создание группы
+{% endblock %}
+
+{% block content %}
+    <h3 class="text-center mt-5 mb-5">Создание группы</h3>
+
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-danger" role="alert" style="width: 600px; margin: auto; text-align: center">
+                {{message}}
+            </div>
+        {% endfor %}
+            <br>
+    {% endif %}
+
+    <hr>
+    <div style="width: 500px; height: 1000px; margin-left: 30%">
+
+        <form action=""  method="POST">
+            {% csrf_token %}
+            {{ form|crispy}}
+        <input type="submit" class="btn btn-success btn-block mt-4" value="Далее">
+    </form>
+    </div>
+{% endblock %}

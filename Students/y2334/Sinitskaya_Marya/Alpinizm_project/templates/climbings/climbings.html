@@ -1,0 +1,90 @@
+{% extends "base_main.html" %}
+
+{% block title %}
+    Восхождения
+{% endblock %}
+
+{% block content %}
+    <style>
+    .ap{
+    color: red;
+    text-decoration: none;
+}
+    .ap:hover{
+    color: darkred;
+    text-decoration: none;"
+}
+    </style>
+    <h2 class="text-center mt-5 mb-5">Восхождения</h2>
+
+
+    <div class="d-flex justify-content-center">
+        <a class="btn btn-success btn-lg btn-block" href="{% url "create_group" %}" role="button" style="width: 600px; ">Создать восхождение</a>
+    </div>
+
+    <br>
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert alert-success" role="alert" style="width: 600px; margin: auto; text-align: center">
+                {{message}}
+            </div>
+        {% endfor %}
+            <br>
+    {% endif %}
+    <br>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Статус</th>
+            <th scope="col">Страна</th>
+            <th scope="col">Гора</th>
+            <th scope="col">Высота</th>
+            <th scope="col">Вершина</th>
+            <th scope="col">Группа</th>
+            <th scope="col">Старт</th>
+            <th scope="col">Финиш</th>
+            <th scope="col"></th>
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for climbing in climbings %}
+            <tr>
+            {% if  climbing.status  == "Планируется" %}
+                <th scope="row" style="color: darkgreen">{{ climbing.status }}</th>
+            {% elif climbing.status == 'Выполняется' %}
+                <th scope="row" style="color: orange">{{ climbing.status }}</th>
+            {% else %}
+                <th scope="row" style="color: grey">{{ climbing.status }}</th>
+            {% endif %}
+            <th scope="row">{{ climbing.waypoint.mountain.country }}</th>
+            <th scope="row">{{ climbing.waypoint.mountain.mountain_name }}</th>
+            <th scope="row">{{ climbing.waypoint.mountain.mountain_high }}</th>
+            <th scope="row">{{ climbing.waypoint.waypoint_name }}</th>
+            <th scope="row">{{ climbing.group_id }}
+            <br>
+                {% if climbing.status == "Планируется" %}
+                <a style="margin-top: 20px; text-decoration: none;" href="{% url "all_group_members" group_id=climbing.group_id.group_id %}"><span class="ingredient">Подробнее</span></a>
+                {% endif %}
+            </th>
+            <th scope="row">{{ climbing.climbing_start }}</th>
+            <th scope="row">{{ climbing.climbing_finish }}</th>
+
+<th>
+            {% if climbing.status == "Планируется" %}
+
+                <a class="ap" href="{% url "cancel_climbing" climbing_id=climbing.climbing_id %}"><span class="ingredient ">Отменить</span></a>
+                <br>
+                <a style="margin-top: 20px; text-decoration: none;" href="{% url "edit_climbing" climbing_id=climbing.climbing_id %}"><span class="ingredient">Изменить</span></a>
+                {% elif climbing.status == "Завершен"%}
+                    <a style="margin-top: 20px; text-decoration: none;" href="{% url "group_info" group_id=climbing.group_id.group_id %}"><span class="ingredient">Посмотреть информацию</span></a>
+            {% endif %}
+            </th>
+        {% endfor %}
+        </tr>
+
+
+        </tbody>
+    </table>
+{% endblock %}
