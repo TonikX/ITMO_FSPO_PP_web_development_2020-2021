@@ -1,0 +1,6 @@
+site_name: Администрирование гостинницы
+nav:
+    - Home: index.md
+    - Create model: models/models.md
+    - Endpoints: endpoints/endpoints.md
+    - Urls: urls/urls.md
