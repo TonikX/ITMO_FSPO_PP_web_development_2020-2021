@@ -2,6 +2,8 @@
 __pycache__/
 *.py[cod]
 *$py.class
+/django_project_panayot_viktor/django_project_panayot_viktor/settings.py
+.pyc
 
 
 # C extensions

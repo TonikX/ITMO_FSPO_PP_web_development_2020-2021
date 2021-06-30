@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Owner list</title>
+</head>
+
+<body>
+  <span><h1>Auto Owners</h1><a href="/auto/create">Add new one</a></span>
+  <ul>
+	{% for auto in object_list %}
+	<li><strong>Auto:</strong> {{ auto.auto_id }}, actions: <a href="/auto/{{ auto.id }}/update">Edit</a> | <a href="/auto/{{ auto.id }}/delete">Delete</a> | <a href="/auto/{{ auto.id }}/">Detail</a>
+  	<p><strong>Owner:</strong> {{ auto.car_owner_id }}</p>
+    <p><strong>End date:</strong> {{ auto.end_date }}</p>
+	</li>
+	{% empty %}
+	<li>No owners yet.</li>
+	{% endfor %}
+  </ul>
+</body>
+
+</html>
