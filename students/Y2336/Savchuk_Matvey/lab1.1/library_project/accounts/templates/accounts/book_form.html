@@ -1,0 +1,27 @@
+{%  extends 'accounts/main.html' %}
+{% load static %}
+{% block content %}
+
+
+<div class="row">
+	<div class="col-md-6">
+		<div class="card card-body">
+
+			<form action="" method="POST">
+				{% csrf_token %}
+				{{ form.management_form }}
+				{% for field in form %}
+					{{field.name}}:  {{field}}
+					<hr>
+				{% endfor %}
+
+				<a class="btn btn-warning" href="{% url 'books' %}">Назад</a>
+				<input type="submit" name="Принять">
+			</form>
+
+		</div>
+	</div>
+</div>
+
+
+{% endblock %}

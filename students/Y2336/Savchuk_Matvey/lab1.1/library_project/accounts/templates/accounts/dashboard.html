@@ -1,0 +1,93 @@
+{%  extends 'accounts/main.html' %}
+
+{% block content %}
+
+{%  include 'accounts/status.html' %}
+
+<br>
+
+<div class="row">
+
+	<div class="col-md-5">
+		<h5>Заказы</h5>
+		<hr>
+		<div class="card card-body">
+
+			<table class="table table-sm">
+				<tr>
+					<th>id</th>
+					<th>Книга</th>
+					<th>Дата заказа</th>
+					<th>Статус</th>
+					{% if request.user.is_superuser %}
+					<th>Изменить</th>
+					<th>Удалить</th>
+					{% endif %}
+				</tr>
+
+				{% for order in orders %}
+					<tr>
+						<td>{{order.id}}</td>
+						<td>{{order.book}}</td>
+						<td>{{order.date_created}}</td>
+					<td>
+						{% if order.status == "Выполнено"%}
+						Выполнено
+						{% elif order.status == "В ожидании"%}
+						В ожидании
+						{% else %}
+						Заказ отменен
+						{% endif %}
+					</td>
+						{% if request.user.is_superuser %}
+						<td><a class="btn btn-sm btn-info" href="{% url 'update_order' order.id %}">Изменить</a></td>
+
+						<td><a class="btn btn-sm btn-danger" href="{% url 'delete_order' order.id %}">Удалить</a></td>
+						{% endif %}
+
+					</tr>
+				{% endfor %}
+
+
+			</table>
+			<table>
+				<tr>
+					{% if prev != 0 %}
+					<th><a class="btn btn-sm btn-info" href="/?page={{ prev }}">Предыдущая страница</a></th>
+					{% endif %}
+					{% if next != 0 %}
+					<th><a class="btn btn-sm btn-info" href="/?page={{ next }}">Следующая страница</a></th>
+					{% endif %}
+				</tr>
+			</table>
+		</div>
+	</div>
+
+	<div class="col-md-7">
+		<h5>Заказчики</h5>
+		<hr>
+		<div class="card card-body">
+			<!-- <a class="btn btn-primary  btn-sm btn-block" href="">Создать заказчика</a>-->
+			<table class="table table-sm">
+				<tr>
+					<th></th>
+					<th>Имя</th>
+					<th>Номер телефона</th>
+				</tr>
+
+				{% for customer in customers %}
+					<tr>
+						<td><a class="btn btn-sm btn-info" href="{% url 'customer' customer.id %}">Профиль</a></td>
+						<td>{{customer.name}}</td>
+						<td>{{customer.phone}}</td>
+					</tr>
+				{% endfor %}
+
+			</table>
+		</div>
+	</div>
+
+</div>
+
+{% endblock %}
+
