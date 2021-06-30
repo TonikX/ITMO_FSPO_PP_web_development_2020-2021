@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Owners</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .cards {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 64px;
+            flex-wrap: wrap;
+}
+
+.card{
+    max-width: 359px;
+    background: #FFFFFF;
+    box-shadow: 5px 20px 50px rgba(16, 112, 177, 0.2);
+    border-radius: 10px;
+    padding: 44px 32px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    margin-top: 16px;
+}
+
+.card_img {
+    align-self: center;
+    margin-bottom: 51px;
+}
+    </style>
+</head>
+<body>
+<div style="  background: linear-gradient(0deg, #EBF3FB 8.84%,
+    rgba(152, 195, 232, 0) 31.12%);">
+    <span><h1>Owners</h1><a href="/create_owner/">Add new one</a></span>
+
+    <div class="cards">
+    {% for object in object_list %}
+        <div class="card">
+         <img class="card_img" src="" alt="cardImage">
+    <ul style="font-size: 22px">
+    <!-- Iterate over object_list -->
+{#    {% for object in object_list %}#}
+    <!-- Display Objects -->
+    <li>actions:
+        <a href="/owner/{{ object.id }}/update/">Edit</a>
+        |<a href="/owner/{{ object.id }}/delete/">Delete</a>
+        | <a href="/owner/{{ object.id }}/">Detail</a>
+        <p>{{ object.first_name }}</p>
+    <p>{{ object.last_name}}</p>
+     <p>{{ object.national}}</p>
+     <p>{{ object.address}}</p>
+    </li>
+    <hr/>
+    <!-- If objet_list is empty  -->
+{#    {% empty %}#}
+{#    <li>No objects yet.</li>#}
+{#    {% endfor %}#}
+</ul>
+
+        </div>
+{% endfor %}
+    </div>
+
+</div>
+</body>
+</html>
