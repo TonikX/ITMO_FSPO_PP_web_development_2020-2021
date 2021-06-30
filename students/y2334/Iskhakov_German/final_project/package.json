@@ -1,0 +1,19 @@
+{
+  "name": "final_boss",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cookie-parser": "^1.4.5",
+    "crypto": "^1.0.1",
+    "dotenv": "^9.0.0",
+    "express": "^4.17.1",
+    "migrate-mongoose": "^4.0.0",
+    "mongodb": "^3.6.6"
+  }
+}

@@ -1,0 +1,17 @@
+<ul>
+    <!-- Iterate over object_list -->
+    {% for object in object_list %}
+    <!-- Display Objects -->
+    <li>Номер автомобиля: {{ object.state_number }}</li>
+    <li>Марка: {{ object.mark }}</li>
+    <li>Модель: {{ object.model }}</li>
+    <li>Цвет: {{ object.color }}</li>
+    <a href="/car/{{object.id}}">Get</a> <a href="/car/{{object.id}}/update">Update</a> <a href="/car/{{object.id}}/delete">Delete</a>
+
+    <hr/>
+    <!-- If objet_list is empty  -->
+    {% empty %}
+    <li>No objects yet.</li>
+    {% endfor %}
+    <a href="/car/create">Add</a>
+</ul>

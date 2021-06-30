@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Car list</title>
+</head>
+<body>
+<span><h1>Car list</h1><a href="/car/add/">Add new one</a></span>
+
+<ul>
+    {% for object in object_list %}
+    <h1>{{object}}, actions: <a href="/car/{{ object.id }}/update/">Edit</a> | <a href="/car/{{ object.id }}/remove/">Delete</a> | <a href="/car/{{ object.id }}/">Detail</a>
+    <hr/>
+    {% empty %}
+    <li>No cars yet.</li>
+    {% endfor %}
+</ul>
+</body>
+<
+</html>

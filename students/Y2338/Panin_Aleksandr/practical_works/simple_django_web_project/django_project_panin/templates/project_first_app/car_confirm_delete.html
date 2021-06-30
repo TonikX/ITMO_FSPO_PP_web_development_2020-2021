@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block title %}Удаление{% endblock %}
+
+{% block content %}
+<form method="post">{% csrf_token %}
+    <p>Вы уверены, что хотите удалить автомобиль с гос. номером "{{ object.state_number }}"?</p>
+    <input type="submit" value="Да">
+</form>
+<br>
+<br>
+<a href="/car">К списку автомобилей</a>
+{% endblock %}

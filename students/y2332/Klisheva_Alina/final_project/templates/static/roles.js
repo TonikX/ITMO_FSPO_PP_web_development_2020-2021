@@ -1,0 +1,1 @@
+export const ADMIN = 0, CAPTAIN = 1, JURI = 2

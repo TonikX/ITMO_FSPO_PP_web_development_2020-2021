@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Владельцы</title>
+</head>
+<body>
+<div class="main">
+    {% for owner in owners %}
+        <ul>
+        <li>{{ owner }}</li>
+        </ul>
+    {% endfor %}
+</div>
+</body>
+</html>
