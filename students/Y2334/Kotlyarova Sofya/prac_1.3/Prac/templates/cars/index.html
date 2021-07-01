@@ -1,0 +1,8 @@
+<div>
+    <a href="/cars/create">Create</a>
+    {% for object in object_list %}
+        <h2><a href="/cars/{{ object.id }}">{{ object.brand }}: {{ object.model }}</a></h2>
+    {% empty %}
+        <h2>No cars yet.</h2>
+    {% endfor %}
+</div>
