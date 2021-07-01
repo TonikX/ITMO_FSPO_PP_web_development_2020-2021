@@ -1,0 +1,7 @@
+app_client/node_modules
+venv/
+*/__pycache__/
+
+# Editor directories and files
+.idea
+.vscode
