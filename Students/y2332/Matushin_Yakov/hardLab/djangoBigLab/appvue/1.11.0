@@ -1,0 +1,28 @@
+yarn add v1.22.10
+[1/4] Resolving packages...
+[2/4] Fetching packages...
+info fsevents@2.3.2: The platform "win32" is incompatible with this module.
+info "fsevents@2.3.2" is an optional dependency and failed compatibility check. Excluding it from installation.
+info fsevents@1.2.13: The platform "win32" is incompatible with this module.
+info "fsevents@1.2.13" is an optional dependency and failed compatibility check. Excluding it from installation.
+[3/4] Linking dependencies...
+[4/4] Building fresh packages...
+success Saved lockfile.
+success Saved 13 new dependencies.
+info Direct dependencies
+└─ webpack@5.38.1
+info All dependencies
+├─ @types/eslint-scope@3.7.0
+├─ @types/eslint@7.2.12
+├─ @webassemblyjs/floating-point-hex-parser@1.11.0
+├─ @webassemblyjs/helper-numbers@1.11.0
+├─ @webassemblyjs/helper-wasm-section@1.11.0
+├─ @webassemblyjs/wasm-edit@1.11.0
+├─ @webassemblyjs/wasm-opt@1.11.0
+├─ enhanced-resolve@5.8.2
+├─ es-module-lexer@0.4.1
+├─ jest-worker@27.0.2
+├─ watchpack@2.2.0
+├─ webpack@5.38.1
+└─ yocto-queue@0.1.0
+Done in 15.93s.
