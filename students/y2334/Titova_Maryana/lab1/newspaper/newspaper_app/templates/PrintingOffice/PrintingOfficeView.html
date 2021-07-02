@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+{% extends "main.html" %}
+
+<head>
+	<meta charset="UTF-8"/>
+	{%block title%}
+		Printing Office
+	{%endblock%}
+</head>
+
+
+{% block content %}
+
+<h3 class="text-center">Типография</h3>
+
+
+    <table class="table">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">Название типографии</th>
+            <th scope="col">Адрес типографии</th>
+            <th scope="col">Тираж</th>
+            <th scope="col">График работы</th>
+            <th scope="col">Действия</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for printingoffice in printingoffices %}
+        <tr>
+
+            <th scope="row">{{ printingoffice.name_printing_office }}</th>
+            <th scope="row">{{ printingoffice.address_printing_office }}</th>
+            <th scope="row">{{ printingoffice.count }}</th>
+            <th scope="row">{{ printingoffice.schedule_printing_office }}</th>
+
+            <th>
+                <a href="/PrintingOffice/PrintingOfficeEdit/{{printingoffice.id_printing_office}}" class="card-link text-successful">Редактировать</a>
+                <br>
+                <a href="/PrintingOffice/PrintingOfficeDelete/{{printingoffice.id_printing_office}}" class="card-link text-danger">Удалить</a>
+
+            </th>
+
+        </tr>
+        {% endfor %}
+
+        {%block createbtn%}
+		<a style="margin-top: 20px; margin-bottom: 40px; display: flex; justify-content: center;" href="/PrintingOffice/PrintingOfficeCreate" class="nav-link">Создать новую типографию</a>
+	    {%endblock%}
+
+        </tbody>
+    </table>
+
+<nav aria-label="Navigation">
+  <ul class="pagination justify-content-center">
+    <li class="page-item"><a class="page-link" href="/Newspaper/NewspaperView">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="/PostOffice/PostOfficeView/">1</a></li>
+    <li class="page-item"><a class="page-link" href="/EditorialOffice/EditorialOfficeView">2</a></li>
+    <li class="page-item active">
+    <li class="page-item"><a class="page-link" href="/Newspaper/NewspaperView">3</a></li>
+    <li class="page-item active">
+      <span class="page-link">
+        4
+        <span class="sr-only">(current)</span>
+      </span>
+    </li>
+    <li class="page-item"><a class="page-link" href="/Release/ReleaseView">5</a></li>
+    <li class="page-item"><a class="page-link" href="/Article/ArticleView">6</a></li>
+    <li class="page-item"><a class="page-link" href="/Correction/CorrectionView">7</a></li>
+    <li class="page-item"><a class="page-link" href="/NewspaperDistribution/NewspaperDistributionView">8</a></li>
+    <li class="page-item">
+      <a class="page-link" href="/Release/ReleaseView" aria-label="Next">
+        <span aria-hidden="true">Next</span>
+        <span class="sr-only">Next</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+{% endblock %}

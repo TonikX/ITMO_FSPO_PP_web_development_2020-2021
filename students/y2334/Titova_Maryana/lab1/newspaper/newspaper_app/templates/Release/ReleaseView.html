@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+{% extends "main.html" %}
+
+<head>
+	<meta charset="UTF-8"/>
+	{%block title%}
+		Release
+	{%endblock%}
+</head>
+
+
+{% block content %}
+
+<h3 class="text-center">Выпуски газет</h3>
+
+    <table class="table">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">Дата выпуска</th>
+            <th scope="col">Индекс издания</th>
+            <th scope="col">Цена экземпляра</th>
+            <th scope="col">Газета (FK)</th>
+            <th scope="col">Типография (FK)</th>
+            <th scope="col">Действия</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for release in releases %}
+        <tr>
+
+            <th scope="row">{{ release.date_of_issue_release }}</th>
+            <th scope="row">{{ release.publication_index_release }}</th>
+            <th scope="row">{{ release.cost_copy }}</th>
+            <th scope="row">{{ release.id_newspaper_fk }}</th>
+            <th scope="row">{{ release.id_printing_office_fk }}</th>
+
+            <th>
+                <a href="/Release/ReleaseEdit/{{release.id_release}}" class="card-link text-successful">Редактировать</a>
+                <br>
+                <a href="/Release/ReleaseDelete/{{release.id_release}}" class="card-link text-danger">Удалить</a>
+
+            </th>
+
+        </tr>
+        {% endfor %}
+
+        {%block createbtn%}
+		<a style="margin-top: 20px; margin-bottom: 40px; display: flex; justify-content: center;" href="/Release/ReleaseCreate" class="nav-link">Создать новый выпуск</a>
+	    {%endblock%}
+
+        </tbody>
+    </table>
+
+
+<nav aria-label="Navigation">
+  <ul class="pagination justify-content-center">
+    <li class="page-item"><a class="page-link" href="/PrintingOffice/PrintingOfficeView">Previous</a></li>
+    <li class="page-item"><a class="page-link" href="/PostOffice/PostOfficeView/">1</a></li>
+    <li class="page-item"><a class="page-link" href="/EditorialOffice/EditorialOfficeView">2</a></li>
+    <li class="page-item"><a class="page-link" href="/Newspaper/NewspaperView">3</a></li>
+    <li class="page-item"><a class="page-link" href="/PrintingOffice/PrintingOfficeView">4</a></li>
+    <li class="page-item active">
+      <span class="page-link">
+        5
+        <span class="sr-only">(current)</span>
+      </span>
+    </li>
+    <li class="page-item"><a class="page-link" href="/Article/ArticleView">6</a></li>
+    <li class="page-item"><a class="page-link" href="/Correction/CorrectionView">7</a></li>
+    <li class="page-item"><a class="page-link" href="/NewspaperDistribution/NewspaperDistributionView">8</a></li>
+    <li class="page-item">
+      <a class="page-link" href="/Article/ArticleView" aria-label="Next">
+        <span aria-hidden="true">Next</span>
+        <span class="sr-only">Next</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+{% endblock %}

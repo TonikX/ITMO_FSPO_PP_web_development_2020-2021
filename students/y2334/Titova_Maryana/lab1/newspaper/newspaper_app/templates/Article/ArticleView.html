@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+{% extends "main.html" %}
+
+<head>
+	<meta charset="UTF-8"/>
+	{%block title%}
+		Article
+	{%endblock%}
+</head>
+
+
+{% block content %}
+
+<h3 class="text-center">Статья</h3>
+
+
+    <table class="table">
+        <thead class="thead-light">
+        <tr>
+            <th scope="col">Название статьи</th>
+            <th scope="col">Выпуск (FK)</th>
+            <th scope="col">Действия</th>
+        </tr>
+        </thead>
+        <tbody>
+
+        {% for article in articles %}
+        <tr>
+
+            <th scope="row">{{ article.name }}</th>
+            <th scope="row">{{ article.id_release_fk }}</th>
+
+            <th>
+                <a href="/Article/ArticleEdit/{{article.id_article}}" class="card-link text-successful">Редактировать</a>
+                <br>
+                <a href="/Article/ArticleDelete/{{article.id_article}}" class="card-link text-danger">Удалить</a>
+
+            </th>
+
+        </tr>
+        {% endfor %}
+
+        {%block createbtn%}
+		<a style="margin-top: 20px; margin-bottom: 40px; display: flex; justify-content: center;" href="/Article/ArticleCreate" class="nav-link">Создать новую статью</a>
+	    {%endblock%}
+
+        </tbody>
+    </table>
+
+<nav aria-label="Navigation">
+  <ul class="pagination justify-content-center">
+    <li class="page-item">
+      <a class="page-link" href="/Release/ReleaseView" aria-label="Previous">
+        <span aria-hidden="true">Previous</span>
+        <span class="sr-only">Previous</span>
+      </a>
+    </li>
+    <li class="page-item"><a class="page-link" href="/PostOffice/PostOfficeView">1</a></li>
+    <li class="page-item"><a class="page-link" href="/EditorialOffice/EditorialOfficeView">2</a></li>
+    <li class="page-item"><a class="page-link" href="/Newspaper/NewspaperView">3</a></li>
+    <li class="page-item"><a class="page-link" href="/PrintingOffice/PrintingOfficeView">4</a></li>
+    <li class="page-item"><a class="page-link" href="/Release/ReleaseView">5</a></li>
+    <li class="page-item active">
+      <span class="page-link">
+        6
+        <span class="sr-only">(current)</span>
+      </span>
+    <li class="page-item"><a class="page-link" href="/Correction/CorrectionView">7</a></li>
+    <li class="page-item"><a class="page-link" href="/NewspaperDistribution/NewspaperDistributionView">8</a></li>
+    <li class="page-item">
+      <a class="page-link" href="/Correction/CorrectionView" aria-label="Next">
+        <span aria-hidden="true">Next</span>
+        <span class="sr-only">Next</span>
+      </a>
+    </li>
+  </ul>
+</nav>
+
+
+{% endblock %}
