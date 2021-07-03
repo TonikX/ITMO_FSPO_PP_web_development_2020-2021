@@ -1,0 +1,6 @@
+site_name: Loco Repair
+site_url: https://example.com/
+nav:
+  - Элементы сайта: index.md
+  - Модель: model.md
+  - Карта сайта: map.md
