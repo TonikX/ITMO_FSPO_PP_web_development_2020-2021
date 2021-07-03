@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="33341e7a-1bff-4013-983b-b8e57c328ea4" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/Client/vue_dj_project/src/api/common.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/vue_dj_project/src/api/methods.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/vue_dj_project/src/components/Brigade.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/vue_dj_project/src/components/Homepage.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/vue_dj_project/src/components/Loco.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/vue_dj_project/src/components/Login.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/vue_dj_project/src/components/Repair.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/vue_dj_project/src/components/Worker.vue" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/vue_dj_project/src/components/img/img.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/vue_dj_project/src/plugins/vuetify.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/vue_dj_project/src/store/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/vue_dj_project/src/store/modules/brigade-module.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/vue_dj_project/src/store/modules/loco-module.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/vue_dj_project/src/store/modules/repair-module.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/vue_dj_project/src/store/modules/schedule-module.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Client/vue_dj_project/src/store/modules/worker-module.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/vue_dj_project/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Client/vue_dj_project/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/vue_dj_project/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/Client/vue_dj_project/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/vue_dj_project/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/Client/vue_dj_project/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/vue_dj_project/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/Client/vue_dj_project/src/App.vue" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/vue_dj_project/src/components/HelloWorld.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/vue_dj_project/src/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/vue_dj_project/src/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/vue_dj_project/src/router/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/Client/vue_dj_project/src/router/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/vue_dj_project/src/views/About.vue" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Client/vue_dj_project/src/views/Home.vue" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../../.." />
+  </component>
+  <component name="ProjectId" id="1unWe1MuQ2dq3o3PO3M3Qf4lKsE" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="33341e7a-1bff-4013-983b-b8e57c328ea4" name="Default Changelist" comment="" />
+      <created>1625301924611</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1625301924611</updated>
+      <workItem from="1625301925761" duration="53000" />
+    </task>
+    <servers />
+  </component>
+</project>
