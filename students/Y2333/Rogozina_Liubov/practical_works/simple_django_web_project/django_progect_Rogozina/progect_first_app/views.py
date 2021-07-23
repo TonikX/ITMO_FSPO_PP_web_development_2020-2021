@@ -32,9 +32,12 @@ class Car_view(DetailView):
 class OwnerCreateView(CreateView):
     model = Car_owner
     fields = [
-        "surname",
-        "name",
+        "last_name",
+        "first_name",
         "date_birth",
+        "passport",
+        "home_address",
+        "nacional"
     ]
     success_url = 'owner_list'
 class CarUpdateView(UpdateView):
@@ -61,9 +64,12 @@ class CarCreateView(CreateView):
 class OwnerUpdateView(UpdateView):
     model = Car_owner
     fields = [
-        "surname",
-        "name",
+        "last_name",
+        "first_name",
         "date_birth",
+        "passport",
+        "home_address",
+        "nacional"
     ]
     success_url = '/owner_list/'
 class OwnerDeleteView(DeleteView):
