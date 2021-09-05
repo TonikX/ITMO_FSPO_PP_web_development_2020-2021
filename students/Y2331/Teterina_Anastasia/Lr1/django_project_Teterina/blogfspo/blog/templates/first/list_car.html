@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cars</title>
+</head>
+<body>
+    {% for Car in object_list %}
+ID: {{Car.car_id}}, Гос.номер: {{Car.gov_number}}, Марка: {{Car.brand}}, Модель: {{Car.model}}, Цвет: {{Car.colour}} <br>
+    {% endfor %}
+</body>
+</html>
