@@ -1,32 +1,10 @@
-from typing import Type
-from django.db.models import *
-from generator import generate_views, generate_to_str, one_to_one
-
-
-class CardModel(Model):
-    id = CharField(primary_key=True, max_length=256)
-    description = TextField()
-    root = CharField(max_length=30)
-    name = CharField(max_length=30)
-
-    @classmethod
-    def create(cls, id, description, root, name):
-        return cls(id=id, description=description, root=root, name=name)
-
-
-def generate_card(model: Type[Model]):
-    model_hash = model.__name__
-    CardModel.create(model_hash, model.__doc__, model.__name__.lower(), model.__name__).save()
-    return model
-
-
+```python
 @generate_views(root_path='/building')
 @generate_to_str.from_pattern('Здание @name по адресу @address ')
 @generate_card
 class Building(Model):
     """
-    Building model...
-    @:param 34234
+    
     """
     name = CharField(max_length=40)
     land = IntegerField()
@@ -138,3 +116,5 @@ class Revaluation(Model):
     cost_before = IntegerField()
 
 
+
+```

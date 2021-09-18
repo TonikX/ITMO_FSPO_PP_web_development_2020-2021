@@ -1,13 +1,16 @@
+
+
 import re
 from collections import namedtuple
 from dataclasses import dataclass
 from functools import reduce
-from typing import Type
+from typing import Type, List
 
 from django.contrib.auth import decorators
 from django.db.models import Model
 from django.db.models.fields.related_descriptors import ForeignKeyDeferredAttribute, ForwardManyToOneDescriptor
 from django.db.models.query_utils import DeferredAttribute, Q
+from django.urls import path
 from django.views import View
 from django.views.generic import ListView, CreateView, DeleteView, DetailView, UpdateView
 from stringcase import snakecase
@@ -40,12 +43,10 @@ class ViewGenerator:
         self.search_view = None
         self.update_view = None
 
+        self.doc_md_ = ""
+
         self.__name__ = model.__name__
 
-        self.mapped_fields = {
-            'root_path': root_path,
-
-        }
         self.connections = []
 
         self.model = model
@@ -68,6 +69,21 @@ class ViewGenerator:
         else:
             self.fields = fields
 
+        self.id_field_name = model._meta.pk.attname
+
+        self.mapped_fields = {
+            'root_path': root_path,
+        }
+
+        self.paths = {
+            'delete' : f'{self.mapped_fields["root_path"]}/<int:pk>/delete'[1:],
+            'update' : f'{self.mapped_fields["root_path"]}/<int:pk>/update'[1:],
+            'list'   : f'{self.mapped_fields["root_path"]}/list'[1:],
+            'create' : f'{self.mapped_fields["root_path"]}/create'[1:],
+            'detail' : f'{self.mapped_fields["root_path"]}/<int:pk>'[1:],
+            'search' : f'{self.mapped_fields["root_path"]}/search'[1:],
+        }
+        
         self.field_names = list(map(lambda field: field.name, self.fields))
 
     def _generate_view(
@@ -119,8 +135,7 @@ class ViewGenerator:
                 cancel_url=self.mapped_fields['root_path'] + success_url_postfix,
                 **kwargs
             )
-
-        return self.delete_view
+        return self.paths['delete'], self.delete_view
 
     def generate_create_view(self, success_url_postfix='list', **kwargs):
         if self.create_view is None:
@@ -132,8 +147,7 @@ class ViewGenerator:
                     'fields': self.field_names
                 }, **kwargs
             )
-
-        return self.create_view
+        return self.paths['create'], self.create_view
 
     def generate_list_view(self, paginate_by=10, **kwargs):
         if self.list_view is None:
@@ -143,7 +157,7 @@ class ViewGenerator:
                 class_fields={'paginate_by': paginate_by}, **kwargs
             )
 
-        return self.list_view
+        return self.paths['list'], self.list_view
 
     def generate_detail_view(self, **kwargs):
         if self.detail_view is None:
@@ -160,7 +174,7 @@ class ViewGenerator:
                         else field.set(
                             value=Foreign(
                                 model_name=field.type.field.related_model.__name__.lower(),
-                                id=getattr(obj, field.type.field.related_model.__name__.lower() + '_id'),
+                                id=getattr(obj, field.type.field.related_model.__name__.lower() + '_id'), # todo id != _id
                                 to_one=getattr(obj, field.type.field.related_model.__name__.lower()),
                         ))
                         for field in self.fields
@@ -187,18 +201,20 @@ class ViewGenerator:
                 DetailView, 'detail_view.html',
                 custom_context_f=custom_context, **kwargs
             )
+        return self.paths['detail'], self.detail_view
 
-        return self.detail_view
+    def generate_search_view(self, paginate_by=10, query_obj=None, **kwargs):
+        if query_obj is None:
+            query_obj = f'{self.model.__name__.lower()}_q'
 
-    def generate_search_view(self, paginate_by=10, **kwargs):
         if self.search_view is None:
             def get_queryset(search_view, **_kwargs):
-                val = search_view.request.GET.get("q")
+                val = search_view.request.GET.get(query_obj)
                 if val:
-                    queryset = search_view.model.objects.filter(
+                    queryset = self.model.objects.filter(
                         reduce(Q.__or__,
                                map(lambda key: Q(**{key: val}),
-                                   [f'{field}__icontains' for field in search_view.fields]))
+                                   [f'{field}__icontains' for field in self.field_names]))
                     ).distinct()
                 else:
                     queryset = search_view.model.objects.none()
@@ -206,15 +222,15 @@ class ViewGenerator:
 
             self.search_view = self._generate_view(
                 base=ListView,
-                base_template_name='search_view.html',
+                base_template_name='search_results_view.html',
                 class_fields={
                     'get_queryset': get_queryset,
                     'fields': self.field_names,
                     'paginate_by': paginate_by
-                }, **kwargs
+                }, **kwargs, q=query_obj
             )
 
-        return self.search_view
+        return self.paths['search'], self.search_view
 
     def generate_update_view(self, success_url_postfix='list', **kwargs):
         if self.update_view is None:
@@ -227,8 +243,16 @@ class ViewGenerator:
                 }, **kwargs
             )
 
-        return self.update_view
 
+        return self.paths['update'], self.update_view
+
+    @property
+    def doc_md(self):
+        paths = self.doc_md_
+
+        model_doc = '\n>'.join(self.model.__doc__.splitlines())
+
+        return f"""#### {self.__name__}\n>{model_doc}\n{paths}""".strip()
 
 def generate_views(root_path='/', fields=None):
     def wrapper(model: Type[Model]) -> ViewGenerator:
@@ -296,3 +320,16 @@ def one_to_one(one: ViewGenerator, to_one: ViewGenerator):
         return this
 
     return wrapper
+
+
+class Docs:
+    models = []
+
+
+def generate_docs(view_generators: List[ViewGenerator]):
+    models = '\n'.join(map(lambda view_generator: view_generator.doc_md, view_generators))
+
+    models_md = open('docs/docs/models.md', 'w')
+    models_md.write(f"""
+    ### Models\n{models}
+    """.strip())

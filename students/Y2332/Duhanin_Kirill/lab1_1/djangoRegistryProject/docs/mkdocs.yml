@@ -1,0 +1,6 @@
+site_name: Registry Project docs
+nav:
+  - Главная: index.md
+  - Модель данных: datamodel.md
+  - Сущности: models.md
+#  - Моделирование базы: code.md
