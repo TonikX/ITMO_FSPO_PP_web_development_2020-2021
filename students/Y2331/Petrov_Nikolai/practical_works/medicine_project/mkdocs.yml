@@ -1,0 +1,8 @@
+site_name: Аптека
+
+nav:
+  - Описание: overview.md
+  - База данных: db.md
+  - Sitemap: map.md
+  - API: api.md
+theme: readthedocs

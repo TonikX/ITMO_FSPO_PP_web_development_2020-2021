@@ -12,7 +12,7 @@ def owner(request, owner_id):
         selected_owner = Owner.objects.get(pk=owner_id)
     except Owner.DoesNotExist:
         raise Http404("Poll does not exist")
-    return render(request, 'project_first_app/detail.html', {'owner': selected_owner})
+    return render(request, 'project_first_app/owner.html', {'owner': selected_owner})
 
 
 def owner_list_view(request):

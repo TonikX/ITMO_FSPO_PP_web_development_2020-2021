@@ -1,0 +1,22 @@
+{
+  "name": "medcine-web-app",
+  "scripts": {
+    "start": "parcel serve templates/index.html",
+    "build": "parcel build templates/index.html"
+  },
+  "dependencies": {
+    "bulma": "^0.9.2",
+    "react": "17.0.2",
+    "react-dom": "17.0.2"
+  },
+  "devDependencies": {
+    "parcel": "1.12.3",
+    "sass": "^1.29.0"
+  },
+  "browserslist": [
+    "last 3 and_chr versions",
+    "last 3 chrome versions",
+    "last 3 ios_saf versions",
+    "last 3 safari versions"
+  ]
+}

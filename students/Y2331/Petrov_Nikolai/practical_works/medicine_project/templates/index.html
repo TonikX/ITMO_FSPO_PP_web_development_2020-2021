@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Аптека</title>
+    <link rel="stylesheet" href="../static/style.sass">
+</head>
+<body>
+<nav class="navbar is-dark" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+        <a class="navbar-item">
+            <img src="../static/apteka_logo.svg" height="28">
+        </a>
+
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
+    </div>
+
+    <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <div class="buttons">
+                    <a class="button is-light" href="/accounts/logout/">
+                        Выйти
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+<div id="modal" class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-content">
+        <div id="modal-box" class="box"></div>
+    </div>
+</div>
+<section class="section">
+    <div class="container">
+        <div id="app"></div>
+    </div>
+</section>
+<script src="../static/app.jsx"></script>
+</body>
+</html>

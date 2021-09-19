@@ -1,0 +1,31 @@
+{% load static %}
+{% load template_mod %}
+
+<form>
+    {% csrf_token %}
+
+    <div class="field">
+        <label class="label">Название</label>
+        <div class="control">
+            {{ form.item|addclass:'input' }}
+        </div>
+    </div>
+
+    <div class="field">
+        <label class="label">Количество</label>
+        <div class="control">
+            {{ form.amount|addclass:'input' }}
+        </div>
+    </div>
+
+    <div class="field">
+        <label class="label">Дата производства</label>
+        <div class="control">
+            {{ form.product_date|addclass:'input' }}
+        </div>
+    </div>
+
+    <button id="submit" class="button is-info">Добавить препарат</button>
+    <button id="cancel" class="button is-danger">Отмена</button>
+    <input type="hidden" name="next" value="{{ next }}"/>
+</form>
