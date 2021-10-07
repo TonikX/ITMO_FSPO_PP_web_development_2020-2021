@@ -1,5 +1,5 @@
 from django.core.management import BaseCommand
-from aud_dist_app.models import *
+from ...models import *
 
 
 class Command(BaseCommand):

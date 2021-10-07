@@ -3,8 +3,8 @@ import random
 import faker.providers
 from django.core.management.base import BaseCommand
 from faker import Faker
-from aud_dist_app.models import *
 from ..lists import DISCIPLINES, AUDIENCE_TYPES
+from ...models import *
 
 
 class Provider(faker.providers.BaseProvider):
@@ -98,11 +98,7 @@ class Command(BaseCommand):
         try:
             discipline_quantity = Discipline.objects.count()
 
-            if discipline_quantity < 10:
-                if input("Not enough disciplines. Generate them? (Y/N): ") in ('y', 'Y'):
-                    generate_disciplines(fake)
-                else:
-                    raise Exception("Error: Not enough disciplines (should be more than 10)")
+            generate_disciplines(fake)
 
             discipline_quantity = Discipline.objects.count()
 
@@ -139,6 +135,8 @@ class Command(BaseCommand):
                 first_group,
                 last_group,
             )
+
+            # TODO РЕФАКТОРИНГ
 
         except Exception as e:
             print(str(e))
