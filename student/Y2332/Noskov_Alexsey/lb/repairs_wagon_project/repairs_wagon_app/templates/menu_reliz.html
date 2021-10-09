@@ -1,0 +1,16 @@
+{%extends 'menu.html'%}
+{%block content%}
+{% load static %}
+<div class="container-fluid" style="background-color: #000">
+  <div class="container">
+    <div class="card">
+      <img src="{% static '/wagon/images/306848.jpg' %}" class="card-img-top">
+      <div class="card-body">
+        <h4 class="card-title text-center">Приветсвуем Вас {{ user.get_username }}</h4>
+        <p class="card-text text-center">Узнавайте самую свежую информацию о вашей работе, просматривайте новые новости.</p>
+        <p class="card-text text-right"><small class="text-muted">Последнее посещение 3 минуты назад.</small></p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

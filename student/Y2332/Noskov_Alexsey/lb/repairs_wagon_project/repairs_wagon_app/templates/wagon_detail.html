@@ -1,0 +1,44 @@
+{%extends 'menu.html'%}
+{%block content%}
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>wagon detail</title>
+</head>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<ol>
+    <h3>Вагон</h3>
+<body>
+
+<div class="card-group">
+  <div class="card" style="max-width: 14rem;">
+      <div class="card-header">
+        reg_number
+      </div>
+      <ul class="list-group list-group-flush">
+      <li class="list-group-item">reg_name</li>
+      <li class="list-group-item">reg_chief</li>
+      <li class="list-group-item">type</li>
+      <li class="list-group-item">dop_number</li>
+      <li class="list-group-item">ralway_addressExternal</li>
+      </ul>
+    </div>
+  <div class="card" style="max-width: 20rem;">
+      <div class="card-header">
+        {{ object.reg_number }}
+      </div>
+      <ul class="list-group list-group-flush">
+      <li class="list-group-item">{{ object.reg_name }}</li>
+      <li class="list-group-item">{{ object.reg_chief }}</li>
+      <li class="list-group-item">{{ object.type }}</li>
+      <li class="list-group-item">{{ object.dop_number }}</li>
+        <li class="list-group-item">{{ object.ralway_addressExternal }}</li>
+      </ul>
+    </div>
+</div>
+
+</body>
+</ol>
+{% endblock %}

@@ -1,0 +1,24 @@
+{%extends 'menu.html'%}
+{%block content%}
+<head>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <meta charset="UTF-8"/>
+    {%load static%}
+    {%block title%}
+        <title>Wagon Delete</title>
+    {%endblock%}
+</head>
+    {%block body%}
+    <div class="container-fluid text-center">
+        <form method="POST">
+            {%csrf_token%}
+            <h1 class="mt-2">Wagon Delete</h1>
+            <div class="text">Are you sure?</div>
+            <input class="btn" type="submit" value="DA">
+        </form>
+        <a href="/wagon/list/">Get back</a>
+    </div>
+    {%endblock%}
+    {%block tbhead%}
+{%endblock%}
+{%endblock%}

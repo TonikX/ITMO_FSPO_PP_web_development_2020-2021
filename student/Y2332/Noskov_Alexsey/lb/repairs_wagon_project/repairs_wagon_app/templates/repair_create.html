@@ -1,0 +1,15 @@
+{% include 'menu.html' %}
+{% include 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <ol>
+    <form method="post" novalidate>
+      <h1 class="mt-2">Добавить ремонт</h1>
+      {% csrf_token %}
+      {{ form|crispy }}
+      <button type="submit" class="btn btn-success">Save</button>
+    </form>
+   </ol>
+{% endblock %}

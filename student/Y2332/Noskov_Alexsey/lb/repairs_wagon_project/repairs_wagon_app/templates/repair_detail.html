@@ -1,0 +1,44 @@
+{%extends 'menu.html'%}
+{%block content%}
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>repair detail</title>
+</head>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<ol>
+    <h3>Вагон</h3>
+<body>
+<div class="card-group">
+  <div class="card" style="max-width: 14rem;">
+      <div class="card-header">
+        resalt
+      </div>
+      <ul class="list-group list-group-flush">
+      <li class="list-group-item">reason</li>
+      <li class="list-group-item">cost</li>
+      <li class="list-group-item">day_start</li>
+      <li class="list-group-item">day_stop</li>
+      <li class="list-group-item">type_repair</li>
+        <li class="list-group-item">wagon</li>
+      </ul>
+    </div>
+  <div class="card" style="max-width: 20rem;">
+      <div class="card-header">
+        {{ object.resalt }}
+      </div>
+      <ul class="list-group list-group-flush">
+      <li class="list-group-item">{{ object.reason }}</li>
+      <li class="list-group-item">{{ object.cost }}</li>
+      <li class="list-group-item">{{ object.day_start }}</li>
+        <li class="list-group-item">{{ object.day_stop }}</li>
+        <li class="list-group-item">{{ object.type_repair }}</li>
+        <li class="list-group-item">{{ object.wagon }}</li>
+      </ul>
+    </div>
+</div>
+</body>
+</ol>
+{% endblock %}

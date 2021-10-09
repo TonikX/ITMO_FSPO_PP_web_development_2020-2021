@@ -1,0 +1,39 @@
+{%extends 'menu.html'%}
+{%block content%}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>worker detail</title>
+</head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+<ol><h3>Работник</h3>
+    <body>
+    <div class="card-group">
+        <div class="card" style="max-width: 14rem;">
+            <div class="card-header">
+                FIO
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">year_worker</li>
+                <li class="list-group-item">tab_number</li>
+                <li class="list-group-item">base_worker</li>
+                <li class="list-group-item">bonus_worker</li>
+                <li class="list-group-item">number_cart_bank</li>
+            </ul>
+        </div>
+        <div class="card" style="max-width: 20rem;">
+            <div class="card-header">
+                {{ object.fio_worker }}
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">{{ object.year_worker }}</li>
+                <li class="list-group-item">{{ object.tab_number }}</li>
+                <li class="list-group-item">{{ object.base_worker }}</li>
+                <li class="list-group-item">{{ object.bonus_worker }}</li>
+                <li class="list-group-item">{{ object.number_cart_bank }}</li>
+            </ul>
+        </div>
+    </div>
+    </body>
+    </ol>
+    {% endblock %}
