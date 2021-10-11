@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block page %}
+    <h1>Поиск</h1>
+    {% if ticket_office_list %}
+        {% for ticket_office in ticket_office_list.html %}
+            <article>
+                <a href="{{ ticket_office.get_absolute_url }}">
+                    <h2>{{ Ticket_office.ticket_office_adress }}</h2>
+                </a>
+                <p><a class="btn btn-default btn-sm" href="{{ ticket_office.get_absolute_url }}">Читать далее</a></p>
+            </article>
+        {% endfor %}
+        {% bootstrap_pagination ticket_office_list.html url=last_question %}
+    {% else %}
+        <p>Не найдено публикаций по вашему запросу<br>Попробуйте повторить запрос с другой формулировкой</p>
+    {% endif %}
+{% endblock %}

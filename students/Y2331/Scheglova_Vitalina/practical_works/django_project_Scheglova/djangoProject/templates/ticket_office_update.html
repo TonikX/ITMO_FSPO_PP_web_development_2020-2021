@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <form method="post" novalidate>
+    {% csrf_token %}
+    <div class="row">
+      <div class="col-6">
+        {{ form.ticket_office_adress|as_crispy_field }}
+      </div>
+    <button type="submit" class="btn btn-success" value="Update">Update ticket office</button>
+  </form>
+{% endblock %}

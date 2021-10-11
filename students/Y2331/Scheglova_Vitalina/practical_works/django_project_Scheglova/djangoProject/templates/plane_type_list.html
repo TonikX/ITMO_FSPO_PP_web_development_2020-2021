@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load bootstrap4 %}
+
+    <h1>Поиск</h1>
+    <form action="{% url 'plane_type_list' %}" class="navbar-form navbar-left" method="get">
+        <div class="input-group">
+            <input id="search" name="q" type="text" class="form-control" placeholder="Поиск">
+            <span class="input-group-btn">
+                <button type="submit" class="btn btn-default">Поиск</button>
+            </span>
+        </div>
+    </form>
+    {% if plane_type_list %}
+        {% for plane_type in plane_type_list %}
+            <hr>
+
+            <article>
+                    <h2>{{ plane_type.model_name }}</h2>
+                </a>
+                <p><a class="btn btn-default btn-sm" onclick="document.location='/plane_detail/{{ plane_type.id }}/'">Читать далее</a></p>
+            </article>
+        {% endfor %}
+            <button type="submit" class="btn btn-outline-success" onclick="document.location='/plane/create'">Добавить</button>
+        {% bootstrap_pagination plane_type_list %}
+    {% else %}
+        <p>Не найдено публикаций по вашему запросу<br>Попробуйте повторить запрос с другой формулировкой</p>
+    {% endif %}
+
+
+<!--    <h1>Самолеты</h1>-->
+<!--    {% if plane_type_list %}-->
+<!--        {% for Plane_type in plane_type_list %}-->
+<!--                    <h2>{{ Plane_type.id }})-->
+<!--                {{ Plane_type.model_name|safe }}-->
+<!--                {{ Plane_type.manufacturer|safe }}-->
+<!--                {{ Plane_type.capacity|safe }}-->
+<!--                    </h2><hr>-->
+<!--        {% endfor %}-->
+<!--            <button type="submit" class="btn btn-outline-success" onclick="document.location='/plane/create'">Добавить</button>-->
+
+<!--    {% endif %}-->
+<!--{% load bootstrap4 %}-->
+<!--{% bootstrap_pagination plane_type_list %}-->
+<!--{% endblock %}-->

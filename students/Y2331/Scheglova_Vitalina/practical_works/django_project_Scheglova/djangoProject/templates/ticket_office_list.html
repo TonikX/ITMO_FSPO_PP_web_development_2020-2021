@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block content %}
+{% load bootstrap4 %}
+
+    <h1>Поиск</h1>
+    <form action="{% url 'ticket_office_list' %}" class="navbar-form navbar-left" method="get">
+        <div class="input-group">
+            <input id="search" name="q" type="text" class="form-control" placeholder="Поиск">
+            <span class="input-group-btn">
+                <button type="submit" class="btn btn-default">Поиск</button>
+            </span>
+        </div>
+    </form>
+    {% if ticket_office_list %}
+        {% for ticket_office in ticket_office_list %}
+            <hr>
+
+            <article>
+                    <h2>{{ ticket_office.ticket_office_adress }}</h2>
+                </a>
+                <p><a class="btn btn-default btn-sm" onclick="document.location='/ticket_office_detail/{{ ticket_office.id }}/'">Читать далее</a></p>
+            </article>
+        {% endfor %}
+            <button type="submit" class="btn btn-outline-success" onclick="document.location='/ticket_office/create'">Добавить</button>
+        {% bootstrap_pagination ticket_office_list %}
+    {% else %}
+        <p>Не найдено публикаций по вашему запросу<br>Попробуйте повторить запрос с другой формулировкой</p>
+    {% endif %}
+
+
+
+
+<!--    <h1>Офисы</h1>-->
+<!--    {% if ticket_office_list %}-->
+<!--        {% for Ticket_office in ticket_office_list %}-->
+<!--                    <h2>{{ Ticket_office.id }})-->
+<!--                {{ Ticket_office.ticket_office_adress|safe }}-->
+<!--                    </h2><hr>-->
+<!--        {% endfor %}-->
+<!--            <button type="submit" class="btn btn-outline-success" onclick="document.location='/ticket_office/create'">Добавить</button>-->
+
+<!--    {% endif %}-->
+<!--{% load bootstrap4 %}-->
+<!--{% bootstrap_pagination ticket_office_list %}-->
+<!--{% endblock %}-->

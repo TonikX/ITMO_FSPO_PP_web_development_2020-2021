@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+  <form method="post" novalidate>
+    {% csrf_token %}
+    <div class="row">
+      <div class="col-6">
+        {{ form.FIO_client|as_crispy_field }}
+      </div>
+      <div class="col-6">
+        {{ form.passport_number|as_crispy_field }}
+      </div>
+    </div>
+    {{ form.date_of_passport_start|as_crispy_field }}
+    {{ form.registration_number|as_crispy_field }}
+    {{ form.who_give_the_passport|as_crispy_field }}
+     <button type="submit" class="btn btn-success">Save plane</button>
+  </form>
+{% endblock %}

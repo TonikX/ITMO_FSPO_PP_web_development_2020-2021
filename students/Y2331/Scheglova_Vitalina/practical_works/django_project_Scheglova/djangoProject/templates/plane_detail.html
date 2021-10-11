@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% load crispy_forms_tags %}
+
+{% block content %}
+    {% csrf_token %}
+    <div class="row">
+      <div class="col-lg-10">
+        Название модели: {{ plane_type.model_name }}
+      </div>
+      <div class="col-10">
+        Изготовитель: {{ plane_type.manufacturer }}
+      </div>
+      <div class="col-10">
+        Вместимость: {{ plane_type.capacity}}
+      </div>
+    </div>
+{% endblock %}

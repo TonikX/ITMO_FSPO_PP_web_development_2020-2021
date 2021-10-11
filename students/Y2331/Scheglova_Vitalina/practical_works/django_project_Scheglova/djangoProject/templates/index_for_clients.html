@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load bootstrap4 %}
+{% block page %}
+    <h1>Поиск</h1>
+    {% if clients_list %}
+        {% for client in clients_list %}
+            <article>
+                <a href="{{ client.get_absolute_url }}">
+                    <h2>{{ Client.FIO_client }}</h2>
+                </a>
+                {{ Client.passport_number }}
+                <p><a class="btn btn-default btn-sm" href="{{ client.get_absolute_url }}">Читать далее</a></p>
+            </article>
+        {% endfor %}
+        {% bootstrap_pagination clients_list url=last_question %}
+    {% else %}
+        <p>Не найдено публикаций по вашему запросу<br>Попробуйте повторить запрос с другой формулировкой</p>
+    {% endif %}
+{% endblock %}
+
