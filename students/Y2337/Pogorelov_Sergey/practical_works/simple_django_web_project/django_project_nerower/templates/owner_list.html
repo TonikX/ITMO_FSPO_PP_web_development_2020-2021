@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block main_content %}
+<div class="main">
+    {% for owner in owner_list %}
+        <p>
+            Firstname: {{owner.first_name}} <br> 
+            Lastname: {{owner.last_name}} <br>
+        </p>
+        <hr>
+
+    {% endfor %}
+</div>
+    
+{% endblock %}
