@@ -1,0 +1,24 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.sidebar {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.pink-white {
+  background-color: rgb(103, 58, 183);
+  color: white;
+}
+
+.sidebar-heading {
+  margin: 10px;
+}
+
+.username {
+  margin-right: 10px;
+}

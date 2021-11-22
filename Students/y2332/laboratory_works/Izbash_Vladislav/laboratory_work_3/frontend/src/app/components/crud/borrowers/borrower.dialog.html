@@ -1,0 +1,49 @@
+<div>
+  <h2 mat-dialog-title *ngIf="data">Редактировать читателя</h2>
+  <h2 mat-dialog-title *ngIf="!data">Добавить читателя</h2>
+  <form [formGroup]="form" (ngSubmit)="apply()">
+    <mat-dialog-content>
+      <p>
+        <mat-form-field>
+          <input type="text" matInput placeholder="Имя" formControlName="firstname">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input type="text" matInput placeholder="Фамилия" formControlName="lastname">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input type="text" matInput placeholder="Отчетсво" formControlName="patronymic">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input type="text" matInput placeholder="Дата рождения" formControlName="birthdate">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input type="text" matInput placeholder="Адрес" formControlName="address">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input type="text" matInput placeholder="Телефон" formControlName="telnumber">
+        </mat-form-field>
+      </p>
+      <p>
+        <mat-form-field>
+          <input type="text" matInput placeholder="Читательский билет" formControlName="card_num">
+        </mat-form-field>
+      </p>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <div class="button">
+        <button mat-button mat-dialog-close>Отмена</button>
+        <button type="submit" color="primary" mat-button>Применить</button>
+      </div>
+    </mat-dialog-actions>
+  </form>
+</div>
