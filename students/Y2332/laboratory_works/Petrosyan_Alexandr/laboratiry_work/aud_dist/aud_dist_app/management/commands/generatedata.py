@@ -38,14 +38,14 @@ def generate_lecturers(fake, first_discipline, last_discipline):
         lecturer.save()
 
 
-def generate_groups(fake, first_discipline, last_discipline, discipline_quantity):
+def generate_groups(fake, first_discipline, last_discipline, discipline_count):
     for _ in range(random.randint(15, 25)):
         group = Group.objects.create(
             number=fake.plate_letter() + fake.plate_number_extra(),
-            students_quantity=random.randint(18, 25)
+            students_count=random.randint(18, 25)
         )
 
-        for _ in range(random.randint(10, discipline_quantity)):
+        for _ in range(random.randint(10, discipline_count)):
             rand_discipline = random.randint(first_discipline, last_discipline)
             discipline = Discipline.objects.get(pk=rand_discipline)
             group.disciplines.add(discipline)
@@ -96,11 +96,11 @@ class Command(BaseCommand):
         fake.add_provider(Provider)
 
         try:
-            discipline_quantity = Discipline.objects.count()
+            discipline_count = Discipline.objects.count()
 
             generate_disciplines(fake)
 
-            discipline_quantity = Discipline.objects.count()
+            discipline_count = Discipline.objects.count()
 
             first_discipline = Discipline.objects.first().pk
             last_discipline = Discipline.objects.last().pk
@@ -114,7 +114,7 @@ class Command(BaseCommand):
                 fake,
                 first_discipline,
                 last_discipline,
-                discipline_quantity
+                discipline_count
             )
             generate_audiences(fake)
 
