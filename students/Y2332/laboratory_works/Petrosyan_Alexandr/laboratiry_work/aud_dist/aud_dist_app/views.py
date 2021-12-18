@@ -2,6 +2,16 @@ from rest_framework import viewsets
 from .serializers import *
 
 
+class DirectionViewSet(viewsets.ModelViewSet):
+    queryset = Syllabus.objects.all()
+    serializer_class = DirectionSerializer
+
+
+class SyllabusViewSet(viewsets.ModelViewSet):
+    queryset = Syllabus.objects.all()
+    serializer_class = SyllabusSerializer
+
+
 class DisciplineViewSet(viewsets.ModelViewSet):
     queryset = Discipline.objects.all()
     serializer_class = DisciplineSerializer

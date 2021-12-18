@@ -6,6 +6,8 @@ from faker import Faker
 from ..lists import DISCIPLINES, AUDIENCE_TYPES
 from ...models import *
 
+# TODO Finish up and refactor
+
 
 class Provider(faker.providers.BaseProvider):
     def discipline(self):
@@ -135,8 +137,6 @@ class Command(BaseCommand):
                 first_group,
                 last_group,
             )
-
-            # TODO РЕФАКТОРИНГ
 
         except Exception as e:
             print(str(e))

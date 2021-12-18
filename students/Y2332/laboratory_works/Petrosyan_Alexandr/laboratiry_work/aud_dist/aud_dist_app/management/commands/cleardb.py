@@ -7,7 +7,5 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         if input("Are you sure? (Y/N): ") in ('y', 'Y'):
-            Discipline.objects.all().delete()
-            Lecturer.objects.all().delete()
-            Group.objects.all().delete()
-            Audience.objects.all().delete()
+            for model in [Syllabus, Discipline, Lecturer, Group, Audience]:
+                model.objects.all().delete()

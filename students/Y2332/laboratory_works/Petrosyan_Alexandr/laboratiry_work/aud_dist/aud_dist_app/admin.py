@@ -3,6 +3,8 @@ from django.contrib import admin
 # Register your models here.
 from .models import *
 
+admin.site.register(Direction)
+admin.site.register(Syllabus)
 admin.site.register(Discipline)
 admin.site.register(Lecturer)
 admin.site.register(Group)

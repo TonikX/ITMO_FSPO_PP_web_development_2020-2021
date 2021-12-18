@@ -3,6 +3,18 @@ from rest_framework import serializers
 from .models import *
 
 
+class DirectionSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Direction
+        fields = '__all__'
+
+
+class SyllabusSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Syllabus
+        fields = '__all__'
+
+
 class DisciplineSerializer(serializers.ModelSerializer):
     class Meta:
         model = Discipline

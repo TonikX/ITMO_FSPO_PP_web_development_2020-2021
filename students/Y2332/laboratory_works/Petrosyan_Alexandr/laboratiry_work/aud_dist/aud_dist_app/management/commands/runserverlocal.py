@@ -9,6 +9,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
 
+        # Used to get current machine network interfaces
         # for ifaceName in interfaces():
         #     addresses = [i['addr'] for i in ifaddresses(ifaceName).setdefault(AF_INET, [{'addr': 'No IP addr'}])]
         #     print ('%s: %s' % (ifaceName, ', '.join(addresses)))
