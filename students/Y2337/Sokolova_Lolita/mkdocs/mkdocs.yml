@@ -1,0 +1,8 @@
+site_name: Администрирование автобаз
+nav:
+    - Home: index.md
+    - Models: model/model.md
+    - Endpoints: endpoints/endpoints.md
+    - Urls: urls/urls.md
+theme:
+    name: material
