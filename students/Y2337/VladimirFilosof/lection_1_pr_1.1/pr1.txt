@@ -1,0 +1,15 @@
+Frontend - клиентская часть сайта, его графическое представление
+Backend - серверная часть, отвечает за логику сайта
+
+Frontend фреймворки:
+React
+Vue
+Angular
+Ember
+Backbone.js
+
+Backend фреймворки:
+Laravel
+Django
+Ruby on Rails
+Spring

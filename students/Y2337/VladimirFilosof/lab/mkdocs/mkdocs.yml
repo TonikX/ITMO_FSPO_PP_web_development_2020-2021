@@ -1,0 +1,13 @@
+site_name: Сайт портфолио
+nav:
+    - Home: index.md
+    - Models:
+        - feedback: tables/feedback.md
+        - service: tables/service.md
+        - user: tables/user.md
+        - order: tables/order.md
+        - project: tables/project.md
+    - Endpoints: endpoints/endpoints.md
+    - Urls: urls/urls.md
+theme:
+    name: material
