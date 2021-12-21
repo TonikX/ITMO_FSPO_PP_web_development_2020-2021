@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% load static %}
+ {% block content %}
+    <main id="body" data-value="articles">
+      <div class="last_articles">
+        <div class="title">
+          <p>Исторические статьи</p>
+          <div class="vertical_line"></div>
+          <form action="/articles/" method="post">
+            {% csrf_token %}
+            <button type="submit" name="name" value="name" class="sorting" style="background: none; border: 0">АБ↓</button>
+          </form>
+          <div class="search2">
+            <form action="/articles/" method="post">
+              {% csrf_token %}
+              <input type="text" name="search_article" value="" class="input_search input_search2" placeholder="Поиск">
+            </form>
+          </div>
+        </div>
+        <div class="slider">
+          <div class="slider__wrapper">
+            {% for el in article%}
+              {% if el.status %}
+                {% if el.type == 'HIS'%}
+                  <div class="slider__item">
+                    <div style="height: 250px;">
+                      <img src="{{ el.image.url }}" alt="" class="facebook" onclick="window.location.href = '/read_article/{{el.id}}';">
+                      <div class="description">
+                        <p class="name">{{ el.user.last_name }} {{ el.user.first_name }}</p>
+                        <p class="title">{{ el.article_title }}</p>
+                        <p class="text">
+                          {{ el.discription }}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          </div>
+          <a class="slider__control slider__control_left" href="#" role="button"></a>
+          <a class="slider__control slider__control_right slider__control_show" href="#" role="button"></a>
+        </div>
+      </div>
+      <div class="last_created_book">
+        <div class="title">
+          <p>Литературные статьи</p>
+          <div class="vertical_line"></div>
+          <form action="/articles/" method="post">
+            {% csrf_token %}
+            <button type="submit" name="name" value="name" class="sorting" style="background: none; border: 0">АБ↓</button>
+          </form>
+          <div class="search2">
+            <form action="/articles/" method="post">
+              {% csrf_token %}
+              <input type="text" name="search_article" value="" class="input_search input_search2" placeholder="Поиск">
+            </form>
+          </div>
+        </div>
+        <div class="slider4">
+          <div class="slider__wrapper4">
+            {% for el in article%}
+              {% if el.status %}
+                {% if el.type == 'LIT'%}
+                  <div class="slider__item4">
+                    <div style="height: 250px;">
+                      <img src="{{ el.image.url }}" alt="" class="facebook" onclick="window.location.href = '/read_article/{{el.id}}';">
+                      <div class="description">
+                        <p class="name">{{ el.user.last_name }} {{ el.user.first_name }}</p>
+                        <p class="title">{{ el.article_title }}</p>
+                        <p class="text">
+                          {{ el.discription }}
+                        </p>
+                      </div>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          </div>
+          <a class="slider__control4 slider__control_left4" href="#" role="button"></a>
+          <a class="slider__control4 slider__control_right4 slider__control_show4" href="#" role="button"></a>
+        </div>
+      </div>
+
+    </main>
+<script src="{% static 'main/js/slider.js' %}"></script>
+
+ {% endblock %}

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+ {% block content %}
+    <main>
+      <form method="post" action="/profile_edit/" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="profile_page">
+          <div class="avatar_profile">
+            <label for="upload-photo2" style="margin-left: 20px;">Загрузите фото профиля</label>
+            <input type="file" name="image" id="upload-photo2" accept="image/*">
+            <br>
+            {% if user.profile.image %}
+              <img src="{{user.profile.image.url}}" alt="" id="blah2">
+            {% else %}
+              <img src="{% static 'main/img/load_photo.png' %}" alt="" id="blah2">
+            {% endif %}
+
+          </div>
+          <div class="info_profile">
+            <p>Никнейм</p>
+            <input type="text" name="login" value="{{user}}" class="create_input2">
+            <p>Имя</p>
+            <input type="text" name="name" value="{{user.first_name}}" class="create_input2">
+            <p>Фамилия</p>
+            <input type="text" name="surname" value="{{user.last_name}}" class="create_input2">
+            <p>Email</p>
+            <input type="text" name="email" value="{{user.email}}" class="create_input2">
+            <p>Старый пароль</p>
+            <input type="password" name="old_pass" value="" class="create_input2">
+            <p>Новый пароль</p>
+            <input type="password" name="new_pass" value="" class="create_input2">
+          </div>
+        </div>
+        <button type="submit" name="button" class="save_edit">Сохранить изменения</button>
+      </form>
+    </main>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="{% static 'main/js/buttons.js' %}"></script>
+<script type="text/javascript">
+  function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+      $('#blah2').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+$("#upload-photo2").change(function() {
+  readURL(this);
+});
+</script>
+{% endblock %}

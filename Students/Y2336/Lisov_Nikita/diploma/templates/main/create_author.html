@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+{% load static %}
+ {% block content %}
+    <main>
+      <form method="post" action="/create_author/" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="text" name="name" value="" class="create_input" placeholder="Введите здесь имя автора">
+        <div class="create_composition_page">
+          <div class="inputs">
+            <p style="font-size: 20px; line-height: 34px; margin-bottom: 0;">Опишите здесь краткую биографию автора</p>
+            <textarea rows="10" cols="45" name="biografi" class="textarea2" style="margin-top: 0; margin-bottom: 10px;"></textarea>
+            <p style="font-size: 20px; line-height: 34px; margin-bottom: 0;">Напишите здесь список произведений, написанных автором</p>
+            <textarea rows="10" cols="45" name="bibliografi" class="textarea2" style="margin-top: 0; margin-bottom: 10px;"></textarea>
+            <p style="font-size: 20px; line-height: 34px; margin-bottom: 0;">Напишите здесь список произведений, описывающих жизнь автора</p>
+            <textarea rows="10" cols="45" name="about_life" class="textarea2" style="margin-top: 0; margin-bottom: 10px;"></textarea>
+          </div>
+          <div class="create_composition_img">
+            <img src="{% static 'main/img/load_photo.png' %}" alt="" id="blah">
+            <br>
+            <label for="upload-photo">Загрузите обложку</label>
+            <input type="file" name="image" id="upload-photo" accept="image/*">
+            <input type="text" name="date_life" value="" placeholder="Введите даты жизни автора " style="margin-left: 110px; width: 215px; border:0; background: rgba(83, 62, 62, 0.4);">
+          </div>
+        </div>
+        <button type="submit" name="button" class="creat_compos_button" style="margin-left: 36px;">Опубликовать</button>
+      </form>
+    </main>
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="js/buttons.js"></script>
+<script type="text/javascript">
+  function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+      $('#blah').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+$("#upload-photo").change(function() {
+  readURL(this);
+});
+</script>
+{% endblock %}

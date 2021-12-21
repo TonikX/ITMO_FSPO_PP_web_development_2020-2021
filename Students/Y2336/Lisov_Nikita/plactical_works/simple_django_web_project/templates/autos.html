@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<style>
+.table{
+  width: 100%;
+  border: black 1px solid;
+  border-collapse: collapse;
+  table-layout: fixed;
+}
+
+.table th{
+  text-align: center;
+}
+
+.table td{
+  border: black 1px solid;
+  padding: 5px;
+  text-align: center;
+}
+
+.table tfoot td{
+  text-align: right;
+}
+
+</style>
+<body>
+    <p style="text-align: center;">Autos</p>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>gos_num</th>
+            <th>Brand</th>
+            <th>Model</th>
+            <th>Color</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for auto in object_list %}
+        <tr>
+            <td>{{ auto.gos_num }}</td>
+            <td>{{ auto.brand }}</td>
+            <td>{{ auto.model }}</td>
+            <td>{{ auto.color }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>

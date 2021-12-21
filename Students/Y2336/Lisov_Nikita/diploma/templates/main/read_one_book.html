@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+{% load static %}
+ {% block content %}
+     <script type="text/javascript">
+       localStorage.clear()
+     </script>
+    <main id="body" data-value="articles">
+      <div class="wtiter_page">
+        <div class="wtiter_page__description">
+          <div class="heder_page">
+            <div class="title_page">
+              <p class="title">{{ books.title }}</p>
+              {% if books.type == 'DEF' %}
+                <p class="title2">{{ books.author }}</p>
+              {% else %}
+                <p class="title2">{{ books.user.first_name }} {{ books.user.last_name }}</p>
+              {% endif %}
+            </div>
+            <div class="edit_rating">
+              {% if user.is_authenticated %}
+                {% for el in likes%}
+                  {% if el.user == user and el.type == 'LIK' and el.book == books%}
+                    <button class="rating_button active" onclick="Button1(this)">Понравилось</button>
+                    <form  method="post" action="/read_one_book/{{ books.id }}/" style="height:38px">
+                        {% csrf_token %}
+                      <button class="rating_button" name="dislike" value="{{ el.id }}" style="height: 100%;" onclick="Button1(this)">Не понравилось</button>
+                      <input type="hidden" name="dislike_input" value="{{ books.id }}">
+                    </form>
+                    <script>
+                      localStorage.setItem('likes',1)
+                    </script>
+                  {% endif %}
+                  {% if el.user == user and el.type == 'DIS' and el.book == books%}
+                    <form  method="post" action="/read_one_book/{{ books.id }}/" style="height:38px">
+                      {% csrf_token %}
+                      <button type="submit" name="like" value="{{ el.id }}" class="rating_button" style="height: 100%;" onclick="Button1(this)">Понравилось</button>
+                      <input type="hidden" name="like_input" value="{{ books.id }}">
+                    </form>
+                    <button class="rating_button active" onclick="Button1(this)">Не понравилось</button>
+                    <script>
+                      localStorage.setItem('likes',1)
+                    </script>
+                  {% endif %}
+                {% endfor %}
+                <div style="height:38px; display:none" id="likes">
+                  <form  method="post" action="/read_one_book/{{ books.id }}/" style="height:38px">
+                    {% csrf_token %}
+                    <button type="submit" class="rating_button" name="like2" value="{{ books.id }}" style="height: 100%;" onclick="Button1(this)">Понравилось</button>
+                  </form>
+                  <form  method="post" action="/read_one_book/{{ books.id }}/" style="height:38px">
+                    {% csrf_token %}
+                    <button type="submit" class="rating_button" name="dislike2" value="{{ books.id }}" style="height: 100%;" onclick="Button1(this)">Не понравилось</button>
+                  </form>
+                </div>
+              {% endif %}
+              <div class="rating_text">
+                <p>{{ books.plus_rating }} положительных</p>
+                <p>{{ books.minus_rating }} отрижательных</p>
+              </div>
+            </div>
+          </div>
+          <div class="book_page__text">
+            <p class="text1">
+              {{ books.discription | linebreaks }}
+            </p>
+            <button class="expand" onclick="Expand('text1', this)" data-value="0" id="button1">Развернуть</button>
+          </div>
+          <div class="book_page__text">
+            <p>Аннотация:</p>
+            <div class="text2">
+              {{ books.anatation | linebreaks }}
+            </div>
+            <button class="expand" onclick="Expand('text2', this)" data-value="0" id="button2">Развернуть</button>
+          </div>
+          {% if books.type == 'PRS' %}
+            <div class="content">
+              <p class="text1">
+                {{ books.chapters }} глава
+              </p>
+              <p class="text1">
+                {{ books.words }} слова
+              </p>
+            </div>
+          {% endif %}
+        </div>
+        <div class="wtiter_page_image">
+          <img src="{{ books.image.url }}" alt="">
+          <p>{{ books.date }}</p>
+        </div>
+      </div>
+      {% if books.type == 'PRS' %}
+      <div class="heder_page">
+        <div class="title_page">
+          <p class="title">{{ books.title }}</p>
+          <p class="title2">{{ books.user.first_name }} {{ books.user.last_name }}</p>
+        </div>
+      </div>
+      <div class="book_page__text" style="padding: 36px 55px;">
+        <p class="text1" style="
+           text-align:center;
+           font-size: 20px;
+           line-height: 25px;
+        ">
+          {{ books.text | linebreaks }}
+        </p>
+        <button class="expand" onclick="Expand('text1', this)" data-value="0" id="button1">Развернуть</button>
+      </div>
+      {% endif %}
+
+<script src="{% static 'main/js/buttons.js' %}"></script>
+<script type="text/javascript">
+  let a = localStorage.getItem('likes')
+  if (a != 1) {
+    document.getElementById('likes').style.display = 'flex'
+  }
+</script>
+ {% endblock %}

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Diploma</title>
+  <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="./css/bootstrap.min.css">
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body id="body" data-value="articles">
+  <div class="main_block">
+    <header>
+      <div class="links">
+        <a href="">Главная страница</a>
+        <div class="vertical_line"></div>
+        <a href="">Книги</a>
+        <div class="vertical_line"></div>
+        <a href="">Статьи</a>
+      </div>
+      <div class="search">
+        <input type="text" name="" value="" class="input_search" placeholder="Поиск книг">
+      </div>
+      <div class="account">
+        <a href="">Регистрация</a>
+        <div class="vertical_line"></div>
+        <a href="">Вход в личный кабинет</a>
+      </div>
+    </header>
+
+    <main>
+      <div class="wtiter_page">
+        <div class="wtiter_page__description">
+          <div class="heder_page">
+            <div class="title_page">
+              <p class="title">Ваша жизнь без прекрас</p>
+              <p class="title2">Александр Александров</p>
+            </div>
+            <div class="edit_rating">
+              <div class="rating_text">
+                <p>2134 положительных</p>
+                <p>231 отрижательных</p>
+              </div>
+            </div>
+          </div>
+          <div class="book_page__text">
+            <p class="text1">
+              Ваша жизнь в руках вас и общества, и правительства....
+            </p>
+            <button class="expand" onclick="Expand('text1', this)" data-value="0" id="button1">Развернуть</button>
+          </div>
+          <div class="book_page__text">
+            <p>Аннотация:</p>
+            <div class="text2">
+              Тут описание из жизни человека, который борется не с системой, а в первую очередь с самим собой.
+            </div>
+            <button class="expand" onclick="Expand('text2', this)" data-value="0" id="button2">Развернуть</button>
+          </div>
+          <div class="book_page__text" style="display: flex; justify-content: space-between">
+            <div class="content">
+              <p class="text1">
+                1 глава
+              </p>
+              <p class="text1">
+                1234 слова
+              </p>
+            </div>
+            <a href="./read_book.html" style="
+                font-size: 24px;
+                line-height: 34px;
+                margin-top: 5px;
+            ">Читать онлайн</a>
+          </div>
+        </div>
+        <div class="wtiter_page_image">
+          <img src="./img/book/image3.png" alt="">
+          <p>2021</p>
+        </div>
+      </div>
+      <div class="header_reviews">
+        <h5 style="margin-left: 30px;">Рецензии</h5>
+      </div>
+      <div class="slider" style="height: 190px;">
+        <div class="slider__wrapper">
+          <div class="slider__item" style="height: 190px;">
+            <div style="height: 190px;">
+              <div style="display:flex; width: 300px;">
+                <img src="img/book/avatar.png" alt="" class="avatar1">
+                <p style="font-size: 18px;line-height: 25px;margin-top: 6px;margin-left: 5px;">alenka-luna</p>
+              </div>
+              <div class="description">
+                <p class="name">НЕ ДЛЯ ВСЕХ</p>
+                <p class="text">
+                  Что сказать... Читалось как-то медленно - часто брала книги полегче, чтобы отдохнуть от повествования. Первые страницы "Процесса" читала аж 2 недели. Потом вроде пошло полегче. Но то ли книга не моя, то ли настроение не подходящее. Возможно позже перечитаю, если руки дойдут
+                </p>
+              </div>
+              <div class="rating rating2">
+                <p class="rating_plus">10 согласны </p>
+                <p class="rating_minus">12 не согласны</p>
+              </div>
+            </div>
+          </div>
+          <div class="slider__item" style="height: 190px;">
+            <div style="height: 190px;">
+              <div style="display:flex; width: 300px;">
+                <img src="img/book/avatar.png" alt="" class="avatar1">
+                <p style="font-size: 18px;line-height: 25px;margin-top: 6px;margin-left: 5px;">alenka-luna</p>
+              </div>
+              <div class="description">
+                <p class="name">НЕ ДЛЯ ВСЕХ</p>
+                <p class="text">
+                  Что сказать... Читалось как-то медленно - часто брала книги полегче, чтобы отдохнуть от повествования. Первые страницы "Процесса" читала аж 2 недели. Потом вроде пошло полегче. Но то ли книга не моя, то ли настроение не подходящее. Возможно позже перечитаю, если руки дойдут
+                </p>
+              </div>
+              <div class="rating rating2">
+                <p class="rating_plus">10 согласны </p>
+                <p class="rating_minus">12 не согласны</p>
+              </div>
+            </div>
+          </div>
+          <div class="slider__item" style="height: 190px;">
+            <div style="height: 190px;">
+              <div style="display:flex; width: 300px;">
+                <img src="img/book/avatar.png" alt="" class="avatar1">
+                <p style="font-size: 18px;line-height: 25px;margin-top: 6px;margin-left: 5px;">alenka-luna</p>
+              </div>
+              <div class="description">
+                <p class="name">НЕ ДЛЯ ВСЕХ</p>
+                <p class="text">
+                  Что сказать... Читалось как-то медленно - часто брала книги полегче, чтобы отдохнуть от повествования. Первые страницы "Процесса" читала аж 2 недели. Потом вроде пошло полегче. Но то ли книга не моя, то ли настроение не подходящее. Возможно позже перечитаю, если руки дойдут
+                </p>
+              </div>
+              <div class="rating rating2">
+                <p class="rating_plus">10 согласны </p>
+                <p class="rating_minus">12 не согласны</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <a class="slider__control slider__control_left" href="#" role="button"></a>
+        <a class="slider__control slider__control_right slider__control_show" href="#" role="button"></a>
+      </div>
+
+    </main>
+  </div>
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script src="js/slider.js"></script>
+<script src="js/buttons.js"></script>
+</body>
+</html>

@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% load static %}
+ {% block content %}
+    <main>
+      <form method="post" action="/creat_composition/" enctype="multipart/form-data">
+        {% csrf_token %}
+        <input type="text" name="title" value="" class="create_input" placeholder="Напишите здесь название произведения">
+        <div class="create_composition_page">
+          <div class="inputs">
+            <input type="text" name="discription" value="" class="create_input2" placeholder="Напишите здесь краткое описание произведения">
+            <input type="text" name="anatation" value="" class="create_input2" placeholder="Напишите здесь аннотацию">
+            <div style="display: flex; justify-content: space-between;">
+              <div style="display: flex; flex-direction: column; width: 220px;">
+                <input type="number" name="words" value="" class="create_input3" placeholder="Напишите количество глав">
+                <input type="number" name="chapters" value="" class="create_input3" placeholder="Напишите количество слов">
+              </div>
+              <!-- <input type="text" name="" value="" class="create_input"> -->
+            </div>
+          </div>
+          <div class="create_composition_img">
+            <img src="{% static 'main/img/load_photo.png' %}" alt="" id="blah">
+            <br>
+            <label for="upload-photo">Загрузите обложку</label>
+            <input type="file" name="image" id="upload-photo" accept="image/*">
+          </div>
+        </div>
+
+      <div style="display: flex; justify-content: space-between; padding: 0 36px;">
+        <p style="font-size: 20px; line-height: 34px;">Напишите свое произведение ниже</p>
+        <button type="submit" name="button" class="creat_compos_button">Отправить на рассмотрение</button>
+      </div>
+      <textarea rows="10" cols="45" name="text" class="textarea1"></textarea>
+    </form>
+    </main>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="js/buttons.js"></script>
+<script type="text/javascript">
+  function readURL(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+
+    reader.onload = function(e) {
+      $('#blah').attr('src', e.target.result);
+    }
+
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+
+$("#upload-photo").change(function() {
+  readURL(this);
+});
+
+
+</script>
+{% endblock %}

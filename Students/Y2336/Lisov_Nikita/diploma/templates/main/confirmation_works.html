@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+{% load static %}
+ {% block content %}
+    <main>
+      <h3 style="margin-left: 36px;">Ожидающие одобрения публикации произведения</h3>
+      {% for el in books %}
+        {% if el.type == 'PRS' and not el.status%}
+          <div style="background: rgba(196, 196, 196, 0.3);padding: 37px 27px; display:flex; margin-bottom: 50px;">
+            <div class="work" style="display: flex;">
+              <img src="{{ el.image.url }}" alt="" class="facebook2">
+              <div class="description">
+                <p class="name">{{ el.title }}</p>
+                <p class="title">{{ el.user.first_name }} {{ el.user.last_name }}</p>
+              </div>
+            </div>
+            <div class="buttons" style="margin-top: 0; margin-left: 120px;">
+              <button type="button" name="button" onclick="document.location.href = '/read_book/{{el.id}}'">Просмотреть произведение</button>
+              <div class="solution_buttons">
+                <form  method="post" action="/confirmation_works/" style="width: 100%; height: 36px; margin-right: 20px; margin-top: 20px;">
+                  {% csrf_token %}
+                  <button type="submit" name="accept" value="{{ el.id }}" class="yes_button">Одобрить</button>
+                </form>
+                <form action="/confirmation_works/" method="post" style="width: 100%; height: 36px; margin-top: 20px;"">
+                  {% csrf_token %}
+                  <button type="submit" name="disline" value="{{ el.id }}" class="no_button">Отклонить</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        {% endif %}
+      {% endfor %}
+    </main>
+{% endblock %}

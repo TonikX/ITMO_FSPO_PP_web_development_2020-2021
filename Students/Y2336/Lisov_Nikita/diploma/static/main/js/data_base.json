@@ -1,0 +1,11 @@
+var user = {
+  "id":[0],
+  "login":["Администратор №1"],
+  "password":["123"],
+  "img":[""],
+  "email":["admin@mail.ru"],
+  "firstname":["Имя"],
+  "lastname":["Фамилия"]
+}
+
+var

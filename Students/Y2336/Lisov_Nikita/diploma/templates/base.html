@@ -1,0 +1,89 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Forum</title>
+  <link rel="shortcut icon" href="./img/favicon.ico" type="image/x-icon">
+  <link rel="stylesheet" href="{% static 'main/css/bootstrap.min.css' %}">
+  <link rel="stylesheet" href="{% static 'main/css/style.css' %}">
+</head>
+<body>
+  <div class="main_block">
+    <header>
+      <div class="links">
+        <a href="/">Главная страница</a>
+        <div class="vertical_line"></div>
+        <a href="/books/">Книги</a>
+        <div class="vertical_line"></div>
+        <a href="/articles/">Статьи</a>
+      </div>
+      <div class="search">
+        <form action="/" method="post">
+          {% csrf_token %}
+          <input type="text" name="search" value="" class="input_search" placeholder="Поиск книг" autocomplete="off" autocomplete="disabled">
+        </form>
+      </div>
+      {% if user.is_authenticated %}
+        {% if user.profile.role == "ADM" %}
+        <div class="account">
+          <div class="vertical_line"></div>
+          <a href="/admin_dev/">Администратор</a>
+        </div>
+        {% endif %}
+        {% if user.profile.role == "CLI" %}
+        <div class="account">
+          <div class="vertical_line"></div>
+          <a href="/profile/">Личный аккаунт</a>
+        </div>
+        {% endif %}
+      {% else %}
+      <div class="account">
+        <a href="#" onclick="Registration()">Регистрация</a>
+        <div class="vertical_line"></div>
+        <a href="#" onclick="Enter()">Вход в личный кабинет</a>
+      </div>
+      {% endif %}
+      {% comment %} {% if user.profile.perm == "ADM" %} {% endcomment %}
+    </header>
+    <div class="entrance" id="entrance">
+      <form method="post" action="/">
+        {% csrf_token %}
+        <div class="registration" id="registration">
+          <p>Имя пользователя</p>
+          <input type="text" name="login" id="new_login">
+          <p>Почта</p>
+          <input type="text" name="email" id="new_email">
+          <p>Пароль</p>
+          <input type="password" name="password1" id="new_password">
+          <p>Пароль еще раз</p>
+          <input type="password" name="password" id="new_password_again">
+          <button class="registration_button" type="submit" name="register" value="1">Зарегистрироваться</button>
+          {% comment %} onclick="Rigistration()" {% endcomment %}
+        </div>
+      </form>
+      <form method="post" action="/">
+        {% csrf_token %}
+        <div class="enter" id="enter">
+
+          <p>Имя пользователя</p>
+          <input type="text" name="login" id="login">
+          <p>Пароль</p>
+          <input type="password" name="password" id="password">
+          <button class="enter_button" type="submit" name="enter" value="2" >Войти</button>
+          <br>
+          <a href="/password_recovery/" class="password_recovery">Забыли пароль?</a>
+        </div>
+      </form>
+    </div>
+  {% block content %}
+  {% endblock %}
+  <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <script src="{% static 'main/js/entrance.js' %}"></script>
+  </body>
+</html>

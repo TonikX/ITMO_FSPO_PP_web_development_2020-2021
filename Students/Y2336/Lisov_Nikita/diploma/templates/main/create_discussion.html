@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% load static %}
+ {% block content %}
+   <main>
+     <form method="post" action="/create_discussion/" >
+       {% csrf_token %}
+       <input type="text" name="title" value="" class="create_input2" style="width: 300px; margin-left: 36px;" placeholder="Напишите здесь название дискусии">
+       <div style="display: flex; justify-content: space-between; padding: 0 36px;">
+         <p style="font-size: 20px; line-height: 34px; margin-bottom: 0;">Напишите свое сообщение</p>
+       </div>
+       <textarea rows="10" cols="45" name="text" class="textarea1"></textarea>
+       <div style="margin-top: 80px;">
+         <button type="submit" name="book_id" value="" id="book_id" class="save_edit">Открыть дискуссию</button>
+       </div>
+     </form>
+   </main>
+
+    <script src="{% static 'main/js/buttons.js' %}"></script>
+    <script type="text/javascript">
+      document.getElementById('book_id').value = localStorage.getItem('book_id')
+      // localStorage.clear()
+    </script>
+     {% endblock %}

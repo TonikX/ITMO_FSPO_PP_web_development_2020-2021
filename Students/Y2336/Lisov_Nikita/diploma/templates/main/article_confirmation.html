@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+ {% block content %}
+    <main>
+      <h3 style="margin-left: 36px;">Ожидающие одобрения публикации статьи</h3>
+      {% for el in articles %}
+        {% if not el.status %}
+      <div style="background: rgba(196, 196, 196, 0.3);padding: 37px 27px;">
+            <div class="slider__item4">
+              <div style="height: 250px; margin-bottom: 80px;">
+                <img src="{{ el.image.url }}" alt="" class="facebook">
+                <div class="description">
+                  <p class="name">{{ el.user.last_name }} {{ el.user.first_name }}</p>
+                  <p class="title">{{ el.article_title }}</p>
+                  <p class="text">{{ el.discription }}</p>
+                </div>
+              </div>
+              <div class="buttons">
+                <button type="button" name="button" onclick="window.location.href = '/read_article/{{el.id}}';" ">Просмотреть статью</button>
+                <div class="solution_buttons">
+                  <form  method="post" action="/article_confirmation/" style="width: 100%; height: 36px; margin-right: 20px; margin-top: -120px;">
+                    {% csrf_token %}
+                    <button type="submit" name="accept" value="{{ el.id }}" class="yes_button">Одобрить</button>
+                  </form>
+                  <form action="/article_confirmation/" method="post" style="width: 100%; height: 36px; margin-top: -120px;"">
+                    {% csrf_token %}
+                    <button type="submit" name="disline" value="{{ el.id }}" class="no_button">Отклонить</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+    </main>
+{% endblock %}

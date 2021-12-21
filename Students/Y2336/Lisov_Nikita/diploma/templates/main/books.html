@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+{% load static %}
+ {% block content %}
+
+    <main id="body" data-value="books">
+      <div class="last_articles">
+        <div class="title">
+          <p>Страницы книг</p>
+          <div class="vertical_line"></div>
+          <form action="/books/" method="post">
+            {% csrf_token %}
+            <button type="submit" name="name" value="name" class="sorting" style="background: none; border: 0">АБ↓</button>
+          </form>
+          <form action="/books/" method="post">
+            {% csrf_token %}
+            <button type="submit" name="rating" value="rating" class="sorting" style="background: none; border: 0">По рейтингу</button>
+          </form>
+          <div class="search2">
+            <form action="/books/" method="post">
+              {% csrf_token %}
+              <input type="text" name="search_book" value="" class="input_search input_search2" placeholder="Поиск">
+            </form>
+          </div>
+        </div>
+        <div class="slider3">
+          <div class="slider__wrapper3">
+            {% for el in books%}
+              {% if el.status %}
+                {% if el.type == 'DEF' %}
+                  <div class="slider__item3">
+                    <div style="height: 250px;">
+                      <img src="{{ el.image.url }}" alt="" class="facebook2" onclick="document.location.href = '/read_book/{{el.id}}'">
+                      <div class="description">
+                        <p class="name">{{ el.title }}</p>
+                        <p class="title" onclick="document.location.href = '/writer/{{el.author.id}}/'"> {{ el.author }} {{ el.date }}</p>
+                        <div class="rating">
+                          <p class="rating_text">
+                            Рейтинг:
+                          </p>
+                          <p class="plus">{{ el.plus_rating }}  положительные</p>
+                          <p class="minus">{{ el.minus_rating }}  отрицательные</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+
+          </div>
+          <a class="slider__control3 slider__control_left3" href="#" role="button"></a>
+          <a class="slider__control3 slider__control_right3 slider__control_show3" href="#" role="button"></a>
+        </div>
+      </div>
+      <div class="last_created_book">
+        <div class="title">
+          <p>Современная проза</p>
+          <div class="vertical_line"></div>
+          <form action="/books/" method="post">
+            {% csrf_token %}
+            <button type="submit" name="name" value="name" class="sorting" style="background: none; border: 0">АБ↓</button>
+          </form>
+          <!-- <p class="sorting">По рейтингу</p> -->
+          <form action="/books/" method="post">
+            {% csrf_token %}
+            <button type="submit" name="rating" value="rating" class="sorting" style="background: none; border: 0">По рейтингу</button>
+          </form>
+          <div class="search2">
+            <input type="text" name="" value="" class="input_search input_search2" placeholder="Поиск">
+          </div>
+        </div>
+        <div class="slider2">
+          <div class="slider__wrapper2">
+            {% for el in books%}
+              {% if el.status %}
+                {% if el.type == 'PRS' %}
+                  <div class="slider__item2">
+                    <div style="height: 250px;">
+                      <img src="{{ el.image.url }}" alt="" class="facebook2" onclick="document.location.href = '/read_book/{{el.id}}'">
+                      <div class="description">
+                        <p class="name">{{ el.title }}</p>
+                        <p class="title">{{ el.author }} {{ el.date }}</p>
+                        <div class="rating">
+                          <p class="rating_text">
+                            Рейтинг:
+                          </p>
+                          <p class="plus">{{ el.plus_rating }} положительные</p>
+                          <p class="minus">{{ el.minus_rating }} отрицательные</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                {% endif %}
+              {% endif %}
+            {% endfor %}
+          </div>
+          <a class="slider__control2 slider__control_left2" href="#" role="button"></a>
+          <a class="slider__control2 slider__control_right2 slider__control_show2" href="#" role="button"></a>
+        </div>
+      </div>
+    </main>
+
+<script src="{% static 'main/js/slider.js' %}"></script>
+ {% endblock %}
