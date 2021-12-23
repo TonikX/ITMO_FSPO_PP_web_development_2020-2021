@@ -144,21 +144,25 @@
 <h2 id="api">API</h2>
 <h3 id="_8">Авторизация</h3>
 <ul>
-<li><code>/auth/token/login</code> Вход в систему</li>
-<li><code>/auth/token/logout</code> Выход</li>
+<li><code>/auth/token/login</code> <code>POST</code> Вход в систему</li>
+<li><code>/auth/token/logout</code> <code>POST</code> Выход</li>
 <li><code>/auth/users/</code> Список пользователей</li>
 </ul>
 <h3 id="_9">Сущности</h3>
+<p>Доступные методы списков: <code>GET, POST, HEAD, OPTIONS</code></p>
 <ul>
-<li><code>/api/disciplines/</code> Список дисциплин</li>
-<li><code>/api/disciplines/&lt;id&gt;</code> Экземпляр дисциплины</li>
+<li><code>/api/disciplines/</code>  Список дисциплин</li>
 <li><code>/api/lecturers/</code> Список преподавателей</li>
-<li><code>/api/lecturers/&lt;id&gt;</code> Экземпляр преподавателя</li>
 <li><code>/api/groups/</code> Список групп</li>
-<li><code>/api/groups/&lt;id&gt;</code> Экземпляр группы</li>
-<li><code>/api/audiences/</code> Список аудиторий </li>
-<li><code>/api/audiences/&lt;id&gt;</code> Экземпляр аудитории</li>
+<li><code>/api/audiences/</code> Список аудиторий</li>
 <li><code>/api/schedules/</code> Расписание</li>
+</ul>
+<p>Доступные методы экземпляров: <code>GET, PUT, PATCH, DELETE, HEAD, OPTIONS</code></p>
+<ul>
+<li><code>/api/disciplines/&lt;id&gt;</code> Экземпляр дисциплины</li>
+<li><code>/api/lecturers/&lt;id&gt;</code> Экземпляр преподавателя</li>
+<li><code>/api/groups/&lt;id&gt;</code> Экземпляр группы</li>
+<li><code>/api/audiences/&lt;id&gt;</code> Экземпляр аудитории</li>
 <li><code>/api/schedules/&lt;id&gt;</code> Экземпляр расписания</li>
 </ul></div>
             </div>

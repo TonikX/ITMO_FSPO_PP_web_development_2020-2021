@@ -54,7 +54,7 @@ class Syllabus(models.Model):
     )
     specialty_code = models.CharField(max_length=100, verbose_name="Код специальности")
     specialty_name = models.CharField(max_length=100, verbose_name="Название специальности")
-    direction = models.ForeignKey(Direction, on_delete=models.DO_NOTHING, verbose_name="Направление")
+    direction = models.ForeignKey(Direction, on_delete=models.CASCADE, verbose_name="Направление")
 
     def __str__(self):
         return f"{self.year} {self.specialty_name}"
@@ -67,15 +67,15 @@ class Syllabus(models.Model):
 class Discipline(models.Model):
     name = models.CharField(max_length=100, verbose_name="Название")
     code = models.CharField(max_length=100, verbose_name="Код")
-    syllabus = models.ForeignKey(Syllabus, on_delete=models.DO_NOTHING, verbose_name="Учебный план")
+    syllabus = models.ForeignKey(Syllabus, on_delete=models.CASCADE, verbose_name="Учебный план")
     cycle = models.CharField(max_length=100, verbose_name="Цикл")
 
     hours_total = models.SmallIntegerField(verbose_name="Всего часов", validators=[gte_zero])
-    hours_lec = models.SmallIntegerField(verbose_name="Лек.", validators=[gte_zero])
-    hours_pr = models.SmallIntegerField(verbose_name="Прак.", validators=[gte_zero])
-    hours_la = models.SmallIntegerField(verbose_name="Лаб.", validators=[gte_zero])
-    hours_isw = models.SmallIntegerField(verbose_name="СРС", validators=[gte_zero])
-    hours_cons = models.SmallIntegerField(verbose_name="Конс.", validators=[gte_zero])
+    hours_lec = models.SmallIntegerField(verbose_name="Лек.", validators=[gte_zero], null=True, blank=True)
+    hours_pr = models.SmallIntegerField(verbose_name="Прак.", validators=[gte_zero], null=True, blank=True)
+    hours_la = models.SmallIntegerField(verbose_name="Лаб.", validators=[gte_zero], null=True, blank=True)
+    hours_isw = models.SmallIntegerField(verbose_name="СРС", validators=[gte_zero], null=True, blank=True)
+    hours_cons = models.SmallIntegerField(verbose_name="Конс.", validators=[gte_zero], null=True, blank=True)
 
     def __str__(self):
         return self.name
@@ -102,7 +102,7 @@ class Lecturer(models.Model):
 class Group(models.Model):
     number = models.CharField(max_length=5, verbose_name="Номер")
     students_count = models.IntegerField(verbose_name="Количество студентов", validators=[gte_zero])
-    syllabus = models.ForeignKey(Syllabus, on_delete=models.DO_NOTHING, verbose_name="Учебный план")
+    syllabus = models.ForeignKey(Syllabus, on_delete=models.CASCADE, verbose_name="Учебный план")
 
     def __str__(self):
         return self.number
@@ -136,7 +136,7 @@ class Audience(models.Model):
 
 
 DAYS_OF_WEEK = (
-    (1, 'Понедельник',),
+    (1, 'Понедельник'),
     (2, 'Вторник'),
     (3, 'Среда'),
     (4, 'Четверг'),

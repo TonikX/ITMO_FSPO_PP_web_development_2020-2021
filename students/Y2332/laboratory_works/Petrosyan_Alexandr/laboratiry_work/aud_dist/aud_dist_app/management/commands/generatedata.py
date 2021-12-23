@@ -6,8 +6,6 @@ from faker import Faker
 from ..lists import DISCIPLINES, AUDIENCE_TYPES
 from ...models import *
 
-# TODO Finish up and refactor
-
 
 class Provider(faker.providers.BaseProvider):
     def discipline(self):
@@ -18,9 +16,23 @@ class Provider(faker.providers.BaseProvider):
 
 
 def generate_disciplines(fake):
-    for _ in range(random.randint(10, len(DISCIPLINES))):
+    for _ in range(random.randint(1, len(DISCIPLINES))):
+        rand_discipline = fake.unique.discipline()
+
+        hours_total = random.randint(30, 150)
+        part_max_hours = int(hours_total / 5)
+
         Discipline.objects.create(
-            name=fake.unique.discipline()
+            name=rand_discipline[0],
+            code=rand_discipline[1],
+            syllabus_id=Syllabus.objects.first().pk,
+            cycle=rand_discipline[2],
+            hours_total=hours_total,
+            hours_lec=random.randint(1, part_max_hours),
+            hours_pr=random.randint(1, part_max_hours),
+            hours_la=random.randint(1, part_max_hours),
+            hours_isw=random.randint(1, part_max_hours),
+            hours_cons=random.randint(1, part_max_hours),
         )
 
 
@@ -42,24 +54,19 @@ def generate_lecturers(fake, first_discipline, last_discipline):
 
 def generate_groups(fake, first_discipline, last_discipline, discipline_count):
     for _ in range(random.randint(15, 25)):
-        group = Group.objects.create(
+        Group.objects.create(
             number=fake.plate_letter() + fake.plate_number_extra(),
-            students_count=random.randint(18, 25)
+            students_count=random.randint(18, 25),
+            syllabus_id=Syllabus.objects.first().pk,
         )
-
-        for _ in range(random.randint(10, discipline_count)):
-            rand_discipline = random.randint(first_discipline, last_discipline)
-            discipline = Discipline.objects.get(pk=rand_discipline)
-            group.disciplines.add(discipline)
-
-        group.save()
 
 
 def generate_audiences(fake):
     for _ in range(random.randint(15, 25)):
         Audience.objects.create(
             number=random.randint(100, 999),
-            aud_type=fake.audience_type()
+            aud_type=fake.audience_type(),
+            seats_count=random.randint(15, 50),
         )
 
 
@@ -87,6 +94,9 @@ def generate_schedule(
                     audience_id=rand_audience,
                     day_of_the_week=day,
                     lecture_begin=lecture,
+                    lecture_type=random.randint(1, 5),
+                    semester=random.randint(1, 8),
+                    week_parity=bool(random.getrandbits(1))
                 )
 
 
@@ -98,8 +108,6 @@ class Command(BaseCommand):
         fake.add_provider(Provider)
 
         try:
-            discipline_count = Discipline.objects.count()
-
             generate_disciplines(fake)
 
             discipline_count = Discipline.objects.count()

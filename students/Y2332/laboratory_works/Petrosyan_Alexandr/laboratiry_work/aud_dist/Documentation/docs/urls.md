@@ -27,17 +27,23 @@
 
 ## API
 ### Авторизация
-* `/auth/token/login` Вход в систему
-* `/auth/token/logout` Выход
+* `/auth/token/login` `POST` Вход в систему
+* `/auth/token/logout` `POST` Выход
 * `/auth/users/` Список пользователей
 ### Сущности
-* `/api/disciplines/` Список дисциплин
-* `/api/disciplines/<id>` Экземпляр дисциплины
+
+Доступные методы списков: `GET, POST, HEAD, OPTIONS`
+
+* `/api/disciplines/`  Список дисциплин
 * `/api/lecturers/` Список преподавателей
-* `/api/lecturers/<id>` Экземпляр преподавателя
 * `/api/groups/` Список групп
-* `/api/groups/<id>` Экземпляр группы
-* `/api/audiences/` Список аудиторий 
-* `/api/audiences/<id>` Экземпляр аудитории
+* `/api/audiences/` Список аудиторий
 * `/api/schedules/` Расписание
+
+Доступные методы экземпляров: `GET, PUT, PATCH, DELETE, HEAD, OPTIONS`
+
+* `/api/disciplines/<id>` Экземпляр дисциплины
+* `/api/lecturers/<id>` Экземпляр преподавателя
+* `/api/groups/<id>` Экземпляр группы
+* `/api/audiences/<id>` Экземпляр аудитории
 * `/api/schedules/<id>` Экземпляр расписания

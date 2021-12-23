@@ -7,5 +7,5 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         if input("Are you sure? (Y/N): ") in ('y', 'Y'):
-            for model in [Syllabus, Discipline, Lecturer, Group, Audience]:
+            for model in [Discipline, Lecturer, Group, Audience]:
                 model.objects.all().delete()
