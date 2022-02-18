@@ -3,7 +3,7 @@ from .serializers import *
 
 
 class DirectionViewSet(viewsets.ModelViewSet):
-    queryset = Syllabus.objects.all()
+    queryset = Direction.objects.all()
     serializer_class = DirectionSerializer
 
 

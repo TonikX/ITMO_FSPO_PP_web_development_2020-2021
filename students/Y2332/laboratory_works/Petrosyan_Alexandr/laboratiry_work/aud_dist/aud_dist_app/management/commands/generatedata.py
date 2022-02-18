@@ -28,11 +28,11 @@ def generate_disciplines(fake):
             syllabus_id=Syllabus.objects.first().pk,
             cycle=rand_discipline[2],
             hours_total=hours_total,
-            hours_lec=random.randint(1, part_max_hours),
-            hours_pr=random.randint(1, part_max_hours),
-            hours_la=random.randint(1, part_max_hours),
-            hours_isw=random.randint(1, part_max_hours),
-            hours_cons=random.randint(1, part_max_hours),
+            hours_lec=random.randint(1, part_max_hours) if random.getrandbits(1) else None,
+            hours_pr=random.randint(1, part_max_hours) if random.getrandbits(1) else None,
+            hours_la=random.randint(1, part_max_hours) if random.getrandbits(1) else None,
+            hours_isw=random.randint(1, part_max_hours) if random.getrandbits(1) else None,
+            hours_cons=random.randint(1, part_max_hours) if random.getrandbits(1) else None,
         )
 
 
@@ -41,7 +41,7 @@ def generate_lecturers(fake, first_discipline, last_discipline):
         lecturer = Lecturer.objects.create(
             first_name=fake.first_name_male(),
             surname=fake.last_name_male(),
-            patronymic=fake.middle_name_male(),
+            patronymic=fake.middle_name_male() if random.getrandbits(1) else None
         )
 
         for _ in range(random.randint(1, 3)):
@@ -52,7 +52,7 @@ def generate_lecturers(fake, first_discipline, last_discipline):
         lecturer.save()
 
 
-def generate_groups(fake, first_discipline, last_discipline, discipline_count):
+def generate_groups(fake):
     for _ in range(random.randint(15, 25)):
         Group.objects.create(
             number=fake.plate_letter() + fake.plate_number_extra(),
@@ -65,7 +65,7 @@ def generate_audiences(fake):
     for _ in range(random.randint(15, 25)):
         Audience.objects.create(
             number=random.randint(100, 999),
-            aud_type=fake.audience_type(),
+            aud_type=fake.audience_type() if random.getrandbits(1) else None,
             seats_count=random.randint(15, 50),
         )
 
@@ -120,12 +120,7 @@ class Command(BaseCommand):
                 first_discipline,
                 last_discipline
             )
-            generate_groups(
-                fake,
-                first_discipline,
-                last_discipline,
-                discipline_count
-            )
+            generate_groups(fake)
             generate_audiences(fake)
 
             first_lecturer = Lecturer.objects.first().pk
