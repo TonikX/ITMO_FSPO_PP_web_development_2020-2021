@@ -33,9 +33,9 @@ class GroupSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
-class AudienceSerializer(serializers.ModelSerializer):
+class ClassroomSerializer(serializers.ModelSerializer):
     class Meta:
-        model = Audience
+        model = Classroom
         fields = '__all__'
 
 

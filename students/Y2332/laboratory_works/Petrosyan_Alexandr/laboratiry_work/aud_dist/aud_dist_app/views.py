@@ -28,8 +28,8 @@ class GroupViewSet(viewsets.ModelViewSet):
 
 
 class AudienceViewSet(viewsets.ModelViewSet):
-    queryset = Audience.objects.all()
-    serializer_class = AudienceSerializer
+    queryset = Classroom.objects.all()
+    serializer_class = ClassroomSerializer
 
 
 class ScheduleViewSet(viewsets.ModelViewSet):

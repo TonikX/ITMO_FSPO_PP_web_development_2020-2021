@@ -112,7 +112,7 @@ class Group(models.Model):
         verbose_name_plural = "Группы"
 
 
-class Audience(models.Model):
+class Classroom(models.Model):
     number = models.CharField(
         max_length=3,
         verbose_name="Номер",
@@ -124,7 +124,7 @@ class Audience(models.Model):
             )
         ]
     )
-    aud_type = models.CharField(max_length=30, null=True, blank=True, verbose_name="Тип аудитории")
+    type = models.CharField(max_length=30, null=True, blank=True, verbose_name="Тип аудитории")
     seats_count = models.SmallIntegerField(verbose_name="Количество мест", validators=[gte_zero])
 
     def __str__(self):
@@ -165,7 +165,7 @@ class Schedule(models.Model):
     lecturer = models.ForeignKey(Lecturer, on_delete=models.CASCADE, verbose_name="Преподаватель")
     discipline = models.ForeignKey(Discipline, on_delete=models.CASCADE, verbose_name="Дисциплина")
     group = models.ForeignKey(Group, on_delete=models.CASCADE, verbose_name="Группа")
-    audience = models.ForeignKey(Audience, on_delete=models.CASCADE, verbose_name="Аудитория")
+    classroom = models.ForeignKey(Classroom, on_delete=models.CASCADE, verbose_name="Аудитория")
     lecture_type = models.SmallIntegerField(choices=LECTURE_TYPE, verbose_name="Тип занятия")
 
     semester = models.SmallIntegerField(verbose_name="Семестр", validators=[gt_zero])
