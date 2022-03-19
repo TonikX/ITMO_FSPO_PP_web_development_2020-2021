@@ -27,7 +27,7 @@ class GroupViewSet(viewsets.ModelViewSet):
     serializer_class = GroupSerializer
 
 
-class AudienceViewSet(viewsets.ModelViewSet):
+class ClassroomViewSet(viewsets.ModelViewSet):
     queryset = Classroom.objects.all()
     serializer_class = ClassroomSerializer
 

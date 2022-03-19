@@ -29,8 +29,8 @@ def generate_disciplines(fake):
         Discipline.objects.create(
             name=rand_discipline[0],
             code=rand_discipline[1],
-            syllabus_id=Syllabus.objects.first().pk,
             cycle=rand_discipline[2],
+            syllabus_id=Syllabus.objects.first().pk,
             hours_total=hours_total,
             hours_lec=hours(part_max_hours),
             hours_pr=hours(part_max_hours),
@@ -49,7 +49,10 @@ def generate_lecturers(fake):
         )
 
         for _ in range(random.randint(1, 3)):
-            rand_discipline = random.randint(Discipline.objects.first().pk, Discipline.objects.last().pk)
+            rand_discipline = random.randint(
+                Discipline.objects.first().pk,
+                Discipline.objects.last().pk
+            )
             discipline = Discipline.objects.get(pk=rand_discipline)
             lecturer.disciplines.add(discipline)
 
@@ -105,7 +108,7 @@ def generate_schedule():
 
 
 class Command(BaseCommand):
-    help = "Generate data for audience distribution project"
+    help = "Test data generation"
 
     def handle(self, *args, **options):
         try:
