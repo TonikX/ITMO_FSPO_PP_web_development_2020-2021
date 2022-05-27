@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ owner.surname }} {{ owner.name }}</title>
+</head>
+<body>
+    <h1>{{ owner.surname }} {{ owner.name }}</h1> <a href="/owner/{{ owner.id }}/edit">Edit...</a>
+    <ul>
+        <li>День рождения: <b>{{ owner.birth_date }}</b></li>
+    </ul>
+
+    <a href="/owner/all">Get back</a>
+</body>
+</html>
