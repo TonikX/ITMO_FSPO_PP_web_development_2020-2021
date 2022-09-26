@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>CVB Example list</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+  </head>
+  <body>
+    <div class="section">
+      <h1><span>CVB Example list</span></h1> <br/> <hr/> <br/>
+      <ul>
+          {% for object in object_list %}
+            <li>{{ object.title }}</li>
+            <li>{{ object.description }}</li>
+            <hr/>
+            {% empty %}
+            <li>No objects yet.</li>
+          {% endfor %}
+      </ul>
+    </div>
+  </body>
+</html>

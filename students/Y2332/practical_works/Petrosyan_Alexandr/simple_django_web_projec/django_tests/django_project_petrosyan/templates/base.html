@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+    <link rel="shortcut icon" href="{% static 'favicon.ico'%}" type="image/x-icon">
+  </head>
+  <body>
+    <div class="header section">
+        <a href="/" class="head_title"><h1><strong>Сar Dealership</strong></h1></a>
+        <p>
+            <a href="/car/list/">Car list</a> |
+            <a href="/owner/list/">Owner list</a> |
+            <a href="/about/">About</a>
+        </p>
+    </div>
+    <div class="section">
+        <h2><span>{% block block_title %}{% endblock %}</span></h2><br/><hr/>
+        {% block content %}{% endblock %}
+    </div>
+  </body>
+</html>

@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Cars{% endblock %}
+{% block block_title %}Car list{% endblock %}
+{% block content %}
+    <form action="/car/create" method="get">
+        <p><input type="submit" value="Add new"/></p>
+    </form>
+    <hr/>
+    <ul>
+      {% for object in object_list %}
+        <li>
+            <strong>Number:</strong> {{ object }} <br/>
+            <strong>Brand:</strong> {{ object.brand }} <br/>
+        </li>
+        <p class="action">
+            <a class="action" href="/car/{{ object.id }}/">Details</a>|
+            <a class="action" href="/car/{{ object.id }}/update/">Edit</a>|
+            <a class="action" href="/car/{{ object.id }}/delete/">Delete</a>
+        </p>
+        <hr/>
+        {% empty %}
+        <li>No cars yet.</li>
+      {% endfor %}
+    </ul>
+{% endblock %}

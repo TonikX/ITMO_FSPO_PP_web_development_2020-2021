@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Owner detail{% endblock %}
+{% block block_title %}Car owner detail{% endblock %}
+{% block content %}
+    <br/>
+    <p>
+        <strong>Nickname:</strong> {{owner.username}} <br>
+        <strong>Name:</strong> {{owner.first_name}} <br>
+        <strong>Surname:</strong> {{owner.last_name}} <br>
+        <strong>Birthday date:</strong> {{owner.birth_date}} <br>
+        <strong>Address:</strong> {{owner.address}} <br>
+    </p>
+    <br/>
+    <p><a href="/owner/list/">Back</a></p>
+{% endblock %}

@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create publisher</title>
+    {% load static %}
+    <link rel="stylesheet" type="text/css" href="{% static 'styles.css' %}">
+</head>
+    <body>
+        <div class="section">
+            <h1><span>Create publisher</span></h1> <br/> <hr/> <br/>
+              <form method="post">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <p><input type="submit" value="Create"></p>
+              </form>
+        </div>
+    </body>
+</html>
