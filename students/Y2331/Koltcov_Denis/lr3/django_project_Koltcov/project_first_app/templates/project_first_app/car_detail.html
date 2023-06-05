@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Car</title>
+</head>
+
+<body>
+  <h1>{{ object }}</h1>
+  <p><strong>Номер:</strong> {{ object.brand }}</p>
+  <p><strong>Модель:</strong> {{ object.model }}</p>
+  <p><strong>Цвет:</strong> {{ object.color }}</p>
+  <p><strong>Owner:</strong> <a href="/CarOwners/{{ object.id }}">{{ object.CarOwner }}</a></p>
+
+
+  
+  <a href="/Car/list">Get back</a>
+</body>
+</html>
